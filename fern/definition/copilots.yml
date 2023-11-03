@@ -21,16 +21,34 @@ service:
                 The user profile you want to use
                 when sending the message.
       response: SendMessageResponse
+      examples: 
+        - name: Example0 
+          request: 
+            message: Is Credal Soc2 compliant?
+            userEmail: ravin@credal.ai
+          response: 
+            body: 
+              type: messageReply
+              policy_triggers: []
+              responseChunks: 
+                - message: ""
+                  dataChunk: "Based on the context provided, Credal is Soc2 compliant..."
+              warnings: []
+              parallelConversationContexts: []
+              activitySourceIdsForAudit: []
+              inserted_audit_log: 
+                id: e123-456-789
 
 types: 
-  SendMessageResponse: 
-    discriminated: false
+  SendMessageResponse:
     union: 
-      - type: MessageReply
+      messageReply: 
+        type: MessageReply
         docs: | 
           Returned when there is a reply 
           fetched from the copilot.
-      - type: MessageBlocked
+      messageBlocked: 
+        type: MessageBlocked
         docs: | 
           Returned when Credal detects possible 
           infosec violations and blocks the message.

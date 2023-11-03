@@ -1,29 +1,30 @@
 instances:
   - url: credal.docs.buildwithfern.com
 
-title: CREDAL | Docs
+title: CREDAL | Documentation
 
 navigation:
   - section: Getting Started 
     contents: 
       - page: Overview
-        path: ./docs/overview.mdx
-      - page: Authentication
-        path: ./docs/authentication.mdx
-      - page: Pagination
-        path: ./docs/pagination.mdx
+        path: ./docs/pages/guides/overview.mdx
+      - page: Copilots
+        path: ./docs/pages/guides/copilots.mdx
   - api: API Reference
 
 navbar-links: 
+  - type: secondary
+    text: Contact us
+    url: mailto:support@credal.ai
   - type: primary
     text: Start using Credal
     url: https://app.credal.ai/signin
 
 colors:
   accentPrimary:
-    dark: "#8fb5c9"
+    dark: "#c7f9fe"
   background: 
-    dark: "#000000"
+    dark: "#131414"
 
 favicon: docs/assets/favicon.png
 
