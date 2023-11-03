@@ -1,4 +1,4 @@
-# Propify Documentation
+# Credal Documentation
 
 Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.buildwithfern.com](https://credal.docs.buildwithfern.com).
 
