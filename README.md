@@ -8,7 +8,7 @@ Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.bu
 
 This reposistory contains:
 
-- Propify's latest [OpenAPI spec](./fern/openapi/openapi.yml)
+- Credal's [API Definition](./fern/definition)
 - MDX [Pages](./fern/docs/pages/)
 
 ## How to update the documentation ?
