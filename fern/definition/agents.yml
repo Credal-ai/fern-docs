@@ -26,8 +26,14 @@ types:
   SendMessageResponse: 
     discriminated: false
     union: 
-      - MessageReply
-      - MessageBlocked
+      - type: MessageReply
+        docs: | 
+          Returned when there is a reply 
+          fetched from the copilot.
+      - type: MessageBlocked
+        docs: | 
+          Returned when Credal detects possible 
+          infosec violations and blocks the message.
   
   MessageReply: 
     properties: 

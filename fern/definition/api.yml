@@ -5,5 +5,8 @@ auth-schemes:
     scheme: bearer
     token: 
       name: apiKey
+environments: 
+  Production: https://api.credal.ai
+default-environment: Production
 error-discrimination:
   strategy: status-code

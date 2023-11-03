@@ -23,7 +23,7 @@ colors:
   accentPrimary:
     dark: "#8fb5c9"
   background: 
-    dark: "#181818"
+    dark: "#000000"
 
 favicon: docs/assets/favicon.png
 
