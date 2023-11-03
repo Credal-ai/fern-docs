@@ -1,11 +1,8 @@
 # Credal Documentation
-
 Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.buildwithfern.com](https://credal.docs.buildwithfern.com).
-
 ![Preview](./preview.png)
 
 ## What is contained in this repo ?
-
 This reposistory contains:
 
 - Credal's [API Definition](./fern/definition)
