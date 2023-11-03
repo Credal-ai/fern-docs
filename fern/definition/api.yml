@@ -1,0 +1,9 @@
+name: api
+auth: BearerAuthScheme
+auth-schemes:
+  BearerAuthScheme:
+    scheme: bearer
+    token: 
+      name: apiKey
+error-discrimination:
+  strategy: status-code

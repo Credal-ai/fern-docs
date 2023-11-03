@@ -1,0 +1,63 @@
+
+service: 
+  base-path: /agents
+  auth: true
+  endpoints: 
+    sendMessage: 
+      path: /sendMessage
+      method: POST
+      request: 
+        name: SendMessageRequest
+        body: 
+          properties: 
+            message: 
+              type: string
+              docs: | 
+                The message you want to send to 
+                your copilot.
+            userEmail: 
+              type: string
+              docs: | 
+                The user profile you want to use
+                when sending the message.
+      response: SendMessageResponse
+
+types: 
+  SendMessageResponse: 
+    discriminated: false
+    union: 
+      - MessageReply
+      - MessageBlocked
+  
+  MessageReply: 
+    properties: 
+      policy_triggers: list<PolicyTrigger>
+      conversationId: optional<string>
+      responseChunks: list<ResponseChunk>
+      warnings: list<string>
+      parallelConversationContexts: list<string>
+      activitySourceIdsForAudit: list<string>
+      inserted_audit_log: InsertedAuditLog
+  
+  ResponseChunk: 
+    properties: 
+      message: string
+      dataChunk: string
+
+  InsertedAuditLog: 
+    properties: 
+      id: string
+  
+  MessageBlocked: 
+    properties: 
+      policy_triggers: list<PolicyTrigger>
+      conversationId: optional<string>
+      blocks: list<string>
+      warnings: list<string>
+      inserted_audit_log: InsertedAuditLog
+  
+  PolicyTrigger: 
+    properties: 
+      id: string
+      name: string
+      description: string

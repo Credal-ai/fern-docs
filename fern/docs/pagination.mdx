@@ -1,0 +1,18 @@
+
+## Overview
+
+Many CREDAL GET endpoints return an array of results. To make it easier to work with these results, we provide standard pagination and sorting options to be used in the query string.
+
+## Parameters 
+
+There are two optional parameters that can be used to control pagination of results: `offset` and `limit`. Each can be used independently, or together.
+
+## Offset
+
+The `offset` parameter is used to skip results. For example, if you wanted to skip the first 10 results, you would use `offset=10` as a query string parameter in the URL. If you do not define an offset, the default is 0.
+
+The below example would skip the first 10 results, and return the next 100 results.
+
+## hasMore
+
+The `hasMore` parameter is used to indicate if there are more results available. If there are more results available, the value will be `true`. If there are no more results available, the value will be `false`. This can be used to determine if you should make another request to get more results, or optionally increase the `limit` value.
