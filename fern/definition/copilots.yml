@@ -1,60 +1,59 @@
-
-service: 
-  base-path: /agents
+service:
+  base-path: /v1/agents
   auth: true
-  endpoints: 
-    sendMessage: 
+  endpoints:
+    sendMessage:
       path: /sendMessage
       method: POST
-      request: 
+      request:
         name: SendMessageRequest
-        body: 
-          properties: 
-            message: 
+        body:
+          properties:
+            message:
               type: string
-              docs: | 
+              docs: |
                 The message you want to send to 
                 your copilot.
-            userEmail: 
+            userEmail:
               type: string
-              docs: | 
+              docs: |
                 The user profile you want to use
                 when sending the message.
       response: SendMessageResponse
-      examples: 
-        - name: Example0 
-          request: 
+      examples:
+        - name: Example0
+          request:
             message: Is Credal Soc2 compliant?
             userEmail: ravin@credal.ai
-          response: 
-            body: 
+          response:
+            body:
               type: messageReply
               policy_triggers: []
-              responseChunks: 
+              responseChunks:
                 - message: ""
                   dataChunk: "Based on the context provided, Credal is Soc2 compliant..."
               warnings: []
               parallelConversationContexts: []
               activitySourceIdsForAudit: []
-              inserted_audit_log: 
+              inserted_audit_log:
                 id: e123-456-789
 
-types: 
+types:
   SendMessageResponse:
-    union: 
-      messageReply: 
+    union:
+      messageReply:
         type: MessageReply
-        docs: | 
+        docs: |
           Returned when there is a reply 
           fetched from the copilot.
-      messageBlocked: 
+      messageBlocked:
         type: MessageBlocked
-        docs: | 
+        docs: |
           Returned when Credal detects possible 
           infosec violations and blocks the message.
-  
-  MessageReply: 
-    properties: 
+
+  MessageReply:
+    properties:
       policy_triggers: list<PolicyTrigger>
       conversationId: optional<string>
       responseChunks: list<ResponseChunk>
@@ -62,26 +61,26 @@ types:
       parallelConversationContexts: list<string>
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
-  
-  ResponseChunk: 
-    properties: 
+
+  ResponseChunk:
+    properties:
       message: string
       dataChunk: string
 
-  InsertedAuditLog: 
-    properties: 
+  InsertedAuditLog:
+    properties:
       id: string
-  
-  MessageBlocked: 
-    properties: 
+
+  MessageBlocked:
+    properties:
       policy_triggers: list<PolicyTrigger>
       conversationId: optional<string>
       blocks: list<string>
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
-  
-  PolicyTrigger: 
-    properties: 
+
+  PolicyTrigger:
+    properties:
       id: string
       name: string
       description: string

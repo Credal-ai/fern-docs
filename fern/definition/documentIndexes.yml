@@ -1,5 +1,5 @@
 service:
-  base-path: /document-index
+  base-path: /v1/documentIndexes
   auth: true
   endpoints:
     createDocumentIndex:
@@ -27,7 +27,7 @@ service:
                 The metadata schema to use for the document index. If not specified, Credal will use the default schema.
       response: CreateDocumentIndexResponse
       examples:
-        - name: Example0
+        - name: createDocumentIndexExample
           request:
             indexName: Customer Meeting Transcripts
             embeddingsModel: "text-embedding-ada-002"
@@ -50,10 +50,43 @@ service:
         query-parameters:
           documentIndexId: uuid
       examples:
-        - name: Example1
+        - name: deleteDocumentIndexExample
           query-parameters:
             documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    listDocumentsInIndex:
+      path: /listDocumentsInIndex
+      docs: List all documents in a document index.
+      method: POST
+      request:
+        name: ListDocumentIndexRequest
+        query-parameters:
+          documentIndexId: uuid
+      response: ListDocumentIndexResponse
+      examples:
+        - name: listDocumentsInIndexExample
+          query-parameters:
+            documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+          response:
+            body:
+              documents:
+                - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+                  metadata:
+                    customerName: Credal
+                    meetingDate: "2023-11-06T23:03:42.056Z"
+                - documentId: 4676d85d-6e8b-4503-8a71-bb2a8e763858
+                  metadata:
+                    customerName: ABC Corp
+                    meetingDate: "2022-12-06T12:02:41.023Z"
 types:
+  ListDocumentIndexResponse:
+    properties:
+      documents:
+        type: list<IndexedDocument>
+        docs: The list of documents in the index.
+  IndexedDocument:
+    properties:
+      documentId: uuid
+      metadata: map<string, string>
   CreateDocumentIndexResponse:
     properties:
       documentIndexId: uuid

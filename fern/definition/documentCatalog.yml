@@ -1,5 +1,5 @@
 service:
-  base-path: /catalog
+  base-path: /v1/catalog
   auth: true
   endpoints:
     uploadDocumentUrl:
