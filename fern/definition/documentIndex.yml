@@ -25,13 +25,12 @@ service:
               type: optional<MetadataSchema>
               docs: |
                 The metadata schema to use for the document index. If not specified, Credal will use the default schema.
-
       response: CreateDocumentIndexResponse
       examples:
         - name: Example0
           request:
             indexName: Customer Meeting Transcripts
-            embeddingModel: "text-embedding-ada-002"
+            embeddingsModel: "text-embedding-ada-002"
             distanceMetric: EUCLIDEAN
             metadataSchema:
               fields:
@@ -42,6 +41,18 @@ service:
           response:
             body:
               documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    deleteDocumentIndex:
+      path: /deleteDocumentIndex
+      docs: Delete a document index given its ID.
+      method: POST
+      request:
+        name: DeleteDocumentIndexRequest
+        query-parameters:
+          documentIndexId: uuid
+      examples:
+        - name: Example1
+          query-parameters:
+            documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
 types:
   CreateDocumentIndexResponse:
     properties:
