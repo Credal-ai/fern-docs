@@ -77,6 +77,27 @@ service:
                   metadata:
                     customerName: ABC Corp
                     meetingDate: "2022-12-06T12:02:41.023Z"
+    indexDocument:
+      path: /indexDocument
+      method: POST
+      request:
+        name: IndexDocumentRequest
+        body:
+          properties:
+            documentIndexId: uuid
+            documentId: uuid
+            metadata:
+              type: map<string, string>
+              docs: |
+                The metadata for the document. The metadata fields must match the metadata schema for the document index.
+      examples:
+        - name: indexDocumentExample
+          request:
+            documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            metadata:
+              customerName: Credal
+              meetingDate: "2023-11-06T23:03:42.056Z"
 types:
   ListDocumentIndexResponse:
     properties:
