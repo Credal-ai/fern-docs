@@ -13,7 +13,7 @@ service:
             indexName:
               type: string
               docs: A unique name for the document index.
-            embeddingModel:
+            embeddingsModel:
               type: optional<string>
               docs: |
                 The embeddings model to use for the document index. If not specified, Credal will use the default model.
