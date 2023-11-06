@@ -1,0 +1,69 @@
+service:
+  base-path: /document-index
+  auth: true
+  endpoints:
+    createDocumentIndex:
+      path: /createDocumentIndex
+      docs: Create a search index over a set of related documents.
+      method: POST
+      request:
+        name: CreateDocumentIndexRequest
+        body:
+          properties:
+            indexName:
+              type: string
+              docs: A unique name for the document index.
+            embeddingModel:
+              type: optional<string>
+              docs: |
+                The embeddings model to use for the document index. If not specified, Credal will use the default model.
+            distanceMetric:
+              type: optional<DistanceMetric>
+              docs: |
+                The distance metric to use for the document index. If not specified, Credal will use the default metric.
+            metadataSchema:
+              type: optional<MetadataSchema>
+              docs: |
+                The metadata schema to use for the document index. If not specified, Credal will use the default schema.
+
+      response: CreateDocumentIndexResponse
+      examples:
+        - name: Example0
+          request:
+            indexName: Customer Meeting Transcripts
+            embeddingModel: "text-embedding-ada-002"
+            distanceMetric: EUCLIDEAN
+            metadataSchema:
+              fields:
+                - name: customerName
+                  type: STRING
+                - name: meetingDate
+                  type: DATETIME
+          response:
+            body:
+              documentIndexId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+types:
+  CreateDocumentIndexResponse:
+    properties:
+      documentIndexId: uuid
+  MetadataSchema:
+    properties:
+      fields:
+        type: list<MetadataField>
+        docs: The list of metadata fields.
+  MetadataField:
+    properties:
+      name: string
+      type: DataType
+  DataType:
+    enum:
+      - STRING
+      - INT
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
+  DistanceMetric:
+    enum:
+      - EUCLIDEAN
+      - COSINE
+      - DOTPRODUCT
