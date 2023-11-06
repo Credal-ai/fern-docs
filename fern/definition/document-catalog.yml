@@ -1,0 +1,49 @@
+service:
+  base-path: /catalog
+  auth: true
+  endpoints:
+    uploadDocumentUrl:
+      path: /uploadDocumentUrl
+      method: POST
+      request:
+        name: UploadDocumentUrlRequest
+        body:
+          properties:
+            documentUrl:
+              type: string
+              docs: |
+                The url for the document you want to upload. Credal will automatically connect 
+                to source systems like Google Drive, Office 365, Confluence, etc. to fetch 
+                and upload the document contents.
+      response: UploadDocumentResponse
+      examples:
+        - name: Example0
+          request:
+            documentUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+          response:
+            body:
+              documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    uploadDocumentContents:
+      path: /uploadDocumentContents
+      method: POST
+      request:
+        name: UploadDocumentContentsRequest
+        body:
+          properties:
+            documentContents:
+              type: string
+              docs: |
+                The full contents of the document you want to upload.
+      response: UploadDocumentResponse
+     examples:
+        - name: Example0
+          request:
+            documentContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          response:
+            body:
+              documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+
+types:
+  UploadDocumentResponse:
+    properties:
+      documentId: uuid
