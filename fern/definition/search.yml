@@ -1,0 +1,134 @@
+service:
+  base-path: /v1/documentCollections
+  auth: true
+  endpoints:
+    searchDocumentCatalog:
+      path: /searchDocumentCatalog
+      docs: Search across all documents uploaded to Credal using the document metadata and contents.
+      method: POST
+      request:
+        name: SearchDocumentCatalogRequest
+        body:
+          properties:
+            searchQuery:
+              type: string
+            searchOptions:
+              type: optional<CatalogSearchOptions>
+      response: SearchDocumentCatalogResponse
+      examples:
+        - name: searchDocumentCatalogExample
+          request:
+            searchQuery: "ABC Corp"
+            searchOptions:
+              maxResults: 5
+          response:
+            body:
+              results:
+                - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+                  documentName: "ABC Corp - Initial meeting transcript"
+                - documentId: c7e1283b-4f66-4caf-828d-cf03841e0324
+                  documentName: "ABC Corp - Demo meeting transcript"
+    searchDocumentCollection:
+      path: /searchDocumentCollection
+      docs: Search across all documents in a document collection using the document metadata and contents.
+      method: POST
+      request:
+        name: SearchDocumentCollectionRequest
+        body:
+          properties:
+            documentCollectionId:
+              type: uuid
+            searchQuery:
+              type: string
+            metadataFilterExpression:
+              type: optional<string>
+              docs: |
+                The metadata search expression to filter the documents in the document collection.
+            searchOptions:
+              type: optional<DocumentCollectionSearchOptions>
+      response: SearchDocumentCollectionResponse
+      examples:
+        - name: searchDocumentCollectionExample
+          request:
+            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            searchQuery: "ABC Corp"
+            metadataFilterExpression: "customerName = 'ABC Corp'"
+            searchOptions:
+              maxChunks: 10
+              mergeContents: true
+              threshold: 0.8
+          response:
+            body:
+              results:
+                - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+                  documentName: "ABC Corp - Initial meeting transcript"
+                  documentMetadata:
+                    customerName: "ABC Corp"
+                    meetingDate: "2021-01-01T00:00:00Z"
+                  chunks:
+                    - chunkId: 8d49fa7e-f09a-4bd4-ae94-4c089c9043a0
+                      chunkIndex: 0
+                      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                      score: 0.9
+                    - chunkId: c24f99f9-2477-461b-8f8f-90a82a40879d
+                      chunkIndex: 1
+                      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"
+                      score: 0.8
+                    - chunkId: 6413d18c-b37f-4985-9045-cc8d6e100a17
+                      chunkIndex: 2
+                      text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+                      score: 0.7
+                  mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+types:
+  CatalogSearchOptions:
+    properties:
+      maxResults:
+        type: optional<integer>
+        docs: |
+          The maximum number of results to return. Defaults to 10.
+      searchContents:
+        type: optional<boolean>
+        docs: |
+          Whether to search the contents of the document. Defaults to false.
+  SearchDocumentCatalogResponse:
+    properties:
+      results: list<CatalogSearchResult>
+  CatalogSearchResult:
+    properties:
+      documentId: uuid
+      documentName: string
+  DocumentCollectionSearchOptions:
+    properties:
+      maxChunks:
+        type: optional<integer>
+        docs: |
+          The maximum number of chunks to return. Defaults to 100.
+      mergeContents:
+        type: optional<boolean>
+        docs: |
+          Whether to merge the chunks for a document and just return one result per document. Defaults to false.
+      threshold:
+        type: optional<double>
+        docs: |
+          The similarity threshold between 0 and 1 for the search results. A higher number leads to fewer but more relevant results. 
+          Defaults to 0.75.
+  SearchDocumentCollectionResponse:
+    properties:
+      results: list<DocumentCollectionSearchResult>
+  DocumentCollectionSearchResult:
+    properties:
+      documentId: uuid
+      documentName: string
+      documentMetadata: map<string, string>
+      chunks: list<SearchResultChunk>
+      mergedContents: optional<string>
+  SearchResultChunk:
+    properties:
+      chunkId: uuid
+      chunkIndex: integer
+      text: string
+      score:
+        type: double
+        docs: |
+          The similarity score between 0 and 1 for the search result. A higher number means the chunk is more relevant to the search query.
