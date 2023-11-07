@@ -2,18 +2,18 @@ instances:
   - url: credal.docs.buildwithfern.com
     custom-domain: docs.credal.ai
 
-title: CREDAL | Documentation
+title: Credal | Documentation
 
 navigation:
-  - section: Getting Started 
-    contents: 
+  - section: Getting Started
+    contents:
       - page: Overview
         path: ./docs/pages/guides/overview.mdx
       - page: Copilots
         path: ./docs/pages/guides/copilots.mdx
   - api: API Reference
 
-navbar-links: 
+navbar-links:
   - type: secondary
     text: Contact us
     url: mailto:support@credal.ai
@@ -23,13 +23,11 @@ navbar-links:
 
 colors:
   accentPrimary:
-    dark: "#c7f9fe"
-  background: 
-    dark: "#131414"
+    light: "#5849EC"
 
 favicon: docs/assets/favicon.png
 
 logo:
   href: https://credal.ai/
-  dark: docs/assets/credal-light-logo.png
+  light: docs/assets/credal-dark-logo.svg
   height: 30
