@@ -79,6 +79,25 @@ service:
                       text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
                       score: 0.7
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
+                - documentId: 90998ceb-1c10-4d2a-96cb-acf89fa3005e
+                  documentName: "XYZ Corp - Follow-up transcript"
+                  documentMetadata:
+                    customerName: "XYZ Corp"
+                    meetingDate: "2021-01-02T00:00:00Z"
+                  chunks:
+                    - chunkId: 3664912a-3edb-4d88-b624-80db99d383e6
+                      chunkIndex: 0
+                      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                      score: 0.7
+                    - chunkId: da9d43a4-2927-442c-8e5c-b9ef86f56fc3
+                      chunkIndex: 1
+                      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"
+                      score: 0.9
+                    - chunkId: 8d882e9f-8eda-479b-ae2a-359ebae7b626
+                      chunkIndex: 2
+                      text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+                      score: 0.75
+                  mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 types:
   CatalogSearchOptions:
