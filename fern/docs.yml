@@ -5,15 +5,15 @@ instances:
 title: CREDAL | Documentation
 
 navigation:
-  - section: Getting Started 
-    contents: 
+  - section: Getting Started
+    contents:
       - page: Overview
         path: ./docs/pages/guides/overview.mdx
       - page: Copilots
         path: ./docs/pages/guides/copilots.mdx
   - api: API Reference
 
-navbar-links: 
+navbar-links:
   - type: secondary
     text: Contact us
     url: mailto:support@credal.ai
@@ -23,9 +23,8 @@ navbar-links:
 
 colors:
   accentPrimary:
-    dark: "#c7f9fe"
-  background: 
-    dark: "#131414"
+    dark: "#877EF3"
+    light: "#5849EC"
 
 favicon: docs/assets/favicon.png
 
