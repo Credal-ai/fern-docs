@@ -42,7 +42,7 @@ service:
               parallelConversationContexts: []
               activitySourceIdsForAudit: []
               inserted_audit_log:
-                id: e123-456-789
+                id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
   SendMessageResponse:
