@@ -19,11 +19,17 @@ service:
               docs: |
                 The user profile you want to use
                 when sending the message.
+            conversationId:
+              type: optional<uuid>
+              docs: |
+                Conversation in which to send
+                the message. Conversation ID is
+                returned after initial message. Optional.
       response: SendMessageResponse
       examples:
         - name: Example0
           request:
-            message: Is Credal Soc2 compliant?
+            message: Is Credal SOC 2 compliant?
             userEmail: ravin@credal.ai
           response:
             body:
@@ -31,12 +37,12 @@ service:
               policy_triggers: []
               responseChunks:
                 - message: ""
-                  dataChunk: "Based on the context provided, Credal is Soc2 compliant..."
+                  dataChunk: "Based on the context provided, Credal is SOC 2 compliant..."
               warnings: []
               parallelConversationContexts: []
               activitySourceIdsForAudit: []
               inserted_audit_log:
-                id: e123-456-789
+                id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
   SendMessageResponse:
@@ -55,7 +61,7 @@ types:
   MessageReply:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<string>
+      conversationId: optional<uuid>
       responseChunks: list<ResponseChunk>
       warnings: list<string>
       parallelConversationContexts: list<string>
@@ -69,12 +75,12 @@ types:
 
   InsertedAuditLog:
     properties:
-      id: string
+      id: uuid
 
   MessageBlocked:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<string>
+      conversationId: optional<uuid>
       blocks: list<string>
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
