@@ -2,7 +2,7 @@ instances:
   - url: credal.docs.buildwithfern.com
     custom-domain: docs.credal.ai
 
-title: CREDAL | Documentation
+title: Credal | Documentation
 
 navigation:
   - section: Getting Started
