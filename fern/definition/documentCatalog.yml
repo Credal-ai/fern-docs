@@ -39,6 +39,14 @@ service:
               type: string
               docs: |
                 The full text contents of the document you want to upload.
+            documentExternalId:
+              type: optional<string>
+              docs: /
+                The external id of the document you want to upload. Uploads to the same external id will update one document in Credal.
+            documentExternalUrl:
+              type: optional<string>
+              docs: /
+                The external url of the document you want to upload. If provided Credal will link to this url.
       response: UploadDocumentResponse
       examples:
         - name: Example1
