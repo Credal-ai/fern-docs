@@ -11,6 +11,8 @@ navigation:
         path: ./docs/pages/guides/overview.mdx
       - page: Copilots
         path: ./docs/pages/guides/copilots.mdx
+      - page: OAuth
+        path: ./docs/pages/guides/oauth.mdx
   - api: API Reference
 
 navbar-links:
