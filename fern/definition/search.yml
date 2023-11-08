@@ -1,5 +1,5 @@
 service:
-  base-path: /v0/documentCollections
+  base-path: /v0/search
   auth: true
   endpoints:
     searchDocumentCatalog:
