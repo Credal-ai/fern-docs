@@ -138,7 +138,7 @@ types:
         type: optional<double>
         docs: |
           The similarity threshold between 0 and 1 for the search results. A higher number leads to fewer but more relevant results. 
-          Defaults to 0.75.
+          Defaults to 0.45.
   SearchDocumentCollectionResponse:
     properties:
       searchId: uuid
