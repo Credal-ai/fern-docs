@@ -153,7 +153,7 @@ types:
       maxChunks:
         type: optional<integer>
         docs: |
-          The maximum number of chunks to return. Defaults to 100.
+          The maximum number of chunks to return. Defaults to 10.
       mergeContents:
         type: optional<boolean>
         docs: |
