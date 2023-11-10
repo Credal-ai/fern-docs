@@ -1,5 +1,5 @@
 imports:
-  person: ./commons.yml
+  commons: ./commons.yml
 service:
   base-path: /v0/catalog
   auth: true
@@ -50,7 +50,7 @@ service:
               docs: /
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<MetadataSchema>
+              type: optional<commons.MetadataSchema>
               docs: /
                 Custom metadata to attach to the document.
       response: UploadDocumentResponse

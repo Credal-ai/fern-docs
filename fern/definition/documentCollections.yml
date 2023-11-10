@@ -1,5 +1,5 @@
 imports:
-  person: ./commons.yml
+  commons: ./commons.yml
 service:
   base-path: /v0/documentCollections
   auth: true
@@ -24,7 +24,7 @@ service:
               docs: |
                 The distance metric to use for the document collection.
             customMetadataSchema:
-              type: optional<MetadataSchema>
+              type: optional<commons.MetadataSchema>
               docs: |
                 Any custom metadata fields for this collection.
       response: CreateDocumentCollectionResponse
