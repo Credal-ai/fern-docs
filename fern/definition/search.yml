@@ -1,5 +1,5 @@
 imports:
-  person: ./commons.yml
+  commons: ./commons.yml
 service:
   base-path: /v0/search
   auth: true
@@ -176,7 +176,7 @@ types:
       documentId: uuid
       documentName: string
       documentMetadata: map<string, string>
-      customMetadata: optional<MetadataSchema>
+      customMetadata: optional<commons.MetadataSchema>
       chunks: list<SearchResultChunk>
       mergedContents: optional<string>
   SubmitSearchFeedbackResponse:

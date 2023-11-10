@@ -1,3 +1,5 @@
+imports:
+  person: ./commons.yml
 service:
   base-path: /v0/catalog
   auth: true
