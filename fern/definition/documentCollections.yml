@@ -1,3 +1,5 @@
+imports:
+  person: ./commons.yml
 service:
   base-path: /v0/documentCollections
   auth: true
@@ -188,22 +190,6 @@ types:
   CreateDocumentCollectionResponse:
     properties:
       documentCollectionId: uuid
-  MetadataSchema:
-    properties:
-      fields:
-        type: list<MetadataField>
-        docs: The list of metadata fields.
-  MetadataField:
-    properties:
-      name: string
-      type: DataType
-  DataType:
-    enum:
-      - STRING
-      - INT
-      - DOUBLE
-      - DATETIME
-      - BOOLEAN
   DistanceMetric:
     enum:
       - EUCLIDEAN

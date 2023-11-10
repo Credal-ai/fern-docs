@@ -1,0 +1,17 @@
+types:
+  MetadataSchema:
+    properties:
+      fields:
+        type: list<MetadataField>
+        docs: The list of metadata fields.
+  MetadataField:
+    properties:
+      name: string
+      type: DataType
+  DataType:
+    enum:
+      - STRING
+      - INT
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
