@@ -172,6 +172,7 @@ types:
       documentId: uuid
       documentName: string
       documentMetadata: map<string, string>
+      customMetadata: map<string, any>
       chunks: list<SearchResultChunk>
       mergedContents: optional<string>
   SubmitSearchFeedbackResponse:

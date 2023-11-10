@@ -4,7 +4,7 @@ service:
   endpoints:
     uploadDocumentUrl:
       path: /uploadDocumentUrl
-      docs: Upload a document using its url.
+      docs: Upload a document using its URL.
       method: POST
       request:
         name: UploadDocumentUrlRequest
@@ -13,7 +13,7 @@ service:
             documentUrl:
               type: string
               docs: |
-                The url for the document you want to upload. Credal will automatically connect 
+                The URL for the document you want to upload. Credal will automatically connect
                 to source systems like Google Drive, Office 365, Confluence, etc. to fetch 
                 and upload the document contents.
       response: UploadDocumentResponse
@@ -42,11 +42,15 @@ service:
             documentExternalId:
               type: optional<string>
               docs: /
-                The external id of the document you want to upload. Uploads to the same external id will update one document in Credal.
+                The external ID of the document you want to upload. Uploads to the same external ID will update one document in Credal.
             documentExternalUrl:
               type: optional<string>
               docs: /
-                The external url of the document you want to upload. If provided Credal will link to this url.
+                The external URL of the document you want to upload. If provided Credal will link to this URL.
+            customMetadata:
+              type: optional<map<string, any>>
+              docs: /
+                Custom metadata to attach to the document.
       response: UploadDocumentResponse
       examples:
         - name: Example1
