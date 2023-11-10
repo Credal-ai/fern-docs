@@ -139,7 +139,7 @@ service:
     reindexDocumentInCollection:
       path: /reindexDocumentInCollection
       docs: /
-        Reindex a document in a document collection. Credal automatically deleted the existing chunks, re-chunks the document's latest contents and runs the collection's embeddings model on each chunk.
+        Reindex a document in a document collection. Credal automatically deletes the existing chunks, re-chunks the document's latest contents and runs the collection's embeddings model on each chunk.
         You can optionally provide new custom metadata for the document.
       method: POST
       request:
