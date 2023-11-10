@@ -48,7 +48,7 @@ service:
               docs: /
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<map<string, any>>
+              type: optional<map<string, CustomMetadata>>
               docs: /
                 Custom metadata to attach to the document.
       response: UploadDocumentResponse

@@ -167,12 +167,20 @@ types:
     properties:
       searchId: uuid
       results: list<DocumentCollectionSearchResult>
+  CustomMetadata:
+    discriminated: false
+    union:
+      - string
+      - integer
+      - double
+      - boolean
+      - datetime
   DocumentCollectionSearchResult:
     properties:
       documentId: uuid
       documentName: string
       documentMetadata: map<string, string>
-      customMetadata: map<string, any>
+      customMetadata: map<string, CustomMetadata>
       chunks: list<SearchResultChunk>
       mergedContents: optional<string>
   SubmitSearchFeedbackResponse:
