@@ -83,7 +83,8 @@ service:
                       text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
                       score: 0.7
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  customMetadata: {}
+                  customMetadata:
+                    fields: []
                 - documentId: 90998ceb-1c10-4d2a-96cb-acf89fa3005e
                   documentName: "XYZ Corp - Follow-up transcript"
                   documentMetadata:
@@ -103,7 +104,8 @@ service:
                       text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
                       score: 0.75
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  customMetadata: {}
+                  customMetadata:
+                    fields: []
     submitSearchFeedback:
       path: /submitSearchFeedback
       docs: Submit end-user feedback on a search result to be persisted on the audit log
