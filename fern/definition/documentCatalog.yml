@@ -47,6 +47,18 @@ service:
               type: optional<string>
               docs: /
                 The external url of the document you want to upload. If provided Credal will link to this url.
+            uploadAsUserEmail:
+              type: string
+              docs: /
+                The user email to upload this document for.
+            customMetadata:
+              type: unknown
+              docs: /
+                JSON representing any custom metdata for this document
+            collectionId:
+              type: optional<string>
+              docs: /
+                If specified, document will be upload to a particular document collection
       response: UploadDocumentResponse
       examples:
         - name: Example1
