@@ -59,6 +59,14 @@ service:
               type: optional<string>
               docs: /
                 If specified, document will be upload to a particular document collection
+            forceUpdate:
+              type: optional<boolean>
+              docs: /
+                If specified, document contents will be re-uploaded and re-embedded even if the document already exists in Credal
+            internalPublic:
+              type: optional<boolean>
+              docs: /
+                If specified, document will be accessible to everyone within the organization of the uploader
       response: UploadDocumentResponse
       examples:
         - name: Example1
