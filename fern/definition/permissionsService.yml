@@ -132,12 +132,12 @@ service:
               - resourceId: "123456"
                 resourceType: ZENDESK_TICKET
 
-    listAuthorizedUsersForResource:
-      path: /listAuthorizedUsersForResource
+    listAuthorizedPrincipalsForResource:
+      path: /listAuthorizedPrincipalsForResource
       docs: Admin endpoint to list all users that are authorized to perform the specified action on the specified resource.
       method: POST
       request:
-        name: ListAuthorizedUsersForResourceRequest
+        name: ListAuthorizedPrincipalsForResourceRequest
         body:
           properties:
             resource:
@@ -148,7 +148,7 @@ service:
               type: Action
               docs: |
                 The action you want to perform on the resource.
-      response: list<User>
+      response: list<Principal>
       examples:
         - name: Example0
           request:
@@ -161,15 +161,28 @@ service:
               - email: john.smith@foo.com
                 name: John Smith
                 id: "123456"
+                type: "user"
               - email: jane.smith@foo.com
                 name: Jane Smith
                 id: "789012"
+                type: "user"
+              - name: "Engineering"
+                id: "345678"
+                type: "group"
 types:
+  Group:
+    properties:
+      name: string
+      id: optional<string>
   User:
     properties:
       email: string
       name: optional<string>
       id: optional<string>
+  Principal:
+    union:
+      group: Group
+      user: User
   ResourceIdentifier:
     properties:
       resourceId: string
