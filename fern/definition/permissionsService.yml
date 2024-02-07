@@ -96,7 +96,7 @@ service:
             body:
               - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                 resourceType: GOOGLE_DRIVE_DOCUMENT
-              - resourceId: 123456
+              - resourceId: "123456"
                 resourceType: ZENDESK_TICKET
 
     listAuthorizedResourcesForUser:
@@ -129,7 +129,7 @@ service:
             body:
               - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                 resourceType: GOOGLE_DRIVE_DOCUMENT
-              - resourceId: 123456
+              - resourceId: "123456"
                 resourceType: ZENDESK_TICKET
 
     listAuthorizedUsersForResource:
@@ -160,10 +160,10 @@ service:
             body:
               - email: john.smith@foo.com
                 name: John Smith
-                id: 123456
+                id: "123456"
               - email: jane.smith@foo.com
                 name: Jane Smith
-                id: 789012
+                id: "789012"
 types:
   User:
     properties:
