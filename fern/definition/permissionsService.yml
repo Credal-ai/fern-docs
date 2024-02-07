@@ -1,0 +1,186 @@
+service:
+  base-path: /v0/permissions
+  auth: true
+  endpoints:
+    checkResourceAuthorization:
+      path: /checkResourceAuthorization
+      docs: Check whether the authenticated user is authorized to perform an action on the specified resource.
+      method: POST
+      request:
+        name: CheckResourceAuthorizationRequest
+        body:
+          properties:
+            resource:
+              type: ResourceIdentifier
+              docs: |
+                The resource identifier for which you want to check authorization.
+            action:
+              type: Action
+              docs: |
+                The action you want to perform on the resource.
+            disableCache:
+              type: optional<boolean>
+              docs: |
+                If specified, Credal will bypass the permissions cache and check current permissions for this resource
+      response: CheckResourceAuthorizationResponse
+      examples:
+        - name: Example0
+          request:
+            resource:
+              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE_DOCUMENT
+            action: READ
+          response:
+            body:
+              authorized: true
+
+    checkResourceAuthorizationForUser:
+      path: /checkResourceAuthorizationForUser
+      docs: Admin endpoint to check whether the specified user is authorized to perform an action on the specified resource.
+      method: POST
+      request:
+        name: CheckResourceAuthorizationForUserRequest
+        body:
+          properties:
+            resource:
+              type: ResourceIdentifier
+              docs: |
+                The resource identifier for which you want to check authorization.
+            action:
+              type: Action
+              docs: |
+                The action you want to perform on the resource.
+            userEmail:
+              type: string
+              docs: |
+                The user email to check authorization for.
+            disableCache:
+              type: optional<boolean>
+              docs: |
+                If specified, Credal will bypass the permissions cache and check current permissions for this resource
+      response: CheckResourceAuthorizationResponse
+      examples:
+        - name: Example0
+          request:
+            resource:
+              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE_DOCUMENT
+            action: READ
+            userEmail: john.smith@foo.com
+          response:
+            body:
+              authorized: true
+
+    listAuthorizedResources:
+      path: /listAuthorizedResources
+      docs: List all resources that the authenticated user is authorized to perform the specified action on.
+      method: POST
+      request:
+        name: ListAuthorizedResourcesRequest
+        body:
+          properties:
+            action:
+              type: Action
+              docs: |
+                The action you want to perform on the resources.
+            resourceType:
+              type: optional<ResourceType>
+              docs: |
+                The type of resource you want to list. If not specified, all resource types will be listed.
+      response: list<ResourceIdentifier>
+      examples:
+        - name: Example0
+          request:
+            action: READ
+          response:
+            body:
+              - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_DOCUMENT
+              - resourceId: 123456
+                resourceType: ZENDESK_TICKET
+
+    listAuthorizedResourcesForUser:
+      path: /listAuthorizedResourcesForUser
+      docs: Admin endpoint to list all resources that the specified user is authorized to perform the specified action on.
+      method: POST
+      request:
+        name: ListAuthorizedResourcesForUserRequest
+        body:
+          properties:
+            action:
+              type: Action
+              docs: |
+                The action you want to perform on the resources.
+            userEmail:
+              type: string
+              docs: |
+                The user email to list authorized resources for.
+            resourceType:
+              type: optional<ResourceType>
+              docs: |
+                The type of resource you want to list. If not specified, all resource types will be listed.
+      response: list<ResourceIdentifier>
+      examples:
+        - name: Example0
+          request:
+            action: READ
+            userEmail: john.smith@foo.com
+          response:
+            body:
+              - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_DOCUMENT
+              - resourceId: 123456
+                resourceType: ZENDESK_TICKET
+
+    listAuthorizedUsersForResource:
+      path: /listAuthorizedUsersForResource
+      docs: Admin endpoint to list all users that are authorized to perform the specified action on the specified resource.
+      method: POST
+      request:
+        name: ListAuthorizedUsersForResourceRequest
+        body:
+          properties:
+            resource:
+              type: ResourceIdentifier
+              docs: |
+                The resource identifier for which you want to list authorized users.
+            action:
+              type: Action
+              docs: |
+                The action you want to perform on the resource.
+      response: list<User>
+      examples:
+        - name: Example0
+          request:
+            resource:
+              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE_DOCUMENT
+            action: READ
+          response:
+            body:
+              - email: john.smith@foo.com
+                name: John Smith
+                id: 123456
+              - email: jane.smith@foo.com
+                name: Jane Smith
+                id: 789012
+types:
+  User:
+    properties:
+      email: string
+      name: optional<string>
+      id: optional<string>
+  ResourceIdentifier:
+    properties:
+      resourceId: string
+      resourceType: ResourceType
+  CheckResourceAuthorizationResponse:
+    properties:
+      authorized: boolean
+  ResourceType:
+    enum:
+      - GOOGLE_DRIVE_DOCUMENT
+      - ZENDESK_TICKET
+  Action:
+    enum:
+      - READ
