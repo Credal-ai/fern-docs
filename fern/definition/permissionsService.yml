@@ -232,6 +232,7 @@ types:
       - CONFLUENCE_PAGE
       - JIRA_TICKET
       - SHAREPOINT
+      - SALESFORCE
   Action:
     enum:
       - READ
