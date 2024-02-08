@@ -27,8 +27,8 @@ service:
         - name: Example0
           request:
             resource:
-              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE_DOCUMENT
+              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE
             action: READ
           response:
             body:
@@ -63,8 +63,8 @@ service:
         - name: Example0
           request:
             resource:
-              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE_DOCUMENT
+              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE
             action: READ
             userEmail: john.smith@foo.com
           response:
@@ -87,17 +87,26 @@ service:
               type: optional<ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
-      response: list<ResourceIdentifier>
+            pageSize:
+              type: optional<integer>
+              docs: |
+                The maximum number of resources to return. Defaults to 10.
+            pageToken:
+              type: optional<string>
+              docs: |
+                A token provided by the server to request the next page of resources. If not specified, the first page of results will be returned.
+      response: ResourceListPage
       examples:
         - name: Example0
           request:
             action: READ
           response:
             body:
-              - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                resourceType: GOOGLE_DRIVE_DOCUMENT
-              - resourceId: "123456"
-                resourceType: ZENDESK_TICKET
+              resources:
+                - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE
+                - resourceId: "123456"
+                  resourceType: ZENDESK_TICKET
 
     listAuthorizedResourcesForUser:
       path: /listAuthorizedResourcesForUser
@@ -119,7 +128,15 @@ service:
               type: optional<ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
-      response: list<ResourceIdentifier>
+            pageSize:
+              type: optional<integer>
+              docs: |
+                The maximum number of resources to return. Defaults to 10.
+            pageToken:
+              type: optional<string>
+              docs: |
+                A token provided by the server to request the next page of resources. If not specified, the first page of results will be returned.
+      response: ResourceListPage
       examples:
         - name: Example0
           request:
@@ -127,10 +144,11 @@ service:
             userEmail: john.smith@foo.com
           response:
             body:
-              - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                resourceType: GOOGLE_DRIVE_DOCUMENT
-              - resourceId: "123456"
-                resourceType: ZENDESK_TICKET
+              resources:
+                - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE
+                - resourceId: "123456"
+                  resourceType: ZENDESK_TICKET
 
     listAuthorizedPrincipalsForResource:
       path: /listAuthorizedPrincipalsForResource
@@ -148,27 +166,36 @@ service:
               type: Action
               docs: |
                 The action you want to perform on the resource.
-      response: list<Principal>
+            pageSize:
+              type: optional<integer>
+              docs: |
+                The maximum number of principals to return. Defaults to 10.
+            pageToken:
+              type: optional<string>
+              docs: |
+                A token provided by the server to request the next page of users. If not specified, the first page of results will be returned.
+      response: PrincipalListPage
       examples:
         - name: Example0
           request:
             resource:
-              resourceId: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE_DOCUMENT
+              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+              resourceType: GOOGLE_DRIVE
             action: READ
           response:
             body:
-              - email: john.smith@foo.com
-                name: John Smith
-                id: "123456"
-                type: "user"
-              - email: jane.smith@foo.com
-                name: Jane Smith
-                id: "789012"
-                type: "user"
-              - name: "Engineering"
-                id: "345678"
-                type: "group"
+              principals:
+                - email: john.smith@foo.com
+                  name: John Smith
+                  id: "123456"
+                  type: "user"
+                - email: jane.smith@foo.com
+                  name: Jane Smith
+                  id: "789012"
+                  type: "user"
+                - name: "Engineering"
+                  id: "345678"
+                  type: "group"
 types:
   Group:
     properties:
@@ -187,13 +214,24 @@ types:
     properties:
       resourceId: string
       resourceType: ResourceType
+  ResourceListPage:
+    properties:
+      resources: list<ResourceIdentifier>
+      nextPageToken: optional<string>
+  PrincipalListPage:
+    properties:
+      principals: list<Principal>
+      nextPageToken: optional<string>
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
   ResourceType:
     enum:
-      - GOOGLE_DRIVE_DOCUMENT
+      - GOOGLE_DRIVE
       - ZENDESK_TICKET
+      - CONFLUENCE_PAGE
+      - JIRA_TICKET
+      - SHAREPOINT
   Action:
     enum:
       - READ
