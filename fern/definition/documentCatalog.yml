@@ -16,6 +16,38 @@ service:
                 The URL for the document you want to upload. Credal will automatically connect 
                 to source systems like Google Drive, Office 365, Confluence, etc. to fetch 
                 and upload the document contents.
+            documentName:
+              type: string
+              docs: |
+                The unique name of the document you want to upload.
+            uploadAsUserEmail:
+              type: string
+              docs: /
+                The user email to upload this document for. This user will be the owner of the document.
+            documentExternalId:
+              type: optional<string>
+              docs: /
+                The external id of the document you want to upload. Uploads to the same external id will update one document in Credal.
+            documentExternalUrl:
+              type: optional<string>
+              docs: /
+                The external URL of the document you want to upload. If provided Credal will link to this URL.
+            customMetadata:
+              type: optional<unknown>
+              docs: /
+                Optional JSON representing any custom metdata for this document
+            collectionId:
+              type: optional<string>
+              docs: /
+                If specified, document will be upload to a particular document collection
+            forceUpdate:
+              type: optional<boolean>
+              docs: /
+                If specified, document contents will be re-uploaded and re-embedded even if the document already exists in Credal
+            internalPublic:
+              type: optional<boolean>
+              docs: /
+                If specified, document will be accessible to everyone within the organization of the uploader
       response: UploadDocumentResponse
       examples:
         - name: Example0
