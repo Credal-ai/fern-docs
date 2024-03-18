@@ -19,10 +19,6 @@ service:
               type: string
               docs: /
                 The name of the document you want to upload.
-            allowedUsersEmailAddresses:
-              type: list<string>
-              docs: /
-                Users allowed to access the document. Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and currently flattening groups if applicable. Documents can also be marked as internal public.
             uploadAsUserEmail:
               type: optional<string>
               docs: /
