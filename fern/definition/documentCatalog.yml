@@ -20,7 +20,9 @@ service:
               docs: /
                 The name of the document you want to upload.
             allowedUsersEmailAddresses:
-              type: array<string>
+              type: array
+              items:
+                type: string
               docs: /
                 Users allowed to access the document. Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and flattening groups if applicable. Documents can also be marked as internal public.
             documentExternalId:
@@ -72,7 +74,9 @@ service:
               docs: /
                 The full LLM-formatted text contents of the document you want to upload.
             allowedUsersEmailAddresses:
-              type: array<string>
+              type: array
+              items:
+                type: string
               docs: /
                 Users allowed to access the document. Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and flattening groups if applicable. Documents can also be marked as internal public.
             documentExternalId:
