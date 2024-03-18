@@ -4,6 +4,7 @@ service:
   endpoints:
     uploadDocumentUrl:
       path: /uploadDocumentUrl
+      display-name: Upload Document URL
       docs: Upload a document using its URL.
       method: POST
       request:
