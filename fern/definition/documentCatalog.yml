@@ -32,8 +32,6 @@ service:
         - name: Example0
           request:
             documentUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-            documentName: Q1 Team Planning
-            allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
