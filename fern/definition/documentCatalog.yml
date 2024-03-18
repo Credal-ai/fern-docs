@@ -56,6 +56,7 @@ service:
           request:
             documentUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
             documentName: Q1 Team Planning
+            allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
@@ -110,7 +111,7 @@ service:
           request:
             documentName: My Document
             documentContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            uploadAsUserEmail: john@example.com
+            allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
