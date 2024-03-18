@@ -4,6 +4,7 @@ service:
   endpoints:
     uploadDocumentUrl:
       path: /uploadDocumentUrl
+      display-name: Upload Document URL
       docs: Upload a document using its URL.
       method: POST
       request:
@@ -12,10 +13,20 @@ service:
           properties:
             documentUrl:
               type: string
-              docs: |
-                The URL for the document you want to upload. Credal will automatically connect 
-                to source systems like Google Drive, Office 365, Confluence, etc. to fetch 
-                and upload the document contents.
+              docs: /
+                The URL for the document you want to upload. Credal will automatically connect to source systems like Google Drive, Office 365, Confluence, etc. to fetch and upload the document contents.
+            uploadAsUserEmail:
+              type: optional<string>
+              docs: /
+                The user email to upload this document for. This user will be the owner of the document. User must be a collaborator on the API key.
+            customMetadata:
+              type: optional<unknown>
+              docs: /
+                Optional JSON representing any custom metdata for this document
+            collectionId:
+              type: optional<string>
+              docs: /
+                If specified, document will also be added to a particular document collection
       response: UploadDocumentResponse
       examples:
         - name: Example0
@@ -33,16 +44,16 @@ service:
           properties:
             documentName:
               type: string
-              docs: |
-                The unique name of the document you want to upload.
+              docs: /
+                The name of the document you want to upload.
             documentContents:
               type: string
-              docs: |
-                The full text contents of the document you want to upload.
-            uploadAsUserEmail:
-              type: string
               docs: /
-                The user email to upload this document for. This user will be the owner of the document.
+                The full LLM-formatted text contents of the document you want to upload.
+            allowedUsersEmailAddresses:
+              type: list<string>
+              docs: /
+                Users allowed to access the document. Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and currently flattening groups if applicable. Documents can also be marked as internal public.
             documentExternalId:
               type: optional<string>
               docs: /
@@ -58,7 +69,7 @@ service:
             collectionId:
               type: optional<string>
               docs: /
-                If specified, document will be upload to a particular document collection
+                If specified, document will also be added to a particular document collection
             forceUpdate:
               type: optional<boolean>
               docs: /
@@ -73,7 +84,7 @@ service:
           request:
             documentName: My Document
             documentContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            uploadAsUserEmail: john@example.com
+            allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
