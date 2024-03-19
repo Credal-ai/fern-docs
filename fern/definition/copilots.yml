@@ -36,8 +36,8 @@ service:
               type: messageReply
               policy_triggers: []
               responseChunks:
-                - message: ""
-                  dataChunk: "Based on the context provided, Credal is SOC 2 compliant..."
+                - message: "Based on the context provided, Credal is SOC 2 compliant..."
+                  dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
               warnings: []
               parallelConversationContexts: []
               activitySourceIdsForAudit: []
