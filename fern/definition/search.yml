@@ -41,6 +41,10 @@ service:
               type: uuid
             searchQuery:
               type: string
+            userEmail:
+              type: string
+              docs: |
+                The email of the user making the search request for permissions reduction.
             metadataFilterExpression:
               type: optional<string>
               docs: |
@@ -54,6 +58,7 @@ service:
             documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             searchQuery: "ABC Corp"
             metadataFilterExpression: "customerName = 'ABC Corp'"
+            userEmail: "jack@credal.ai"
             searchOptions:
               maxChunks: 10
               mergeContents: true
