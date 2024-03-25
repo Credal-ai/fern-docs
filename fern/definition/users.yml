@@ -11,12 +11,12 @@ service:
         - name: Example0
           request:
             - metadata:
-                key1: value1
-                key2: value2
+                State: NY
+                Job Role: CEO
               userEmail: ravin@credal.ai
             - metadata:
-                key1: value1
-                key3: value3
+                State: NY
+                Department: Engineering
               userEmail: jack@credal.ai
           # response:
           #   body:
@@ -42,4 +42,6 @@ types:
   UserMetadataPatch:
     properties:
       userEmail: string
-      metadata: unknown
+      metadata:
+        type: unknown
+        docs: Key-value object of metadata for user.
