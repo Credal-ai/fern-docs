@@ -42,4 +42,4 @@ types:
   UserMetadataPatch:
     properties:
       userEmail: string
-      metadata: any
+      metadata: unknown
