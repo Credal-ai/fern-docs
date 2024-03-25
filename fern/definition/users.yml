@@ -1,0 +1,45 @@
+service:
+  base-path: /v0/users
+  auth: true
+  endpoints:
+    metadata:
+      path: /metadata
+      method: PATCH
+      request: list<UserMetadataPatch>
+      # response: SendMessageResponse
+      examples:
+        - name: Example0
+          request:
+            - metadata:
+                key1: value1
+                key2: value2
+              userEmail: ravin@credal.ai
+            - metadata:
+                key1: value1
+                key3: value3
+              userEmail: jack@credal.ai
+          # response:
+          #   body:
+          #     type: messageReply
+          #     policy_triggers: []
+          #     responseChunks:
+          #       - message: "Based on the context provided, Credal is SOC 2 compliant..."
+          #         dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
+types:
+  # SendMessageResponse:
+  #   union:
+  #     messageReply:
+  #       type: MessageReply
+  #       docs: |
+  #         Returned when there is a reply
+  #         fetched from the copilot.
+  #     messageBlocked:
+  #       type: MessageBlocked
+  #       docs: |
+  #         Returned when Credal detects possible
+  #         infosec violations and blocks the message.
+
+  UserMetadataPatch:
+    properties:
+      userEmail: string
+      metadata: any
