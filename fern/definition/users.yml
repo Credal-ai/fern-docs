@@ -1,0 +1,26 @@
+service:
+  base-path: /v0/users
+  auth: true
+  endpoints:
+    metadata:
+      path: /metadata
+      method: PATCH
+      request: list<UserMetadataPatch>
+      examples:
+        - name: Example0
+          request:
+            - metadata:
+                State: NY
+                Job Role: CEO
+              userEmail: ravin@credal.ai
+            - metadata:
+                State: NY
+                Department: Engineering
+              userEmail: jack@credal.ai
+types:
+  UserMetadataPatch:
+    properties:
+      userEmail: string
+      metadata:
+        type: unknown
+        docs: Key-value object of metadata for user.
