@@ -137,7 +137,7 @@ types:
         docs: The ID of this document according to its native source system
       sourceType:
         type: string
-        docs: The type of the source system in Credal to disambiguate potentially colliding IDs. Each source system has its own type, such as `Google Doc`, `Zendesk Article`, `Manual Upload`, etc. Contact Credal for more information about your systems.
+        docs: The type of the source system in Credal to disambiguate potentially colliding IDs. Each source system has its own type, such as `Google Doc`, `Zendesk Article`, `Manual Upload`, etc. Contact Credal for information on your systems.
       metadata:
         type: unknown
         docs: Key-value object of metadata for user.
