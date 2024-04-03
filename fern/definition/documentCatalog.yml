@@ -134,7 +134,7 @@ types:
     properties:
       sourceSystemId:
         type: string
-        docs: The ID of this document according to its native source system. This can often be found in the URL, such as `1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA` in the Google Doc `https://docs.google.com/document/d/1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA/edit` or `23086827215764` in the Zendesk help center article `https://credalai.zendesk.com/hc/en-us/articles/23086827215764-Here-is-an-article-that-I-added`. Contact Credal for information on your systems.
+        docs: The ID of this document according to its native source system. This is often found in the URL, such as `1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA` in the Google Doc `https://docs.google.com/document/d/1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA/edit` or `23086827215764` in the Zendesk help center article `https://credalai.zendesk.com/hc/en-us/articles/23086827215764-Here-is-an-article-that-I-added`. Contact Credal for information on your systems.
       sourceType:
         type: string
         docs: The type of the source system in Credal to disambiguate potentially colliding IDs. Each source system has its own type, such as `Google Doc`, `Zendesk Article`, `Manual Upload`, etc. Contact Credal for information on your systems.
