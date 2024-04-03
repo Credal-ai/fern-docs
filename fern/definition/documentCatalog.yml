@@ -109,7 +109,7 @@ service:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
     metadata:
       path: /metadata
-      docs: Bulk patch metadata fields for documents. Keys will be merged with any existing values but can also be set to `null` to effectively remove
+      docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
       method: PATCH
       request: list<DocumentMetadataPatch>
       examples:
@@ -140,4 +140,4 @@ types:
         docs: The type of the source system in Credal to disambiguate potentially colliding IDs. Each source system has its own type, such as `Google Doc`, `Zendesk Article`, `Manual Upload`, etc. Contact Credal for information on your systems.
       metadata:
         type: unknown
-        docs: Key-value object of metadata for user.
+        docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
