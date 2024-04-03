@@ -4,6 +4,7 @@ service:
   endpoints:
     metadata:
       path: /metadata
+      docs: Bulk patch metadata fields for users. Keys will be merged with any existing values but can also be set to `null` to effectively remove
       method: PATCH
       request: list<UserMetadataPatch>
       examples:
