@@ -107,8 +107,37 @@ service:
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    metadata:
+      path: /metadata
+      docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
+      method: PATCH
+      request: list<DocumentMetadataPatch>
+      examples:
+        - name: Example0
+          request:
+            - metadata:
+                Department: HR
+                Country: United States
+              sourceSystemId: "23086827215764"
+              sourceType: "Zendesk Article"
+            - metadata:
+                Department: Sales
+                Vertical: Healthcare
+              sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
+              sourceType: "Google Doc"
 
 types:
   UploadDocumentResponse:
     properties:
       documentId: uuid
+  DocumentMetadataPatch:
+    properties:
+      sourceSystemId:
+        type: string
+        docs: The ID of this document according to its native source system
+      sourceType:
+        type: string
+        docs: The type of the source system in Credal to disambiguate potentially colliding IDs. Each source system has its own type, such as `Google Doc`, `Zendesk Article`, `Manual Upload`, etc. Contact Credal for information on your systems.
+      metadata:
+        type: unknown
+        docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
