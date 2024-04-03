@@ -122,7 +122,7 @@ service:
               sourceType: "Zendesk Article"
             - metadata:
                 Department: Sales
-                Classification: Approved
+                Vertical: Healthcare
               sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
               sourceType: "Google Doc"
 
