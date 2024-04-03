@@ -111,7 +111,7 @@ service:
       path: /metadata
       docs: Bulk patch metadata fields for documents. Keys will be merged with any existing values but can also be set to `null` to effectively remove
       method: PATCH
-      request: list<UserMetadataPatch>
+      request: list<DocumentMetadataPatch>
       examples:
         - name: Example0
           request:
