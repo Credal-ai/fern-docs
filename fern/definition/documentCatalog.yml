@@ -55,9 +55,9 @@ service:
               docs: /
                 Users allowed to access the document. Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and currently flattening groups if applicable. Documents can also be marked as internal public.
             documentExternalId:
-              type: optional<string>
+              type: string
               docs: /
-                The external id of the document you want to upload. Uploads to the same external id will update one document in Credal.
+                The external ID of the document. This is typically the ID as it exists in its original external system. Uploads to the same external ID will update the document in Credal.
             documentExternalUrl:
               type: optional<string>
               docs: /
