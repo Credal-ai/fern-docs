@@ -21,7 +21,7 @@ service:
               type: optional<uuid>
               docs: |
                 Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
-      response: SendMessageResponse
+      response: SendAgentMessageResponse
       examples:
         - name: Example0
           request:
@@ -41,6 +41,10 @@ service:
                 id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
+  SendAgentMessageResponse:
+    properties:
+      sendChatResult: SendMessageResponse
+
   SendMessageResponse:
     union:
       messageReply:
