@@ -31,12 +31,12 @@ service:
             body:
               sendChatResult:
                 type: ai_response_result
+                conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                 policy_triggers: []
-                responseChunks:
-                  - message: "Based on the context provided, Credal is SOC 2 compliant..."
-                    dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
+                response:
+                  message: "Based on the context provided, Credal is SOC 2 compliant..."
+                  dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
                 warnings: []
-                parallelConversationContexts: []
                 activitySourceIdsForAudit: []
                 inserted_audit_log:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
@@ -62,10 +62,9 @@ types:
   MessageReply:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<uuid>
-      responseChunks: list<ResponseChunk>
+      conversationId: uuid
+      response: ResponseChunk
       warnings: list<string>
-      parallelConversationContexts: list<string>
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
 
@@ -81,7 +80,7 @@ types:
   MessageBlocked:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<uuid>
+      conversationId: uuid
       blocks: list<string>
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
