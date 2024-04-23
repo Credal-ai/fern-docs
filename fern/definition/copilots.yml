@@ -30,7 +30,7 @@ service:
           response:
             body:
               sendChatResult:
-                type: messageReply
+                type: ai_response_result
                 policy_triggers: []
                 responseChunks:
                   - message: "Based on the context provided, Credal is SOC 2 compliant..."
@@ -48,12 +48,12 @@ types:
 
   SendMessageResponse:
     union:
-      messageReply:
+      ai_response_result:
         type: MessageReply
         docs: |
           Returned when there is a reply 
           fetched from the copilot.
-      messageBlocked:
+      blocked_result:
         type: MessageBlocked
         docs: |
           Returned when Credal detects possible 
