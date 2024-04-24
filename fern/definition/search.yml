@@ -100,35 +100,6 @@ service:
                       text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
                       score: 0.75
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
-    submitSearchFeedback:
-      path: /submitSearchFeedback
-      docs: Submit end-user feedback on a search result to be persisted on the audit log
-      method: POST
-      request:
-        name: SubmitSearchFeedbackRequest
-        body:
-          properties:
-            searchId:
-              type: uuid
-              docs: |
-                UUID of the search response that this feedback is for
-            feedback:
-              type: Feedback
-            userEmail:
-              type: optional<string>
-            comments:
-              type: optional<string>
-      response: SubmitSearchFeedbackResponse
-      examples:
-        - name: submitSearchFeedback
-          request:
-            searchId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            feedback: "THUMBS_UP"
-            userEmail: "ben@credal.ai"
-            comments: "There's something relevant about 2FA in the document that wasn't included in the search results"
-          response:
-            body:
-              auditLogId: 13c18750-5bc1-11ee-a8d5-733be8e2f38c
 types:
   CatalogSearchOptions:
     properties:
@@ -174,9 +145,6 @@ types:
       documentMetadata: map<string, string>
       chunks: list<SearchResultChunk>
       mergedContents: optional<string>
-  SubmitSearchFeedbackResponse:
-    properties:
-      auditLogId: uuid
   SearchResultChunk:
     properties:
       chunkId: uuid
@@ -186,7 +154,3 @@ types:
         type: double
         docs: |
           The similarity score between 0 and 1 for the search result. A higher number means the chunk is more relevant to the search query.
-  Feedback:
-    enum:
-      - THUMBS_UP
-      - THUMBS_DOWN
