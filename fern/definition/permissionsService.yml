@@ -29,7 +29,7 @@ service:
             resourceIdentifier:
               type: external-resource-id
               externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE
+              resourceType: GOOGLE_DRIVE_ITEM
             userEmail: john.smith@foo.com
           response:
             body:
@@ -70,7 +70,7 @@ service:
               resources:
                 - type: external-resource-id
                   externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                  resourceType: GOOGLE_DRIVE
+                  resourceType: GOOGLE_DRIVE_ITEM
                 - type: external-resource-id
                   externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
