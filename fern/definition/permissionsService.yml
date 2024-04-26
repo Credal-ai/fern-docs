@@ -2,54 +2,18 @@ service:
   base-path: /v0/permissions
   auth: true
   endpoints:
-    checkResourceAuthorization:
-      path: /checkResourceAuthorization
-      docs: Check whether the authenticated user is authorized to perform an action on the specified resource.
-      method: POST
-      request:
-        name: CheckResourceAuthorizationRequest
-        body:
-          properties:
-            resource:
-              type: ResourceIdentifier
-              docs: |
-                The resource identifier for which you want to check authorization.
-            action:
-              type: Action
-              docs: |
-                The action you want to perform on the resource.
-            disableCache:
-              type: optional<boolean>
-              docs: |
-                If specified, Credal will bypass the permissions cache and check current permissions for this resource
-      response: CheckResourceAuthorizationResponse
-      examples:
-        - name: Example0
-          request:
-            resource:
-              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE
-            action: READ
-          response:
-            body:
-              authorized: true
-
     checkResourceAuthorizationForUser:
       path: /checkResourceAuthorizationForUser
-      docs: Admin endpoint to check whether the specified user is authorized to perform an action on the specified resource.
+      docs: Admin endpoint to check whether the specified user is authorized to read the specified resource.
       method: POST
       request:
         name: CheckResourceAuthorizationForUserRequest
         body:
           properties:
-            resource:
+            resourceIdentifier:
               type: ResourceIdentifier
               docs: |
                 The resource identifier for which you want to check authorization.
-            action:
-              type: Action
-              docs: |
-                The action you want to perform on the resource.
             userEmail:
               type: string
               docs: |
@@ -62,64 +26,24 @@ service:
       examples:
         - name: Example0
           request:
-            resource:
-              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+            resourceIdentifier:
+              type: external-resource-id
+              externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
               resourceType: GOOGLE_DRIVE
-            action: READ
             userEmail: john.smith@foo.com
           response:
             body:
               authorized: true
 
-    listAuthorizedResources:
-      path: /listAuthorizedResources
-      docs: List all resources that the authenticated user is authorized to perform the specified action on.
+    listCachedAuthorizedResourcesForUser:
+      path: /listCachedAuthorizedResourcesForUser
+      docs: Admin endpoint to list all resources that the specified user is authorized to read. Note this endpoint returns cached results and may not be up-to-date. 
+        You can use the checkResourceAuthorizationForUser endpoint with disableCache set to true to get the most up-to-date results.
       method: POST
       request:
-        name: ListAuthorizedResourcesRequest
+        name: ListCachedAuthorizedResourcesForUserRequest
         body:
           properties:
-            action:
-              type: Action
-              docs: |
-                The action you want to perform on the resources.
-            resourceType:
-              type: optional<ResourceType>
-              docs: |
-                The type of resource you want to list. If not specified, all resource types will be listed.
-            pageSize:
-              type: optional<integer>
-              docs: |
-                The maximum number of resources to return. Defaults to 10.
-            pageToken:
-              type: optional<string>
-              docs: |
-                A token provided by the server to request the next page of resources. If not specified, the first page of results will be returned.
-      response: ResourceListPage
-      examples:
-        - name: Example0
-          request:
-            action: READ
-          response:
-            body:
-              resources:
-                - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                  resourceType: GOOGLE_DRIVE
-                - resourceId: "123456"
-                  resourceType: ZENDESK_TICKET
-
-    listAuthorizedResourcesForUser:
-      path: /listAuthorizedResourcesForUser
-      docs: Admin endpoint to list all resources that the specified user is authorized to perform the specified action on.
-      method: POST
-      request:
-        name: ListAuthorizedResourcesForUserRequest
-        body:
-          properties:
-            action:
-              type: Action
-              docs: |
-                The action you want to perform on the resources.
             userEmail:
               type: string
               docs: |
@@ -128,74 +52,28 @@ service:
               type: optional<ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
-            pageSize:
+            limit:
               type: optional<integer>
               docs: |
-                The maximum number of resources to return. Defaults to 10.
-            pageToken:
-              type: optional<string>
+                The maximum number of resources to return. Defaults to 100.
+            offset:
+              type: optional<integer>
               docs: |
-                A token provided by the server to request the next page of resources. If not specified, the first page of results will be returned.
+                The offset to use for pagination. If not specified, the first page of results will be returned.
       response: ResourceListPage
       examples:
         - name: Example0
           request:
-            action: READ
             userEmail: john.smith@foo.com
           response:
             body:
               resources:
-                - resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                - type: external-resource-id
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                   resourceType: GOOGLE_DRIVE
-                - resourceId: "123456"
+                - type: external-resource-id
+                  externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
-
-    listAuthorizedPrincipalsForResource:
-      path: /listAuthorizedPrincipalsForResource
-      docs: Admin endpoint to list all users that are authorized to perform the specified action on the specified resource.
-      method: POST
-      request:
-        name: ListAuthorizedPrincipalsForResourceRequest
-        body:
-          properties:
-            resource:
-              type: ResourceIdentifier
-              docs: |
-                The resource identifier for which you want to list authorized users.
-            action:
-              type: Action
-              docs: |
-                The action you want to perform on the resource.
-            pageSize:
-              type: optional<integer>
-              docs: |
-                The maximum number of principals to return. Defaults to 10.
-            pageToken:
-              type: optional<string>
-              docs: |
-                A token provided by the server to request the next page of users. If not specified, the first page of results will be returned.
-      response: PrincipalListPage
-      examples:
-        - name: Example0
-          request:
-            resource:
-              resourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-              resourceType: GOOGLE_DRIVE
-            action: READ
-          response:
-            body:
-              principals:
-                - email: john.smith@foo.com
-                  name: John Smith
-                  id: "123456"
-                  type: "user"
-                - email: jane.smith@foo.com
-                  name: Jane Smith
-                  id: "789012"
-                  type: "user"
-                - name: "Engineering"
-                  id: "345678"
-                  type: "group"
 types:
   Group:
     properties:
@@ -211,13 +89,19 @@ types:
       group: Group
       user: User
   ResourceIdentifier:
+    union:
+      external-resource-id: ExternalResourceId
+      url: Url
+  ExternalResourceId:
     properties:
-      resourceId: string
+      externalResourceId: string
       resourceType: ResourceType
+  Url:
+    properties:
+      url: string
   ResourceListPage:
     properties:
       resources: list<ResourceIdentifier>
-      nextPageToken: optional<string>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -227,12 +111,21 @@ types:
       authorized: boolean
   ResourceType:
     enum:
-      - GOOGLE_DRIVE
-      - ZENDESK_TICKET
-      - CONFLUENCE_PAGE
-      - JIRA_TICKET
-      - SHAREPOINT
-      - SALESFORCE
+      - "GOOGLE_DRIVE_ITEM"
+      - "MICROSOFT_DRIVE_ITEM"
+      - "ZENDESK_TICKET"
+      - "ZENDESK_ARTICLE"
+      - "ZENDESK_GROUP"
+      - "ZENDESK_ARTICLE_SECTION"
+      - "CONFLUENCE_PAGE"
+      - "CONFLUENCE_SPACE"
+      - "JIRA_TICKET"
+      - "JIRA_PROJECT"
+      - "SALESFORCE_TASK"
+      - "BOX_FILE"
+      - "BOX_FOLDER"
+      - "NOTION_PAGE"
+      - "UNKNOWN"
   Action:
     enum:
       - READ
