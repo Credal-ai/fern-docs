@@ -112,20 +112,22 @@ service:
       path: /metadata
       docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
       method: PATCH
-      request: list<DocumentMetadataPatch>
+      request: list<DocumentMetadataPatchRequest>
       examples:
         - name: Example0
           request:
-            - metadata:
-                Department: HR
-                Country: United States
-              sourceSystemId: "23086827215764"
-              sourceType: "Zendesk Article"
-            - metadata:
-                Department: Sales
-                Vertical: Healthcare
-              sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
-              sourceType: "Google Doc"
+            - sources:
+                - metadata:
+                    Department: HR
+                    Country: United States
+                  sourceSystemId: "23086827215764"
+                  sourceType: "Zendesk Article"
+                - metadata:
+                    Department: Sales
+                    Vertical: Healthcare
+                  sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
+                  sourceType: "Google Doc"
+              uploadAsUserEmail: ben@credal.ai
 
 types:
   UploadDocumentResponse:
@@ -142,3 +144,7 @@ types:
       metadata:
         type: unknown
         docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
+  DocumentMetadataPatchRequest:
+    properties:
+      sources: list<DocumentMetadataPatch>
+      uploadAsUserEmail: string
