@@ -12,20 +12,16 @@ service:
             message:
               type: string
               docs: |
-                The message you want to send to 
-                your copilot.
+                The message you want to send to your copilot.
             userEmail:
               type: string
               docs: |
-                The user profile you want to use
-                when sending the message.
+                The user profile you want to use when sending the message.
             conversationId:
               type: optional<uuid>
               docs: |
-                Conversation in which to send
-                the message. Conversation ID is
-                returned after initial message. Optional.
-      response: SendMessageResponse
+                Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+      response: SendAgentMessageResponse
       examples:
         - name: Example0
           request:
@@ -33,26 +29,31 @@ service:
             userEmail: ravin@credal.ai
           response:
             body:
-              type: messageReply
-              policy_triggers: []
-              responseChunks:
-                - message: ""
-                  dataChunk: "Based on the context provided, Credal is SOC 2 compliant..."
-              warnings: []
-              parallelConversationContexts: []
-              activitySourceIdsForAudit: []
-              inserted_audit_log:
-                id: 5842804e-ffbe-4f8d-873e-f007fff93440
+              sendChatResult:
+                type: ai_response_result
+                conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                policy_triggers: []
+                response:
+                  message: "Based on the context provided, Credal is SOC 2 compliant..."
+                  dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
+                warnings: []
+                activitySourceIdsForAudit: []
+                inserted_audit_log:
+                  id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
+  SendAgentMessageResponse:
+    properties:
+      sendChatResult: SendMessageResponse
+
   SendMessageResponse:
     union:
-      messageReply:
+      ai_response_result:
         type: MessageReply
         docs: |
           Returned when there is a reply 
           fetched from the copilot.
-      messageBlocked:
+      blocked_result:
         type: MessageBlocked
         docs: |
           Returned when Credal detects possible 
@@ -61,10 +62,9 @@ types:
   MessageReply:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<uuid>
-      responseChunks: list<ResponseChunk>
+      conversationId: uuid
+      response: ResponseChunk
       warnings: list<string>
-      parallelConversationContexts: list<string>
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
 
@@ -80,7 +80,7 @@ types:
   MessageBlocked:
     properties:
       policy_triggers: list<PolicyTrigger>
-      conversationId: optional<uuid>
+      conversationId: uuid
       blocks: list<string>
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
