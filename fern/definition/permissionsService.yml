@@ -1,3 +1,5 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/permissions
   auth: true
@@ -11,7 +13,7 @@ service:
         body:
           properties:
             resourceIdentifier:
-              type: ResourceIdentifier
+              type: common.ResourceIdentifier
               docs: |
                 The resource identifier for which you want to check authorization.
             userEmail:
@@ -131,20 +133,9 @@ types:
     union:
       group: Group
       user: User
-  ResourceIdentifier:
-    union:
-      external-resource-id: ExternalResourceId
-      url: Url
-  ExternalResourceId:
-    properties:
-      externalResourceId: string
-      resourceType: ResourceType
-  Url:
-    properties:
-      url: string
   ResourceListPage:
     properties:
-      resources: list<ResourceIdentifier>
+      resources: list<common.ResourceIdentifier>
   PrincipalListPage:
     properties:
       principals: list<Principal>
