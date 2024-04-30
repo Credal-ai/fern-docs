@@ -127,7 +127,7 @@ service:
                     Vertical: Healthcare
                   sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
                   sourceType: "Google Doc"
-            - uploadAsUserEmail: ben@credal.ai
+              uploadAsUserEmail: ben@credal.ai
 
 types:
   UploadDocumentResponse:
