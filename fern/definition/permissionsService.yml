@@ -1,3 +1,5 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/permissions
   auth: true
@@ -11,7 +13,7 @@ service:
         body:
           properties:
             resourceIdentifier:
-              type: ResourceIdentifier
+              type: common.ResourceIdentifier
               docs: |
                 The resource identifier for which you want to check authorization.
             userEmail:
@@ -49,7 +51,7 @@ service:
               docs: |
                 The user email to list authorized resources for.
             resourceType:
-              type: optional<ResourceType>
+              type: optional<common.ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
             limit:
@@ -88,20 +90,9 @@ types:
     union:
       group: Group
       user: User
-  ResourceIdentifier:
-    union:
-      external-resource-id: ExternalResourceId
-      url: Url
-  ExternalResourceId:
-    properties:
-      externalResourceId: string
-      resourceType: ResourceType
-  Url:
-    properties:
-      url: string
   ResourceListPage:
     properties:
-      resources: list<ResourceIdentifier>
+      resources: list<common.ResourceIdentifier>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -109,23 +100,6 @@ types:
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
-  ResourceType:
-    enum:
-      - "GOOGLE_DRIVE_ITEM"
-      - "MICROSOFT_DRIVE_ITEM"
-      - "ZENDESK_TICKET"
-      - "ZENDESK_ARTICLE"
-      - "ZENDESK_GROUP"
-      - "ZENDESK_ARTICLE_SECTION"
-      - "CONFLUENCE_PAGE"
-      - "CONFLUENCE_SPACE"
-      - "JIRA_TICKET"
-      - "JIRA_PROJECT"
-      - "SALESFORCE_TASK"
-      - "BOX_FILE"
-      - "BOX_FOLDER"
-      - "NOTION_PAGE"
-      - "UNKNOWN"
   Action:
     enum:
       - READ
