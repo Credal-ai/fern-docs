@@ -1,0 +1,12 @@
+types:
+  ResourceIdentifier:
+    union:
+      external-resource-id: ExternalResourceId
+      url: Url
+  ExternalResourceId:
+    properties:
+      externalResourceId: string
+      resourceType: ResourceType
+  Url:
+    properties:
+      url: string
