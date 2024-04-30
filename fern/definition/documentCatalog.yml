@@ -122,13 +122,17 @@ service:
                 - metadata:
                     Department: HR
                     Country: United States
-                  sourceSystemId: "23086827215764"
-                  sourceType: "Zendesk Article"
+                  resourceIdentifier:
+                    type: external-resource-id
+                    externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                    resourceType: GOOGLE_DRIVE_ITEM
                 - metadata:
                     Department: Sales
                     Vertical: Healthcare
-                  sourceSystemId: 1kMCxqUWLJryFYsB9o7Hh1XjGwkaDOIhSNAbdx1C-wOA
-                  sourceType: "Google Doc"
+                  resourceIdentifier:
+                    type: external-resource-id
+                    externalResourceId: "123456"
+                    resourceType: ZENDESK_TICKET
               uploadAsUserEmail: ben@credal.ai
 
 types:
