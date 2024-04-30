@@ -51,7 +51,7 @@ service:
               docs: |
                 The user email to list authorized resources for.
             resourceType:
-              type: optional<ResourceType>
+              type: optional<common.ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
             limit:
