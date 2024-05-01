@@ -3,6 +3,7 @@ imports:
 service:
   base-path: /v0/permissions
   auth: true
+  availability: pre-release
   endpoints:
     checkResourceAuthorizationForUser:
       path: /checkResourceAuthorizationForUser
@@ -39,7 +40,8 @@ service:
 
     listCachedAuthorizedResourcesForUser:
       path: /listCachedAuthorizedResourcesForUser
-      docs: Admin endpoint to list all resources that the specified user is authorized to read. Note this endpoint returns cached results and may not be up-to-date. 
+      docs:
+        Admin endpoint to list all resources that the specified user is authorized to read. Note this endpoint returns cached results and may not be up-to-date.
         You can use the checkResourceAuthorizationForUser endpoint with disableCache set to true to get the most up-to-date results.
       method: POST
       request:
