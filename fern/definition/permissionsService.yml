@@ -46,7 +46,7 @@ service:
         body:
           properties:
             resourceIdentifiers:
-              type: list<ResourceIdentifier>
+              type: list<common.ResourceIdentifier>
               docs: |
                 The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
             userEmail:
@@ -147,7 +147,7 @@ types:
       authorized: boolean
   ResourceAuthorizationResult:
     properties:
-      resourceIdentifier: ResourceIdentifier
+      resourceIdentifier: common.ResourceIdentifier
       authorized: boolean
   CheckBulkResourcesAuthorizationResponse:
     type: list<ResourceAuthorizationResult>
