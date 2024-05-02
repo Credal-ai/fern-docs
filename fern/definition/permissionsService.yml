@@ -37,7 +37,50 @@ service:
           response:
             body:
               authorized: true
-
+    checkBulkResourcesAuthorizationForUser:
+      path: /checkBulkResourcesAuthorizationForUser
+      docs: Admin endpoint to check whether the specified user is authorized to read the specified set of resources.
+      method: POST
+      request:
+        name: CheckBulkResourcesAuthorizationForUserRequest
+        body:
+          properties:
+            resourceIdentifiers:
+              type: list<common.ResourceIdentifier>
+              docs: |
+                The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
+            userEmail:
+              type: string
+              docs: |
+                The user email to check authorization for.
+            disableCache:
+              type: optional<boolean>
+              docs: |
+                If specified, Credal will bypass the permissions cache and check current permissions for all resources specified.
+      response: CheckBulkResourcesAuthorizationResponse
+      examples:
+        - name: Example0
+          request:
+            resourceIdentifiers:
+              - type: external-resource-id
+                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_ITEM
+              - type: external-resource-id
+                externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+                resourceType: ZENDESK_TICKET
+            userEmail: john.smith@foo.com
+          response:
+            body:
+              - resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE_ITEM
+                authorized: true
+              - resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+                  resourceType: ZENDESK_TICKET
+                authorized: true
     listCachedAuthorizedResourcesForUser:
       path: /listCachedAuthorizedResourcesForUser
       docs:
@@ -102,6 +145,12 @@ types:
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
+  ResourceAuthorizationResult:
+    properties:
+      resourceIdentifier: common.ResourceIdentifier
+      authorized: boolean
+  CheckBulkResourcesAuthorizationResponse:
+    type: list<ResourceAuthorizationResult>
   Action:
     enum:
       - READ
