@@ -151,23 +151,6 @@ types:
       authorized: boolean
   CheckBulkResourcesAuthorizationResponse:
     type: list<ResourceAuthorizationResult>
-  ResourceType:
-    enum:
-      - "GOOGLE_DRIVE_ITEM"
-      - "MICROSOFT_DRIVE_ITEM"
-      - "ZENDESK_TICKET"
-      - "ZENDESK_ARTICLE"
-      - "ZENDESK_GROUP"
-      - "ZENDESK_ARTICLE_SECTION"
-      - "CONFLUENCE_PAGE"
-      - "CONFLUENCE_SPACE"
-      - "JIRA_TICKET"
-      - "JIRA_PROJECT"
-      - "SALESFORCE_TASK"
-      - "BOX_FILE"
-      - "BOX_FOLDER"
-      - "NOTION_PAGE"
-      - "UNKNOWN"
   Action:
     enum:
       - READ
