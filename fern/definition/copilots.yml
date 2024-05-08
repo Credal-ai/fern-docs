@@ -7,21 +7,21 @@ service:
       method: POST
       docs: OPTIONAL. Create a new conversation with the Copilot. The conversation ID can be used in the sendMessage endpoint. The sendMessage endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
       request:
-        # name: CreateConversationRequest
+        name: CreateConversationRequest
         body:
           properties:
             userEmail:
               type: string
               docs: |
                 End-user for the conversation.
+      response: CreateConversationResponse
       examples:
         - name: Example0
           request:
             userEmail: ravin@credal.ai
           response:
-            # name: CreateConversationResponse
             body:
-              conversationId: uuid
+              conversationId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
     sendMessage:
       path: /sendMessage
       method: POST
@@ -62,6 +62,13 @@ service:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
+  CreateConversationRequest:
+    properties:
+      userEmail: string
+  CreateConversationResponse:
+    properties:
+      conversationId: uuid
+
   SendAgentMessageResponse:
     properties:
       sendChatResult: SendMessageResponse
