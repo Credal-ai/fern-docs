@@ -20,10 +20,9 @@ service:
           request:
             userEmail: ravin@credal.ai
           response:
-            name: CreateConversationResponse
+            # name: CreateConversationResponse
             body:
-              properties:
-                conversationId: uuid
+              conversationId: uuid
     sendMessage:
       path: /sendMessage
       method: POST
