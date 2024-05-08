@@ -62,9 +62,9 @@ service:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
 
 types:
-  CreateConversationRequest:
-    properties:
-      userEmail: string
+  # CreateConversationRequest:
+  #   properties:
+  #     userEmail: string
   CreateConversationResponse:
     properties:
       conversationId: uuid
