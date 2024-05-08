@@ -59,7 +59,7 @@ service:
             uploadAsUserEmail:
               type: string
               docs: /
-                [Legacy] The user on behalf of whom the document should be uploaded. This field will be removed in the future in favor of purely specifying permissions via allowedUsersEmailAddresses. In most cases, this can simply be the email of the developer making the API call.
+                [Legacy] The user on behalf of whom the document should be uploaded. In most cases, this can simply be the email of the developer making the API call. This field will be removed in the future in favor of purely specifying permissions via allowedUsersEmailAddresses.
             documentExternalId:
               type: string
               docs: /
