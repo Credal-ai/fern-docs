@@ -14,7 +14,6 @@ service:
               type: string
               docs: |
                 End-user for the conversation.
-      response: SendAgentMessageResponse
       examples:
         - name: Example0
           request:
