@@ -18,7 +18,7 @@ service:
               type: string
               docs: |
                 The email of the user making the search request for permissions reduction.
-            structuredQueryFilters: 
+            structuredQueryFilters:
               type: list<SingleFieldFilter>
               docs: |
                 The structured query filters to apply to the search query.
@@ -132,11 +132,6 @@ types:
         type: double
         docs: |
           The similarity score between 0 and 1 for the search result. A higher number means the chunk is more relevant to the search query.
-  SingleFieldFilter:
-    properties:
-      field: string
-      operator: string
-      value: string
   Operator:
     enum:
       - name: LESS_THAN
@@ -153,3 +148,8 @@ types:
         value: "=="
       - name: CONTAINS
         value: "contains"
+  SingleFieldFilter:
+    properties:
+      field: string
+      operator: Operator
+      value: string
