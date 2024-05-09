@@ -2,33 +2,6 @@ service:
   base-path: /v0/search
   auth: true
   endpoints:
-    searchDocumentCatalog:
-      path: /searchDocumentCatalog
-      docs: Search across all documents uploaded to Credal using the document metadata and contents.
-      method: POST
-      request:
-        name: SearchDocumentCatalogRequest
-        body:
-          properties:
-            searchQuery:
-              type: string
-            searchOptions:
-              type: optional<CatalogSearchOptions>
-      response: SearchDocumentCatalogResponse
-      examples:
-        - name: searchDocumentCatalogExample
-          request:
-            searchQuery: "ABC Corp"
-            searchOptions:
-              maxResults: 5
-          response:
-            body:
-              searchId: 76b4cdda-5d5c-11ee-b268-cb249f5be4f9
-              results:
-                - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-                  documentName: "ABC Corp - Initial meeting transcript"
-                - documentId: c7e1283b-4f66-4caf-828d-cf03841e0324
-                  documentName: "ABC Corp - Demo meeting transcript"
     searchDocumentCollection:
       path: /searchDocumentCollection
       docs: Search across all documents in a document collection using the document metadata and contents.
@@ -45,10 +18,10 @@ service:
               type: string
               docs: |
                 The email of the user making the search request for permissions reduction.
-            metadataFilterExpression:
-              type: optional<string>
+            structuredQueryFilters: 
+              type: list<SingleFieldFilter>
               docs: |
-                The metadata search expression to filter the documents in the document collection.
+                The structured query filters to apply to the search query.
             searchOptions:
               type: optional<DocumentCollectionSearchOptions>
       response: SearchDocumentCollectionResponse
@@ -57,12 +30,18 @@ service:
           request:
             documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             searchQuery: "ABC Corp"
-            metadataFilterExpression: "customerName = 'ABC Corp'"
+            structuredQueryFilters:
+              - field: "status"
+                operator: "=="
+                value: "Open"
             userEmail: "jack@credal.ai"
             searchOptions:
               maxChunks: 10
               mergeContents: true
               threshold: 0.8
+              enableSmartFiltering: true
+              enableQueryExtraction: true
+              enableReranking: true
           response:
             body:
               searchId: 76b534be-5d5c-11ee-b268-87f1fd934c81
@@ -106,24 +85,6 @@ service:
                       score: 0.75
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
 types:
-  CatalogSearchOptions:
-    properties:
-      maxResults:
-        type: optional<integer>
-        docs: |
-          The maximum number of results to return. Defaults to 10.
-      searchContents:
-        type: optional<boolean>
-        docs: |
-          Whether to search the contents of the document. Defaults to false.
-  SearchDocumentCatalogResponse:
-    properties:
-      searchId: uuid
-      results: list<CatalogSearchResult>
-  CatalogSearchResult:
-    properties:
-      documentId: uuid
-      documentName: string
   DocumentCollectionSearchOptions:
     properties:
       maxChunks:
@@ -139,6 +100,18 @@ types:
         docs: |
           The similarity threshold between 0 and 1 for the search results. A higher number leads to fewer but more relevant results. 
           Defaults to 0.45.
+      enableSmartFiltering:
+        type: optional<boolean>
+        docs: |
+          Whether to automatically filter the search results based on the user query and available metadata on the collection. Defaults to false.
+      enableQueryExtraction:
+        type: optional<boolean>
+        docs: /
+          Whether to extract search terms from the user query and use them for semantic search. Defaults to false.
+      enableReranking:
+        type: optional<boolean>
+        docs: |
+          Whether to rerank the search results after the initial semantic search query. Defaults to false.
   SearchDocumentCollectionResponse:
     properties:
       searchId: uuid
@@ -159,3 +132,24 @@ types:
         type: double
         docs: |
           The similarity score between 0 and 1 for the search result. A higher number means the chunk is more relevant to the search query.
+  SingleFieldFilter:
+    properties:
+      field: string
+      operator: string
+      value: string
+  Operator:
+    enum:
+      - name: LESS_THAN
+        value: "<"
+      - name: GREATER_THAN
+        value: ">"
+      - name: LESS_THAN_OR_EQUAL
+        value: "<="
+      - name: GREATER_THAN_OR_EQUAL
+        value: ">="
+      - name: NOT_EQUAL
+        value: "!="
+      - name: EQUAL
+        value: "=="
+      - name: CONTAINS
+        value: "contains"
