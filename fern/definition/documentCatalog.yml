@@ -123,22 +123,22 @@ service:
       examples:
         - name: Example0
           request:
-            - sources:
-                - metadata:
-                    Department: HR
-                    Country: United States
-                  resourceIdentifier:
-                    type: external-resource-id
-                    externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                    resourceType: GOOGLE_DRIVE_ITEM
-                - metadata:
-                    Department: Sales
-                    Vertical: Healthcare
-                  resourceIdentifier:
-                    type: external-resource-id
-                    externalResourceId: "123456"
-                    resourceType: ZENDESK_TICKET
-              uploadAsUserEmail: ben@credal.ai
+            sources:
+              - metadata:
+                  Department: HR
+                  Country: United States
+                resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE_ITEM
+              - metadata:
+                  Department: Sales
+                  Vertical: Healthcare
+                resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: "123456"
+                  resourceType: ZENDESK_TICKET
+            uploadAsUserEmail: ben@credal.ai
 
 types:
   UploadDocumentResponse:
