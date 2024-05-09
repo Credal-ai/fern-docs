@@ -24,6 +24,11 @@ service:
                 The structured query filters to apply to the search query.
             searchOptions:
               type: optional<DocumentCollectionSearchOptions>
+            metadataFilterExpression:
+              type: optional<string>
+              availability: deprecated
+              docs: |
+                Legacy metadata filter expression to apply to the search query. Use structuredQueryFilters instead.
       response: SearchDocumentCollectionResponse
       examples:
         - name: searchDocumentCollectionExample
