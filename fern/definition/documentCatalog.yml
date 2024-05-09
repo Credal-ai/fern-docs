@@ -119,7 +119,7 @@ service:
       path: /metadata
       docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
       method: PATCH
-      request: list<DocumentMetadataPatchRequest>
+      request: DocumentMetadataPatchRequest
       examples:
         - name: Example0
           request:
