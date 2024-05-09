@@ -26,4 +26,5 @@ types:
       - "BOX_FILE"
       - "BOX_FOLDER"
       - "NOTION_PAGE"
+      - "MANUAL_UPLOAD"
       - "UNKNOWN"
