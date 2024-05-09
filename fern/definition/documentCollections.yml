@@ -83,7 +83,7 @@ service:
                     meetingDate: "2023-11-06T23:03:42.056Z"
     addDocumentToCollection:
       path: /addDocumentToCollection
-      docs: /
+      docs: |
         Add a document to a document collection. Credal automatically chunks the document and runs the collection's embeddings model on each chunk.
         If you want to chunk the document yourself you can use the addDocumentChunksToCollection endpoint.
       method: POST
@@ -107,7 +107,7 @@ service:
               meetingDate: "2023-11-06T23:03:42.056Z"
     addDocumentChunksToCollection:
       path: /addDocumentChunksToCollection
-      docs: /
+      docs: |
         Add the specified document chunks to a document collection. Credal automatically runs the collection's embeddings model on each chunk.
       method: POST
       request:
@@ -138,7 +138,7 @@ service:
               meetingDate: "2023-11-06T23:03:42.056Z"
     reindexDocumentInCollection:
       path: /reindexDocumentInCollection
-      docs: /
+      docs: |
         Reindex a document in a document collection. Credal automatically deletes the existing chunks, re-chunks the document's latest contents and runs the collection's embeddings model on each chunk.
         You can optionally provide new custom metadata for the document.
       method: POST
@@ -160,7 +160,7 @@ service:
             documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
     removeDocumentFromCollection:
       path: /removeDocumentFromCollection
-      docs: /
+      docs: |
         Remove a document from a document collection. The document still exists in the document catalog but will not longer be searchable in
         this document collection.
       method: POST

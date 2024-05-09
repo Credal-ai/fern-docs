@@ -1,6 +1,9 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/permissions
   auth: true
+  availability: pre-release
   endpoints:
     checkResourceAuthorizationForUser:
       path: /checkResourceAuthorizationForUser
@@ -11,7 +14,7 @@ service:
         body:
           properties:
             resourceIdentifier:
-              type: ResourceIdentifier
+              type: common.ResourceIdentifier
               docs: |
                 The resource identifier for which you want to check authorization.
             userEmail:
@@ -34,10 +37,54 @@ service:
           response:
             body:
               authorized: true
-
+    checkBulkResourcesAuthorizationForUser:
+      path: /checkBulkResourcesAuthorizationForUser
+      docs: Admin endpoint to check whether the specified user is authorized to read the specified set of resources.
+      method: POST
+      request:
+        name: CheckBulkResourcesAuthorizationForUserRequest
+        body:
+          properties:
+            resourceIdentifiers:
+              type: list<common.ResourceIdentifier>
+              docs: |
+                The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
+            userEmail:
+              type: string
+              docs: |
+                The user email to check authorization for.
+            disableCache:
+              type: optional<boolean>
+              docs: |
+                If specified, Credal will bypass the permissions cache and check current permissions for all resources specified.
+      response: CheckBulkResourcesAuthorizationResponse
+      examples:
+        - name: Example0
+          request:
+            resourceIdentifiers:
+              - type: external-resource-id
+                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_ITEM
+              - type: external-resource-id
+                externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+                resourceType: ZENDESK_TICKET
+            userEmail: john.smith@foo.com
+          response:
+            body:
+              - resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE_ITEM
+                authorized: true
+              - resourceIdentifier:
+                  type: external-resource-id
+                  externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+                  resourceType: ZENDESK_TICKET
+                authorized: true
     listCachedAuthorizedResourcesForUser:
       path: /listCachedAuthorizedResourcesForUser
-      docs: Admin endpoint to list all resources that the specified user is authorized to read. Note this endpoint returns cached results and may not be up-to-date. 
+      docs:
+        Admin endpoint to list all resources that the specified user is authorized to read. Note this endpoint returns cached results and may not be up-to-date.
         You can use the checkResourceAuthorizationForUser endpoint with disableCache set to true to get the most up-to-date results.
       method: POST
       request:
@@ -49,7 +96,7 @@ service:
               docs: |
                 The user email to list authorized resources for.
             resourceType:
-              type: optional<ResourceType>
+              type: optional<common.ResourceType>
               docs: |
                 The type of resource you want to list. If not specified, all resource types will be listed.
             limit:
@@ -88,20 +135,9 @@ types:
     union:
       group: Group
       user: User
-  ResourceIdentifier:
-    union:
-      external-resource-id: ExternalResourceId
-      url: Url
-  ExternalResourceId:
-    properties:
-      externalResourceId: string
-      resourceType: ResourceType
-  Url:
-    properties:
-      url: string
   ResourceListPage:
     properties:
-      resources: list<ResourceIdentifier>
+      resources: list<common.ResourceIdentifier>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -109,23 +145,12 @@ types:
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
-  ResourceType:
-    enum:
-      - "GOOGLE_DRIVE_ITEM"
-      - "MICROSOFT_DRIVE_ITEM"
-      - "ZENDESK_TICKET"
-      - "ZENDESK_ARTICLE"
-      - "ZENDESK_GROUP"
-      - "ZENDESK_ARTICLE_SECTION"
-      - "CONFLUENCE_PAGE"
-      - "CONFLUENCE_SPACE"
-      - "JIRA_TICKET"
-      - "JIRA_PROJECT"
-      - "SALESFORCE_TASK"
-      - "BOX_FILE"
-      - "BOX_FOLDER"
-      - "NOTION_PAGE"
-      - "UNKNOWN"
+  ResourceAuthorizationResult:
+    properties:
+      resourceIdentifier: common.ResourceIdentifier
+      authorized: boolean
+  CheckBulkResourcesAuthorizationResponse:
+    type: list<ResourceAuthorizationResult>
   Action:
     enum:
       - READ
