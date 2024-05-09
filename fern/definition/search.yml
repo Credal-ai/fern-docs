@@ -25,8 +25,8 @@ service:
             searchOptions:
               type: optional<DocumentCollectionSearchOptions>
             metadataFilterExpression:
-              type: optional<string>
               availability: deprecated
+              type: optional<string>
               docs: |
                 Legacy metadata filter expression to apply to the search query. Use structuredQueryFilters instead.
       response: SearchDocumentCollectionResponse
