@@ -1,1 +1,19 @@
-{}
+default-group: python-local
+groups:
+  python-sdk:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 2.0.0
+        output: 
+          location: pypi
+          package-name: "credal"
+          token: ${ PYPI_TOKEN }
+        github:
+          repository: credal-ai/credal-python
+  python-local:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 2.0.0
+        output:
+          location: local-file-system
+          path: ../generated/python
