@@ -10,6 +10,7 @@ groups:
           token: ${PYPI_TOKEN}
         github:
           repository: credal-ai/credal-python-sdk
+          mode: pull-request
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
