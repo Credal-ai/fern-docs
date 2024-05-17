@@ -5,6 +5,9 @@ auth-schemes:
     scheme: bearer
     token:
       name: apiKey
+      # Support environment variable scanning, defaulting to CREDAI_API_KEY if 
+      # an api key is not explicitly passed into the generated SDK client.
+      env: CREDAL_API_KEY
 environments:
   Production: https://api.credal.ai/api
 default-environment: Production
