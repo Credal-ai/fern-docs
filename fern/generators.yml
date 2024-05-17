@@ -7,9 +7,9 @@ groups:
         output: 
           location: pypi
           package-name: "credal"
-          token: ${ PYPI_TOKEN }
+          token: ${PYPI_TOKEN}
         github:
-          repository: credal-ai/credal-python
+          repository: credal-ai/credal-python-sdk
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
