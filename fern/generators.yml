@@ -3,7 +3,7 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 2.0.0
+        version: 2.2.0
         output: 
           location: pypi
           package-name: "credal"
@@ -14,7 +14,7 @@ groups:
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 2.0.0
+        version: 2.2.0
         output:
           location: local-file-system
           path: ../generated/python
