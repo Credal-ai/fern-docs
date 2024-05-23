@@ -8,6 +8,7 @@ service:
       path: /uploadDocumentUrl
       display-name: Upload Document URL
       docs: Upload a document using its URL.
+      availability: deprecated
       method: POST
       request:
         name: UploadDocumentUrlRequest
