@@ -1,6 +1,7 @@
 service:
   base-path: /v0/documentCollections
   auth: true
+  availability: deprecated
   endpoints:
     createDocumentCollection:
       path: /createDocumentCollection
