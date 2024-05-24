@@ -119,6 +119,8 @@ types:
           Whether to rerank the search results after the initial semantic search query. Defaults to false.
   SearchDocumentCollectionResponse:
     properties:
+      searchTermsUsed: list<string>
+      structuredFiltersApplied: list<SingleFieldFilter>
       searchId: uuid
       results: list<DocumentCollectionSearchResult>
   DocumentCollectionSearchResult:
