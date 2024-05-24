@@ -50,6 +50,11 @@ service:
           response:
             body:
               searchId: 76b534be-5d5c-11ee-b268-87f1fd934c81
+              searchTermsUsed: ["ABC Corp"]
+              structuredFiltersApplied:
+                - field: "status"
+                  operator: "=="
+                  value: "Open"
               results:
                 - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
                   documentName: "ABC Corp - Initial meeting transcript"
@@ -119,6 +124,8 @@ types:
           Whether to rerank the search results after the initial semantic search query. Defaults to false.
   SearchDocumentCollectionResponse:
     properties:
+      searchTermsUsed: list<string>
+      structuredFiltersApplied: list<SingleFieldFilter>
       searchId: uuid
       results: list<DocumentCollectionSearchResult>
   DocumentCollectionSearchResult:
