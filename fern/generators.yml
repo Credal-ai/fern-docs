@@ -1,5 +1,14 @@
 default-group: python-local
 groups:
+  typescript-sdk:
+    generators:
+      - name: fernapi/fern-typescript-node-sdk
+        version: 0.20.1-rc0
+        github:
+          repository: credal-ai/credal-typescript-sdk
+        config:
+          namespaceExport: Credal
+          includeApiReference: true
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
