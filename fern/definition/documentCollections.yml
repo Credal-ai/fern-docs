@@ -3,7 +3,6 @@ imports:
 service:
   base-path: /v0/documentCollections
   auth: true
-  availability: deprecated
   endpoints:
     addDocumentsToCollection:
       path: /addDocumentsToCollection
