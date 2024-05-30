@@ -1,212 +1,32 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/documentCollections
   auth: true
-  availability: deprecated
   endpoints:
-    createDocumentCollection:
-      path: /createDocumentCollection
-      docs: Create a collection of related documents with a shared metadata schema that you can search across.
+    addDocumentsToCollection:
+      path: /addDocumentsToCollection
+      docs: Add documents to a document collection. Note that the documents must already exist in the document catalog to use this endpoint. If you want to upload a new document to a collection, use the uploadDocumentContents endpoint. 
       method: POST
       request:
-        name: CreateDocumentCollectionRequest
+        name: AddDocumentsToCollectionRequest
         body:
           properties:
-            collectionName:
-              type: string
-              docs: A unique name for the document collection.
-            embeddingsModel:
-              type: optional<string>
+            collectionId:
+              type: uuid
+              docs: The ID of the document collection you want to add to.
+            resourceIdentifiers:
+              type: list<common.ResourceIdentifier>
               docs: |
-                The embeddings model to use for the document collection.
-            distanceMetric:
-              type: optional<DistanceMetric>
-              docs: |
-                The distance metric to use for the document collection.
-            customMetadataSchema:
-              type: optional<MetadataSchema>
-              docs: |
-                Any custom metadata fields for this collection.
-      response: CreateDocumentCollectionResponse
+                The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
       examples:
-        - name: createDocumentCollectionExample
+        - name: addDocumentsToCollectionExample
           request:
-            collectionName: Customer Meeting Transcripts
-            embeddingsModel: "text-embedding-ada-002"
-            distanceMetric: EUCLIDEAN
-            customMetadataSchema:
-              fields:
-                - name: customerName
-                  type: STRING
-                - name: meetingDate
-                  type: DATETIME
-          response:
-            body:
-              documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-    deleteDocumentCollection:
-      path: /deleteDocumentCollection
-      docs: Delete a document collection given its ID.
-      method: POST
-      request:
-        name: DeleteDocumentCollectionRequest
-        query-parameters:
-          documentCollectionId: uuid
-      examples:
-        - name: deleteDocumentCollectionExample
-          query-parameters:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-    listDocumentsInCollection:
-      path: /listDocumentsInCollection
-      docs: List all documents in a document collection.
-      method: POST
-      request:
-        name: ListDocumentCollectionRequest
-        query-parameters:
-          documentCollectionId: uuid
-      response: ListDocumentCollectionResponse
-      examples:
-        - name: listDocumentsInCollectionExample
-          query-parameters:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-          response:
-            body:
-              documents:
-                - documentId: 4676d85d-6e8b-4503-8a71-bb2a8e763858
-                  metadata:
-                    documentName: "ABC Corp - Follow-up transcript"
-                    documentUrl: https://docs.google.com/document/d/398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
-                    customerName: ABC Corp
-                    meetingDate: "2022-12-06T12:02:41.023Z"
-                - documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-                  metadata:
-                    documentName: "XYZ Corp - Initial meeting transcript"
-                    documentUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                    customerName: XYZ Corp
-                    meetingDate: "2023-11-06T23:03:42.056Z"
-    addDocumentToCollection:
-      path: /addDocumentToCollection
-      docs: |
-        Add a document to a document collection. Credal automatically chunks the document and runs the collection's embeddings model on each chunk.
-        If you want to chunk the document yourself you can use the addDocumentChunksToCollection endpoint.
-      method: POST
-      request:
-        name: AddDocumentToCollectionRequest
-        body:
-          properties:
-            documentId: uuid
-            documentCollectionId: uuid
-            customMetadata:
-              type: map<string, string>
-              docs: |
-                The custom metadata for the document. The fields must match the custom metadata schema for the document collection.
-      examples:
-        - name: addDocumentToCollectionExample
-          request:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            customMetadata:
-              customerName: Credal
-              meetingDate: "2023-11-06T23:03:42.056Z"
-    addDocumentChunksToCollection:
-      path: /addDocumentChunksToCollection
-      docs: |
-        Add the specified document chunks to a document collection. Credal automatically runs the collection's embeddings model on each chunk.
-      method: POST
-      request:
-        name: AddDocumentChunksToCollectionRequest
-        body:
-          properties:
-            documentId: uuid
-            documentCollectionId: uuid
-            chunks:
-              type: list<string>
-              docs: |
-                The document chunks to add to the document collection. Credal will run the collection's embeddings model on each chunk.
-            customMetadata:
-              type: map<string, string>
-              docs: |
-                The custom metadata for the document. The fields must match the custom metadata schema for the document collection.
-      examples:
-        - name: addDocumentChunksToCollectionExample
-          request:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            chunks:
-              - "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              - "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-              - "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-            customMetadata:
-              customerName: Credal
-              meetingDate: "2023-11-06T23:03:42.056Z"
-    reindexDocumentInCollection:
-      path: /reindexDocumentInCollection
-      docs: |
-        Reindex a document in a document collection. Credal automatically deletes the existing chunks, re-chunks the document's latest contents and runs the collection's embeddings model on each chunk.
-        You can optionally provide new custom metadata for the document.
-      method: POST
-      request:
-        name: ReindexDocumentInCollectionRequest
-        body:
-          properties:
-            documentId: uuid
-            documentCollectionId: uuid
-            customMetadata:
-              type: optional<map<string, string>>
-              docs: |
-                The optional custom metadata for the document. The fields must match the custom metadata schema for the document collection. 
-                If not specified, Credal will use the existing metadata for the document.
-      examples:
-        - name: reindexDocumentInCollectionExample
-          request:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-    removeDocumentFromCollection:
-      path: /removeDocumentFromCollection
-      docs: |
-        Remove a document from a document collection. The document still exists in the document catalog but will not longer be searchable in
-        this document collection.
-      method: POST
-      request:
-        name: RemoveDocumentFromCollectionRequest
-        body:
-          properties:
-            documentId: uuid
-            documentCollectionId: uuid
-      examples:
-        - name: removeDocumentFromCollectionExample
-          request:
-            documentCollectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-types:
-  ListDocumentCollectionResponse:
-    properties:
-      documents:
-        type: list<IndexedDocument>
-        docs: The list of documents in the document collection.
-  IndexedDocument:
-    properties:
-      documentId: uuid
-      metadata: map<string, string>
-  CreateDocumentCollectionResponse:
-    properties:
-      documentCollectionId: uuid
-  MetadataSchema:
-    properties:
-      fields:
-        type: list<MetadataField>
-        docs: The list of metadata fields.
-  MetadataField:
-    properties:
-      name: string
-      type: DataType
-  DataType:
-    enum:
-      - STRING
-      - INT
-      - DOUBLE
-      - DATETIME
-      - BOOLEAN
-  DistanceMetric:
-    enum:
-      - EUCLIDEAN
-      - COSINE
-      - DOTPRODUCT
+            collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            resourceIdentifiers:
+              - type: external-resource-id
+                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_ITEM
+              - type: external-resource-id
+                externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
+                resourceType: GOOGLE_DRIVE_ITEM
