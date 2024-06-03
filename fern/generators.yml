@@ -4,10 +4,10 @@ groups:
     generators:
       - name: fernapi/fern-typescript-node-sdk
         version: 0.20.8
-        # output: 
-        #   location: npm
-        #   package-name: "credal"
-        #   token: ${NPM_TOKEN}
+        output: 
+          location: npm
+          package-name: "@credal/sdk"
+          token: ${NPM_TOKEN}
         github:
           repository: credal-ai/credal-typescript-sdk
           mode: pull-request
