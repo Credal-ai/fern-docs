@@ -6,7 +6,7 @@ groups:
         version: 0.20.8
         output: 
           location: npm
-          package-name: "credal-typescript-sdk"
+          package-name: "@credal/sdk"
           token: ${NPM_TOKEN}
         github:
           repository: credal-ai/credal-typescript-sdk
@@ -21,7 +21,7 @@ groups:
         version: 2.2.0
         output: 
           location: pypi
-          package-name: "credal-python-sdk"
+          package-name: "credal"
           token: ${PYPI_TOKEN}
         github:
           repository: credal-ai/credal-python-sdk
