@@ -16,6 +16,9 @@ navigation:
       - page: OAuth
         path: ./docs/pages/guides/oauth.mdx
   - api: API Reference
+    snippets:
+      python: "credal"
+      typescript: "@credal/sdk"
 
 navbar-links:
   - type: secondary
