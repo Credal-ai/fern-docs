@@ -24,6 +24,34 @@ service:
           response:
             body:
               conversationId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+    provideMessageFeedback:
+      path: /provideMessageFeedback
+      method: POST
+      request:
+        name: ProvideMessageFeedbackRequest
+        body:
+          properties:
+            userEmail:
+              type: string
+              docs: |
+                The user profile you want to use when providing feedback.
+            messageId:
+              type: uuid
+              docs: |
+                The message ID for which feedback is being provided.
+            messageFeedback:
+              type: MessageFeedback
+              docs: |
+                The feedback provided by the user.
+      examples:
+        - name: Example0
+          request:
+            userEmail: ravin@credal.ai
+            messageId: 3547804e-ffbe-50gd-873e-f007f8fbj332
+            messageFeedback: 
+              feedback: NEGATIVE
+              suggestedAnswer: "Yes, Credal is SOC 2 compliant."
+      
     sendMessage:
       path: /sendMessage
       method: POST
@@ -71,6 +99,8 @@ service:
                   name: "Example Document",
                   url: "https://drive.google.com/file/d/123456/view"}
                 ]
+                messageId: 3547804e-ffbe-5hgd-873e-f007f8fbj332
+    
 types:
   # CreateConversationRequest:
   #   properties:
@@ -105,6 +135,8 @@ types:
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
+      messageId: uuid
+      
 
   ReferencedSource:
     properties:
@@ -135,3 +167,13 @@ types:
       id: string
       name: string
       description: string
+  
+  FeedbackEnum:
+    enum: 
+      - POSITIVE
+      - NEGATIVE
+
+  MessageFeedback:
+    properties:
+      feedback: FeedbackEnum
+      suggestedAnswer: optional<string>
