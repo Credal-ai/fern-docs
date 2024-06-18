@@ -1,3 +1,5 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/copilots
   auth: true
@@ -49,7 +51,7 @@ service:
             userEmail: ravin@credal.ai
           response:
             body:
-              sendChatResult:
+              sendChatResult: 
                 type: ai_response_result
                 conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                 policy_triggers: []
@@ -60,7 +62,15 @@ service:
                 activitySourceIdsForAudit: []
                 inserted_audit_log:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
-
+                referencedSources: [{
+                  id: "1",
+                  externalResourceId: {
+                    externalResourceId: "123456",
+                    resourceType: "GOOGLE_DRIVE_ITEM"
+                  },
+                  name: "Example Document",
+                  url: "https://drive.google.com/file/d/123456/view"}
+                ]
 types:
   # CreateConversationRequest:
   #   properties:
@@ -94,6 +104,14 @@ types:
       warnings: list<string>
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
+      referencedSources: list<ReferencedSource>
+
+  ReferencedSource:
+    properties:
+      id: string
+      externalResourceId: common.ExternalResourceId
+      name: string
+      url: optional<string>
 
   ResponseChunk:
     properties:
