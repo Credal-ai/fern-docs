@@ -111,7 +111,7 @@ types:
       id: string
       externalResourceId: common.ExternalResourceId
       name: string
-      url: string
+      url: optional<string>
 
   ResponseChunk:
     properties:
