@@ -14,7 +14,7 @@ service:
         body:
           properties:
             resourceIdentifier:
-              type: common.ResourceIdentifier
+              type: common.ResourceIdentifier 
               docs: |
                 The resource identifier for which you want to check authorization.
             userEmail:
