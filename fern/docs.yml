@@ -37,4 +37,5 @@ favicon: docs/assets/favicon.png
 logo:
   href: https://credal.ai/
   light: docs/assets/credal-dark-logo.svg
+  dark: docs/assets/credal-light-logo.svg
   height: 30
