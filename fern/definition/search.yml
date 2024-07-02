@@ -19,7 +19,7 @@ service:
               docs: |
                 The email of the user making the search request for permissions reduction.
             structuredQueryFilters:
-              type: list<SingleFieldFilter>
+              type: optional<list<SingleFieldFilter>>
               docs: |
                 The structured query filters to apply to the search query.
             searchOptions:
