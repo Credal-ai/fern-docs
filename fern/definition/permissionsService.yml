@@ -62,23 +62,21 @@ service:
         - name: Example0
           request:
             resourceIdentifiers:
-              - type: external-resource-id
-                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                resourceType: GOOGLE_DRIVE_ITEM
+              - type: url
+                url: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr/edit
               - type: external-resource-id
                 externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
                 resourceType: ZENDESK_TICKET
             userEmail: john.smith@foo.com
           response:
             body:
-              - resourceIdentifier:
-                  type: external-resource-id
+              - externalResourceId:
                   externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                   resourceType: GOOGLE_DRIVE_ITEM
+                inputUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr/edit
                 authorized: true
-              - resourceIdentifier:
-                  type: external-resource-id
-                  externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+              - externalResourceId:
+                  externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
                 authorized: true
     listCachedAuthorizedResourcesForUser:
@@ -107,18 +105,19 @@ service:
               type: optional<integer>
               docs: |
                 The offset to use for pagination. If not specified, the first page of results will be returned.
-      response: ResourceListPage
+      response: AuthorizedResourceListPage
       examples:
         - name: Example0
           request:
             userEmail: john.smith@foo.com
           response:
             body:
-              resources:
-                - type: external-resource-id
+              - credalId: 2b5cf2b8-3df3-11ef-9a96-332d4470d189
+                externalId:
                   externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                   resourceType: GOOGLE_DRIVE_ITEM
-                - type: external-resource-id
+              - credalId: eb5a0a00-3d9a-11ef-836d-375bf4e237a6
+                externalId:
                   externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
 types:
@@ -135,9 +134,11 @@ types:
     union:
       group: Group
       user: User
-  ResourceListPage:
+  AuthorizedResource:
     properties:
-      resources: list<common.ResourceIdentifier>
+      credalId: uuid
+      externalId: common.ExternalResourceId
+  AuthorizedResourceListPage: list<AuthorizedResource>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -147,7 +148,8 @@ types:
       authorized: boolean
   ResourceAuthorizationResult:
     properties:
-      resourceIdentifier: common.ResourceIdentifier
+      externalResourceId: common.ExternalResourceId
+      inputUrl: optional<string>
       authorized: boolean
   CheckBulkResourcesAuthorizationResponse:
     type: list<ResourceAuthorizationResult>
