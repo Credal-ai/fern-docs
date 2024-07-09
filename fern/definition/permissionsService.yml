@@ -107,7 +107,7 @@ service:
               type: optional<integer>
               docs: |
                 The offset to use for pagination. If not specified, the first page of results will be returned.
-      response: ResourceListPage
+      response: AuthorizedResourceListPage
       examples:
         - name: Example0
           request:
@@ -140,7 +140,7 @@ types:
     properties:
       credalId: uuid
       externalId: common.ExternalResourceId
-  ResourceListPage: list<AuthorizedResource>
+  AuthorizedResourceListPage: list<AuthorizedResource>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -148,9 +148,10 @@ types:
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
-  ResourceAuthorizationResult: # This is the thing to change
+  ResourceAuthorizationResult:
     properties:
-      resourceIdentifier: common.ResourceIdentifier
+      externalResourceId: common.ResourceIdentifier
+      inputUrl: optional<string>
       authorized: boolean
   CheckBulkResourcesAuthorizationResponse:
     type: list<ResourceAuthorizationResult>
