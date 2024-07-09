@@ -139,7 +139,7 @@ types:
   AuthorizedResource:
     properties:
       credalId: uuid
-      externalId: ExternalResourceId
+      externalId: common.ExternalResourceId
   ResourceListPage: # this too
     properties:
       resources: list<AuthorizedResource>
