@@ -71,15 +71,15 @@ service:
             userEmail: john.smith@foo.com
           response:
             body:
-              - resourceIdentifier:
-                  type: external-resource-id
-                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                  resourceType: GOOGLE_DRIVE_ITEM
+              - externalResourceId:
+                  resourceIdentifier:
+                    externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                    resourceType: GOOGLE_DRIVE_ITEM
                 authorized: true
-              - resourceIdentifier:
-                  type: external-resource-id
-                  externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
-                  resourceType: ZENDESK_TICKET
+              - externalResourceId:
+                  resourceIdentifier:
+                    externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
+                    resourceType: ZENDESK_TICKET
                 authorized: true
     listCachedAuthorizedResourcesForUser:
       path: /listCachedAuthorizedResourcesForUser
