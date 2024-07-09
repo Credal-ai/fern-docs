@@ -114,11 +114,12 @@ service:
             userEmail: john.smith@foo.com
           response:
             body:
-              resources:
-                - type: external-resource-id
+              - credalId: 2b5cf2b8-3df3-11ef-9a96-332d4470d189
+                externalId:
                   externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                   resourceType: GOOGLE_DRIVE_ITEM
-                - type: external-resource-id
+              - credalId: eb5a0a00-3d9a-11ef-836d-375bf4e237a6
+                externalId:
                   externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
 types:
@@ -135,9 +136,13 @@ types:
     union:
       group: Group
       user: User
-  ResourceListPage:
+  AuthorizedResource:
     properties:
-      resources: list<common.ResourceIdentifier>
+      credalId: uuid
+      externalId: ExternalResourceId
+  ResourceListPage: # this too
+    properties:
+      resources: list<AuthorizedResource>
   PrincipalListPage:
     properties:
       principals: list<Principal>
@@ -145,7 +150,7 @@ types:
   CheckResourceAuthorizationResponse:
     properties:
       authorized: boolean
-  ResourceAuthorizationResult:
+  ResourceAuthorizationResult: # This is the thing to change
     properties:
       resourceIdentifier: common.ResourceIdentifier
       authorized: boolean
