@@ -150,7 +150,7 @@ types:
       authorized: boolean
   ResourceAuthorizationResult:
     properties:
-      externalResourceId: common.ResourceIdentifier
+      externalResourceId: common.ExternalResourceId
       inputUrl: optional<string>
       authorized: boolean
   CheckBulkResourcesAuthorizationResponse:
