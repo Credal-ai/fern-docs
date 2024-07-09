@@ -62,9 +62,8 @@ service:
         - name: Example0
           request:
             resourceIdentifiers:
-              - type: external-resource-id
-                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                resourceType: GOOGLE_DRIVE_ITEM
+              - type: url
+                url: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr/edit
               - type: external-resource-id
                 externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
                 resourceType: ZENDESK_TICKET
@@ -72,14 +71,13 @@ service:
           response:
             body:
               - externalResourceId:
-                  resourceIdentifier:
-                    externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
-                    resourceType: GOOGLE_DRIVE_ITEM
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE_ITEM
+                inputUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr/edit
                 authorized: true
               - externalResourceId:
-                  resourceIdentifier:
-                    externalResourceId: sfsdfvr54UvyslPVWkQFOA0dfsdfsdflgNycFmdZJQr
-                    resourceType: ZENDESK_TICKET
+                  externalResourceId: 123456
+                  resourceType: ZENDESK_TICKET
                 authorized: true
     listCachedAuthorizedResourcesForUser:
       path: /listCachedAuthorizedResourcesForUser
