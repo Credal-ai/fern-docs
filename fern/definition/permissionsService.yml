@@ -76,7 +76,7 @@ service:
                 inputUrl: https://docs.google.com/document/d/170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr/edit
                 authorized: true
               - externalResourceId:
-                  externalResourceId: 123456
+                  externalResourceId: "123456"
                   resourceType: ZENDESK_TICKET
                 authorized: true
     listCachedAuthorizedResourcesForUser:
