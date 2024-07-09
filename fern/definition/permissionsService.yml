@@ -140,9 +140,7 @@ types:
     properties:
       credalId: uuid
       externalId: common.ExternalResourceId
-  ResourceListPage: # this too
-    properties:
-      resources: list<AuthorizedResource>
+  ResourceListPage: list<AuthorizedResource>
   PrincipalListPage:
     properties:
       principals: list<Principal>
