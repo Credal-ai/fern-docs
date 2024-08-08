@@ -99,6 +99,23 @@ service:
                   name: "Example Document",
                   url: "https://drive.google.com/file/d/123456/view"}
                 ]
+                sourcesInDataContext: [{
+                  id: "1",
+                  externalResourceId: {
+                    externalResourceId: "123456",
+                    resourceType: "GOOGLE_DRIVE_ITEM"
+                  },
+                  name: "Example Document",
+                  url: "https://drive.google.com/file/d/123456/view"},
+                  {
+                  id: "2",
+                  externalResourceId: {
+                    externalResourceId: "123457",
+                    resourceType: "GOOGLE_DRIVE_ITEM"
+                  },
+                  name: "Example Document 2",
+                  url: "https://drive.google.com/file/d/123457/view"}
+                ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
     
 types:
@@ -135,6 +152,7 @@ types:
       activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
+      sourcesInDataContext: list<ReferencedSource>
       messageId: uuid
       
 
