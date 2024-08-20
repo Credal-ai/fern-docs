@@ -48,10 +48,10 @@ service:
           request:
             userEmail: ravin@credal.ai
             messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
-            messageFeedback: 
+            messageFeedback:
               feedback: NEGATIVE
               suggestedAnswer: "Yes, Credal is SOC 2 compliant."
-      
+
     sendMessage:
       path: /sendMessage
       method: POST
@@ -79,7 +79,7 @@ service:
             userEmail: ravin@credal.ai
           response:
             body:
-              sendChatResult: 
+              sendChatResult:
                 type: ai_response_result
                 conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                 policy_triggers: []
@@ -87,37 +87,46 @@ service:
                   message: "Based on the context provided, Credal is SOC 2 compliant..."
                   dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
                 warnings: []
-                activitySourceIdsForAudit: []
                 inserted_audit_log:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
-                referencedSources: [{
-                  id: "1",
-                  externalResourceId: {
-                    externalResourceId: "123456",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document",
-                  url: "https://drive.google.com/file/d/123456/view"}
-                ]
-                sourcesInDataContext: [{
-                  id: "1",
-                  externalResourceId: {
-                    externalResourceId: "123456",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document",
-                  url: "https://drive.google.com/file/d/123456/view"},
-                  {
-                  id: "2",
-                  externalResourceId: {
-                    externalResourceId: "123457",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document 2",
-                  url: "https://drive.google.com/file/d/123457/view"}
-                ]
+                referencedSources:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                  ]
+                sourcesInDataContext:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                    {
+                      id: "2",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123457",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document 2",
+                      url: "https://drive.google.com/file/d/123457/view",
+                    },
+                  ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
-    
+
 types:
   # CreateConversationRequest:
   #   properties:
@@ -135,12 +144,12 @@ types:
       ai_response_result:
         type: MessageReply
         docs: |
-          Returned when there is a reply 
+          Returned when there is a reply
           fetched from the copilot.
       blocked_result:
         type: MessageBlocked
         docs: |
-          Returned when Credal detects possible 
+          Returned when Credal detects possible
           infosec violations and blocks the message.
 
   MessageReply:
@@ -149,12 +158,10 @@ types:
       conversationId: uuid
       response: ResponseChunk
       warnings: list<string>
-      activitySourceIdsForAudit: list<string>
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
       sourcesInDataContext: list<ReferencedSource>
       messageId: uuid
-      
 
   ReferencedSource:
     properties:
@@ -185,9 +192,9 @@ types:
       id: string
       name: string
       description: string
-  
+
   FeedbackEnum:
-    enum: 
+    enum:
       - POSITIVE
       - NEGATIVE
 
