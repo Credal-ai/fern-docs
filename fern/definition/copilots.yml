@@ -12,6 +12,10 @@ service:
         name: CreateConversationRequest
         body:
           properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated agent ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -31,6 +35,10 @@ service:
         name: ProvideMessageFeedbackRequest
         body:
           properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated agent ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -59,6 +67,10 @@ service:
         name: SendMessageRequest
         body:
           properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated agent ID to specify which agent to route the request to.
             message:
               type: string
               docs: |

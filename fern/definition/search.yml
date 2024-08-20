@@ -10,7 +10,7 @@ service:
         name: SearchDocumentCollectionRequest
         body:
           properties:
-            documentCollectionId:
+            collectionId:
               type: uuid
             searchQuery:
               type: string
