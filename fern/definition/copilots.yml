@@ -13,7 +13,7 @@ service:
         body:
           properties:
             agentId:
-              type: optional<uuid>
+              type: uuid
               docs: |
                 Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
             userEmail:
@@ -37,7 +37,7 @@ service:
         body:
           properties:
             agentId:
-              type: optional<uuid>
+              type: uuid
               docs: |
                 Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
             userEmail:
@@ -70,7 +70,7 @@ service:
         body:
           properties:
             agentId:
-              type: optional<uuid>
+              type: uuid
               docs: |
                 Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
             message:
