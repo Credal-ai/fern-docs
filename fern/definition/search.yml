@@ -11,7 +11,7 @@ service:
         body:
           properties:
             collectionId:
-              type: optional<uuid>
+              type: uuid
             searchQuery:
               type: string
             userEmail:
