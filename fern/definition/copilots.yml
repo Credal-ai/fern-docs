@@ -191,6 +191,31 @@ service:
             collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
           response:
             body:
+    
+    updateConfiguration:
+      path: /updateConfiguration
+      method: POST
+      docs: Update the configuration for a copilot
+      request:
+        name: UpdateConfigurationRequest
+        body:
+          properties:
+            copilotId:
+              type: uuid
+              docs: |
+                Credal-generated copilot ID to add the collection to.
+            configuration:
+              type: uuid
+              docs: |
+               Credal-generated collection ID to add.
+      response: UpdateConfigurationResponse
+      examples:
+        - name: Example0
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
+          response:
+            body:
 
 types:
   # CreateConversationRequest:
@@ -267,3 +292,20 @@ types:
     properties:
       feedback: FeedbackEnum
       suggestedAnswer: optional<string>
+  
+  AddCollectionToCopilotRequest:
+    properties:
+      copilotId: uuid
+      collectionId: uuid
+  
+  AddCollectionToCopilotResponse:
+  properties:
+  
+  RemoveCollectionFromCopilotRequest:
+    properties:
+      copilotId: uuid
+      collectionId: uuid
+  
+  RemoveCollectionFromCopilotResponse:
+    properties:
+
