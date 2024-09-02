@@ -5,6 +5,7 @@ service:
   auth: true
   endpoints:
     createCopilot:
+      availability: pre-release
       path: /createCopilot
       method: POST
       docs: Create a new copilot. The API key used will be added to the copilot for future Requests
@@ -176,6 +177,7 @@ service:
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
   
     addCollectionToCopilot:
+      availability: pre-release
       path: /addCollectionToCopilot
       method: POST
       docs: Link a collection with a copilot. The API Key used must be added to both the collection and the copilot beforehand.
@@ -200,6 +202,7 @@ service:
             body:
   
     removeCollectionFromCopilot:
+      availability: pre-release
       path: /removeCollectionFromCopilot
       method: POST
       docs: Unlink a collection with a copilot. The API Key used must be added to both the collection and the copilot beforehand.
@@ -224,6 +227,7 @@ service:
             body:
     
     updateConfiguration:
+      availability: pre-release
       path: /updateConfiguration
       method: POST
       docs: Update the configuration for a copilot

@@ -32,6 +32,7 @@ service:
                 resourceType: GOOGLE_DRIVE_ITEM
     
     createCollection:
+      availability: pre-release
       path: /createCollection
       method: POST
       docs: Create a new copilot. The API key used will be added to the copilot for future Requests
@@ -42,7 +43,7 @@ service:
             name:
               type: string
               docs: |
-                A descriptive name for the collection.
+                A descriptive name for the collection`.
             description:
               type: string
               docs: |
