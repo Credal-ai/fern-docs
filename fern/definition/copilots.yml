@@ -21,7 +21,7 @@ service:
               docs: |
                 An in depth name for the copilot's function. Useful for routing requests to the right copilot.
             collaborators:
-              type: list<Collaborator>
+              type: list<common.Collaborator>
               docs: |
                 A list of collaborator emails and roles that will have access to the copilot.
       response: CreateCopilotResponse
@@ -342,13 +342,3 @@ types:
   CreateCopilotResponse:
     properties:
         agentId: uuid
-  
-  Collaborator:
-    properties:
-      email: string
-      role: Role
-  
-  Role:
-    enum:
-      - viewer
-      - editor
