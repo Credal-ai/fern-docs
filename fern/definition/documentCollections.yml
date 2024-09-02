@@ -42,7 +42,7 @@ service:
             name:
               type: string
               docs: |
-                A descriptive name for the copilot.
+                A descriptive name for the collection.
             description:
               type: string
               docs: |
