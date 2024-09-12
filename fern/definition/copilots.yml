@@ -41,7 +41,7 @@ service:
     createConversation:
       path: /createConversation
       method: POST
-      docs: OPTIONAL. Create a new conversation with the Copilot. The conversation ID can be used in the sendMessage endpoint. The sendMessage endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
+      docs: OPTIONAL. Create a new conversation with the Copilot. The conversation ID can be used in the `sendMessage` endpoint. The `sendMessage` endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
       request:
         name: CreateConversationRequest
         body:
@@ -49,7 +49,7 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
+                Credal-generated Copilot ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -73,7 +73,7 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
+                Credal-generated Copilot ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -106,7 +106,7 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated agent ID to specify which agent to route the request to. This is required for all new API keys going forward.
+                Credal-generated Copilot ID to specify which agent to route the request to.
             message:
               type: string
               docs: |
@@ -175,7 +175,7 @@ service:
                     },
                   ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
-  
+
     addCollectionToCopilot:
       availability: pre-release
       path: /addCollectionToCopilot
@@ -192,7 +192,7 @@ service:
             collectionId:
               type: uuid
               docs: |
-               Credal-generated collection ID to add.
+                Credal-generated collection ID to add.
       examples:
         - name: Example0
           request:
@@ -200,7 +200,7 @@ service:
             collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
           response:
             body:
-  
+
     removeCollectionFromCopilot:
       availability: pre-release
       path: /removeCollectionFromCopilot
@@ -217,7 +217,7 @@ service:
             collectionId:
               type: uuid
               docs: |
-               Credal-generated collection ID to add.
+                Credal-generated collection ID to add.
       examples:
         - name: Example0
           request:
@@ -225,7 +225,7 @@ service:
             collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
           response:
             body:
-    
+
     updateConfiguration:
       availability: pre-release
       path: /updateConfiguration
@@ -337,12 +337,12 @@ types:
       name: optional<string>
       description: optional<string>
       prompt: optional<string>
-  
+
   AIEndpointConfiguration:
     properties:
-        baseUrl: string
-        apiKey: string
+      baseUrl: string
+      apiKey: string
 
   CreateCopilotResponse:
     properties:
-        agentId: uuid
+      agentId: uuid
