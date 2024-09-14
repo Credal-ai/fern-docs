@@ -24,6 +24,7 @@ service:
           request:
             collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             resourceIdentifiers:
+              # TODO add example of credal ID
               - type: external-resource-id
                 externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                 resourceType: GOOGLE_DRIVE_ITEM
@@ -35,8 +36,8 @@ service:
       createCollection:
       availability: pre-release
       path: /removeDocumentsFromCollection
-      docs: Add documents to a document collection.
-      method: POST
+      docs: Remove documents from a collection
+      method: DELETE
       request:
         name: RemoveDocumentsFromCollectionRequest
         body:
@@ -47,12 +48,13 @@ service:
             resourceIdentifiers:
               type: list<common.ResourceIdentifier>
               docs: |
-                The set of resource identifier for which you want to check authorization.
+                The set of resource identifier for which you want to remove from the collection
       examples:
         - name: removeDocumentsFromCollectionExample
           request:
             collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             resourceIdentifiers:
+              # TODO add example of credal ID
               - type: external-resource-id
                 externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                 resourceType: GOOGLE_DRIVE_ITEM
@@ -64,6 +66,40 @@ service:
       availability: pre-release
       path: /createCollection
       method: POST
+      docs: Create a new copilot. The API key used will be added to the copilot for future Requests
+      request:
+        name: CreateCollectionRequest
+        body:
+          properties:
+            name:
+              type: string
+              docs: |
+                A descriptive name for the collection`.
+            description:
+              type: string
+              docs: |
+                An in depth name for the copilot's function. Useful for routing requests to the right copilot.
+            collaborators:
+              type: list<common.Collaborator>
+              docs: |
+                A list of collaborator emails and roles that will have access to the copilot.
+      response: CreateCollectionResponse
+      examples:
+        - name: Example0
+          request:
+            name: Customer Collection
+            description: This collection is used to answer customer requests based on internal documentation.
+            collaborators:
+              - email: test@gmail.com
+                role: editor
+          response:
+            body:
+              collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
+    createCollection:
+      availability: pre-release
+      path: /createCollection
+      method: DELETE
       docs: Create a new copilot. The API key used will be added to the copilot for future Requests
       request:
         name: CreateCollectionRequest
