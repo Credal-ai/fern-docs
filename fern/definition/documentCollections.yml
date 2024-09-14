@@ -6,7 +6,7 @@ service:
   endpoints:
     addDocumentsToCollection:
       path: /addDocumentsToCollection
-      docs: Add documents to a document collection. Note that the documents must already exist in the document catalog to use this endpoint. If you want to upload a new document to a collection, use the uploadDocumentContents endpoint. 
+      docs: Add documents to a document collection. Note that the documents must already exist in the document catalog to use this endpoint. If you want to upload a new document to a collection, use the `uploadDocumentContents` endpoint.
       method: POST
       request:
         name: AddDocumentsToCollectionRequest
@@ -18,7 +18,7 @@ service:
             resourceIdentifiers:
               type: list<common.ResourceIdentifier>
               docs: |
-                The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
+                The set of resource identifier for which you want to add to the collection.
       examples:
         - name: addDocumentsToCollectionExample
           request:
@@ -30,7 +30,36 @@ service:
               - type: external-resource-id
                 externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
                 resourceType: GOOGLE_DRIVE_ITEM
-    
+
+    removeDocumentsFromCollection:
+      createCollection:
+      availability: pre-release
+      path: /removeDocumentsFromCollection
+      docs: Add documents to a document collection.
+      method: POST
+      request:
+        name: RemoveDocumentsFromCollectionRequest
+        body:
+          properties:
+            collectionId:
+              type: uuid
+              docs: The ID of the document collection you want to add to.
+            resourceIdentifiers:
+              type: list<common.ResourceIdentifier>
+              docs: |
+                The set of resource identifier for which you want to check authorization.
+      examples:
+        - name: removeDocumentsFromCollectionExample
+          request:
+            collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            resourceIdentifiers:
+              - type: external-resource-id
+                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_ITEM
+              - type: external-resource-id
+                externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
+                resourceType: GOOGLE_DRIVE_ITEM
+
     createCollection:
       availability: pre-release
       path: /createCollection
