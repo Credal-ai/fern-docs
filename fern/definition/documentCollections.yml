@@ -33,7 +33,6 @@ service:
                 resourceType: GOOGLE_DRIVE_ITEM
 
     removeDocumentsFromCollection:
-      createCollection:
       availability: pre-release
       path: /removeDocumentsFromCollection
       docs: Remove documents from a collection
