@@ -255,6 +255,27 @@ service:
           response:
             body:
 
+    deleteCopilot:
+      availability: pre-release
+      path: /deleteCopilot
+      method: DELETE
+      # docs: Delete copilot
+      request:
+        name: DeleteCopilotRequest
+        body:
+          properties:
+            id:
+              type: uuid
+              docs: Copilot ID
+      response: DeleteCopilotResponse
+      examples:
+        - name: Example0
+          request:
+            id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+          response:
+            body:
+              copilotId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
 types:
   # CreateConversationRequest:
   #   properties:
@@ -346,3 +367,7 @@ types:
   CreateCopilotResponse:
     properties:
       agentId: uuid
+
+  DeleteCopilotResponse:
+    properties:
+      copilotId: uuid
