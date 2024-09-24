@@ -133,7 +133,6 @@ service:
             mongoURI: "mongodb+srv://svcuser:132@cluster0.hzwklqn.mongodb.net/Cluster0?retryWrites=true&w=majority"
             collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
             config:
-              type: "mongo_sync_config_v1"
               syncName: "My sales transcripts"
               collectionName: "myCollection"
               filterExpression: { status: { $ne: "disabled" } }
@@ -163,7 +162,6 @@ types:
       sourceUrl: optional<string>
   MongoCollectionSyncConfig:
     properties:
-      type: "mongo_sync_config_v1"
       syncName: string
       collectionName: string
       filterExpression: unknown
