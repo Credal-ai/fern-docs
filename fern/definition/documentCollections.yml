@@ -169,5 +169,5 @@ types:
   MongoCollectionSyncResponse:
     properties:
       mongoCredentialId: uuid
-      resourceId: uuid
+      resourceId: string
       syncLaunched: boolean
