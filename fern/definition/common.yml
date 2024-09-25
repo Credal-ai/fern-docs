@@ -27,3 +27,13 @@ types:
       - "BOX_FOLDER"
       - "NOTION_PAGE"
       - "UNKNOWN"
+  
+  Collaborator:
+    properties:
+      email: string
+      role: Role
+  
+  Role:
+    enum:
+      - viewer
+      - editor
