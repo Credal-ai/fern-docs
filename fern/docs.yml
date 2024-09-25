@@ -11,6 +11,8 @@ navigation:
         path: ./docs/pages/guides/overview.mdx
       - page: Copilots
         path: ./docs/pages/guides/copilots.mdx
+      - page: Bulk Analysis
+        path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
         path: ./docs/pages/guides/permissions-service.mdx
       - page: OAuth
