@@ -174,6 +174,14 @@ service:
                       url: "https://drive.google.com/file/d/123457/view",
                     },
                   ]
+                webSearchResults: 
+                  [
+                    {
+                      title: "SOC 2 Compliance",
+                      url: "https://www.credal.ai/soc2",
+                      content: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                    },
+                  ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
 
     addCollectionToCopilot:
@@ -310,6 +318,7 @@ types:
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
       sourcesInDataContext: list<ReferencedSource>
+      webSearchResults: list<WebSearchResult>
       messageId: uuid
 
   ReferencedSource:
@@ -318,6 +327,12 @@ types:
       externalResourceId: common.ExternalResourceId
       name: string
       url: optional<string>
+
+  WebSearchResult:
+    properties:
+      title: string
+      url: string
+      content: string
 
   ResponseChunk:
     properties:
