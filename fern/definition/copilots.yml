@@ -90,32 +90,42 @@ service:
                 activitySourceIdsForAudit: []
                 inserted_audit_log:
                   id: 5842804e-ffbe-4f8d-873e-f007fff93440
-                referencedSources: [{
-                  id: "1",
-                  externalResourceId: {
-                    externalResourceId: "123456",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document",
-                  url: "https://drive.google.com/file/d/123456/view"}
-                ]
-                sourcesInDataContext: [{
-                  id: "1",
-                  externalResourceId: {
-                    externalResourceId: "123456",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document",
-                  url: "https://drive.google.com/file/d/123456/view"},
-                  {
-                  id: "2",
-                  externalResourceId: {
-                    externalResourceId: "123457",
-                    resourceType: "GOOGLE_DRIVE_ITEM"
-                  },
-                  name: "Example Document 2",
-                  url: "https://drive.google.com/file/d/123457/view"}
-                ]
+                referencedSources:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                  ]
+                sourcesInDataContext:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                    {
+                      id: "2",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123457",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document 2",
+                      url: "https://drive.google.com/file/d/123457/view",
+                    },
+                  ]
                 webSearchResults: [{
                   title: "SOC 2 Compliance",
                   url: "https://www.credal.ai/soc2",
