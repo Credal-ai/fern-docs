@@ -99,26 +99,7 @@ service:
     sendMessage:
       path: /sendMessage
       method: POST
-      request:
-        name: SendMessageRequest
-        body:
-          properties:
-            agentId:
-              type: uuid
-              docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
-            message:
-              type: string
-              docs: |
-                The message you want to send to your copilot.
-            userEmail:
-              type: string
-              docs: |
-                The user profile you want to use when sending the message.
-            conversationId:
-              type: optional<uuid>
-              docs: |
-                Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+      request: SendMessageRequest
       response: SendAgentMessageResponse
       examples:
         - name: Example0
@@ -186,11 +167,7 @@ service:
     sendMessageStreaming:
       path: /sendMessageStreaming
       method: POST
-      request:
-        name: StreamCompletionRequest
-        body:
-          properties:
-            query: string
+      request: SendMessageRequest
       response-stream:
         type: StreamedCompletion
         format: sse
@@ -398,3 +375,24 @@ types:
   DeleteCopilotResponse:
     properties:
       copilotId: uuid
+  SendMessageRequest:
+    properties:
+      agentId:
+        type: uuid
+        docs: |
+          Credal-generated Copilot ID to specify which agent to route the request to.
+      message:
+        type: string
+        docs: |
+          The message you want to send to your copilot.
+      userEmail:
+        type: string
+        docs: |
+          The user profile you want to use when sending the message.
+      conversationId:
+        type: optional<uuid>
+        docs: |
+          Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+  StreamedCompletion:
+    properties:
+      delta: string
