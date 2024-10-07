@@ -174,7 +174,7 @@ service:
                       url: "https://drive.google.com/file/d/123457/view",
                     },
                   ]
-                webSearchResults: 
+                webSearchResults:
                   [
                     {
                       title: "SOC 2 Compliance",
@@ -183,6 +183,18 @@ service:
                     },
                   ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
+    sendMessageStreaming:
+      path: /sendMessageStreaming
+      method: POST
+      request:
+        name: StreamCompletionRequest
+        body:
+          properties:
+            query: string
+      response-stream:
+        type: StreamedCompletion
+        format: sse
+        terminator: "[[DONE]]"
 
     addCollectionToCopilot:
       availability: pre-release
