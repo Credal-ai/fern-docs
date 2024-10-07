@@ -169,7 +169,7 @@ service:
       method: POST
       request: SendMessageRequest
       response-stream:
-        type: StreamedCompletion
+        type: SendMessageStreamEvent
         format: sse
         terminator: "[[DONE]]"
 
@@ -375,6 +375,7 @@ types:
   DeleteCopilotResponse:
     properties:
       copilotId: uuid
+
   SendMessageRequest:
     properties:
       agentId:
@@ -393,6 +394,11 @@ types:
         type: optional<uuid>
         docs: |
           Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
-  StreamedCompletion:
+  CompletionChunk:
     properties:
       delta: string
+
+  SendMessageStreamEvent:
+    union:
+      chunk: CompletionChunk
+      result: SendMessageResponse
