@@ -1,12 +1,8 @@
-Credal’s Bulk Analysis feature allows users to analyze a collection of documents or rows in a spreadsheet simultaneously, using LLMs or Credal Copilots. Use it to automatically extract fields from, classify or synthesize multiple documents simultaneously.
-
-<br />
-
-## In Depth Guide
+# Bulk Analysis In-Depth Guide
 
 _This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Copilots User guide](https://www.notion.so/AI-Copilots-In-Depth-Guide-73e09c563d9246cca5241890efef5de4?pvs=21)._
 
-Bulk Analysis is a powerful tool that you can use to **accelerate** analyses of a large number of documents, transcripts, or spreadsheets using LLMs. If you have a large amount of documents or data and you want to be able to classify each, extract key fields, or in any other way ask the same questions across each of the documents, this Credal feature will help you accomplish that by parallelizing your LLM requests for each document.
+Bulk Analysis is a powerful tool that you can use to **streamline** operations for greater speed, quality, and detail. If you have a massive amount of data you want to deeply understand, this Credal feature will help you accomplish that by extracting the details you care about.
 
 In this guide, we will walk through how to set up and run Bulk Analysis in detail. For a quick overview of this feature, visit our [blog](https://www.credal.ai/blog/introducing-bulk-analysis-the-detail-oriented-way-to-interpret-a-collection-of-documents)!
 
@@ -44,11 +40,11 @@ There are 2 key things you need in your Copilot to make Bulk Analysis work: Sugg
 
 For each row in a spreadsheet or source in a Document Collection, Bulk Analysis will pass that into your Copilot as a “User Input.” Navigate to your Copilot Configuration, toggle the switch to “Include full contents from documents.” This means that your full document or spreadsheet row will be passed to the LLM as is without any search done upon it.
 
-![include-full-contents.png](/docs/assets/bulk-analysis/in-depth-guide/include-full-contents.png)
+![Screenshot 2024-09-20 at 5.42.29 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.42.29_PM.png)
 
 Click on “Add User input” at the bottom right of this section and you will be prompted like so:
 
-![create-user-input.png](/docs/assets/bulk-analysis/in-depth-guide/create-user-input.png)
+![Screenshot 2024-09-20 at 5.44.34 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.44.34_PM.png)
 
 Add a name and description for your user input. What you name or describe it as won’t affect your Bulk Analysis run.
 
@@ -56,11 +52,11 @@ Add a name and description for your user input. What you name or describe it as 
 
 This is the heart of what new insights you will discover from your Bulk Analysis. Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends you want to uncover and what insights you want to discover from your bulk analysis source data. To create one, navigate to the “Suggested questions” subsection in the Copilot configuration. Each question corresponds to a column in your final Bulk Analysis table with an extracted insight.
 
-![suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
+![Screenshot 2024-09-20 at 5.49.17 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.49.17_PM.png)
 
 Let’s dive deeper into what kinds of questions might be relevant. Let’s say I am analyzing trends for Jira ticket blockers. To accomplish this, I might want to count for each ticket how many blockers stalled progress on it over the course of its completion and analyze what kinds of tickets experienced more blockers than others. The prompts I’d write would then be:
 
-![populated-suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/populated-suggested-questions.png)
+![Screenshot 2024-09-20 at 5.58.16 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.58.16_PM.png)
 
 Notice that I do not ask for metadata such as “Assignee” or “Date” since this data is structured data on a ticket. Credal will automatically export that information for you. Now once I run my Bulk Analysis, I have the ability to detect any outliers for # of blockers, access what they were, and understand whether the bottleneck is in the frontend or backend team.
 
@@ -72,7 +68,7 @@ After you’ve done a first pass at writing questions that you believe will extr
 
 You can choose to either use a Document Collection or a Tabular formed Data Source as your Bulk Analysis template. If you choose a Document Collection, Bulk Analysis will flatten any folder hierarchies and list each individual document as a row in the Bulk Analysis. If you choose a spreadsheet, each row will be considered a separate data source.
 
-![link-a-collection-or-spreadsheet.png](/docs/assets/bulk-analysis/in-depth-guide/link-a-collection-or-spreadsheet.png)
+![Screenshot 2024-09-20 at 7.00.45 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_7.00.45_PM.png)
 
 ### Using a Document Collection
 
@@ -80,7 +76,7 @@ Navigate to the “Document Collection” tab on the left of the Credal UI.
 
 Create a Document Collection and either manually or via API upload data you want to analyze to Credal. This might be sales transcripts as a series of documents, a Jira project, or a folder with meeting notes.
 
-![document-collection.png](/docs/assets/bulk-analysis/in-depth-guide/document-collection.png)
+![Screenshot 2024-09-20 at 6.55.19 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_6.55.19_PM.png)
 
 ### Using Tabular Data
 
@@ -94,7 +90,7 @@ Create a new Bulk Analysis the same way you would create a new Document Collecti
 
 ### Linking Copilot and Source Data
 
-![link-a-data-source.png](/docs/assets/bulk-analysis/in-depth-guide/link-a-data-source.png)
+![Screenshot 2024-09-20 at 6.58.01 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_6.58.01_PM.png)
 
 Select the Copilot you created from the dropdown and select the Document Collection or Spreadsheet that you want to analyze.
 
@@ -110,7 +106,7 @@ It really is as easy as clicking a button.
 
 Before running the full analysis, it’s wise to do a preview run on a smaller subset of data. This helps you identify any issues early on. The preview will only display the first 5 documents/rows from your source data which allows you to quickly iterate on your Bulk Analysis configuration. This is a good place to further tweak prompts, adjusting for better quality and output structure.
 
-![BA-preview.png](/docs/assets/bulk-analysis/in-depth-guide/BA-preview.png)
+![Screenshot 2024-09-20 at 6.54.03 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_6.54.03_PM.png)
 
 ### Conducting a Full Run
 
