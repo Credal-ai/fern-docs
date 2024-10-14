@@ -121,6 +121,7 @@ service:
                 Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
             inputVariables:
               type: optional<list<InputVariable>>
+              availability: in-development
               docs: |
                 Optional input variables to be used in the message. Map the name of the variable to a list of urls.
       response: SendAgentMessageResponse
