@@ -119,6 +119,10 @@ service:
               type: optional<uuid>
               docs: |
                 Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+            inputVariables:
+              type: optional<InputVariable[]>
+              docs: |
+                Optional input variables to be used in the message. Map the name of the variable to a list of urls.
       response: SendAgentMessageResponse
       examples:
         - name: Example0
@@ -126,6 +130,14 @@ service:
             agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is Credal SOC 2 compliant?
             userEmail: ravin@credal.ai
+            inputVariables: [
+              {
+              name: "input1", urls: ["https://drive.google.com/file/d/123456/view"],
+              }, 
+              {
+              name: "input2", urls: ["https://drive.google.com/file/d/123457/view", "https://drive.google.com/file/d/123458/view"]
+              }
+            ]
           response:
             body:
               sendChatResult:
@@ -308,6 +320,11 @@ types:
         docs: |
           Returned when Credal detects possible
           infosec violations and blocks the message.
+  
+  InputVariable:
+    properties:
+      name: string
+      urls: list<string>
 
   MessageReply:
     properties:
