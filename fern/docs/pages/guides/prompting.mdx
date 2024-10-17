@@ -32,7 +32,7 @@ You assist the financial advisory team by analyzing client interactions to enhan
 
 ### Output Format
 
-LLM's can be a bit unpredictable, but luckily we can just tell them what to do with clear instructions. Providing a clear template for expected responses is an example of this. 
+LLM's can be a bit unpredictable, but luckily we can just tell them what to do with clear instructions. Providing a template for expected responses is an example of this. 
 
 Here’s an example of setting up an output format for entity extraction:
 
@@ -47,11 +47,20 @@ General themes: <comma_separated_list_of_general_themes>
 
 ```
 
+Another more crude example:
+
+```
+Provide a riddle using the following structure:
+- Riddle: <the puzzle or brainteaser>
+- Answer: <the solution to the puzzle>
+- Difficulty level: <a difficulty rating from 1 (easy) to 10 (challenging)>
+```
+
 ### Response Guidelines
 
-Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Copilot will only know as much as you tell it about. Noticing that the responses are too long? Specificy response length! Think there's too much fluff in the language? Ask for concise language. 
+Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Copilot will only know as much as you tell it. Noticing that the responses are too long? Specificy response length! Think there's too much fluff in the language? Ask for concise language. 
 
-Credal has prompt snippets right under the background prompt in the Copilot Configuration tab. Use those as a starting point for generating more useful responses, however your specific use case may require much more detail!
+Credal has prompt snippets right under the background prompt in the Copilot Configuration tab. We recommend using those as a starting point for generating more useful responses, however your specific use case may require much more detail!
 
 ![prompt-snippets.png](/docs/assets/prompt-engineering/prompt-snippets.png)
 
@@ -176,9 +185,9 @@ Utilize the most recent and capable models to achieve the best results. Newer mo
 
 ## 8. Incorporate Feedback Loops
 
-Continuously refine your prompts based on the responses received to improve accuracy and relevance.
+Continuously refine your prompts based on your impression of Copilot responses to improve accuracy and relevance. Negative feedback logs are a great resource for this!
 
-We are currently working on some features that will incorporate negative feedback and usage trends into the copilot configuration workflow by suggesting ways in which you can improve your background prompt.
+We are currently working on some features that will incorporate negative feedback and usage trends into the copilot configuration workflow by suggesting ways in which you can improve your background prompt. Stay tuned!
 
 ## 9. What not to ask…
 
