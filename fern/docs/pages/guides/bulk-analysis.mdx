@@ -54,9 +54,9 @@ We will now add columns with a name, prompt, and Copilot to extract key insights
 
 ![empty-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/empty-column-config.png)
 
-The column name you assign will summarize the content you are extracting from the data, the prompt will be sent to the LLM along with your document, and the Copilot of your choice will be the specialized assistant assigned for the job!
+The column name you assign should concisely describe the content you are extracting from the data, the prompt will be sent to the LLM along with your document, and the Copilot of your choice will be the specialized assistant assigned for the job!
 
-Here’s how someone might create a column for generating a cold outbound email based on the attached document. The title is self explanatory and the prompt concisely describes the task at hand. The selected Copilot contains specific context and a customized background prompt that contains the exact guidelines for how I would want to write a cold email. 
+Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Copilot has specific context and a customized background prompt that contains the exact guidelines for how I would want to write a cold email. 
 
 ![full-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/full-column-config.png)
 
@@ -68,7 +68,7 @@ Notice how each column has a specific detail it’s extracting or content it is 
 
 ### Writing Good Prompts
 
-Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends you want to uncover and what insights you want to discover from your bulk analysis source data. We highly recommend testing initially with the Suggested Questions feature in the Copilot configuration tab. 
+Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends and insights you want to uncover from your bulk analysis source data. We highly recommend testing initially with the Suggested Questions feature in the Copilot configuration tab. 
 
 ![suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
 
@@ -80,7 +80,7 @@ Notice that I do not ask for metadata such as “Assignee” or “Date” since
 
 ### Testing and Refining your Prompts
 
-After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview tab will be super helpful for this (few sections down) or you can navigate to the Preview/Evaluate tab to test out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering. You can learn more here: [Prompting with Credal 101](https://docs.credal.ai/getting-started/prompting). Once you feel confident, copy-paste over your prompts into the appropriate columns in your Bulk Analysis table.
+After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview tab will be super helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering. You can learn more here: [Prompting with Credal 101](https://docs.credal.ai/getting-started/prompting). Once you feel confident, copy-paste over your prompts into the appropriate columns in your Bulk Analysis table.
 
 ## Step 4: Run!
 
