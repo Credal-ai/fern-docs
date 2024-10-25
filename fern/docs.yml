@@ -19,6 +19,8 @@ navigation:
         path: ./docs/pages/guides/oauth.mdx
       - page: Prompting
         path: ./docs/pages/guides/prompting.mdx
+      - page: Data Sources
+        path: ./docs/pages/guides/data-sources.mdx
   - api: API Reference
     snippets:
       python: "credal"
