@@ -20,7 +20,7 @@ navigation:
       - page: Prompting
         path: ./docs/pages/guides/prompting.mdx
       - page: Credal 101
-        path: ./docs/pages/guides/Credal-101.mdx
+        path: ./docs/pages/guides/credal-101.mdx
   - api: API Reference
     snippets:
       python: "credal"
