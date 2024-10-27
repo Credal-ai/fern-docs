@@ -19,12 +19,10 @@ Then click “Create Copilot”:
   <img src="/docs/assets/copilots/create-copilot.png" />
 </Frame>
 
-Give your copilot a name and add a description of its function in the pop-out form. You can always come back and edit these later.
-
-_Descriptions should be detailed enough to describe what kind of queries the copilot is responsible for._
+Give your copilot a Name and add a Description of its function in the pop-out form. You can always come back and edit these later. _Descriptions should be detailed enough to describe what kind of queries the copilot is responsible for._
 
 <Frame>
-  <img src="/docs/assets/copilots/create-copilot-form.png" />
+  <img src="/docs/assets/copilots/create-copilot-form.png" width="500" />
 </Frame>
 
 You can click on “Copilots” in your left sidebar anytime to view the full list of Copilots you've created or that have been shared with you.
@@ -105,4 +103,37 @@ _--------- End Context ---------_
        <img src="/docs/assets/copilots/copilot-pinned-data.png" />
      </Frame>
 
-</Steps>
+### Deploy Your Copilot to Slack
+
+Once you have a copilot set up, you can use it directly in Credal, or deploy it to Slack or other tools through the API. You can set up a deployment in the “Deploy” tab. For this short guide, we'll cover Slack only; please refer to the detailed guide for the other options.
+
+To deploy a copilot through Slack, simply use the below toggle to turn on Slack deployments and select the channel(s) you want to deploy it to.
+
+<Frame>
+  <img src="/docs/assets/copilots/copilot-deploy-to-slack.png" />
+</Frame>
+
+You can choose to have your copilot answer all messages in a given channel or only those that meet certain criteria:
+
+<Frame>
+  <img src="/docs/assets/copilots/copilot-deploy-to-slack.png" />
+</Frame>
+
+- **All messages**: will answer all queries in the connected Slack channel.
+- **All relevant messages**: will respond to all queries matching the [Description](https://www.notion.so/Getting-Started-With-AI-Copilots-171cfe73b8df496a9db29f60046eaf06?pvs=21) of the copilot.
+- **All messages matching filter**: will respond to messages that match the filter criteria. In the example in the screenshot, the copilot will only respond to prompts containing “?”.
+
+<Frame>
+  <img src="/docs/assets/copilots/relevant-slack.png" />
+</Frame>
+<Frame>
+  <img src="/docs/assets/copilots/relevant-slack-filter.png" />
+</Frame>
+
+If more than one copilot is deployed to a given Slack channel, Credal will triage user requests based on the Description of each copilot to determine which, if any, should answer the question.
+
+   </Steps>
+
+That's all! The [detailed guide](https://www.notion.so/AI-Copilots-In-Depth-Guide-73e09c563d9246cca5241890efef5de4?pvs=21) contains more information, including on deploying this to non-Slack applications, and a more detailed explanation of the options in Copilots.
+
+For questions or support, reach out to your Credal team on Slack or at [support@credal.ai](mailto:support@credal.ai).
