@@ -13,8 +13,8 @@ navigation:
         contents:
           - page: Quick Start
             path: ./docs/pages/guides/copilots/quick-start.mdx
-          - page: Reference
-            path: ./docs/pages/guides/copilots/reference.mdx
+          - page: In-Depth Guide
+            path: ./docs/pages/guides/copilots/in-depth-guide.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
