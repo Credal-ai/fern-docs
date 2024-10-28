@@ -9,8 +9,12 @@ navigation:
     contents:
       - page: Overview
         path: ./docs/pages/guides/overview.mdx
-      - page: Copilots
-        path: ./docs/pages/guides/copilots.mdx
+      - section: Copilots
+        contents:
+          - page: Quick Start
+            path: ./docs/pages/guides/copilots/quick-start.mdx
+          - page: In-Depth Guide
+            path: ./docs/pages/guides/copilots/in-depth-guide.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service

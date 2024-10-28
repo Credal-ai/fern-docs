@@ -4,7 +4,7 @@ groups:
     generators:
       - name: fernapi/fern-typescript-node-sdk
         version: 0.20.8
-        output: 
+        output:
           location: npm
           package-name: "@credal/sdk"
           token: ${NPM_TOKEN}
@@ -18,8 +18,8 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 2.7.0
-        output: 
+        version: 2.16.0
+        output:
           location: pypi
           package-name: "credal"
           token: ${PYPI_TOKEN}
@@ -29,7 +29,7 @@ groups:
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 2.7.0
+        version: 2.16.0
         output:
           location: local-file-system
           path: ../generated/python
