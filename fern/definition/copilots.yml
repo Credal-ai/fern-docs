@@ -201,10 +201,10 @@ service:
       path: /streamMessage
       method: POST
       request:
-        name: SendMessageRequest2
+        name: StreamMessageRequest
         body:
           properties:
-            agentId:
+            copilotId:
               type: uuid
               docs: |
                 Credal-generated Copilot ID to specify which agent to route the request to.
@@ -212,7 +212,7 @@ service:
               type: string
               docs: |
                 The message you want to send to your copilot.
-            userEmail:
+            email:
               type: string
               docs: |
                 The user profile you want to use when sending the message.
@@ -229,11 +229,11 @@ service:
         type: StreamingChunk
         format: sse
       examples:
-        - name: Example3
+        - name: Example
           request:
-            agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is Credal SOC 2 compliant?
-            userEmail: ravin@credal.ai
+            email: ravin@credal.ai
             inputVariables: [
               {
               name: "input1", urls: ["https://drive.google.com/file/d/123456/view"],
@@ -244,15 +244,42 @@ service:
             ]
           response:
             stream:
-              - event: initial_chunk
+              - event: initial
                 data: 
-                  test: hi
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  webSearchResults: 
+                    [
+                      {
+                        title: "SOC 2 Compliance",
+                        url: "https://www.credal.ai/soc2",
+                        content: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                      },
+                    ]
+                  warnings: []
               - event: data_chunk
                 data: 
-                  test2: hellow
+                  chunk: Based on 
+              - event: data_chunk
+                data: 
+                  chunk: the context provided, 
+              - event: data_chunk
+                data: 
+                  chunk: Credal is SOC 2 compliant.
               - event: final_chunk
                 data: 
-                  test3: how are you
+                  referencedSources:
+                    [
+                      {
+                        id: "1",
+                        externalResourceId:
+                          {
+                            externalResourceId: "123456",
+                            resourceType: "GOOGLE_DRIVE_ITEM",
+                          },
+                        name: "Example Document",
+                        url: "https://drive.google.com/file/d/123456/view",
+                      },
+                    ]
 
     addCollectionToCopilot:
       availability: pre-release
@@ -461,18 +488,69 @@ types:
   DeleteCopilotResponse:
     properties:
       copilotId: uuid
+
+  StringFieldSchema:
+    properties:
+      fieldType: literal<"string">
+      field: string
+      operator: common.Operator
+      value: string
+  
+  NumberFieldSchema:
+    properties:
+      fieldType: literal<"number">
+      field: string
+      operator: common.Operator
+      value: integer
+
+  BooleanFieldSchema:
+    properties:
+      fieldType: literal<"boolean">
+      field: string
+      operator: literal<"==">
+      value: boolean
+
+  DatetimeFieldSchema:
+    properties:
+      fieldType: literal<"datetime">
+      field: string
+      operator: common.Operator
+      value: date
+
+  Filter:
+    discriminant: fieldType
+    union:
+      string: StringFieldSchema
+      number: NumberFieldSchema
+      boolean: BooleanFieldSchema
+      datetime: DatetimeFieldSchema
+
+  CollectionFilteredData:
+    properties:
+      collectionId: uuid
+      filteredDataIds: list<uuid>
+      filters: list<Filter>
+
+  DataFilter:
+    properties:
+      semanticSearchTerms: list<string>
+      webSearchResults: list<string>
+      filteredDataSourcesPerCollection: list<CollectionFilteredData>
   
   InitialChunk:
     properties:
-      test: string
+      conversationId: string
+      warnings: list<string>
+      webSearchResults: list<WebSearchResult>
+      dataFilters: optional<DataFilter>
   
   DataChunk:
     properties:
-      test2: string
-  
+      chunk: string
+
   FinalChunk:
     properties:
-      test3: string
+      referencedSources: list<ReferencedSource>
 
   StreamingChunk:
     discriminated: false
