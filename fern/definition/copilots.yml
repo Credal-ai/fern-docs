@@ -197,63 +197,6 @@ service:
                   ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
 
-    streamMessage:
-      path: /streamMessage
-      method: POST
-      request:
-        name: SendMessageRequest2
-        body:
-          properties:
-            agentId:
-              type: uuid
-              docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
-            message:
-              type: string
-              docs: |
-                The message you want to send to your copilot.
-            userEmail:
-              type: string
-              docs: |
-                The user profile you want to use when sending the message.
-            conversationId:
-              type: optional<uuid>
-              docs: |
-                Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
-            inputVariables:
-              type: optional<list<InputVariable>>
-              availability: in-development
-              docs: |
-                Optional input variables to be used in the message. Map the name of the variable to a list of urls.
-      response-stream:
-        type: StreamingChunk
-        format: sse
-      examples:
-        - name: Example3
-          request:
-            agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
-            message: Is Credal SOC 2 compliant?
-            userEmail: ravin@credal.ai
-            inputVariables: [
-              {
-              name: "input1", urls: ["https://drive.google.com/file/d/123456/view"],
-              }, 
-              {
-              name: "input2", urls: ["https://drive.google.com/file/d/123457/view", "https://drive.google.com/file/d/123458/view"]
-              }
-            ]
-          response:
-            stream:
-              - event: initial_chunk
-                data: 
-                  test: hi
-              - event: data_chunk
-                data: 
-                  test2: hellow
-              - event: final_chunk
-                data: 
-                  test3: how are you
-
     addCollectionToCopilot:
       availability: pre-release
       path: /addCollectionToCopilot
@@ -461,22 +404,3 @@ types:
   DeleteCopilotResponse:
     properties:
       copilotId: uuid
-  
-  InitialChunk:
-    properties:
-      test: string
-  
-  DataChunk:
-    properties:
-      test2: string
-  
-  FinalChunk:
-    properties:
-      test3: string
-
-  StreamingChunk:
-    discriminated: false
-    union:
-      - InitialChunk
-      - DataChunk
-      - FinalChunk
