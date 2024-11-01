@@ -491,28 +491,24 @@ types:
 
   StringFieldSchema:
     properties:
-      fieldType: literal<"string">
       field: string
       operator: common.Operator
       value: string
   
   NumberFieldSchema:
     properties:
-      fieldType: literal<"number">
       field: string
       operator: common.Operator
       value: integer
 
   BooleanFieldSchema:
     properties:
-      fieldType: literal<"boolean">
       field: string
       operator: literal<"==">
       value: boolean
 
   DatetimeFieldSchema:
     properties:
-      fieldType: literal<"datetime">
       field: string
       operator: common.Operator
       value: date
