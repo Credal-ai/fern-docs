@@ -198,6 +198,7 @@ service:
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
 
     streamMessage:
+      availability: pre-release
       docs: |
         This endpoint allows you to send a message to a specific copilot and get the response back as a streamed set of Server-Sent Events.
       path: /streamMessage
