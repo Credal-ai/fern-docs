@@ -233,7 +233,7 @@ service:
         type: StreamingChunk
         format: sse
       examples:
-        - name: Example
+        - name: Example Success
           request:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is Credal SOC 2 compliant?
@@ -284,6 +284,27 @@ service:
                         url: "https://drive.google.com/file/d/123456/view",
                       },
                     ]
+        - name: Example Blocked
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            message: Is this user eligible for benefits based on their date of birth?
+            email: ravin@credal.ai
+            inputVariables: [
+              {
+              name: "input1", urls: ["https://drive.google.com/file/d/123456/view"],
+              }, 
+              {
+              name: "input2", urls: ["https://drive.google.com/file/d/123457/view", "https://drive.google.com/file/d/123458/view"]
+              }
+            ]
+          response:
+            stream:
+              - event: blocked
+                data: 
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  policyTriggers: []
+                  warnings: []
+                  blocks: ["This request contains PII"]
 
     addCollectionToCopilot:
       availability: pre-release
