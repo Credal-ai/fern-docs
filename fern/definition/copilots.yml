@@ -198,6 +198,8 @@ service:
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
 
     streamMessage:
+      docs: |
+        This endpoint allows you to send a message to a specific copilot and get the response back as a streamed set of Server-Sent Events.
       path: /streamMessage
       method: POST
       request:
@@ -226,6 +228,8 @@ service:
               docs: |
                 Optional input variables to be used in the message. Map the name of the variable to a list of urls.
       response-stream:
+        docs: |
+          This endpoint returns a stream of server sent events. These can be in two formats - one is an initial event, followed by multiple data chunks, followed by a final chunk, or the other format is just one blocked event. See the examples for more details.
         type: StreamingChunk
         format: sse
       examples:
@@ -547,6 +551,13 @@ types:
   FinalChunk:
     properties:
       referencedSources: list<ReferencedSource>
+  
+  BlockedChunk:
+    properties:
+      conversationId: uuid
+      warnings: list<string>
+      blocks: list<string>
+      policyTriggers: list<PolicyTrigger>
 
   StreamingChunk:
     discriminated: false
@@ -554,3 +565,4 @@ types:
       - InitialChunk
       - DataChunk
       - FinalChunk
+      - BlockedChunk
