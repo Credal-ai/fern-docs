@@ -41,3 +41,20 @@ types:
     enum:
       - viewer
       - editor
+
+  Operator:
+    enum:
+      - name: LESS_THAN
+        value: "<"
+      - name: GREATER_THAN
+        value: ">"
+      - name: LESS_THAN_OR_EQUAL
+        value: "<="
+      - name: GREATER_THAN_OR_EQUAL
+        value: ">="
+      - name: NOT_EQUAL
+        value: "!="
+      - name: EQUAL
+        value: "=="
+      - name: CONTAINS
+        value: "contains"
