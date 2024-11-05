@@ -272,7 +272,7 @@ service:
                   chunk: Credal is SOC 2 compliant.
               - event: final_chunk
                 data: 
-                  referencedSources:
+                  sources:
                     [
                       {
                         id: "1",
@@ -556,7 +556,7 @@ types:
   DataFilter:
     properties:
       semanticSearchTerms: list<string>
-      webSearchResults: list<string>
+      webSearchTerm: list<string>
       filteredDataSourcesPerCollection: list<CollectionFilteredData>
   
   InitialChunk:
@@ -572,7 +572,7 @@ types:
 
   FinalChunk:
     properties:
-      referencedSources: list<ReferencedSource>
+      sources: list<ReferencedSource>
   
   BlockedChunk:
     properties:
