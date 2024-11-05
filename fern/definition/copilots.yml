@@ -250,7 +250,8 @@ service:
           response:
             stream:
               - event: initial
-                data: 
+                data:
+                  event: initial
                   conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                   webSearchResults: 
                     [
@@ -262,16 +263,20 @@ service:
                     ]
                   warnings: []
               - event: data_chunk
-                data: 
+                data:
+                  event: data_chunk
                   chunk: Based on 
               - event: data_chunk
-                data: 
+                data:
+                  event: data_chunk 
                   chunk: the context provided, 
               - event: data_chunk
-                data: 
+                data:
+                  event: data_chunk 
                   chunk: Credal is SOC 2 compliant.
               - event: final_chunk
-                data: 
+                data:
+                  event: final_chunk 
                   sources:
                     [
                       {
@@ -301,7 +306,8 @@ service:
           response:
             stream:
               - event: blocked
-                data: 
+                data:
+                  event: blocked 
                   conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                   policyTriggers: []
                   warnings: []
@@ -582,9 +588,9 @@ types:
       policyTriggers: list<PolicyTrigger>
 
   StreamingChunk:
-    discriminated: false
+    discriminant: event
     union:
-      - InitialChunk
-      - DataChunk
-      - FinalChunk
-      - BlockedChunk
+      initial: InitialChunk
+      data_chunk: DataChunk
+      final_chunk: FinalChunk
+      blocked: BlockedChunk
