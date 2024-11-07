@@ -1,19 +1,17 @@
 Credal integrates with many different data sources. The table below provides the status of each of the current integrations and what functionality is currently available. 
 These integrations require an admin to enable them - as an admin, they are configurable at https://app.credal.ai/admin/data-sources.
 
-| Data Source                    | Permissions     |
-| ------------------------------ | --------------- |
-| Slack                          | Fully supported |
-| Confluence                     | Fully supported |
-| Google Drive                   | Fully supported |
-| Microsoft SharePoint, OneDrive | Fully supported |
-| Salesforce                     | Fully supported |
-| Zendesk Help Center            | Fully supported |
-| MongoDB                        | N/A             |
-| Box                            | Public Only     |
-| Jira                           | Public Only     |
-| Notion                         | Public Only     |
-| Web Pages                      | Public Only     |
+| Data Source                    | Permissions                                              |
+| ------------------------------ | -------------------------------------------------------- |
+| Slack                          | Fully supported                                          |
+| Confluence                     | Fully supported                                          |
+| Google Drive                   | Fully supported                                          |
+| Microsoft SharePoint, OneDrive | Fully supported                                          |
+| Salesforce                     | Fully supported                                          |
+| Zendesk Help Center            | Fully supported                                          |
+| MongoDB                        | N/A                                                      |
+| Notion                         | Public Within Your Organization (Notion API Limitations) |
+| Web Pages                      | Public Within Your Organization                          |
 
 ## Collection Schemas
 
@@ -28,6 +26,7 @@ For example, if you had a list of customer documents in Google Drive and a set o
 
 We support smart filtering for all of our data sources. This allows you to filter on fields that you may have imported
 (from semi structured data sources like Salesforce and Jira) or metadata you have tagged documents with manually using https://docs.credal.ai/api-reference/document-catalog/metadata, or auto extracted entities above. This allows us to only send relevant information to the LLM.
+For example, you could have a series of call transcripts that you want to upload that you want to tag with whether or not they are Active. Once uploading the data, you can use the API endpoint above to tag the docs with an "active" field, and the search across only the docs where the active field is set to true.
 To use smart filtering, toggle on the Smart Filtering setting on your copilot and make sure you have a schema specified for your document collection. This is preconfigured automatically for the Salesforce and Jira data sources - but please confirm the types of these schemas are what you'd expect.
 
 
