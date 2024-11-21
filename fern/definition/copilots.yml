@@ -133,10 +133,10 @@ service:
             userEmail: ravin@credal.ai
             inputVariables: [
               {
-              name: "input1", ids: ["fc2348005-92db-411a-88eb-321234567890"],
+              name: "input1", ids: [fc2348005-92db-411a-88eb-321234567890],
               }, 
               {
-              name: "input2", ids: ["123458005-92db-411a-88eb-321234567555", "343458005-92db-411a-88eb-321234567556"],
+              name: "input2", ids: [123458005-92db-411a-88eb-321234567555, 343458005-92db-411a-88eb-321234567556],
               }
             ]
           response:
