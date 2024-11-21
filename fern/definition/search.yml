@@ -1,3 +1,5 @@
+imports:
+  common: ./common.yml
 service:
   base-path: /v0/search
   auth: true
@@ -144,24 +146,8 @@ types:
         type: double
         docs: |
           The similarity score between 0 and 1 for the search result. A higher number means the chunk is more relevant to the search query.
-  Operator:
-    enum:
-      - name: LESS_THAN
-        value: "<"
-      - name: GREATER_THAN
-        value: ">"
-      - name: LESS_THAN_OR_EQUAL
-        value: "<="
-      - name: GREATER_THAN_OR_EQUAL
-        value: ">="
-      - name: NOT_EQUAL
-        value: "!="
-      - name: EQUAL
-        value: "=="
-      - name: CONTAINS
-        value: "contains"
   SingleFieldFilter:
     properties:
       field: string
-      operator: Operator
+      operator: common.Operator
       value: string
