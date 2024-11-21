@@ -325,7 +325,7 @@ types:
   InputVariable:
     properties:
       name: string
-      urls: list<string>
+      urls: list<uuid>
 
   MessageReply:
     properties:
