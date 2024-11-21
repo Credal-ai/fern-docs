@@ -63,6 +63,20 @@ service:
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    syncSourceByUrl:
+      path: /syncSourceByUrl
+      docs: Sync a document from a source URL, permissions applied. Does not support recursive web search.
+      method: POST
+      request: SyncSourceByUrlRequest
+      response: SyncSourceByUrlResponse
+      examples:
+        - name: Example0
+          request:
+            sourceUrl: "https://drive.google.com/file/d/123456/view"
+            uploadAsUserEmail: "ria@credal.ai"
+          response:
+            body:
+              sourceId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
     metadata:
       path: /metadata
       docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
@@ -105,3 +119,10 @@ types:
     properties:
       sources: list<DocumentMetadataPatch>
       uploadAsUserEmail: string
+  SyncSourceByUrlRequest:
+    properties:
+      uploadAsUserEmail: string
+      sourceUrl: string
+  SyncSourceByUrlResponse:
+    properties:
+      sourceId: uuid
