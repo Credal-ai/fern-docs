@@ -65,6 +65,7 @@ service:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
     syncSourceByUrl:
       path: /syncSourceByUrl
+      availability: in-development
       docs: Sync a document from a source URL, permissions applied. Does not support recursive web search.
       method: POST
       request: SyncSourceByUrlRequest
