@@ -441,7 +441,7 @@ types:
   InputVariable:
     properties:
       name: string
-      urls: list<uuid>
+      ids: list<uuid>
 
   MessageReply:
     properties:
