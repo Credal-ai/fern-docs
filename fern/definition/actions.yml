@@ -3,6 +3,7 @@ imports:
 service:
   base-path: /v0/actions
   auth: true
+  availability: pre-release
   endpoints:
     invokeAction:
       path: /invokeAction
