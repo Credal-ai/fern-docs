@@ -1,0 +1,53 @@
+imports:
+  common: ./common.yml
+service:
+  base-path: /v0/actions
+  auth: true
+  endpoints:
+    invokeAction:
+      path: /invokeAction
+      docs: Invoke an action, asking for human confirmation if necessary
+      method: POST
+      request:
+        name: InvokeActionRequest
+        body:
+          properties:
+            actionId:
+              type: uuid
+            userEmail:
+              type: string
+              docs: |
+                The user who we should take the action on behalf of
+            requireHumanConfirmation:
+              type: optional<boolean>
+              docs: |
+                If true, then before executing the action we will ask for a human confirmation in Slack.  If false, we may still ask for human confirmation if it's required by your organization admin.
+            humanConfirmationChannel:
+              type: HumanConfirmationChannel
+              docs: |
+                Where we should ask for human confirmation if necessary
+      response: InvokeActionResponse
+types:
+  HumanConfirmationChannel:
+    union:
+      directMessage: DirectMessage
+      slackThread: SlackThread
+  DirectMessage:
+    properties:
+      channelId: string
+  SlackThread:
+    properties:
+      channelId: string
+      threadTimestamp: integer
+  InvokeActionResponse:
+    properties:
+      actionInvocationId: uuid
+      actionInvocationStatus: ActionStatus
+  ActionStatus:
+    enum:
+      - PENDING_APPROVAL
+      - IN_PROGRESS
+      - APPROVED_SUCCEEDED
+      - APPROVED_FAILED
+      - NO_APPROVAL_NEEDED_SUCCEEDED
+      - NO_APPROVAL_NEEDED_FAILED
