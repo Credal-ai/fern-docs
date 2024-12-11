@@ -54,6 +54,10 @@ service:
               threadTimestamp: "123456789"
             justification: The user directly asked to update the Relocations Confluence document with this text.
             auditLogId: 3df3f2b8-3df3-11ef-9a96-332d447011ef
+          response:
+            body:
+              actionInvocationId: adf3f2b8-3df3-11ef-9a96-332d447011e2
+              actionInvocationStatus: PENDING_APPROVAL
 types:
   HumanConfirmationChannel:
     union:
