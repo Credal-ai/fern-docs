@@ -15,6 +15,10 @@ service:
           properties:
             actionId:
               type: uuid
+            actionInputs:
+              type: unknown
+              docs: |
+                The inputs needed to execute the action
             userEmail:
               type: string
               docs: |
@@ -36,6 +40,20 @@ service:
               docs: |
                 Audit log for the message that called for this action
       response: InvokeActionResponse
+      examples:
+        - name: invokeActionExample
+          request:
+            actionId: 2b5cf2b8-3df3-11ef-9a96-332d4470d189
+            actionInputs:
+              textToAppend: If you need more help, please contact your direct manager.
+            userEmail: ben@credal.ai
+            requireHumanConfirmation: true
+            humanConfirmationChannel:
+              type: slackThread
+              channelId: "ABC123"
+              threadTimestamp: "123456789"
+            justification: The user directly asked to update the Relocations Confluence document with this text.
+            auditLogId: 3df3f2b8-3df3-11ef-9a96-332d447011ef
 types:
   HumanConfirmationChannel:
     union:
