@@ -48,7 +48,7 @@ types:
   SlackThread:
     properties:
       channelId: string
-      threadTimestamp: integer
+      threadTimestamp: string
   Conversation:
     properties:
       conversationId: uuid
