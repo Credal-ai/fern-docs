@@ -81,7 +81,7 @@ service:
                   mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
                 - documentId: 90998ceb-1c10-4d2a-96cb-acf89fa3005e
                   documentName: "XYZ Corp - Follow-up transcript"
-                  documentUrl: "https://credalai-my.sharepoint.com/:w:/g/personal/jackfischer_credalai_onmicrosoft_com/ESb7bpzm2FdGqPTlXsQW2P4BpBhsrZuKS_PgJlaoJffo9A?e=Ecv5j1"
+                  documentUrl: "https://credalai-my.sharepoint.com/:w:/g/credalai_onmicrosoft_com/ESb7bpzm2FdGqPTlXsQW2P4BpBhsrZuKS_PgJlaoJffo9A?e=Ecv5j1"
                   documentExternalId: "ESb7bpzm2FdGqPTlXsQW2P4BpBhsrZuKS_PgJlaoJffo9A"
                   documentMetadata:
                     customerName: "XYZ Corp"
