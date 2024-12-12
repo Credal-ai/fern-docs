@@ -131,14 +131,18 @@ service:
             agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is Credal SOC 2 compliant?
             userEmail: ravin@credal.ai
-            inputVariables: [
-              {
-              name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24],
-              }, 
-              {
-              name: "input2", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c25, 82e4b12a-6990-45d4-8ebd-85c00e030c26],
-              }
-            ]
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
           response:
             body:
               sendChatResult:
@@ -187,7 +191,7 @@ service:
                       url: "https://drive.google.com/file/d/123457/view",
                     },
                   ]
-                webSearchResults: 
+                webSearchResults:
                   [
                     {
                       title: "SOC 2 Compliance",
@@ -239,21 +243,25 @@ service:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is Credal SOC 2 compliant?
             email: ravin@credal.ai
-            inputVariables: [
-              {
-              name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24],
-              }, 
-              {
-              name: "input2", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c25, 82e4b12a-6990-45d4-8ebd-85c00e030c26],
-              }
-            ]
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
           response:
             stream:
               - event: initial
                 data:
                   event: initial
                   conversationId: fc938005-92db-411a-88eb-32ca50d5f744
-                  webSearchResults: 
+                  webSearchResults:
                     [
                       {
                         title: "SOC 2 Compliance",
@@ -265,18 +273,18 @@ service:
               - event: data_chunk
                 data:
                   event: data_chunk
-                  chunk: Based on 
+                  chunk: Based on
               - event: data_chunk
                 data:
-                  event: data_chunk 
-                  chunk: the context provided, 
+                  event: data_chunk
+                  chunk: the context provided,
               - event: data_chunk
                 data:
-                  event: data_chunk 
+                  event: data_chunk
                   chunk: Credal is SOC 2 compliant.
               - event: final_chunk
                 data:
-                  event: final_chunk 
+                  event: final_chunk
                   sources:
                     [
                       {
@@ -295,19 +303,23 @@ service:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             message: Is this user eligible for benefits based on their date of birth?
             email: ravin@credal.ai
-            inputVariables: [
-              {
-              name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c26],
-              }, 
-              {
-              name: "input2", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c25, 82e4b12a-6990-45d4-8ebd-85c00e030c24],
-              }
-            ]
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c26] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c24,
+                    ],
+                },
+              ]
           response:
             stream:
               - event: blocked
                 data:
-                  event: blocked 
+                  event: blocked
                   conversationId: fc938005-92db-411a-88eb-32ca50d5f744
                   policyTriggers: []
                   warnings: []
@@ -437,7 +449,7 @@ types:
         docs: |
           Returned when Credal detects possible
           infosec violations and blocks the message.
-  
+
   InputVariable:
     properties:
       name: string
@@ -526,7 +538,7 @@ types:
       field: string
       operator: common.Operator
       value: string
-  
+
   NumberFieldSchema:
     properties:
       field: string
@@ -564,14 +576,14 @@ types:
       semanticSearchTerms: list<string>
       webSearchTerm: list<string>
       filteredDataSourcesPerCollection: list<CollectionFilteredData>
-  
+
   InitialChunk:
     properties:
       conversationId: string
       warnings: list<string>
       webSearchResults: list<WebSearchResult>
       dataFilters: optional<DataFilter>
-  
+
   DataChunk:
     properties:
       chunk: string
@@ -579,7 +591,7 @@ types:
   FinalChunk:
     properties:
       sources: list<ReferencedSource>
-  
+
   BlockedChunk:
     properties:
       conversationId: uuid
