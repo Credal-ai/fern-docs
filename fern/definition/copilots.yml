@@ -347,8 +347,6 @@ service:
           request:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
-          # response:
-          #   body:
 
     removeCollectionFromCopilot:
       availability: pre-release
@@ -372,8 +370,6 @@ service:
           request:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
-          # response:
-          #   body:
 
     updateConfiguration:
       availability: pre-release
@@ -401,8 +397,6 @@ service:
               aiEndpointConfiguration:
                 baseUrl: https://api.openai.com/v1/
                 apiKey: <YOUR_API_KEY_HERE>
-          # response:
-          #   body:
 
     deleteCopilot:
       availability: pre-release
