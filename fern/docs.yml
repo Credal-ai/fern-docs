@@ -30,11 +30,13 @@ navigation:
       python: "credal"
       typescript: "@credal/sdk"
 
+default-language: python
+
 navbar-links:
-  - type: secondary
+  - type: minimal
     text: Contact us
     url: mailto:support@credal.ai
-  - type: primary
+  - type: filled
     text: Start using Credal
     url: https://app.credal.ai/signin
 
