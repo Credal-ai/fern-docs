@@ -1,14 +1,14 @@
-# Credal Documentation
-Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.buildwithfern.com](https://credal.docs.buildwithfern.com).
-![Preview](./preview.png)
+# Credal Fern Configuration
+Credal uses Fern for API documentation and SDK generation. Check out the docs at [https://docs.credal.ai](https://docs.credal.ai).
 
-## What is contained in this repo ?
+## Repo contents
 This reposistory contains:
 
 - Credal's [API Definition](./fern/definition)
+- SDK [generators configured](./fern/generators.yml)
 - MDX [Pages](./fern/docs/pages/)
 
-## How to update the documentation ?
+## How to update the documentation
 
 To update the documentation make a PR to this
 repository. On pull-request we run `fern check`
