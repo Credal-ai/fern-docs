@@ -1,22 +1,31 @@
-name: ci
+name: preview-docs
 
 on:
-  pull_request:
-    branches:
-      - main
+  pull_request
 
 jobs:
-  preview-docs:
-    runs-on: ubuntu-latest
+    run:
+        runs-on: ubuntu-latest
+        permissions: write-all
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+            - name: Install Fern
+              run: npm install -g fern-api
 
-      - name: Install Fern
-        run: npm install -g fern-api
+            - name: Generate preview URL
+              id: generate-docs
+              env:
+                  FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+              run: |
+                  OUTPUT=$(fern generate --docs --preview 2>&1) || true
+                  echo "$OUTPUT"
+                  URL=$(echo "$OUTPUT" | grep -oP 'Published docs to \K.*(?= \()')
+                  echo "Preview URL: $URL"
+                  echo "🌿 Preview your docs: $URL" > preview_url.txt
 
-      - name: Generate Documentation Preview with Fern
-        env:
-          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --docs --preview
+            - name: Comment URL in PR
+              uses: thollander/actions-comment-pull-request@v2.4.3
+              with:
+                  filePath: preview_url.txt
