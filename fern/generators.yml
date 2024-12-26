@@ -1,58 +1,35 @@
-instances:
-  - url: credal.docs.buildwithfern.com
-    custom-domain: docs.credal.ai
-    edit-this-page: 
-      github:
-        owner: Credal-ai
-        repo: fern-docs
-        branch: main
-
-title: Credal | Documentation
-
-navigation:
-  - section: Getting Started
-    contents:
-      - page: Overview
-        path: ./docs/pages/guides/overview.mdx
-      - section: Copilots
-        contents:
-          - page: Quick Start
-            path: ./docs/pages/guides/copilots/quick-start.mdx
-          - page: In-Depth Guide
-            path: ./docs/pages/guides/copilots/in-depth-guide.mdx
-      - page: Bulk Analysis
-        path: ./docs/pages/guides/bulk-analysis.mdx
-      - page: Permissions Service
-        path: ./docs/pages/guides/permissions-service.mdx
-      - page: OAuth
-        path: ./docs/pages/guides/oauth.mdx
-      - page: Prompting
-        path: ./docs/pages/guides/prompting.mdx
-      - page: Data Sources
-        path: ./docs/pages/guides/data-sources.mdx
-  - api: API Reference
-    snippets:
-      python: "credal"
-      typescript: "@credal/sdk"
-
-default-language: python
-
-navbar-links:
-  - type: minimal
-    text: Contact us
-    url: mailto:support@credal.ai
-  - type: filled
-    text: Start using Credal
-    url: https://app.credal.ai/signin
-
-colors:
-  accentPrimary:
-    light: "#5849EC"
-
-favicon: docs/assets/favicon.png
-
-logo:
-  href: https://credal.ai/
-  light: docs/assets/credal-dark-logo.svg
-  dark: docs/assets/credal-light-logo.svg
-  height: 30
+default-group: python-local
+groups:
+  typescript-sdk:
+    generators:
+      - name: fernapi/fern-typescript-node-sdk
+        version: 0.41.1
+        output:
+          location: npm
+          package-name: "@credal/sdk"
+          token: ${NPM_TOKEN}
+        github:
+          repository: credal-ai/credal-typescript-sdk
+          mode: pull-request
+        config:
+          namespaceExport: Credal
+          includeApiReference: true
+          allowCustomFetcher: true
+  python-sdk:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 4.3.10
+        output:
+          location: pypi
+          package-name: "credal"
+          token: ${PYPI_TOKEN}
+        github:
+          repository: credal-ai/credal-python-sdk
+          mode: pull-request
+  python-local:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 2.16.0
+        output:
+          location: local-file-system
+          path: ../generated/python
