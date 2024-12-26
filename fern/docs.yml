@@ -1,6 +1,11 @@
 instances:
   - url: credal.docs.buildwithfern.com
     custom-domain: docs.credal.ai
+    edit-this-page: 
+      github:
+        owner: Credal-ai
+        repo: fern-docs
+        branch: main
 
 title: Credal | Documentation
 
