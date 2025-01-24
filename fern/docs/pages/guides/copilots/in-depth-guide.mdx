@@ -24,7 +24,6 @@ To get started:
 
 1. Give your copilot a name and add a description of its function in the pop-out form. You can always come back and edit these later.
 
-   _Descriptions should be detailed enough to describe what kind of queries the copilot is responsible for. See below on [deployment](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21)._
 
 ![copilot_description](/docs/assets/copilots/copilot_description.png)
 
@@ -52,7 +51,7 @@ GPT-4o is a good starting point for most use cases, as it’s very capable and r
 
 1. **Creativity**
 
-You can set the level of creativity you want your copilot to have by making a selection from the panel below. For most use cases, you’ll want “precise” or “balanced”. More creativity means the copilot will try more unusual responses, while more precision means the copilot will rely more on the [context](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) and [data](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) you provide. The creativity setting is a bit like having an “eccentric genius” on the team: a lot of what is says may be off, but it’ll occasionally produce something really unique and interesting: most useful for marketing, brainstorming, or creative writing use cases.
+You can set the level of creativity you want your copilot to have by making a selection from the panel below. For most use cases, you’ll want “precise” or “balanced”. More creativity means the copilot will try more unusual responses, while more precision means the copilot will rely more on the context and data you provide. The creativity setting is a bit like having an “eccentric genius” on the team: a lot of what is says may be off, but it’ll occasionally produce something really unique and interesting: most useful for marketing, brainstorming, or creative writing use cases.
 
 ![creativity.png](/docs/assets/copilots/creativity.png)
 
@@ -130,7 +129,7 @@ The data you provide will be the source of truth for your copilot. Your copilot 
 
 1. **Pinned Data**
 
-By pinning data sources, you can instruct your copilot to refer to certain sources when answering _every_ user query. You should use this for documents that will relate to most queries you expect your copilot to address. If you have a document that you almost always want to copilot to refer to, put it here. This could include answers to FAQs or a sales playbook. As pinned sources will be read in their entirety every time a user asks a question, they should only be used for a limited amount of high quality data to avoid [overwhelming the AI](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) with too much data on every question.
+By pinning data sources, you can instruct your copilot to refer to certain sources when answering _every_ user query. You should use this for documents that will relate to most queries you expect your copilot to address. If you have a document that you almost always want to copilot to refer to, put it here. This could include answers to FAQs or a sales playbook. As pinned sources will be read in their entirety every time a user asks a question, they should only be used for a limited amount of high quality data to avoid overwhelming the AI with too much data on every question.
 
 To use this feature, use the toggle to turn on pinned sources and search for sources to pin in the search bar below.
 
@@ -257,7 +256,7 @@ You can choose to have your copilot answer all messages in a given channel or on
 ![slack_advanced_filter_settings.png](/docs/assets/copilots/slack_advanced_filter_settings.png)
 
 - **All messages**: will answer all queries in the connected Slack channel.
-- **All relevant messages**: will respond to all queries matching the [description](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) of the copilot.
+- **All relevant messages**: will respond to all queries matching the description of the copilot.
 - **All messages matching filter**: will respond to messages that match the filter criteria. In the example on the left, the copilot will only respond to prompts containing “?”.
 
 If more than one copilot is deployed to a given Slack channel, Credal will triage user requests based on the description of each copilot to determine which, if any, should answer the question.
@@ -294,7 +293,7 @@ Contact your Credal team for help with setup.
 
 ## 5. **Querying Your Copilot**
 
-You can ask your copilot questions through Credal or via third party applications you have [deployed](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) it to.
+You can ask your copilot questions through Credal or via third party applications you have deployed it to.
 
 ### a. **Hosting Copilots through Credal's UI**
 
@@ -308,7 +307,7 @@ Then simply type your questions in the search bar. Your copilot will return an a
 
 ### b. Using Copilots within **third party apps** by API
 
-If you have [deployed your copilot to a third-party application](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21), your queries will be directed to your copilot through your unique copilot API.
+If you have deployed your copilot to a third-party application, your queries will be directed to your copilot through your unique copilot API.
 
 In Slack, simply enter a query into a Slack channel the copilot is connected to to get a response. The copilot will respond with a 🧠, indicating it is thinking of an answer, before sending a response in a reply.
 
@@ -316,17 +315,17 @@ How and when your copilot responds will depend on what queries you have asked it
 
 ### **Example 1: Respond to all messages**
 
-If you have set your copilot to [respond to “all messages,”](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal’s Information Security Copilot to respond to all messages:
+If you have set your copilot to respond to “all messages", it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal’s Information Security Copilot to respond to all messages:
 
 ![slack_all_messages_query_example.png](/docs/assets/copilots/slack_all_messages_query_example.png)
 
 ![slack_out_of_scope_response.png](/docs/assets/copilots/slack_out_of_scope_response.png)
 
-> _Because this copilot is set to be [precise](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21), when asked a question outside its expertise it responds that it does not have the context to answer. If this copilot was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
+> _Because this copilot is set to be precise, when asked a question outside its expertise it responds that it does not have the context to answer. If this copilot was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
 
 ### **Example 2: Respond to relevant messages**
 
-If you have set your specialist to [respond to only a selection of messages](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21), such as all relevant messages, or those matching a filter, the specialist will only respond to queries that match that criteria.
+If you have set your specialist to respond to only a selection of messages, such as all relevant messages, or those matching a filter, the specialist will only respond to queries that match that criteria.
 
 Here, we set Credal’s Information Security Copilot to only respond to relevant messages:
 
@@ -378,7 +377,7 @@ If you get an error message that the AI is currently unreachable, there may be a
 
 1. **Too much context data**: This error can also appear if too much context data is being pulled into each prompt through a combination of pinned data, context, Q&A, and searchable sources. This happens because the data the copilot reviews each time is running up against the AI’s length limits. Reducing the amount of data that the AI reviews every time can resolve the issue.
    1. Sometimes having too many pinned sources, or pinned sources that are too large, can alone cause this issue as those sources will be read by the AI in their entirety each time a user asks a question. Try moving your pinned sources to searchable sources to resolve the issue.
-   2. If that does not work, try reducing the volume of other context being considered in each prompt. Start by [reducing the number of chunks](https://www.notion.so/AI-Copilots-User-Guide-IFRS-1-a66d7c4f581f471299fc7eeb9afbecaa?pvs=21) returned when your copilot searches for relevant data. If you are still seeing problems, contact Credal support for assistance.
+   2. If that does not work, try reducing the volume of other context being considered in each prompt. Start by reducing the number of chunks returned when your copilot searches for relevant data. If you are still seeing problems, contact Credal support for assistance.
 2. **System outage**: This error can also appear if the AI system is experiencing an outage. For example, if OpenAI is experiencing an outage or degraded performance, it may fail to respond adequately or at all to queries. Credal monitors for outages and strives to reroute user traffic from GPT to Azure where OpenAI is failing to respond. Alternatively, swapping out the foundation model to use a different provider, e.g. using Claude instead of ChatGPT, should resolve the issue.
 
 ## 9. Contact Support
