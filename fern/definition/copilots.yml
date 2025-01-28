@@ -95,6 +95,7 @@ service:
             messageFeedback:
               feedback: NEGATIVE
               suggestedAnswer: "Yes, Credal is SOC 2 compliant."
+              descriptiveFeedback: "The response should be extremely clear and concise."
 
     sendMessage:
       path: /sendMessage
@@ -506,6 +507,7 @@ types:
     properties:
       feedback: FeedbackEnum
       suggestedAnswer: optional<string>
+      descriptiveFeedback: optional<string>
 
   Configuration:
     properties:
