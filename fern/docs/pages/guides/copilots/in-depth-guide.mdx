@@ -47,7 +47,7 @@ More advanced models, like o1, are both more expensive and more capable than ear
 
 ![model_selection.png](/docs/assets/copilots/model_selection.png)
 
-GPT-4o is a good starting point for most use cases, as it’s very capable and relatively affordable. If you are unsure of the best choice, running some test queries is a good way to gauge a model’s performance for your use case.
+GPT-4o (the default) is a good starting point for most use cases, as it’s very capable and relatively affordable. If you are unsure of the best choice, running some test queries is a good way to gauge a model’s performance for your use case. Gemini has a larger context window and can be helpful to handle longer inputs and detailed queries.
 
 1. **Creativity**
 
@@ -57,7 +57,7 @@ You can set the level of creativity you want your copilot to have by making a se
 
 ### c. **Prompt**
 
-Here you can provide a background prompt, which will provide the copilot with context and instructions on how to handle user queries. By default, Credal instructs copilots to be helpful, honest, and to the point and to let users know when it is unsure of the answer.
+Here you can provide a background prompt, which will provide the copilot with context and instructions on how to handle user queries. By default, Credal instructs copilots to be helpful, honest, and to the point and to let users know when it is unsure of the answer. Check out our [Prompting guide] (https://docs.credal.ai/getting-started/prompting) for more details. 
 
 ![background_prompt.png](/docs/assets/copilots/background_prompt.png)
 
@@ -137,9 +137,11 @@ To use this feature, use the toggle to turn on pinned sources and search for sou
 
 Here, we pinned our infosec FAQs when setting up Credal’s Infosec copilot.
 
+**Pinned Data example use case**: When generating content such as a case study or a newsletter, pinned data can be precedent work that is used as reference for formatting, comprehensiveness, tone, and specificity. 
+
 1. **Searchable Sources**
 
-You should also provide your copilot with sufficient data relevant to its area of expertise. It will search these sources for information relevant to user queries. Use the toggle to enable searchable sources and use the search bar to add sources.
+You should also provide your copilot with sufficient data relevant to its area of expertise. Searchable Sources is typically a larger set of data, such as numerous help desk articles and a collection of websites, that may not in its entirety be relevant to the particular query. Perhaps only some articles, and further, only a subset of these articles would be helpful. The copilot will search these sources for information relevant to user queries. Use the toggle to enable searchable sources and use the search bar to add sources.
 
 ![We provided our infosec copilot with all of Credal’s information security documentation. ](/docs/assets/copilots/infosec_copilot_searchable_data_example.png)
 
@@ -203,13 +205,18 @@ Copilots have the ability to use predefined tools. Many of the tools are in Beta
 
 The LLM may not always get the filters right on the first try. You can always edit the filters by clicking on them, and then regenerate the message.
 
-**iii. Web Search**
+iii. **Deep Thinking Mode**
+
+   1. Deep Thinking allows the copilot to have a more comprehensive search about key topics across your data and then combines the results, ouputting a higher quality synthesis.
+   2. Deep Think Mode is best used when you want to synthesize insights from several documents, e.g., summarizing a topic or list all occurrences of a given keyword. Semantic Search is best used for locating specific information about a topic.
+
+iv. **Web Search**
 
 1. Web Search lets your copilot search the web for relevant sources, then use those sources to generate an answer.
 2. Behind the scenes, the copilot will use Bing to search the web based on the user’s question, then use up to five results.
 3. Web Search can lead to higher latency due to the time it takes to search the web and crawl results.
 
-**iv. Jira Ticket Creation**
+v. **Jira Ticket Creation**
 
 1. Currently in private preview. Contact [support@credal.ai](mailto:support@credal.ai) for access.
 
