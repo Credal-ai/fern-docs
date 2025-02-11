@@ -6,7 +6,7 @@ service:
   endpoints:
     addDocumentsToCollection:
       path: /addDocumentsToCollection
-      docs: Add documents to a document collection. Note that the documents must already exist in the document catalog to use this endpoint. If you want to upload a new document to a collection, use the uploadDocumentContents endpoint. 
+      docs: Add documents to a document collection. Note that the documents must already exist in the document catalog to use this endpoint. If you want to upload a new document to a collection, use the `uploadDocumentContents` endpoint.
       method: POST
       request:
         name: AddDocumentsToCollectionRequest
@@ -18,15 +18,189 @@ service:
             resourceIdentifiers:
               type: list<common.ResourceIdentifier>
               docs: |
-                The set of resource identifier for which you want to check authorization. Currently limited to 20 resources.
+                The set of resource identifier for which you want to add to the collection.
       examples:
         - name: addDocumentsToCollectionExample
           request:
             collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             resourceIdentifiers:
+              # TODO add example of credal ID
               - type: external-resource-id
                 externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
                 resourceType: GOOGLE_DRIVE_ITEM
               - type: external-resource-id
                 externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
                 resourceType: GOOGLE_DRIVE_ITEM
+
+    removeDocumentsFromCollection:
+      availability: pre-release
+      path: /removeDocumentsFromCollection
+      docs: Remove documents from a collection
+      method: DELETE
+      request:
+        name: RemoveDocumentsFromCollectionRequest
+        body:
+          properties:
+            collectionId:
+              type: uuid
+              docs: The ID of the document collection you want to add to.
+            resourceIdentifiers:
+              type: list<common.ResourceIdentifier>
+              docs: |
+                The set of resource identifier for which you want to remove from the collection
+      examples:
+        - name: removeDocumentsFromCollectionExample
+          request:
+            collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            resourceIdentifiers:
+              # TODO add example of credal ID
+              - type: external-resource-id
+                externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                resourceType: GOOGLE_DRIVE_ITEM
+              - type: external-resource-id
+                externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
+                resourceType: GOOGLE_DRIVE_ITEM
+
+    createCollection:
+      availability: pre-release
+      path: /createCollection
+      method: POST
+      docs: Create a new copilot. The API key used will be added to the copilot for future Requests
+      request:
+        name: CreateCollectionRequest
+        body:
+          properties:
+            name:
+              type: string
+              docs: |
+                A descriptive name for the collection.
+            description:
+              type: string
+              docs: |
+                An in depth name for the copilot's function. Useful for routing requests to the right copilot.
+            collaborators:
+              type: list<common.Collaborator>
+              docs: |
+                A list of collaborator emails and roles that will have access to the copilot.
+      response: CreateCollectionResponse
+      examples:
+        - name: Example0
+          request:
+            name: Customer Collection
+            description: This collection is used to answer customer requests based on internal documentation.
+            collaborators:
+              - email: test@gmail.com
+                role: editor
+          response:
+            body:
+              collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
+    deleteCollection:
+      availability: pre-release
+      path: /deleteCollection
+      method: DELETE
+      docs: Delete the collection.
+      request:
+        name: DeleteCollectionRequest
+        body:
+          properties:
+            collectionId: uuid
+      response: DeleteCollectionResponse
+      examples:
+        - name: Example0
+          request:
+            collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+          response:
+            body:
+              collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
+    createMongoCollectionSync:
+      availability: pre-release
+      path: /mongodb/createMongoSync
+      method: POST
+      docs: Credal lets you easily sync your MongoDB data for use in Collections and Copilots. Create a new sync from a MongoDB collection to a Credal collection.
+      request:
+        name: CreateMongoCollectionSyncRequest
+        body:
+          properties:
+            collectionId: uuid
+            mongoURI: string
+            config: MongoCollectionSyncConfig
+      response: MongoCollectionSyncResponse
+      examples:
+        - name: Example0
+          request:
+            mongoURI: "mongodb+srv://cluster0.hzwklqn.mongodb.net/Cluster0?retryWrites=true&w=majority"
+            collectionId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+            config:
+              syncName: "My sales transcripts"
+              collectionName: "myCollection"
+              filterExpression: { status: { $ne: "disabled" } }
+              sourceFields:
+                body: "body"
+                sourceName: "meetingName"
+                sourceSystemUpdated: "transcriptDatetime"
+                sourceUrl: "link"
+          response:
+            body:
+              mongoCredentialId: "5988ed76-6ee1-11ef-97dd-1fca54b7c4bc"
+              resourceId: "mongo-collection-credal-sync-bfd82450-6c68-11ef-bb2b-f7176fe2f3c4"
+              syncLaunched: true
+    updateMongoCollectionSync:
+      availability: pre-release
+      path: /mongodb/updateMongoSync
+      method: POST
+      docs: Credal lets you easily sync your MongoDB data for use in Collections and Copilots. Update an existing sync from a MongoDB collection to a Credal collection via the `mongoCredentialId`, to disambiguate between multiple potential syncs to a given collection.
+      request:
+        name: UpdateMongoCollectionSyncRequest
+        body:
+          properties:
+            mongoCredentialId: uuid
+            mongoURI: string
+            config: MongoCollectionSyncConfig
+      response: MongoCollectionSyncResponse
+      examples:
+        - name: Example0
+          request:
+            mongoURI: "mongodb+srv://cluster0.hzwklqn.mongodb.net/Cluster0?retryWrites=true&w=majority"
+            mongoCredentialId: "5988ed76-6ee1-11ef-97dd-1fca54b7c4bc"
+            config:
+              syncName: "My recent summarized sales transcripts"
+              collectionName: "myCollection"
+              filterExpression:
+                { transcriptDatetime: { $gt: "2023-01-01T00:00:00.000Z" } }
+              sourceFields:
+                body: "transcriptSummary"
+                sourceName: "meetingName"
+                sourceSystemUpdated: "transcriptDatetime"
+                sourceUrl: "link"
+          response:
+            body:
+              mongoCredentialId: "5988ed76-6ee1-11ef-97dd-1fca54b7c4bc"
+              resourceId: "mongo-collection-credal-sync-bfd82450-6c68-11ef-bb2b-f7176fe2f3c4"
+              syncLaunched: true
+
+types:
+  CreateCollectionResponse:
+    properties:
+      collectionId: uuid
+  DeleteCollectionResponse:
+    properties:
+      collectionId: uuid
+  MongoSourceFieldsConfig:
+    properties:
+      body: string
+      sourceName: string
+      sourceSystemUpdated: optional<string>
+      sourceUrl: optional<string>
+  MongoCollectionSyncConfig:
+    properties:
+      syncName: string
+      collectionName: string
+      filterExpression: unknown
+      sourceFields: MongoSourceFieldsConfig
+  MongoCollectionSyncResponse:
+    properties:
+      mongoCredentialId: uuid
+      resourceId: string
+      syncLaunched: boolean
