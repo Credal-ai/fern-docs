@@ -169,6 +169,15 @@ service:
                       url: "https://drive.google.com/file/d/123456/view",
                     },
                   ]
+                citations:
+                  [
+                    {
+                      maybeDeepLink: "https://www.credal.ai/security",
+                      citation: ["Credal is SOC 2 compliant."],
+                      startIndex: 0,
+                      endIndex: 21,
+                    },
+                  ]
                 sourcesInDataContext:
                   [
                     {
@@ -297,6 +306,15 @@ service:
                           },
                         name: "Example Document",
                         url: "https://drive.google.com/file/d/123456/view",
+                      },
+                    ]
+                  citations:
+                    [
+                      {
+                        maybeDeepLink: "https://www.credal.ai/security",
+                        citation: ["Credal is SOC 2 compliant."],
+                        startIndex: 0,
+                        endIndex: 21,
                       },
                     ]
         - name: Example Blocked
@@ -458,6 +476,7 @@ types:
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
+      citations: list<ResponseCitation>
       sourcesInDataContext: list<ReferencedSource>
       webSearchResults: list<WebSearchResult>
       messageId: uuid
@@ -468,6 +487,13 @@ types:
       externalResourceId: common.ExternalResourceId
       name: string
       url: optional<string>
+  
+  ResponseCitation:
+    properties:
+      maybeDeepLink: optional<string>
+      citation: list<string>
+      startIndex: optional<integer>
+      endIndex: optional<integer>
 
   WebSearchResult:
     properties:
