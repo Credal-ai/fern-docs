@@ -283,6 +283,9 @@ service:
                 data:
                   event: data_chunk
                   chunk: Credal is SOC 2 compliant.
+              - event: end_of_message
+                data:
+                  event: end_of_message
               - event: final_chunk
                 data:
                   event: final_chunk
@@ -587,6 +590,9 @@ types:
   FinalChunk:
     properties:
       sources: list<ReferencedSource>
+  
+  EndOfMessageChunk:
+    properties: {}
 
   BlockedChunk:
     properties:
@@ -600,5 +606,6 @@ types:
     union:
       initial: InitialChunk
       data_chunk: DataChunk
+      end_of_message: EndOfMessageChunk
       final_chunk: FinalChunk
       blocked: BlockedChunk
