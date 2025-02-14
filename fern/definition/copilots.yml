@@ -169,6 +169,15 @@ service:
                       url: "https://drive.google.com/file/d/123456/view",
                     },
                   ]
+                citations:
+                  [
+                    {
+                      maybeDeepLink: "https://www.credal.ai/security",
+                      citation: ["Credal is SOC 2 compliant."],
+                      startIndex: 0,
+                      endIndex: 21,
+                    },
+                  ]
                 sourcesInDataContext:
                   [
                     {
@@ -283,6 +292,9 @@ service:
                 data:
                   event: data_chunk
                   chunk: Credal is SOC 2 compliant.
+              - event: end_of_message
+                data:
+                  event: end_of_message
               - event: final_chunk
                 data:
                   event: final_chunk
@@ -297,6 +309,15 @@ service:
                           },
                         name: "Example Document",
                         url: "https://drive.google.com/file/d/123456/view",
+                      },
+                    ]
+                  citations:
+                    [
+                      {
+                        maybeDeepLink: "https://www.credal.ai/security",
+                        citation: ["Credal is SOC 2 compliant."],
+                        startIndex: 0,
+                        endIndex: 21,
                       },
                     ]
         - name: Example Blocked
@@ -458,6 +479,7 @@ types:
       warnings: list<string>
       inserted_audit_log: InsertedAuditLog
       referencedSources: list<ReferencedSource>
+      citations: list<ResponseCitation>
       sourcesInDataContext: list<ReferencedSource>
       webSearchResults: list<WebSearchResult>
       messageId: uuid
@@ -468,6 +490,13 @@ types:
       externalResourceId: common.ExternalResourceId
       name: string
       url: optional<string>
+  
+  ResponseCitation:
+    properties:
+      maybeDeepLink: optional<string>
+      citation: list<string>
+      startIndex: optional<integer>
+      endIndex: optional<integer>
 
   WebSearchResult:
     properties:
@@ -587,6 +616,9 @@ types:
   FinalChunk:
     properties:
       sources: list<ReferencedSource>
+  
+  EndOfMessageChunk:
+    properties:
 
   BlockedChunk:
     properties:
@@ -600,5 +632,6 @@ types:
     union:
       initial: InitialChunk
       data_chunk: DataChunk
+      end_of_message: EndOfMessageChunk
       final_chunk: FinalChunk
       blocked: BlockedChunk
