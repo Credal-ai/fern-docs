@@ -24,11 +24,11 @@ service:
               docs: |
                 The user who we should take the action on behalf of
             requireHumanConfirmation:
-              type: optional<boolean>
+              type: boolean
               docs: |
                 If true, then before executing the action we will ask for a human confirmation in Slack.  If false, we may still ask for human confirmation if it's required by your organization admin.
             humanConfirmationChannel:
-              type: HumanConfirmationChannel
+              type: optional<HumanConfirmationChannel>
               docs: |
                 Where we should ask for human confirmation if necessary
             justification:
