@@ -23,7 +23,7 @@ navigation:
       - section: Actions
         contents:
           - page: Actions
-            path: ./docs/pages/guides/actions.mdx
+            path: ./docs/pages/guides/actions/actions.mdx
           - page: Copilot Collaboration
             path: ./docs/pages/guides/actions/copilot-collaboration.mdx
       - page: Bulk Analysis
