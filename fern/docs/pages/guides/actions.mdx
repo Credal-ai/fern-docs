@@ -1,0 +1,88 @@
+_This is a comprehensive in depth guide for Actions. If you’re just getting started, check out [Getting Started With AI Copilots](/copilots/quick-start)._
+
+Credal Actions allow users to create well defined actions that copilots can then use proactively in helping you as your personal assistants. 
+
+Some basic examples of actions are: 
+- Address Validation 
+- Updating Info on collaboration tools (Confluence, Google Drive)
+- Consulting with other copilots 
+
+Actions are a powerful tool to make your copilots even stronger than they already are.
+
+## **Action Templates**
+
+_It’s helpful to have a good sense of what you want your actions to do from the start, so you can set it up to achieve its objectives._
+
+To get started:
+
+1. There is an open source directory of action templates which can help you create actions
+
+2. Think of templates as the skeleton of your action, an example being a template to update confluence docs.
+
+3. You can find the open source templates library here: https://github.com/Credal-ai/actions (currently private, will be made public very soon...)
+
+Note: You can create custom actions to interface with your private internal systems using the "Fetch from an API or trigger a webhook" template and pasting an OpenAPI spec!
+
+## 1. **Creating Your First Action**
+
+1. To create your first action go to the actions tab on the left sidebar
+
+2. Then click the `Create New Action` button on the top right of the page
+
+![copilot_actions_button](/docs/assets/actions/create-action.png)
+
+3. Fill in the necessary information about your action including the template (note templates are updated regularly so check back often)
+
+![copilot_actions_dialog](/docs/assets/actions/create-action-dialog.png)
+
+
+## 2. **Configuring your Action**
+
+1. In this example we selected the `Validate Address on Google Maps` action, now we can see how to configure it.
+
+2. The beauty of actions is that it will try to resolve parameters for you, if you know the fields you'd want to use you can enter them in
+
+3. Go through the parameters list and see what you'd like to hardcode, give options for the AI to decide, or leave up to the AI
+
+![copilot_actions_params](/docs/assets/actions/action-params.png)
+
+**Note:** This specific action hits the Google Maps API
+
+## 3. **Human Governance**
+
+1. You can set your actions to automatically run or require user approval to run (in case it's a sensitive action)
+
+2. This can be toggled with the Human Governance Toggle
+
+![copilot_actions_governance](/docs/assets/actions/action-governance.png)
+
+3. When enabled any action invocation will require your approval before moving forward. This will show up in your conversation as a modal
+
+![copilot_actions_governance_modal](/docs/assets/actions/governance-modal.png)
+
+
+## 4. **Connecting Copilots With Actions**
+
+1. Before you can use your action in a copilot you need to publish your action. In the action page, in the top left, click Actions -> Publish Action
+
+![copilot_action_publish](/docs/assets/actions/action-publish.png)
+
+
+2. A copilot can have any number of actions it's connected to, to connect an action to a copilot go to the copilots page
+
+3. Select the copilot you'd like to connect an action to 
+
+![copilots_table](/docs/assets/copilots/copilot-collaboration/copilots-table.png)
+
+4. Navigate to the Actions tab and search for the action you'd like to connect
+
+![copilot_actions_select](/docs/assets/actions/select-action.png)
+
+5. You can connect any action automatically, however any copilot connection action will require approval: [Read more here](/copilots/copilot-collaboration)
+
+6. Now your copilot can call on actions! It will do this automatically if it's the best action to take
+
+## 5. Contact Support
+
+Actions are a powerful tool to make your copilots even stronger than they already are.
+They're a new tool so if you have any questions or need help feel free to reach out to us at contact support@credal.ai.
