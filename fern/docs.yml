@@ -1,7 +1,7 @@
 instances:
   - url: credal.docs.buildwithfern.com
     custom-domain: docs.credal.ai
-    edit-this-page: 
+    edit-this-page:
       github:
         owner: Credal-ai
         repo: fern-docs
@@ -14,6 +14,8 @@ navigation:
     contents:
       - page: Overview
         path: ./docs/pages/guides/overview.mdx
+      - page: Getting Started with AI
+        path: https://credalai.notion.site/Credal-Quickstart-Guide-9f1d589bc51a461e9c9860c2180abc58
       - section: Copilots
         contents:
           - page: Quick Start
