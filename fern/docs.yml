@@ -14,7 +14,7 @@ navigation:
     contents:
       - page: Overview
         path: ./docs/pages/guides/overview.mdx
-      - link: Getting Started with AI
+      - link: Credal Quick Start
         href: https://credalai.notion.site/Credal-Quickstart-Guide-9f1d589bc51a461e9c9860c2180abc58
       - section: Copilots
         contents:
