@@ -22,8 +22,12 @@ navigation:
             path: ./docs/pages/guides/copilots/quick-start.mdx
           - page: In-Depth Guide
             path: ./docs/pages/guides/copilots/in-depth-guide.mdx
-          - page: Copilots Collaboration
-            path: ./docs/pages/guides/copilots/copilot-collaboration.mdx
+      - section: Actions
+        contents:
+          - page: Actions
+            path: ./docs/pages/guides/actions/actions.mdx
+          - page: Copilot Collaboration
+            path: ./docs/pages/guides/actions/copilot-collaboration.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
