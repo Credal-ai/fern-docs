@@ -28,8 +28,6 @@ navigation:
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
         path: ./docs/pages/guides/permissions-service.mdx
-      - page: OAuth
-        path: ./docs/pages/guides/oauth.mdx
       - page: Prompting
         path: ./docs/pages/guides/prompting.mdx
       - page: Data Sources
@@ -45,12 +43,12 @@ navbar-links:
   - type: minimal
     text: Contact us
     url: mailto:support@credal.ai
-  - type: filled
-    text: Start using Credal
-    url: https://app.credal.ai/signin
   - type: secondary
     text: System Status
     url: https://status.credal.ai
+  - type: filled
+    text: Start using Credal
+    url: https://app.credal.ai/signin
 
 colors:
   accentPrimary:
