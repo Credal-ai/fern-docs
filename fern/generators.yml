@@ -18,7 +18,7 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.3.14
+        version: 4.6.0
         output:
           location: pypi
           package-name: "credal"
