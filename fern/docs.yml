@@ -28,6 +28,12 @@ navigation:
             path: ./docs/pages/guides/actions/actions.mdx
           - page: Copilot Collaboration
             path: ./docs/pages/guides/actions/copilot-collaboration.mdx
+      - section: Connectors
+        contents:
+          - page: Confluence
+            path: ./docs/pages/guides/connectors/confluence.mdx
+          - page: Copilot Collaboration
+            path: ./docs/pages/guides/actions/copilot-collaboration.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
