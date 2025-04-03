@@ -28,6 +28,46 @@ navigation:
             path: ./docs/pages/guides/actions/actions.mdx
           - page: Copilot Collaboration
             path: ./docs/pages/guides/actions/copilot-collaboration.mdx
+      - section: Action Providers
+        contents:
+          - page: Confluence
+            path: ./docs/pages/guides/action-providers/confluence.mdx
+          - page: Custom Webhooks
+            path: ./docs/pages/guides/action-providers/custom-webhook.mdx
+          - page: Finnhub
+            path: ./docs/pages/guides/action-providers/finnhub.mdx
+          - page: Firecrawl
+            path: ./docs/pages/guides/action-providers/firecrawl.mdx
+          - page: Google Maps
+            path: ./docs/pages/guides/action-providers/google-maps.mdx
+          - page: Gsuite
+            path: ./docs/pages/guides/action-providers/gsuite.mdx
+          - page: Jira
+            path: ./docs/pages/guides/action-providers/jira.mdx
+          - page: LinkedIn
+            path: ./docs/pages/guides/action-providers/linkedin.mdx
+          - page: Looker
+            path: ./docs/pages/guides/action-providers/looker.mdx
+          - page: Microsoft Teams
+            path: ./docs/pages/guides/action-providers/microsoft-teams.mdx
+          - page: MongoDB
+            path: ./docs/pages/guides/action-providers/mongodb.mdx
+          - page: NWX
+            path: ./docs/pages/guides/action-providers/nwx.mdx
+          - page: OpenStreetMap
+            path: ./docs/pages/guides/action-providers/openstreetmap.mdx
+          - page: Resend
+            path: ./docs/pages/guides/action-providers/resend.mdx
+          - page: Salesforce
+            path: ./docs/pages/guides/action-providers/salesforce.mdx
+          - page: Slack
+            path: ./docs/pages/guides/action-providers/slack.mdx
+          - page: Snowflake
+            path: ./docs/pages/guides/action-providers/snowflake.mdx
+          - page: X
+            path: ./docs/pages/guides/action-providers/x.mdx
+          - page: Zendesk
+            path: ./docs/pages/guides/action-providers/zendesk.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
