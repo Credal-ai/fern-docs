@@ -28,6 +28,8 @@ navigation:
             path: ./docs/pages/guides/actions/actions.mdx
           - page: Copilot Collaboration
             path: ./docs/pages/guides/actions/copilot-collaboration.mdx
+          - page: Open Source Actions
+            path: ./docs/pages/guides/actions/open-source-actions.mdx
       - section: Action Providers
         contents:
           - page: Confluence
