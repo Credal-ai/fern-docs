@@ -1,5 +1,5 @@
 # Credal Documentation
-Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.buildwithfern.com](https://credal.docs.buildwithfern.com).
+Credal uses Fern for documentation. Checkout our docs at [https://docs.credal.ai](https://docs.credal.ai).
 ![Preview](./preview.png)
 
 ## What is contained in this repo ?
