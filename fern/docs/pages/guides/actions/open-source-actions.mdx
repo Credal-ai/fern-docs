@@ -1,0 +1,54 @@
+# Credal Open Source Actions
+
+![Credal Logo](/docs/assets/credal-light-logo.svg)
+
+## Overview
+
+Welcome to Credal.ai's Open Source Actions Framework! This framework allows you to easily add custom actions for your Credal Copilots, enhancing their functionality through LLM function calling. For more information about Credal's Agent platform, visit [here](https://www.credal.ai/products/ai-agent-platform).
+
+## Adding or Updating Actions
+
+To add or update actions in the Credal Open Source Actions Framework, follow these steps:
+
+1. **Schema Update**: Add or update the action in `src/actions/schema.yaml`. This is the first step in defining your action.
+
+2. **Type Generation**: Run `npm run generate:types` to generate the new types. This step is crucial for ensuring that your action has the correct type definitions.
+
+3. **Code Formatting**: Run `npm run prettier-format` to format the new files. Consistent formatting helps maintain code readability and quality.
+
+4. **Provider Function Creation**: Create a new provider function in `src/actions/providers/<provider>/<action>.ts` (e.g., `src/actions/providers/math/add.ts`). This function should export a function using the generated types.
+
+5. **Action Mapping**: If you are adding a new action or provider, update `src/actions/actionMapper.ts` and `src/actions/groups.ts`. This ensures that your action is correctly mapped and grouped within the framework.
+
+## Coming Soon Improvements
+
+- **Schema Standardization**: We are working on defining a standard for action outputs. While we have loosely followed a structure where outputs contain success and error, standardizing this can improve consistency.
+
+- **Automating File Generation**: We plan to automate steps 2-5 with a script. This script could run `npm run generate:types` and `npm run prettier-format`, create necessary files, and update mappings, allowing users to focus on filling in the generated files.
+
+- **Auth Tokens**: We aim to clarify expectations for auth token generation, especially for services with short-lived tokens, and document the type of authorization needed for each action.
+
+## Usage
+
+To invoke an action, use the following code snippet:
+
+```ts
+import { runAction } from "@credal/actions";
+
+const result = await runAction(
+  "listConversations",
+  "slack",
+  { authToken: "xoxb-..." },
+  {}
+);
+```
+
+## Running a Basic Test for `runAction`
+
+To run a basic test for `runAction`, execute the following command:
+
+```
+npx ts-node -r tsconfig-paths/register --project tsconfig.json tests/testRunMathAction.ts
+```
+
+This documentation aims to provide clear instructions and address potential areas of confusion. If you have any questions or need further clarification, feel free to reach out.
