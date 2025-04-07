@@ -79,7 +79,7 @@ navigation:
           - page: Following an SOP
             path: ./docs/pages/guides/use-cases/following-an-sop.mdx
           - page: Creating a Knowledge Base
-            path: ./docs/pages/guides/use-cases/creating-the-specialists.mdx
+            path: ./docs/pages/guides/use-cases/creating-the-specialist.mdx
           - page: Orchestrating Queries
             path: ./docs/pages/guides/use-cases/triaging-questions.mdx
           - page: Escalating Questions 
