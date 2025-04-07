@@ -81,7 +81,7 @@ navigation:
           - page: Creating a Knowledge Base
             path: ./docs/pages/guides/use-cases/creating-the-specialist.mdx
           - page: Orchestrating Queries
-            path: ./docs/pages/guides/use-cases/triaging-questions.mdx
+            path: ./docs/pages/guides/use-cases/orchestrating-queries.mdx
           - page: Escalating Questions 
             path: ./docs/pages/guides/use-cases/triaging-questions.mdx
       - page: Bulk Analysis
