@@ -73,7 +73,7 @@ navigation:
       - section: Use Cases
         contents:
           - page: Overview
-          - path: ./docs/pages/guides/use-cases/overview.mdx
+            path: ./docs/pages/guides/use-cases/overview.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
