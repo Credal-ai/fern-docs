@@ -1,4 +1,4 @@
-_This is a comprehensive guide for Copilots calling. If you’re just getting started, check out [Getting Started With AI Copilots](/getting-started/copilots/quick-start)._
+_This is a comprehensive guide for configuring Copilots that work together. If you’re just getting started, check out [Getting Started With AI Copilots](/getting-started/copilots/quick-start)._
 
 Copilots allow users to create dedicated assistants that can be honed in on specific use cases and tasks. With copilots calling copilots you can open up the space for more complex queries and responses.
 
@@ -18,11 +18,16 @@ To get started:
 
 ![copilots_table](/docs/assets/copilots/copilot-collaboration/copilots-table.png)
 
-3. Navigate to the Deploy tab and enable the `Allow other Copilots to call this Copilot` option.
+3. Navigate to the Deploy tab and make the Copilot callable.
 
 ![copilot_deploy_tab](/docs/assets/copilots/copilot-collaboration/copilots-deploy.png)
 
 Great now your copilot is discoverable by other copilots!
+
+4. You can either make the Copilot visible to all other Copilots (only possible by an admin), or you can add an eligible caller to provide access on a per-Agent level. User level access coming soon. Today, you can restrict user level access to an action by deploying the Copilot to a private Slack channel or creating a user group (contact support@credal.ai to set this up).
+
+![copilot_deploy_tab](/docs/assets/actions/action-publish-step.png)
+
 
 ## 2. **Connecting to a Copilot**
 
@@ -32,27 +37,14 @@ Now that you have some discoverable copilots, you can connect other copilots to 
 
 ![copilot_actions_tab](/docs/assets/copilots/copilot-collaboration/copilot-actions.png)
 
-2. Search for the copilot you want to connect to, the action will be called `Consult [copilot name]`.
+2. Search for the copilot you want to connect to, the action will be called `[copilot name]`.
 
 ![copilot_connection_via_actions](/docs/assets/copilots/copilot-collaboration/copilot-add-copilot.png)
 
-3. Once you request to connect it you'll be put in a `Pending Approval` state until the copilot you request approves you.
+That's it!
 
-![copilot_pending_approval](/docs/assets/copilots/copilot-collaboration/copilot-action-copilot-pending.png)
 
-## 3. **Approving Connection Requests**
-
-Once people discover your copilot and request to consult it you'll have a list of pending approvals, here's how to manage them:
-
-1. On your discoverable copilot go to the Deploy Tab to see all pending approvals
-
-![copilot_handle_approvals](/docs/assets/copilots/copilot-collaboration/copilot-handle-approvals.png)
-
-2. Once approved that copilot will have the ability to consult your copilot - you'll also be able to remove the connection in the future.
-
-![copilot_connection_via_actions](/docs/assets/copilots/copilot-collaboration/copilot-remove-connection.png)
-
-## 4. **Using One Copilot to Call Another**
+## 3. **Using One Copilot to Call Another**
 
 After the connection handshake has occurred you are now able to call that copilot from your own.
 
@@ -60,6 +52,6 @@ Requests will automatically be routed to the available copilot based on the exac
 
 **Note:** Copilots calling other copilots will only reach a max depth of 3 calls.
 
-## 5. Contact Support
+## 4. Contact Support
 
 For questions or support, contact support@credal.ai.
