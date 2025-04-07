@@ -70,6 +70,10 @@ navigation:
             path: ./docs/pages/guides/action-providers/x.mdx
           - page: Zendesk
             path: ./docs/pages/guides/action-providers/zendesk.mdx
+      - section: Use Cases
+        contents:
+          - page: Overview
+            path: ./docs/pages/guides/use-cases/overview.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
