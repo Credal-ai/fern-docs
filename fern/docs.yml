@@ -74,6 +74,16 @@ navigation:
         contents:
           - page: Overview
             path: ./docs/pages/guides/use-cases/overview.mdx
+          - page: Types of Agents
+            path: ./docs/pages/guides/use-cases/types-of-agents.mdx
+          - page: Following an SOP
+            path: ./docs/pages/guides/use-cases/following-an-sop.mdx
+          - page: Creating a Knowledge Base
+            path: ./docs/pages/guides/use-cases/creating-the-specialists.mdx
+          - page: Orchestrating Queries
+            path: ./docs/pages/guides/use-cases/triaging-questions.mdx
+          - page: Escalating Questions 
+            path: ./docs/pages/guides/use-cases/triaging-questions.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
