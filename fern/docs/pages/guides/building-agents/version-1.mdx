@@ -1,10 +1,9 @@
-# Escalating Questions
+# Answer Basic Questions
 
 ## Version 1 of The Orienteer
 1. User asks a question
 2. Agent consults the shared FAQ and answer quickly if it exists. 
-3. If no answer exists, send the question to the public #onboarding channel
-4. Return to the user with an update
+4. Return to the user with an update. If the answer is unclear, tag the relevant SME.
 
 ### Step 1: Create your Agent
 
@@ -15,9 +14,9 @@ Head over to the Copilots page and create a new one called "Consult Employee Onb
 Including a detailed description helps users and other Agents know when to consult this one. 
 
 
-### Step 2: Upload the FAQs
+### Step 2: Upload the FAQs and list of SMEs
 
-At Credal, we store our FAQ document in Confluence. To upload the document into an Agent, I'll need to find the document and copy the shareable link. Upload the document in the "Data" section of the assistant. 
+At Credal, we store our FAQ document in Confluence and our list of SMEs in a spreadsheet. To upload the document into an Agent, I'll need to find the documents and copy the shareable links. Upload them in the "Data" section of the assistant. 
 
 ### Step 3: Add the "Send a Slack message" Action
 
@@ -26,7 +25,7 @@ Click on the Actions tab on the right side panel and create an Action that sends
 Either publish the action to your FAQ Copilot or ask a Credal admin to make it visible to all. Then, attach the action to your Copilot.
 
 
-### Step 4: Provide instructions to "Consult Employee Onboarding FAQs"
+### Step 3: Provide instructions to "Consult Employee Onboarding FAQs"
 
 Arugably the most important part of building an Agent is providing it with the context necessary to carry out specific tasks. We will use the following instructions for this Copilot:
 
