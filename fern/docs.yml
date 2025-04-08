@@ -77,7 +77,7 @@ navigation:
           - page: Overview
             path: ./docs/pages/guides/use-cases/overview.mdx
           - page: Creating an Agent SOP
-            path: ./docs/pages/guides/use-cases/following-an-sop.mdx
+            path: ./docs/pages/guides/use-cases/creating-an-agent-sop.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
