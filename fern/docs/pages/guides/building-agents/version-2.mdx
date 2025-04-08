@@ -8,3 +8,38 @@
 5. If no answer exists, send the question to the public #onboarding channel where a hiring manager or peer can respond
 6. Return to the user with an update
 
+This version of our onboarding buddy is going to build on our previous approach by introducing internal company data and external web search data. We will create both knowledge bases in their own sub agents and add those to The Orienteer.
+
+### Step 1: Create the Company Information Domain Specialist
+
+An important thing to note here is that this is a very composable piece of the puzzle. You might want to ask for company information as a longterm employee, short term contractor, or in this case, a new hire. If a Domain Specialist for this purpose exists at your company already, we highly reocmmend using it!
+
+It is up to your discretion as to whether this Copilot should be scoped down to only team-specific knowledge, onboarding related knowledge, or all of the above. Either way, the main theme will be equiping your agent with the data and search tools it needs to answer questions well.
+
+Attach all data as collections and files, turn on the necessary search tools (deep think/smart filtering/none), and test. Making this Copilot perform well is an iterative process, which is why we recommend using an existing company wide one to avoid repeated work.
+
+
+### Step 2: Creating a Web Searcher
+
+Often times making a web search is extremely useful to generate thorough responses to user questions. Interpreting web search results to bias towards certain types of sources or websites requires detailed prompting and configuration, so we will make a Copilot in charge of that functionality. 
+
+Create a new Copilot and name it "Web Searcher" with the following description:
+
+"This assistant should receive a URL or specific search query which will be used to search the web and extract reliable insights with inline cited sources."
+
+Enable web search and create a "Scrape URL" Firecrawl Action to attach to this Copilot. Give it the following instructions:
+
+```
+Coming soon...
+```
+
+This Copilot is extremely composable. We recommend this one being available to all other Agents as well!
+
+
+### Step 3: Update The Orienteer to use these two new Agents
+
+Attach the above two Agents as Actions. Your Instructions prompt should now be:
+
+```
+Coming soon...
+```
