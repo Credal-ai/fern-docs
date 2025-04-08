@@ -76,8 +76,18 @@ navigation:
         contents:
           - page: Overview
             path: ./docs/pages/guides/use-cases/overview.mdx
-          - page: The Perfect Solution
-            path: ./docs/pages/guides/use-cases/the-perfect-solution.mdx
+          - page: Finding a Solution
+            path: ./docs/pages/guides/use-cases/solutioning.mdx
+          - page: Creating Domain Specialists
+            path: ./docs/pages/guides/use-cases/version-1.mdx
+          - page: Dynamic Search Methods
+            path: ./docs/pages/guides/use-cases/version-2.mdx
+          - page: Following an SOP
+            path: ./docs/pages/guides/use-cases/version-3.mdx
+          - page: Consulting an SME
+            path: ./docs/pages/guides/use-cases/version-4.mdx
+          - page: Improving your Internal Systems 
+            path: ./docs/pages/guides/use-cases/version-5.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
