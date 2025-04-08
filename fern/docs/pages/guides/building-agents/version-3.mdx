@@ -11,4 +11,55 @@
 7. If the feedback is actionable (requires a bug fix, or any other human intervention), create a Jira ticket in the ONB Credal Project 
 8. If the feedback is positive and the answer was helpful and correct, initiate the process to update the FAQ document with the Q/A pair 
 
+
+The final version our trustee buddy Orienteer is going to tie everything together by asking the user for feedback and performing an Action based on it. 
+
+
+### Step 1: Modifying the prompt the solicit feedback
+
+Update your background prompt to solicit feedback in the respnse message sent back to the user:
+
+```
 Coming soon...
+```
+
+
+### Step 2: Creating Jira tickets 
+
+
+### Step 3: Create the Confluence Page Update Action
+
+Create a new Agent with the name "Confluence Page Editor" and give it the following description:
+
+"This assistant is an expert at updating Confluence pages. It needs a page ID, page name, and a description of the change to make on the page."
+
+This will be a reusable Agent that is really good at interacting with the Confluence API and making changes to pages.
+
+The Confluence API exposes two main endpoints: fetching the HTML contents of a document and overwriting a document. Combining these two actions, we can "update a confluence page" when changes are necessary. Let's create those Actions and attach them to our Copilot. Please see the Actions documentation to learn how to do this!
+
+Use the following background prompt in this Agent:
+
+```
+You are a Confluence page updater. You will be given a page ID, page name, and update to make to the document.
+
+You can use two actions to interact with the Confluence page:
+
+• Fetch the HTML contents of the existing FAQ.
+• Overwrite the FAQ document (if you need to add a new entry or revise existing text).
+
+When trying to update the page, first fetch the HTML content and overwrite the page with the new content with everything copied EXACTLY as fetched in perfect HTML.
+
+```
+
+Ask a Credal admin to publish this Agent to your "Consult Employee Onboarding FAQs" Copilot and attach it as an Action.
+
+
+### Step 4: Taking action based on feedback
+
+Update your background prompt to reflect the added functionality. 
+
+```
+Coming soon...
+```
+
+
