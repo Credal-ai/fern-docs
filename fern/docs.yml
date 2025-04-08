@@ -78,16 +78,12 @@ navigation:
             path: ./docs/pages/guides/building-agents/overview.mdx
           - page: Creating an Employee Onboarding Assistant
             path: ./docs/pages/guides/building-agents/solutioning.mdx
-          - page: Reading and Updating Documentation
+          - page: Escalating Questions
             path: ./docs/pages/guides/building-agents/version-1.mdx
-          - page: Dynamic Search Methods
+          - page: Searching Internal and External Knowledge
             path: ./docs/pages/guides/building-agents/version-2.mdx
-          - page: Following an SOP
+          - page: Improving Internal Systems 
             path: ./docs/pages/guides/building-agents/version-3.mdx
-          - page: Consulting an SME
-            path: ./docs/pages/guides/building-agents/version-4.mdx
-          - page: Improving your Internal Systems 
-            path: ./docs/pages/guides/building-agents/version-5.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
