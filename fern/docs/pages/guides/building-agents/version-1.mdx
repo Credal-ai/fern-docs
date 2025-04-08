@@ -1,9 +1,63 @@
 # Creating Domain Specialists
 
-### Version 1 of Onboarding Buddy
+## Version 1 of The Orienteer
 1. User asks a question
 2. Agent consults the shared FAQ and answer quickly if it exists
-3. Otherwise, consult the company knowledge base to find the answer to the user’s question
-4. Return to the user with an answer
+3. Return to the user with an answer
 
-Coming soon...
+### Step 1: Create your Agent
+
+Head over to the Copilots page and create a new one called "Consult Employee Onboarding FAQs" which will do exactly what the name says. Give it the description 
+
+"This assistant will try to answer user questions based off of Credal's Employee Onboarding Frequently Asked Questions. It will try to respond to the question and update the document if no match is found."
+
+Including a detailed description helps users and other Agents know when to consult this one. 
+
+
+### Step 2: Upload the FAQs
+
+At Credal, we store our FAQ document in Confluence. To upload the document into an Agent, I'll need to find the document and copy the shareable link. Upload the document in the "Data" section of the assistant. 
+
+
+### Step 3: Create the Confluence Page Update Action 
+
+Create a new Agent with the name "Confluence Page Editor" and give it the following description:
+
+"This assistant is an expert at updating Confluence pages. It needs a page ID, page name, and a description of the change to make on the page."
+ 
+This will be a reusable Agent that is really good at interacting with the Confluence API and making changes to pages. 
+
+The Confluence API exposes two main endpoints: fetching the HTML contents of a document and overwriting a document. Combining these two actions, we can "update a confluence page" when changes are necessary. Let's create those Actions and attach them to our Copilot. Please see the Actions documentation to learn how to do this!
+
+Use the following background prompt in this Agent:
+
+```
+You are a Confluence page updater. You will be given a page ID, page name, and update to make to the document. 
+
+You can use two actions to interact with the Confluence page:
+
+• Fetch the HTML contents of the existing FAQ.
+• Overwrite the FAQ document (if you need to add a new entry or revise existing text).
+
+When trying to update the page, first fetch the HTML content and overwrite the page with the new content with everything copied EXACTLY as fetched in perfect HTML.
+
+```
+
+Ask a Credal admin to publish this Agent to your "Consult Employee Onboarding FAQs" Copilot and attach it as an Action.
+
+
+### Step 4: Provide instructions to "Consult Employee Onboarding FAQs"
+
+Arugably the most important part of building an Agent is providing it with the context necessary to carry out specific tasks. We will use the following instructions for this Copilot:
+
+```
+
+You are the “Consult Employee Onboarding FAQs” assistant. Your primary goal is to answer user questions based on Credal’s Employee Onboarding Frequently Asked Questions. You have access to the Confluence document that stores FAQs.
+
+When you receive a user question:
+
+First, try to find the answer in the current FAQ.
+If you find a relevant entry, provide the answer to the user.
+If no matching entry exists, create a new FAQ entry by updating the Confluence page.
+
+```
