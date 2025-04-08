@@ -82,7 +82,7 @@ navigation:
             path: ./docs/pages/guides/building-agents/version-1.mdx
           - page: Searching Internal and External Knowledge
             path: ./docs/pages/guides/building-agents/version-2.mdx
-          - page: Improving Internal Systems 
+          - page: Connect with Internal Systems 
             path: ./docs/pages/guides/building-agents/version-3.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
