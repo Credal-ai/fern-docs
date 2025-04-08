@@ -78,7 +78,7 @@ navigation:
             path: ./docs/pages/guides/building-agents/overview.mdx
           - page: Creating an Employee Onboarding Assistant
             path: ./docs/pages/guides/building-agents/solutioning.mdx
-          - page: Escalating Questions
+          - page: Answer Basic Questions
             path: ./docs/pages/guides/building-agents/version-1.mdx
           - page: Searching Internal and External Knowledge
             path: ./docs/pages/guides/building-agents/version-2.mdx
