@@ -72,7 +72,7 @@ navigation:
             path: ./docs/pages/guides/action-providers/x.mdx
           - page: Zendesk
             path: ./docs/pages/guides/action-providers/zendesk.mdx
-      - section: Use Cases
+      - section: Building Agents in Credal
         contents:
           - page: Overview
             path: ./docs/pages/guides/use-cases/overview.mdx
