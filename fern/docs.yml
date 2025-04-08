@@ -76,7 +76,7 @@ navigation:
         contents:
           - page: Overview
             path: ./docs/pages/guides/use-cases/overview.mdx
-          - page: Finding a Solution
+          - page: Creating a Solution
             path: ./docs/pages/guides/use-cases/solutioning.mdx
           - page: Creating Domain Specialists
             path: ./docs/pages/guides/use-cases/version-1.mdx
