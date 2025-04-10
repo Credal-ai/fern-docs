@@ -121,3 +121,6 @@ logo:
   light: docs/assets/credal-dark-logo.svg
   dark: docs/assets/credal-light-logo.svg
   height: 30
+
+css: ./styles.css
+
