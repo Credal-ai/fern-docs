@@ -65,7 +65,7 @@ service:
       availability: pre-release
       path: /createCollection
       method: POST
-      docs: Create a new copilot. The API key used will be added to the agent for future Requests
+      docs: Create a new collection. The API key used will be added to the collection for future Requests
       request:
         name: CreateCollectionRequest
         body:
