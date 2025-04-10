@@ -65,7 +65,7 @@ service:
       availability: pre-release
       path: /createCollection
       method: POST
-      docs: Create a new copilot. The API key used will be added to the copilot for future Requests
+      docs: Create a new copilot. The API key used will be added to the agent for future Requests
       request:
         name: CreateCollectionRequest
         body:
@@ -77,11 +77,11 @@ service:
             description:
               type: string
               docs: |
-                An in depth name for the copilot's function. Useful for routing requests to the right copilot.
+                An in depth name for the agent's function. Useful for routing requests to the right agent.
             collaborators:
               type: list<common.Collaborator>
               docs: |
-                A list of collaborator emails and roles that will have access to the copilot.
+                A list of collaborator emails and roles that will have access to the agent.
       response: CreateCollectionResponse
       examples:
         - name: Example0
@@ -118,7 +118,7 @@ service:
       availability: pre-release
       path: /mongodb/createMongoSync
       method: POST
-      docs: Credal lets you easily sync your MongoDB data for use in Collections and Copilots. Create a new sync from a MongoDB collection to a Credal collection.
+      docs: Credal lets you easily sync your MongoDB data for use in Collections and Agents. Create a new sync from a MongoDB collection to a Credal collection.
       request:
         name: CreateMongoCollectionSyncRequest
         body:
@@ -150,7 +150,7 @@ service:
       availability: pre-release
       path: /mongodb/updateMongoSync
       method: POST
-      docs: Credal lets you easily sync your MongoDB data for use in Collections and Copilots. Update an existing sync from a MongoDB collection to a Credal collection via the `mongoCredentialId`, to disambiguate between multiple potential syncs to a given collection.
+      docs: Credal lets you easily sync your MongoDB data for use in Collections and Agents. Update an existing sync from a MongoDB collection to a Credal collection via the `mongoCredentialId`, to disambiguate between multiple potential syncs to a given collection.
       request:
         name: UpdateMongoCollectionSyncRequest
         body:

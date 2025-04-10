@@ -13,20 +13,20 @@ This version of our onboarding buddy is going to build on our previous approach 
 
 An important thing to note here is that this is a very composable piece of the puzzle. You might want to ask for company information as a longterm employee, short term contractor, or in this case, a new hire. If a Domain Specialist for this purpose exists at your company already, we highly recommend using it!
 
-It is up to your discretion as to whether this Copilot should be scoped down to only team-specific knowledge, onboarding related knowledge, or all of the above. Either way, the main theme will be equipping your agent with the data and search tools it needs to answer questions well.
+It is up to your discretion as to whether this Agent should be scoped down to only team-specific knowledge, onboarding related knowledge, or all of the above. Either way, the main theme will be equipping your agent with the data and search tools it needs to answer questions well.
 
-Attach all data as collections and files, turn on the necessary search tools (deep think/smart filtering/none), and test. Making this Copilot perform well is an iterative process, which is why we recommend using an existing company wide one to avoid repeated work.
+Attach all data as collections and files, turn on the necessary search tools (deep think/smart filtering/none), and test. Making this Agent perform well is an iterative process, which is why we recommend using an existing company wide one to avoid repeated work.
 
 
 ### Step 2: Creating a Web Searcher
 
-Often times making a web search is extremely useful to generate thorough responses to user questions. Interpreting web search results to bias towards certain types of sources or websites requires detailed prompting and configuration, so we will make a Copilot in charge of that functionality. 
+Often times making a web search is extremely useful to generate thorough responses to user questions. Interpreting web search results to bias towards certain types of sources or websites requires detailed prompting and configuration, so we will make a Agent in charge of that functionality. 
 
-Create a new Copilot and name it "Web Searcher" with the following description:
+Create a new Agent and name it "Web Searcher" with the following description:
 
 "This assistant should receive a URL or specific search query which will be used to search the web and extract reliable insights with inline cited sources."
 
-Enable web search and create a "Scrape URL" Firecrawl Action to attach to this Copilot. Give it the following instructions:
+Enable web search and create a "Scrape URL" Firecrawl Action to attach to this Agent. Give it the following instructions:
 
 ```
 You are a specialized Web Searcher assistant. Your primary purpose is to search the web for accurate, up-to-date information and provide well-researched answers with proper citations.
@@ -48,7 +48,7 @@ For general knowledge, use a diverse range of high-quality sources.
 Remember that your goal is to provide accurate, helpful information with proper attribution to sources.
 ```
 
-This Copilot is extremely composable. We recommend this one being available to all other Agents as well!
+This Agent is extremely composable. We recommend this one being available to all other Agents as well!
 
 
 ### Step 3: Update The Orienteer to use these two new Agents

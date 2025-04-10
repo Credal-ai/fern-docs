@@ -47,13 +47,13 @@ They can be specified by pressing the Add Schema button on any document collecti
 ### AI Entity Extraction (beta)
 
 AI Entity Extraction alows you to specify a predetermined set of values for a field in a schema, and have an **LLM auto extract these values** as we crawl data.
-For example, if you had a list of customer documents in Google Drive, or sales call transcripts in Sharepoint, you could specify `Customer Name` as an entity and a list of possible Customers to try to extract on syncing. This gives you **automatic data curation and tagging**, and allows **users to filter on these entities** just by asking questions to your Copilot. Contact your Credal team for help setting up AI Entity Extraction.
+For example, if you had a list of customer documents in Google Drive, or sales call transcripts in Sharepoint, you could specify `Customer Name` as an entity and a list of possible Customers to try to extract on syncing. This gives you **automatic data curation and tagging**, and allows **users to filter on these entities** just by asking questions to your Agent. Contact your Credal team for help setting up AI Entity Extraction.
 
 ### Smart Filtering (beta)
 
 We support smart filtering for all of our data sources. This allows you to filter on fields that you may have imported.
 (from semi structured data sources like Salesforce and Jira) or metadata you have tagged documents with manually using the data catalog [metadata API endpoint](/api-reference/document-catalog/metadata), or auto extracted entities above. This allows us to only send relevant information to the LLM.
 For example, you could have a series of call transcripts that you want to upload that you want to tag with whether or not they are Active. Once uploading the data, you can use the API endpoint above to tag the docs with an "active" field, and the search across only the docs where the active field is set to true.
-To use smart filtering, toggle on the Smart Filtering setting on your copilot and make sure you have a schema specified for your document collection. This is preconfigured automatically for the Salesforce and Jira data sources - but please confirm the types of these schemas are what you'd expect.
+To use smart filtering, toggle on the Smart Filtering setting on your agent and make sure you have a schema specified for your document collection. This is preconfigured automatically for the Salesforce and Jira data sources - but please confirm the types of these schemas are what you'd expect.
 
 **Note that smart filtering is still in beta.** If you have any questions/see any issues, please reach out to the Credal team and we'd be happy to help.

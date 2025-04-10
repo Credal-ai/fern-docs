@@ -16,18 +16,16 @@ navigation:
         path: ./docs/pages/guides/overview.mdx
       - link: Credal Quick Start
         href: https://credalai.notion.site/Credal-Quickstart-Guide-9f1d589bc51a461e9c9860c2180abc58
-      - section: Copilots
-        contents:
-          - page: Quick Start
-            path: ./docs/pages/guides/copilots/quick-start.mdx
-          - page: In-Depth Guide
-            path: ./docs/pages/guides/copilots/in-depth-guide.mdx
       - section: Agents
         contents:
+          - page: Quick Start
+            path: ./docs/pages/guides/agents/quick-start.mdx
+          - page: In-Depth Guide
+            path: ./docs/pages/guides/agents/in-depth-guide.mdx
           - page: Actions
             path: ./docs/pages/guides/agents/actions.mdx
-          - page: Copilot Collaboration
-            path: ./docs/pages/guides/agents/copilot-collaboration.mdx
+          - page: Agent Collaboration
+            path: ./docs/pages/guides/agents/agent-collaboration.mdx
           - page: Open Source Actions
             path: ./docs/pages/guides/agents/open-source-actions.mdx
           - page: Types of Agents
