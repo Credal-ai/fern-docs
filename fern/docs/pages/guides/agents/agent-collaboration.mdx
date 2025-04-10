@@ -1,0 +1,57 @@
+_This is a comprehensive guide for configuring Agents that work together. If you’re just getting started, check out [Getting Started With AI Agents](/getting-started/agents/quick-start)._
+
+Agents allow users to create dedicated assistants that can be honed in on specific use cases and tasks. With agents calling agents you can open up the space for more complex queries and responses.
+
+This feature allows agents to discover other agents, so that one agent can decide to call another to help answer a query. This can be useful when you have a complex query that requires multiple steps to answer, or when you want to combine the expertise of multiple agents to provide a more comprehensive response.
+
+## 1. **Setting your agent as Discoverable**
+
+_To allow your agent to be called by other agents, you need to change its discoverability settings._
+
+To get started:
+
+1. On your left sidebar, Select “Agents”:
+
+![agents_lhs](/docs/assets/copilots/copilot-collaboration/credal-side-bar.png)
+
+2. Select the agent you want to set as discoverable by clicking it.
+
+![agents_table](/docs/assets/copilots/copilot-collaboration/copilots-table.png)
+
+3. Navigate to the Deploy tab and make the Agent callable.
+
+![agent_deploy_tab](/docs/assets/copilots/copilot-collaboration/copilots-deploy.png)
+
+Great now your agent is discoverable by other agents!
+
+4. You can either make the Agent visible to all other Agents (only possible by an admin), or you can add an eligible caller to provide access on a per-Agent level. User level access coming soon. Today, you can restrict user level access to an action by deploying the Agent to a private Slack channel or creating a user group (contact support@credal.ai to set this up).
+
+![agent_deploy_tab](/docs/assets/actions/action-publish-step.png)
+
+
+## 2. **Connecting to a Agent**
+
+Now that you have some discoverable agents, you can connect other agents to it. To do this lets connect a agent to the one we just made discoverable:
+
+1. Navigate to the Configuration tab of the agent you want calling other agents and scroll down to Actions.
+
+![agent_actions_tab](/docs/assets/copilots/copilot-collaboration/copilot-actions.png)
+
+2. Search for the agent you want to connect to, the action will be called `[agent name]`.
+
+![agent_connection_via_actions](/docs/assets/copilots/copilot-collaboration/copilot-add-copilot.png)
+
+That's it!
+
+
+## 3. **Using One Agent to Call Another**
+
+After the connection handshake has occurred you are now able to call that agent from your own.
+
+Requests will automatically be routed to the available agent based on the exact instructions and documentation given to your orchestrator as well as the descriptions of the callee Agents.  
+
+**Note:** Agents calling other agents will only reach a max depth of 3 calls.
+
+## 4. Contact Support
+
+For questions or support, contact support@credal.ai.

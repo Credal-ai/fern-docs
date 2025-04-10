@@ -11,15 +11,15 @@ This guide will provide you with the foundational understanding and practical st
 
 ## 1. What is the Background Prompt
 
-This is arguably the most effective way to customize your copilot. It defines the landscape in which your copilot operates, detailing its role, response style, and the types of queries it should handle. Crafting an effective background prompt ensures your copilot can seamlessly integrate into your specific use case.
+This is arguably the most effective way to customize your agent. It defines the landscape in which your agent operates, detailing its role, response style, and the types of queries it should handle. Crafting an effective background prompt ensures your agent can seamlessly integrate into your specific use case.
 
 ## 2. Constructing a Background Prompt
 
 ### Role and Goal
 
-Outline the specific role your copilot is expected to fulfill. Include details such as:
+Outline the specific role your agent is expected to fulfill. Include details such as:
 
-- **Who**: The specific team or individual utilizing the copilot.
+- **Who**: The specific team or individual utilizing the agent.
 - **What**: The usual nature of queries or tasks it will address.
 - **Where**: The operational context, be it customer service, technical support, etc.
 
@@ -58,9 +58,9 @@ Provide a riddle using the following structure:
 
 ### Response Guidelines
 
-Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Copilot will only know as much as you tell it. Noticing that the responses are too long? Specificy response length! Think there's too much fluff in the language? Ask for concise language. 
+Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Agent will only know as much as you tell it. Noticing that the responses are too long? Specificy response length! Think there's too much fluff in the language? Ask for concise language. 
 
-Credal has prompt snippets right under the background prompt in the Copilot Configuration tab. We recommend using those as a starting point for generating more useful responses, however your specific use case may require much more detail!
+Credal has prompt snippets right under the background prompt in the Agent Configuration tab. We recommend using those as a starting point for generating more useful responses, however your specific use case may require much more detail!
 
 ![prompt-snippets.png](/docs/assets/prompt-engineering/prompt-snippets.png)
 
@@ -173,11 +173,11 @@ Encourage concise problem-solving with clear instructions. Instead of asking the
 
 ## 6. Save your work in a “Suggested Question”
 
-So, you did all the work to craft the perfect prompt for your super specific use-case… only to lose it when you hit send? Think again. If you’re a collaborator on a copilot, you can copy-paste your work of art into a Suggested Question in the Copilot config. Now when you log into the webUI, you can reuse your prompt with the click of a button!
+So, you did all the work to craft the perfect prompt for your super specific use-case… only to lose it when you hit send? Think again. If you’re a collaborator on a agent, you can copy-paste your work of art into a Suggested Question in the Agent config. Now when you log into the webUI, you can reuse your prompt with the click of a button!
 
 ![prompt-engineering.png](/docs/assets/prompt-engineering/prompt-engineering.png)
 
-We currently don’t support autocompleting prompts for our Slack integration. For Copilots deployed to Slack, we recommend crafting the background prompt to handle the diverse types of messages sent in the channel of your choice.
+We currently don’t support autocompleting prompts for our Slack integration. For Agents deployed to Slack, we recommend crafting the background prompt to handle the diverse types of messages sent in the channel of your choice.
 
 ## 7. Use the Latest Model
 
@@ -185,14 +185,14 @@ Utilize the most recent and capable models to achieve the best results. Newer mo
 
 ## 8. Incorporate Feedback Loops
 
-Continuously refine your prompts based on your impression of Copilot responses to improve accuracy and relevance. Negative feedback logs are a great resource for this!
+Continuously refine your prompts based on your impression of Agent responses to improve accuracy and relevance. Negative feedback logs are a great resource for this!
 
-We are currently working on some features that will incorporate negative feedback and usage trends into the copilot configuration workflow by suggesting ways in which you can improve your background prompt. Stay tuned!
+We are currently working on some features that will incorporate negative feedback and usage trends into the agent configuration workflow by suggesting ways in which you can improve your background prompt. Stay tuned!
 
 ## 9. What not to ask…
 
 1. Anything about access controls. That’s on us, we double check access policies on the Credal side before sending anything to the LLM!
-2. Anything about a Credal concept (Copilots, Document collections, "pinned" sources, etc.). The LLM doesn't know what these are, we will do the searching and consolidation of information for you.
+2. Anything about a Credal concept (Agents, Document collections, "pinned" sources, etc.). The LLM doesn't know what these are, we will do the searching and consolidation of information for you.
 
 ---
 
