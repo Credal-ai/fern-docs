@@ -1,42 +1,52 @@
-# Answer Basic Questions
+# Answer Basic Questions: The Orienteer v1
 
-## Version 1 of The Orienteer
+## Overview
+This tutorial guides you through creating the initial version of "The Orienteer," a simple but effective onboarding assistant that answers common questions using a company FAQ document and knows when to escalate to subject matter experts.
+
+## The Orienteer v1 Workflow
 1. User asks a question
-2. Agent consults the shared FAQ and answer quickly if it exists. 
-3. Return to the user with an update. If the answer is unclear, tag the relevant SME.
+2. Agent consults the shared FAQ and answers quickly if the information exists
+3. Returns to the user with an answer or tags the relevant SME if the answer is unclear
 
-### Step 1: Create your Agent
+## Implementation Steps
 
-Head over to the Agents page and create a new one called "The Orienteer" which will help answer onboarding questions. Give it the description:
+### Step 1: Create Your Agent
 
-"This assistant helps new employees by answering common onboarding questions using Credal's Employee Onboarding FAQ. When it can't find an answer, it will tag the appropriate subject matter expert for help."
+1. Navigate to the Agents page and click "Create New Agent"
+2. Name your agent "The Orienteer"
+3. Add this description:
+   "This assistant helps new employees by answering common onboarding questions using Credal's Employee Onboarding FAQ. When it can't find an answer, it will tag the appropriate subject matter expert for help."
 
-Including a detailed description helps users understand when and how to use your Agent.
+**Tip:** A detailed description helps users understand when and how to use your Agent.
 
-### Step 2: Upload the FAQs and list of SMEs
+### Step 2: Upload the FAQs and List of SMEs
 
-At Credal, we store our FAQ document in Confluence and our list of SMEs in a spreadsheet. To upload these resources:
+At Credal, key resources are stored in Confluence and spreadsheets. To make these accessible to your agent:
 
-1. Find the documents and copy their shareable links
-2. Go to the "Data" section of your Agent
-3. Upload both the FAQ document and the SME list
+1. Locate the FAQ document and SME list
+2. Obtain shareable links for both resources
+3. Go to the "Data" section of your Agent
+4. Upload both documents:
+   - The Employee Onboarding FAQ document
+   - The SME list spreadsheet (containing names, areas of expertise, and contact information)
 
-### Step 3: Add the "Send a Slack message" Action
+**Note:** Ensure these documents are properly formatted and up-to-date before uploading.
 
-Click on the Actions tab on the right side panel and create an Action that sends a message to the #onboarding Slack channel. This will allow your Agent to tag SMEs when needed.
+### Step 3: Add the "Send a Slack Message" Action
 
-Make sure your organization is signed into Slack and that you have interacted with a Credal Slack bot prior to using your Agent.
+To enable your agent to tag SMEs when needed:
 
-Either publish the action to your Agent or ask a Credal admin to make it visible to all. Then, attach the action to your Agent.
+1. Click on the "Actions" tab in the right side panel
+2. Create a new Action named "Send a Slack message"
+3. Configure it to send messages to the #onboarding Slack channel
+4. Ensure your organization is connected to Slack
+5. Verify you have previously interacted with a Credal Slack bot
 
-####If deploying directly in the #onboarding channel:
+**Alternative Approach:** If deploying directly in the #onboarding Slack channel, you can skip creating this Action and instead modify your instructions to have the assistant tag SMEs directly in its responses.
 
-* Skip creating the Slack message Action
-* Instead, modify your instructions to have the assistant tag SMEs directly in its responses
+### Step 4: Provide Instructions to "The Orienteer"
 
-### Step 4: Provide instructions to "The Orienteer"
-
-The most important part of building an Agent is providing clear instructions. Use the following for your Agent:
+Add the following instructions to guide your agent's behavior:
 
 ```
 You are "The Orienteer," an onboarding assistant for new Credal employees. Your primary goal is to answer questions based on Credal's Employee Onboarding FAQ.
@@ -51,4 +61,11 @@ When you receive a user question:
 Always be friendly and helpful. Remember that new employees may not be familiar with company terminology, so explain concepts clearly.
 ```
 
-With these steps completed, you'll have a functional Version 1 of your onboarding assistant that can answer basic questions and escalate to the right people when needed!
+## Testing Your Implementation
+
+1. Ask a simple question that should be covered in the FAQ
+2. Ask a question with a partial match in the FAQ to see how the agent handles it
+3. Ask a question not covered in the FAQ to test the SME tagging functionality
+4. Verify that the agent maintains a friendly, helpful tone appropriate for new employees
+
+This initial version of The Orienteer provides a solid foundation that you can build upon in future iterations, adding more sophisticated capabilities while maintaining the core functionality of quickly answering common questions and knowing when to involve human experts.
