@@ -3,40 +3,47 @@
 ## Version 1 of The Orienteer
 1. User asks a question
 2. Agent consults the shared FAQ and answer quickly if it exists. 
-4. Return to the user with an update. If the answer is unclear, tag the relevant SME.
+3. Return to the user with an update. If the answer is unclear, tag the relevant SME.
 
 ### Step 1: Create your Agent
 
-Head over to the Agents page and create a new one called "Consult Employee Onboarding FAQs" which will do exactly what the name says. Give it the description 
+Head over to the Agents page and create a new one called "The Orienteer" which will help answer onboarding questions. Give it the description:
 
-"This assistant will try to answer user questions based off of Credal's Employee Onboarding Frequently Asked Questions. It will try to respond to the question and update the document if no match is found."
+"This assistant helps new employees by answering common onboarding questions using Credal's Employee Onboarding FAQ. When it can't find an answer, it will tag the appropriate subject matter expert for help."
 
-Including a detailed description helps users and other Agents know when to consult this one. 
-
+Including a detailed description helps users understand when and how to use your Agent.
 
 ### Step 2: Upload the FAQs and list of SMEs
 
-At Credal, we store our FAQ document in Confluence and our list of SMEs in a spreadsheet. To upload the document into an Agent, I'll need to find the documents and copy the shareable links. Upload them in the "Data" section of the assistant. 
+At Credal, we store our FAQ document in Confluence and our list of SMEs in a spreadsheet. To upload these resources:
+
+1. Find the documents and copy their shareable links
+2. Go to the "Data" section of your Agent
+3. Upload both the FAQ document and the SME list
 
 ### Step 3: Add the "Send a Slack message" Action
 
-Click on the Actions tab on the right side panel and create an Action that sends a message to the #onboarding Slack channel. Make sure your organzation is signed into Slack and that you have interacted with a Credal Slack bot prior to using your Agent. 
+Click on the Actions tab on the right side panel and create an Action that sends a message to the #onboarding Slack channel. This will allow your Agent to tag SMEs when needed.
 
-Either publish the action to your FAQ Agent or ask a Credal admin to make it visible to all. Then, attach the action to your Agent.
+Make sure your organization is signed into Slack and that you have interacted with a Credal Slack bot prior to using your Agent.
 
+Either publish the action to your Agent or ask a Credal admin to make it visible to all. Then, attach the action to your Agent.
 
-### Step 3: Provide instructions to "Consult Employee Onboarding FAQs"
+### Step 4: Provide instructions to "The Orienteer"
 
-Arugably the most important part of building an Agent is providing it with the context necessary to carry out specific tasks. We will use the following instructions for this Agent:
+The most important part of building an Agent is providing clear instructions. Use the following for your Agent:
 
 ```
-
-You are the “Consult Employee Onboarding FAQs” assistant. Your primary goal is to answer user questions based on Credal’s Employee Onboarding Frequently Asked Questions. You have access to the Confluence document that stores FAQs.
+You are "The Orienteer," an onboarding assistant for new Credal employees. Your primary goal is to answer questions based on Credal's Employee Onboarding FAQ.
 
 When you receive a user question:
 
-First, try to find the answer in the current FAQ.
-If you find a relevant entry, provide the answer to the user.
-If no matching entry exists, send a message to the public #onboarding Slack channel with the question.
+1. Search the FAQ document to find a relevant answer
+2. If you find a matching entry, provide the answer clearly to the user
+3. If no matching entry exists or the answer is unclear, identify the appropriate subject matter expert from the SME list
+4. Tag that SME in the #onboarding Slack channel with the user's question
 
+Always be friendly and helpful. Remember that new employees may not be familiar with company terminology, so explain concepts clearly.
 ```
+
+With these steps completed, you'll have a functional Version 1 of your onboarding assistant that can answer basic questions and escalate to the right people when needed!
