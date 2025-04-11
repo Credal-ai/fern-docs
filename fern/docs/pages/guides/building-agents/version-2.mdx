@@ -1,33 +1,41 @@
-# Searching Internal and External Knowledge
+# Searching Internal and External Knowledge: The Orienteer v2
 
-## Version 2 of The Orienteer
+## Overview
+This tutorial guides you through enhancing "The Orienteer" with the ability to search both internal company knowledge bases and external web resources to provide comprehensive answers to employee questions.
+
+## The Orienteer v2 Workflow
 1. User asks a question
-2. Agent consults the shared FAQ and answer quickly if it exists. 
-3. **Otherwise, consult the company knowledge base to find the answer to the user’s question**
-4. **If more information is required to answer the question, or if the answer is incomplete, search the web for supplementary details.**
-5. Return to the user with an update. If the answer is incomplete, tag the relevant SME.
+2. Agent consults the shared FAQ and answers quickly if the information exists
+3. If not found in the FAQ, consults the company knowledge base
+4. If more information is needed, searches the web for supplementary details
+5. Returns to the user with a complete answer, tagging relevant SMEs if the answer is incomplete
 
-This version of our onboarding buddy is going to build on our previous approach by introducing internal company data and external web search data. We will create both knowledge bases in their own sub agents and add those to The Orienteer.
+## Implementation Steps
 
 ### Step 1: Create the Company Information Domain Specialist
 
-An important thing to note here is that this is a very composable piece of the puzzle. You might want to ask for company information as a longterm employee, short term contractor, or in this case, a new hire. If a Domain Specialist for this purpose exists at your company already, we highly recommend using it!
+This specialized agent will handle searching through internal company knowledge. This is a highly reusable component that could serve multiple purposes beyond onboarding.
 
-It is up to your discretion as to whether this Agent should be scoped down to only team-specific knowledge, onboarding related knowledge, or all of the above. Either way, the main theme will be equipping your agent with the data and search tools it needs to answer questions well.
+**Key Considerations:**
+- Determine the scope of knowledge (team-specific, onboarding-related, or company-wide)
+- Attach relevant data collections and files
+- Configure appropriate search tools (deep think/smart filtering)
 
-Attach all data as collections and files, turn on the necessary search tools (deep think/smart filtering/none), and test. Making this Agent perform well is an iterative process, which is why we recommend using an existing company wide one to avoid repeated work.
+**Implementation Tips:**
+- If your company already has a domain specialist agent for company information, consider using that instead of creating a new one
+- Make this agent accessible to other agents beyond just The Orienteer
+- Test thoroughly with various question types to ensure accurate information retrieval
 
+### Step 2: Create a Web Searcher Agent
 
-### Step 2: Creating a Web Searcher
+This agent will handle external web searches to supplement internal knowledge when needed.
 
-Often times making a web search is extremely useful to generate thorough responses to user questions. Interpreting web search results to bias towards certain types of sources or websites requires detailed prompting and configuration, so we will make a Agent in charge of that functionality. 
+1. Create a new Agent named "Web Searcher" with this description:
+   "This assistant should receive a URL or specific search query which will be used to search the web and extract reliable insights with inline cited sources."
 
-Create a new Agent and name it "Web Searcher" with the following description:
+2. Enable web search capability and create a "Scrape URL" Firecrawl Action
 
-"This assistant should receive a URL or specific search query which will be used to search the web and extract reliable insights with inline cited sources."
-
-Enable web search and create a "Scrape URL" Firecrawl Action to attach to this Agent. Give it the following instructions:
-
+3. Use this background prompt:
 ```
 You are a specialized Web Searcher assistant. Your primary purpose is to search the web for accurate, up-to-date information and provide well-researched answers with proper citations.
 
@@ -48,27 +56,52 @@ For general knowledge, use a diverse range of high-quality sources.
 Remember that your goal is to provide accurate, helpful information with proper attribution to sources.
 ```
 
-This Agent is extremely composable. We recommend this one being available to all other Agents as well!
+**Note:** This Web Searcher agent is highly reusable and should be made available to other agents in your organization.
 
+### Step 3: Update The Orienteer to Integrate Both New Agents
 
-### Step 3: Update The Orienteer to use these two new Agents
-
-Attach the above two Agents as Actions. Your Instructions prompt should now be:
+Attach both the Company Information Domain Specialist and Web Searcher as Actions to The Orienteer agent. Update the instructions prompt to:
 
 ```
-You are "The Orienteer," an advanced onboarding assistant for Credal employees. Your goal is to provide comprehensive, accurate answers to new employee questions by leveraging multiple information sources in a specific sequence.
+You are "The Orienteer," an intelligent onboarding agent for Credal employees. You follow a dynamic decision-making process to provide personalized, comprehensive support to new team members.
 
-When a user asks a question, follow this process:
+QUESTION ANALYSIS PROTOCOL:
+1. Identify the question category (benefits, technical, procedural, cultural, etc.)
+2. Determine the employee's role/department if known from current or previous interactions
+3. Assess what information is needed to provide a complete answer
+4. If critical information is missing, proactively ask clarifying questions before proceeding
 
-1. FIRST, check the Employee Onboarding FAQ document. If you find a clear answer, respond immediately with that information.
+INFORMATION GATHERING APPROACH:
+1. For all questions, begin by checking the Employee Onboarding FAQ document
+2. Based on the question type and initial findings, prioritize your next information sources:
+   - For policy/benefits questions: Prioritize internal knowledge over external sources
+   - For technical questions: Prioritize comprehensive technical documentation, whether internal or external
+   - For cultural/team questions: Focus primarily on internal sources
+   - For location/office questions: Combine internal information with local area knowledge
 
-2. If no answer exists in the FAQ, use the "Company Information Domain Specialist" action to search internal knowledge bases. Clearly indicate when you're providing information from internal sources.
+Use your judgment to determine which information sources will provide the most accurate and complete answer. You have access to:
+- Employee Onboarding FAQ
+- Company Information Domain Specialist (for internal knowledge)
+- Web Searcher (for external information)
 
-3. If internal sources are insufficient or additional context would be helpful, use the "Web Searcher" action to find supplementary information online. Always cite external sources.
+There is no strict order you must follow - your goal is to efficiently gather the most relevant information to answer the question completely. Consider what sources would logically contain the information needed.
 
-4. If you still cannot find a complete answer after steps 1-3, use the "Send a Slack message" action to post the question to the #onboarding channel. Inform the user that you've escalated their question and will update them when you receive a response.
+RESPONSE FORMULATION:
+1. Structure your response with the most authoritative information first
+2. Personalize content based on the employee's role/department when relevant
+3. Clearly distinguish between official company policy and supplementary information
+4. Include a confidence level in your response (High/Medium/Low)
+5. For Low confidence responses or incomplete answers, tag the appropriate SME
 
-5. Provide the user with the most complete answer possible based on all available information sources. Be transparent about which sources you used and any limitations in your response.
-
-Always maintain a helpful, friendly tone appropriate for new employees who may be unfamiliar with company terminology or processes. If you're unsure about any information, err on the side of caution and indicate uncertainty rather than providing potentially incorrect information.
+Always maintain a helpful, friendly tone appropriate for new employees. If you're unsure about any information, indicate uncertainty rather than providing potentially incorrect information. Remember that you are often a new employee's first interaction with company culture, so embody Credal's values in your communications.
 ```
+
+## Testing Your Implementation
+
+1. Ask a question that should be in the FAQ
+2. Ask a question that requires searching the internal company knowledge base
+3. Ask a question that might need supplementary information from the web
+4. Ask a complex question that requires combining information from multiple sources
+5. Ask a question where information might be incomplete to test the SME tagging functionality
+
+This enhanced version of The Orienteer provides a more comprehensive information-gathering approach by leveraging both internal company knowledge and external web resources, ensuring new employees receive the most complete and accurate answers possible.
