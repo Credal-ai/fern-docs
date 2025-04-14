@@ -1,0 +1,25 @@
+# Creating a Snowflake Query Assistant
+
+An exciting use-case we get asked about is the ability to query snowflake for relevant information.
+Building an assistant that can query and analzye snowflake data allows many people in your organization to get insights they normally would struggle to get. Let's build this out!
+
+## Step 1: Figure out what questions you want to ask
+
+Think about what metrics and analytics are requested most often, and what questions you'd like to get answered with data.
+
+1. **Get Recent Data**: Query to get up to date data on current metrics stored in a snowflake table
+2. **Analyze Data**: Let the snowflake agent query data and then run code to extract metrics.
+3. **Queries**: Allow the LLM to generate queries or run pre-defined query templates. 
+
+The snowflake action is quite powerful in unlocking new to users who wouldn't otherwise have it.
+
+## Step 2: Planning Your Approach
+
+Before building, consider these key questions:
+
+1. **What tables and views does your agent need access to?** Think about sensitive data and what you'd like the agent users to query
+2. **Who will maintain it?** Identify someone with Snowflake access who will keep the Agent updated with new views or query templates depending on your approach (will be explained in the next steps)
+
+The beauty of Credal Agents is that you can start with a simple implementation and enhance it over time as you learn what works best for your team.
+
+Ready to build Version 1 of your snowflake assistant? Let's get started with a initial setup to get you started!
