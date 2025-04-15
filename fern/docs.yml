@@ -22,54 +22,60 @@ navigation:
             path: ./docs/pages/guides/agents/quick-start.mdx
           - page: In-Depth Guide
             path: ./docs/pages/guides/agents/in-depth-guide.mdx
-          - page: Actions
-            path: ./docs/pages/guides/agents/actions.mdx
           - page: Agent Collaboration
             path: ./docs/pages/guides/agents/agent-collaboration.mdx
           - page: Open Source Actions
             path: ./docs/pages/guides/agents/open-source-actions.mdx
           - page: Types of Agents
             path: ./docs/pages/guides/agents/types-of-agents.mdx
-      - section: Action Providers
+      - section: Actions
         contents:
-          - page: Confluence
-            path: ./docs/pages/guides/action-providers/confluence.mdx
-          - page: Custom Webhooks
-            path: ./docs/pages/guides/action-providers/custom-webhook.mdx
-          - page: Finnhub
-            path: ./docs/pages/guides/action-providers/finnhub.mdx
-          - page: Firecrawl
-            path: ./docs/pages/guides/action-providers/firecrawl.mdx
-          - page: Google Maps
-            path: ./docs/pages/guides/action-providers/google-maps.mdx
-          - page: Gsuite
-            path: ./docs/pages/guides/action-providers/gsuite.mdx
-          - page: Jira
-            path: ./docs/pages/guides/action-providers/jira.mdx
-          - page: LinkedIn
-            path: ./docs/pages/guides/action-providers/linkedin.mdx
-          - page: Looker
-            path: ./docs/pages/guides/action-providers/looker.mdx
-          - page: Microsoft Teams
-            path: ./docs/pages/guides/action-providers/microsoft-teams.mdx
-          - page: MongoDB
-            path: ./docs/pages/guides/action-providers/mongodb.mdx
-          - page: NWX
-            path: ./docs/pages/guides/action-providers/nwx.mdx
-          - page: OpenStreetMap
-            path: ./docs/pages/guides/action-providers/openstreetmap.mdx
-          - page: Resend
-            path: ./docs/pages/guides/action-providers/resend.mdx
-          - page: Salesforce
-            path: ./docs/pages/guides/action-providers/salesforce.mdx
-          - page: Slack
-            path: ./docs/pages/guides/action-providers/slack.mdx
-          - page: Snowflake
-            path: ./docs/pages/guides/action-providers/snowflake.mdx
-          - page: X
-            path: ./docs/pages/guides/action-providers/x.mdx
-          - page: Zendesk
-            path: ./docs/pages/guides/action-providers/zendesk.mdx
+          - page: Overview
+            path: ./docs/pages/guides/actions/overview.mdx
+          - page: Action Parameters
+            path: ./docs/pages/guides/actions/action-parameters.mdx
+          - page: Build Your First Action
+            path: ./docs/pages/guides/actions/build-your-first-action.mdx
+          - section: Action Providers
+            contents:
+              - page: Confluence
+                path: ./docs/pages/guides/actions/action-providers/confluence.mdx
+              - page: Custom Webhooks
+                path: ./docs/pages/guides/actions/action-providers/custom-webhook.mdx
+              - page: Finnhub
+                path: ./docs/pages/guides/actions/action-providers/finnhub.mdx
+              - page: Firecrawl
+                path: ./docs/pages/guides/actions/action-providers/firecrawl.mdx
+              - page: Google Maps
+                path: ./docs/pages/guides/actions/action-providers/google-maps.mdx
+              - page: Gsuite
+                path: ./docs/pages/guides/actions/action-providers/gsuite.mdx
+              - page: Jira
+                path: ./docs/pages/guides/actions/action-providers/jira.mdx
+              - page: LinkedIn
+                path: ./docs/pages/guides/actions/action-providers/linkedin.mdx
+              - page: Looker
+                path: ./docs/pages/guides/actions/action-providers/looker.mdx
+              - page: Microsoft Teams
+                path: ./docs/pages/guides/actions/action-providers/microsoft-teams.mdx
+              - page: MongoDB
+                path: ./docs/pages/guides/actions/action-providers/mongodb.mdx
+              - page: NWX
+                path: ./docs/pages/guides/actions/action-providers/nwx.mdx
+              - page: OpenStreetMap
+                path: ./docs/pages/guides/actions/action-providers/openstreetmap.mdx
+              - page: Resend
+                path: ./docs/pages/guides/actions/action-providers/resend.mdx
+              - page: Salesforce
+                path: ./docs/pages/guides/actions/action-providers/salesforce.mdx
+              - page: Slack
+                path: ./docs/pages/guides/actions/action-providers/slack.mdx
+              - page: Snowflake
+                path: ./docs/pages/guides/actions/action-providers/snowflake.mdx
+              - page: X
+                path: ./docs/pages/guides/actions/action-providers/x.mdx
+              - page: Zendesk
+                path: ./docs/pages/guides/actions/action-providers/zendesk.mdx
       - section: Build Your First Agent
         contents:
           - page: Overview
