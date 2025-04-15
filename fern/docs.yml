@@ -95,7 +95,7 @@ navigation:
             - page: Overview
               path: ./docs/pages/guides/building-agents/snowflake-query/overview.mdx
             - page: Initial Snowflake Setup
-              path: ./docs/pages/guides/building-agents/snowflake-query/intial-setup.mdx
+              path: ./docs/pages/guides/building-agents/snowflake-query/initial-setup.mdx
             - page: Query Approaches
               path: ./docs/pages/guides/building-agents/snowflake-query/query-approaches.mdx
             - page: Testing your solution
