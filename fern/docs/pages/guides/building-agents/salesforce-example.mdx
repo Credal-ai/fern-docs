@@ -1,0 +1,15 @@
+# Building a Salesforce Agent
+Many companies use Salesforce, and a common pain point is that the interface is not very user-friendly. It can often be hard to quickly and easily find and synthesize the information that sales representatives are looking for. This is where Credal can help!
+
+# Steps
+1. **OAuth to your Salesforce sandbox account**: Navigate to the connections tab and click connect on the User Level Credentials Salesforce Sandbox button.
+1. **Create a new agent**: Click the Create New Agent button under the “Agents” tab and give it a name and description.
+2. **Create a Salesforce query action**: Navigate to the Actions tab and click Create New Action. For this use case,
+“Retrieve Salesforce records by SOQL query” gets the best breadth of results. Make sure to give your new action a
+detailed name and description so the agent knows when to call it. Publish it to your new agent.
+3. **Add your action to your agent**: Scroll down to the Actions section of your agent. Add your action to your agent using the “Select a published action” box.
+4. **Write a prompt for your agent**: Describe what you want your agent to do. In this scenario, you could start the prompt with “You are an expert at Salesforce Object Query Language (SOQL) and retrieving data from Salesforce. When people tell you what information they are looking for, you write a correct SOQL query to retrieve that data from Salesforce and you execute that query.” and customize the rest of it for your precise use case. This is often a process of trial and error. As you interact with the agent, you will notice mistakes it makes or behaviors that it has that you want to modify. You can always go back and tweak the prompt to try to correct this.
+5. **Attach files to your agent**: This also requires a bit of trial and error. Uploading some SOQL documentation can be helpful, especially specific documentation about areas the agent sometimes makes mistakes in. Some companies use custom fields for their Salesforce data. Uploading a doc that describes these fields and the objects they can be used on can help you make your queries even more powerful.
+6. **Choose a model for your agent**: Since this task relies heavily on the LLM generating well-formed SOQL queries, Claude sonnet would be a good choice here since writing quality code is one of its strong suits.
+
+Congrats! You have successfully made an agent that can query your Salesforce data.

@@ -88,6 +88,8 @@ navigation:
             path: ./docs/pages/guides/building-agents/version-2.mdx
           - page: Connect with Internal Systems 
             path: ./docs/pages/guides/building-agents/version-3.mdx
+          - page: Creating a Salesforce Querying Agent Example
+            path: ./docs/pages/guides/building-agents/salesforce-example.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
