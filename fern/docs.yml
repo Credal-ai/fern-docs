@@ -80,16 +80,26 @@ navigation:
         contents:
           - page: Overview
             path: ./docs/pages/guides/building-agents/overview.mdx
-          - page: Creating an Employee Onboarding Assistant
-            path: ./docs/pages/guides/building-agents/solutioning.mdx
-          - page: Answer Basic Questions
-            path: ./docs/pages/guides/building-agents/version-1.mdx
-          - page: Searching Internal and External Knowledge
-            path: ./docs/pages/guides/building-agents/version-2.mdx
-          - page: Connect with Internal Systems 
-            path: ./docs/pages/guides/building-agents/version-3.mdx
-          - page: Creating a Salesforce Querying Agent Example
-            path: ./docs/pages/guides/building-agents/salesforce-example.mdx
+          - section: Employee Onboarding Assistant
+            contents:
+            - page: Overview
+              path: ./docs/pages/guides/building-agents/employee-onboarding/overview.mdx
+            - page: Answer Basic Questions
+              path: ./docs/pages/guides/building-agents/employee-onboarding/version-1.mdx
+            - page: Searching Internal and External Knowledge
+              path: ./docs/pages/guides/building-agents/employee-onboarding/version-2.mdx
+            - page: Connect with Internal Systems 
+              path: ./docs/pages/guides/building-agents/employee-onboarding/version-3.mdx
+          - section: Snowflake Query Assistant
+            contents:
+            - page: Overview
+              path: ./docs/pages/guides/building-agents/snowflake-query/overview.mdx
+            - page: Initial Snowflake Setup
+              path: ./docs/pages/guides/building-agents/snowflake-query/initial-setup.mdx
+            - page: Query Approaches
+              path: ./docs/pages/guides/building-agents/snowflake-query/query-approaches.mdx
+            - page: Testing your solution
+              path: ./docs/pages/guides/building-agents/snowflake-query/testing-solution.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
