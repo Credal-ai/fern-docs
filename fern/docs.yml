@@ -100,6 +100,8 @@ navigation:
               path: ./docs/pages/guides/building-agents/snowflake-query/query-approaches.mdx
             - page: Testing your solution
               path: ./docs/pages/guides/building-agents/snowflake-query/testing-solution.mdx
+          - page: Salesforce Query Assistant
+            path: ./docs/pages/guides/building-agents/salesforce-example.mdx
       - page: Bulk Analysis
         path: ./docs/pages/guides/bulk-analysis.mdx
       - page: Permissions Service
