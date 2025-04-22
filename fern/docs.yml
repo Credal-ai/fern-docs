@@ -80,7 +80,7 @@ navigation:
             path: ./docs/pages/guides/actions/build-your-first-action.mdx
             
           
-      - section: Build Your First Agent
+      - section: Use Case Tutorials
         contents:
           - page: Overview
             path: ./docs/pages/guides/building-agents/overview.mdx
