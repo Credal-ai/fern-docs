@@ -141,3 +141,7 @@ logo:
   height: 30
 
 css: ./styles.css
+
+redirects:
+  - source: /getting-started/data-integrations
+    destination: /getting-started/data-sources-action-providers
