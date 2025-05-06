@@ -36,14 +36,12 @@ navigation:
             path: ./docs/pages/guides/actions/action-parameters.mdx
           - page: Build Your First Action
             path: ./docs/pages/guides/actions/build-your-first-action.mdx
-          - section: Action Providers
+          - section: Supported Actions
             contents:
               - page: Confluence
                 path: ./docs/pages/guides/actions/action-providers/confluence.mdx
               - page: Custom Webhooks
                 path: ./docs/pages/guides/actions/action-providers/custom-webhook.mdx
-              - page: Finnhub
-                path: ./docs/pages/guides/actions/action-providers/finnhub.mdx
               - page: Firecrawl
                 path: ./docs/pages/guides/actions/action-providers/firecrawl.mdx
               - page: Google Maps
@@ -60,8 +58,8 @@ navigation:
                 path: ./docs/pages/guides/actions/action-providers/microsoft-teams.mdx
               - page: MongoDB
                 path: ./docs/pages/guides/actions/action-providers/mongodb.mdx
-              - page: NWX
-                path: ./docs/pages/guides/actions/action-providers/nwx.mdx
+              - page: NWS
+                path: ./docs/pages/guides/actions/action-providers/nws.mdx
               - page: OpenStreetMap
                 path: ./docs/pages/guides/actions/action-providers/openstreetmap.mdx
               - page: Resend
@@ -108,7 +106,7 @@ navigation:
         path: ./docs/pages/guides/permissions-service.mdx
       - page: Prompting
         path: ./docs/pages/guides/prompting.mdx
-      - page: Data Integrations
+      - page: Data Sources / Action Providers
         path: ./docs/pages/guides/data-sources.mdx
   - api: API Reference
     snippets:
