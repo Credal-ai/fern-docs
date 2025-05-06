@@ -42,6 +42,8 @@ navigation:
                 path: ./docs/pages/guides/actions/action-providers/confluence.mdx
               - page: Custom Webhooks
                 path: ./docs/pages/guides/actions/action-providers/custom-webhook.mdx
+              - page: Finnhub
+                path: ./docs/pages/guides/actions/action-providers/finnhub.mdx
               - page: Firecrawl
                 path: ./docs/pages/guides/actions/action-providers/firecrawl.mdx
               - page: Google Maps
