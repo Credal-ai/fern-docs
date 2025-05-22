@@ -90,6 +90,18 @@ navigation:
                 path: ./docs/pages/guides/building-agents/employee-onboarding/version-2.mdx
               - page: Connect with Internal Systems
                 path: ./docs/pages/guides/building-agents/employee-onboarding/version-3.mdx
+          - section: IT Security Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/guides/building-agents/it-security/overview.mdx
+              - page: Creating Both Agents
+                path: ./docs/pages/guides/building-agents/it-security/creating-both-agents.mdx
+              - page: Kandji Connector
+                path: ./docs/pages/guides/building-agents/it-security/kandji-connector.mdx
+              - page: Action Release Gate
+                path: ./docs/pages/guides/building-agents/it-security/action-release-gate.mdx
+              - page: Deploy to Slack
+                path: ./docs/pages/guides/building-agents/it-security/deploy-to-slack.mdx
           - section: Snowflake Query Assistant
             contents:
               - page: Overview

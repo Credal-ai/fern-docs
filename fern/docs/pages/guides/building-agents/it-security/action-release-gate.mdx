@@ -1,0 +1,16 @@
+# Action Release Gates
+
+Action Release Gates are the DLP step for Agent to Agent communication. They make sure that prompt injection, hallucinations, or indirect leakage are not a problem and as a result they assign proper accountability when things go wrong.
+
+## How it works
+
+When your approver approves the action to fetch data from Kandji, the IT/Security agent is in a state of permissions escalation. When data leaves this agent to go back to the Employee Assistant, it is going to a place with less permissions than where it came from. We have injected a mandatory approval step across these sensitive bridges to make sure that there is absolutely no situation where data is accidentally leaked when automating cross functional workflows.
+
+To turn on the ARG, head over to the Deploy tab in the IT/Security agent and toggle it on. The approver of the ARG will see the original user intent as well as the ability the zoom into the steps taken to derive the answer, allowing them to confidently hit "Approve."
+![Turn On ARG](/docs/assets/it-security-use-cases/turn-on-arg.png)
+
+## Further Streamlining
+
+We now have two approval steps in the end to end process. With the addition of the ARG, we can optionally auto approve the step before reaching out to Kandji to further streamline the workflow and save your team time. With the inclusion of the ARG, it will be apparent who has asked to carry out malicious behavior before the output fo that function can be returned to them.
+![Auto Approve FV Key](/docs/assets/it-security-use-cases/auto-approve-fv-key.png)
+![Autoproved](/docs/assets/it-security-use-cases/autoproved.png)
