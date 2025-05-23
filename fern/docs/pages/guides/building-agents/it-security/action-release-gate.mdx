@@ -1,5 +1,17 @@
 # Action Release Gates
 
+## What's missing?
+
+Once the approver for the Kandji action hits "Approve" and the recovery key is fetched in an API call, our IT/Security agent will have to craft a response back to the Employee Assistant with the key. While this seems fool proof with a bit of prompting, it is actually not airtight.
+
+There are a couple potential risks here:
+
+- Adversarial prompt injection
+- Hallucinatoins the agent makes
+- Indirect leakage through summaries
+
+While not all of these loopholes will be relevant to every use case, they are real concerns that should be thought through any time you have permissions escalation in a multi agent system.
+
 Action Release Gates are the DLP step for Agent to Agent communication. They make sure that prompt injection, hallucinations, or indirect leakage are not a problem and as a result they assign proper accountability when things go wrong.
 
 ## How it works
