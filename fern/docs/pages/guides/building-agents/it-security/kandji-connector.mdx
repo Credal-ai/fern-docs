@@ -10,6 +10,9 @@ You must be an administrator at your organization to connect to Kandji. Head ove
 You are now ready to create an Action. Head over to the Actions tab in the side panel and search for Kandji actions. Select the one for fetching a FV recovery key and give it a name and description. Our list of actions is growing and you can contribute to it here: https://github.com/Credal-ai/actions-sdk
 ![Create Kandji Action](/docs/assets/it-security-use-cases/create-kandji-action.png)
 
+We will want to make sure that the user email we get the recovery key for is *always* for the user who requested the recovery key. We will deploy this Agent in Slack, so we can trust that the identity associated with the incoming request is from that user's Slack account. If you select Caller-Set params and choose `CREDAL_USER_EMAIL` as the input, Credal will propogate that verified identity and pass the email associated with that user into this Action.
+![Caller Set Params](/docs/assets/it-security-use-cases/caller-set-param.png)
+
 Since this action requires IT credentials, we will include a HITL step here. Assign the appropriate IT department member(s) to approve the Action. Choose the approvers carefully, as Kandji only supports organization wide API connection unlike our other OAuth connectors.
 ![Enable Human Approval](/docs/assets/it-security-use-cases/enable-human-approval.png)
 
