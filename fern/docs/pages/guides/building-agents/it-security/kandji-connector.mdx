@@ -28,14 +28,3 @@ Finally, ensure that your Kandji action is selected in your IT/Security Agent to
 
 At this point, you are ready to automate the end to end process of retrieving FileVault recovery keys for users who are locked out of their laptops.
 
-## What's missing?
-
-Once the approver for the Kandji action hits "Approve" and the recovery key is fetched in an API call, our IT/Security agent will have to craft a response back to the Employee Assistant with the key. While this seems fool proof with a bit of prompting, it is actually not airtight.
-
-There are a couple potential risks here:
-
-- Adversarial prompt injection (user asking for someone else’s recovery key)
-- Mistakes the agent makes (hallucinations)
-- Indirect leakage through summaries
-
-In the next section, we will talk about Action Release Gates, the solution to this loophole.
