@@ -37,13 +37,13 @@ All three of these provisions together make your multi-user workflows airtight a
 
 | Action Connection Type | User OAuth / Personal API keys / Personal Basic Auth / Credal Native | Org-level Auth w/ Permissions Supported / Connections only syncing internally public data | Org-level Auth w/ Permissions Unavailable | Fetch from API (aka trigger a webhook) |
 |------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------|----------------------------------------|
-| Non exhaustive Source examples | Salesforce / Credal enterprise search / Firecrawl web search / Jamf / Kanji | Slack / MongoDB / Gong | Looker / Snowflake / (Formerly Kanji & Jamf) | Webhook |
+| Non exhaustive Source examples | Salesforce / Credal enterprise search / Jamf / Kanji | Slack / MongoDB / Gong | Looker / Snowflake / (Formerly Kanji & Jamf) | Webhook |
 | Where is resource level access handled? | In the provider’s implementation | In Credal’s implementation of interfacing with provider API | Define trusted allowlist at provider level and Credal limits configurability within the action instead of relying on admin judgement. - scrapping this, | Trusted allowlist defined in action, If HITL enabled, it’s set of approvers, else it is set of end users with access - trust the admin publishing to verify this is correct |
-| Create the connection? |  |  |  |  |
-| Create an Action? |  |  |  | |
-| Edit the Action? |  |  |  Until we have version control for Actions, this will require an admin user for changes |  Until we have version control for Actions, this will require an admin user for changes |
-| Publish the Action to the whole organization? |  |  |  Approvers are set to trusted set of approvers OR no approvers and end user access is set to trusted set of approvers. (applies for all of the below) |  Approvers are set to trusted set of approvers OR no approvers and end user access is set to trusted set of approvers. (applies for all of the below) |
-| Publish the Action to Select Users/Groups? |  |  |  |  |
-| Publish the Action to All Agents in Organization |  Not for security purposes |  Not for security purposes |  |  |
-| Publish the Action to Selected Agents |  |  |  |  |
-| Invoke the Action? |  |  |  |  |
+| Create the connection? | Anyone | Admin | Admin | Anyone |
+| Create an Action? | Anyone | Anyone | Admin | Anyone |
+| Edit the Action? | Action Collaborator | Action Collaborator | Admin, Until we have version control for Actions, this will require an admin user for changes | Admin, Until we have version control for Actions, this will require an admin user for changes |
+| Publish the Action to the whole organization? | Action Collaborator | Action Collaborator | Admin, Approvers are set to trusted set of approvers OR no approvers and end user access is set to trusted set of approvers. (applies for all of the below) | Admin, Approvers are set to trusted set of approvers OR no approvers and end user access is set to trusted set of approvers. (applies for all of the below) |
+| Publish the Action to Select Users/Groups? | Action Collaborator | Action Collaborator | Admin | Admin |
+| Publish the Action to All Agents in Organization | Admin, Not for security purposes | Admin, Not for security purposes | Admin | Admin |
+| Publish the Action to Selected Agents | Action Collaborator | Action Collaborator | Admin | Admin |
+| Invoke the Action? | Users in End User Access list | Users in End User Access list | Users in End User Access list | Users in End User Access list |
