@@ -8,6 +8,8 @@ For this we can create a generic **runSnowflakeQuery** Action with all parameter
 SELECT * FROM DB_NAME.INFORMATION_SCHEMA.TABLES;
 ```
 
+Then simply ask your agent to run the action it has attached and get the data back to you.
+
 ## Testing Steps
 Now that we've tested something basic, we can test out our Snowflake Agent.
 
@@ -17,7 +19,8 @@ Now that we've tested something basic, we can test out our Snowflake Agent.
 
 #### Example Action Ran (Views Approach): 
  - This result was using snowflake data we have at credal.
- - Once the data is queried, it's passed to Open AI Code Interpreter to be processed.
+ - Once the data is queried, it's passed to a thinking model or Open AI Code Interpreter to be processed.
+ - The image generated comes from Open AI Code Interpreter.
 
  <Frame>
   <img src="/docs/assets/agents/snowflake-query/snowflake-views-approach.png" />
@@ -33,4 +36,3 @@ Now that we've tested something basic, we can test out our Snowflake Agent.
 
 ### Need Help?
 The Snowflake Action is a powerful tool - if you have any questions or need help feel free to reach out to us at contact support@credal.ai.
-

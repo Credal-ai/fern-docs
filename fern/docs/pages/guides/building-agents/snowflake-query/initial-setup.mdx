@@ -1,9 +1,9 @@
 Before we jump into making our snowflake agent, lets go through the initial setup.
 ### Auth Setup
-- To connect to snowflake you'll need a credal admin at your organization to add org-wide snowflake credentials. 
-- To help them prepare with adding in credentials you can:
+- To connect to snowflake you'll need to generate a role on snowflake, attach a user to that role, and use private key-pair auth to add that role to snowflake. 
+- You can have multiple snowflake credentials in credal each tied to their own snowflake user/role to ensure secure access. 
 
-##### 1. Create the **CREDAL_READ** role in snowflake which will control read access to tables/views.
+##### 1. Create a role in snowflake which will control read access to tables/views (e.g CREDAL_READ)
 
 ```sql
 -- 1. Create the new Role
@@ -35,10 +35,13 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 ##### 3. Setup Snowflake key pair authentication 
 - Follow this guide to setup key-pair auth: [Snowflake Key Pair Auth](https://docs.snowflake.com/en/user-guide/key-pair-auth)
 
-##### 4. Get a credal admin at your organization to add the snowflake credentials 
+##### 4. Add your snowflake credential on the [action provider page] 
 - They will need the `Subdomain`, `Account Identifier`, `Username`, `Private Key` and `SHA-256 Fingerprint` to add the snowflake connection.
-## Implementation Steps
+<Frame>
+  <img src="/docs/assets/agents/snowflake-query/snowflake-add-credential.png" />
+</Frame>
 
+## Implementation Steps
 
 ### Step 1: Create Your Agent
 
@@ -47,7 +50,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 3. Add this description:
    > This assistant helps employees query data from snowflake getting metrics, analysis and human-readable responses on the data.
 4. Enable Code Interpreter 
-   > Output from the runSnowflakeQuery Action is passed into Open AI Code Interpreter for analysis, meaning your copilot must be using an OpenAI foundational model compatible with Code Interpreter
+   > Output from the runSnowflakeQuery Action is passed into Open AI Code Interpreter for image generation and analysis (depending on your parameter setup)
 
 <Frame>
   <img src="/docs/assets/agents/snowflake-query/code-interpreter.png" />
@@ -62,8 +65,26 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 4. **Username**: Username of the account that is setup with Key-Pair authentication
 5. **Account Name**: Your snowflake account name (will likely be hardcoded)
 6. **Format**: The format of your output `csv` or `json` (prefer `csv`)
+7. **Limit** (Optional): The limit on number of rows to return, anything over this limit will mention "data queried was too large"
+8. **Code Interpreter Limit** (Optional): The minimum number of rows required to pass to code interpreter for analysis (thinking models handle small sets of results (e.g < 100) better than code interpreter)
+9. **Code Interpreter Image Gen Limit** (Optional): The minimum number of rows required for image generation (in case you want thinking models for analysis and image generation for more than X results)
 
-### Step 3: Choose your approach
+### Step 3: Attach your snowflake credential to your Snowflake Action 
+- Access to the snowflake credential is controlled by who has access to your action.
+- You can control who can run this action by setting end-user-access on the action it's attached to.
+- Only the creator of a snowflake credential can add it to a snowflake action 
+<Frame>
+  <img src="/docs/assets/agents/snowflake-query/action-credential.png" />
+</Frame>
+<Frame>
+  <img src="/docs/assets/agents/snowflake-query/end-user-access.png" />
+</Frame>
+
+### Step 4: Model Choice
+The base model you select will affect queries generated and analysis of results.
+It's recommended to use a thinking model with reasoning enabled such as o3 or Claude 3.7, however the model you select is also dependant on the query approach. You may want to use a smaller non-reasoning model for query templates which are more well defined compared to snowflake views.
+
+### Step 4: Choose your query approach
 Right now there are 2 approaches to querying snowflake for data
 - ##### 1. Query Templates
 - ##### 2. Snowflake Views
