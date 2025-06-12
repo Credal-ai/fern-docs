@@ -62,7 +62,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 1. **Database**: the default database to use when querying
 2. **Warehouse**: the compute warehouse to run your queries (will likely be hardcoded)
 3. **Query**: Depends on whether you take the Query Templates Approach or the Snowflake Views approach (explained more in next steps)
-4. **Username**: Username of the account that is setup with Key-Pair authentication
+4. **Role**: The role you would like to use with the credentials (if not set it will use the default role in snowflake for the credential)
 5. **Account Name**: Your snowflake account name (will likely be hardcoded)
 6. **Format**: The format of your output `csv` or `json` (prefer `csv`)
 7. **Limit** (Optional): The limit on number of rows to return, anything over this limit will mention "data queried was too large"
@@ -71,7 +71,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 
 ### Step 3: Attach your snowflake credential to your Snowflake Action 
 - Access to the snowflake credential is controlled by who has access to your action.
-- You can control who can run this action by setting end-user-access on the action it's attached to.
+- You can control who can run use this action by setting end-user-access on the actions it's attached to.
 - Only the creator of a snowflake credential can add it to a snowflake action 
 <Frame>
   <img src="/docs/assets/agents/snowflake-query/action-credential.png" />
