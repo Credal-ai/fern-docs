@@ -10,13 +10,13 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: useblacksmith/setup-node@v5
 
       - name: Download Fern
         run: npm install -g fern-api
