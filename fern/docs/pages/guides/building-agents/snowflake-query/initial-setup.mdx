@@ -49,7 +49,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 2. Name your agent "Snowflake Data Extractor" 
 3. Add this description:
    > This assistant helps employees query data from snowflake getting metrics, analysis and human-readable responses on the data.
-4. Enable Code Interpreter 
+4. Enable Code Interpreter (required for image generation)
    > Output from the runSnowflakeQuery Action is passed into Open AI Code Interpreter for image generation and analysis (depending on your parameter setup)
 
 <Frame>
@@ -62,17 +62,25 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 1. **Database**: the default database to use when querying
 2. **Warehouse**: the compute warehouse to run your queries (will likely be hardcoded)
 3. **Query**: Depends on whether you take the Query Templates Approach or the Snowflake Views approach (explained more in next steps)
-4. **Role**: The role you would like to use with the credentials (if not set it will use the default role in snowflake for the credential)
-5. **Account Name**: Your snowflake account name (will likely be hardcoded)
-6. **Format**: The format of your output `csv` or `json` (prefer `csv`)
+4. **Account Name**: Your snowflake account name (will likely be hardcoded)
+5. **Format**: The format of your output `csv` or `json` (prefer `csv`)
+6. **Role**: The role you would like to use with the credentials (optional)
 7. **Limit** (Optional): The limit on number of rows to return, anything over this limit will mention "data queried was too large"
 8. **Code Interpreter Limit** (Optional): The minimum number of rows required to pass to code interpreter for analysis (thinking models handle small sets of results (e.g < 100) better than code interpreter)
 9. **Code Interpreter Image Gen Limit** (Optional): The minimum number of rows required for image generation (in case you want thinking models for analysis and image generation for more than X results)
 
-### Step 3: Attach your snowflake credential to your Snowflake Action 
-- Access to the snowflake credential is controlled by who has access to your action.
-- You can control who can run use this action by setting end-user-access on the actions it's attached to.
-- Only the creator of a snowflake credential can add it to a snowflake action 
+### Step 3: Configure Access Control for Snowflake Credentials
+
+Access to Snowflake data is controlled at two levels:
+
+1. **Credential Access**: 
+   - Only the creator of a Snowflake credential can attach it to an Action.
+2. **Action Access**: 
+   - You can specify exactly which users or groups can use this Action through the End User Access settings
+   - This ensures that only authorized personnel can execute queries using the attached Snowflake credentials
+
+**Important Security Note**: Any user with end-user access to an Action will be able to use the attached Snowflake credentials through that Action. Ensure you carefully manage the End User Access list to maintain proper data security.
+
 <Frame>
   <img src="/docs/assets/agents/snowflake-query/action-credential.png" />
 </Frame>
