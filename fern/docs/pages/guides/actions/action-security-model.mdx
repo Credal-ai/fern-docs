@@ -11,35 +11,35 @@ No users can execute outside the scope of the credentials and permissions that a
 - **Who can execute actions?**: Approvers. If there are no approvers, invokers.
 - **Where are actions invoked?**: In requests made to Agents that have permission to use the Action, as defined in Agent Access configuration. End User Access to these Actions applies transitively.
 - **How do we infer resource level access for org-wide no perm providers and arbitrary webhooks?**: Admins can vet certain groups/users as executors of the action. No one else can configure these granular access settings.
+- **What are action scoped auth credentials?**: There are instances where you'd want to have multiple credentials for a provider (e.g Snowflake/Looker) where you can have a credential per role in each system. These credentials are attached directly to actions, allowing anyone with **End User Access** to that action to use the associated credentials.
 
 ### Action Security Model by Connection Type
 
 #### 1. Connection Types and Examples
 
-| Connection Type                                                 | Examples                                          | Resource Level Access                                       |
-| --------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------- |
+| Connection Type                                                 | Examples                                           | Resource Level Access                                       |
+| --------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
 | **User OAuth / Personal API keys / Basic Auth / Credal Native** | Salesforce, Credal enterprise search, Jamf, Kandji | In the provider's implementation                            |
-| **Action Scoped Auth**                                          | Snowflake                                         | ²Trusted allowlist defined in action                        |
-| **Org-level Auth w/ Permissions Supported**                     | Slack, MongoDB, Gong                              | In Credal's implementation of interfacing with provider API |
-| **Org-level Auth w/ Permissions Unavailable**                   | Looker (Formerly Kandji & Jamf)                    | ²Trusted allowlist defined in action                        |
-| **Fetch from API (Webhook)**                                    | Webhook                                           | ²Trusted allowlist defined in action                        |
+| **Action Scoped Auth**                                          | Snowflake, Looker                                  | ²Trusted allowlist defined in action                        |
+| **Org-level Auth w/ Permissions Supported**                     | Slack, MongoDB, Gong                               | In Credal's implementation of interfacing with provider API |
+| **Fetch from API (Webhook)**                                    | Webhook                                            | ²Trusted allowlist defined in action                        |
 
 #### 2. Connection Creation and Management
 
-| Action                       | User OAuth / Personal Auth | Action Scoped Auth  | Org Auth w/ Permissions | Org Auth w/o Permissions                           | Webhook                                            |
-| ---------------------------- | -------------------------- | ------------------- | ----------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| **Create Connection**        | Anyone                     | Anyone              | Admin                   | Admin                                              | Anyone                                             |
-| **Create Action**            | Anyone                     | Anyone              | Anyone                  | Admin                                              | ³Admin (until we have version control for actions) |
-| **Edit/Delete/Share Action** | Action Collaborator        | Action Collaborator | Action Collaborator     | ³Admin (until we have version control for actions) | ³Admin (until we have version control for actions) |
+| Action                       | User OAuth / Personal Auth | Action Scoped Auth  | Org Auth w/ Permissions | Webhook                                            |
+| ---------------------------- | -------------------------- | ------------------- | ----------------------- | -------------------------------------------------- |
+| **Create Connection**        | Anyone                     | Anyone              | Admin                   | Anyone                                             |
+| **Create Action**            | Anyone                     | Anyone              | Anyone                  | ³Admin (until we have version control for actions) |
+| **Edit/Delete/Share Action** | Action Collaborator        | Action Collaborator | Action Collaborator     | ³Admin (until we have version control for actions) |
 
 #### 3. Publishing Actions
 
-| Publish To              | User OAuth / Personal Auth        | Action Scoped Auth                | Org Auth w/ Permissions           | Org Auth w/o Permissions | Webhook |
-| ----------------------- | --------------------------------- | --------------------------------- | --------------------------------- | ------------------------ | ------- |
-| **Whole Organization**  | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin                    | Admin   |
-| **Select Users/Groups** | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin                    | Admin   |
-| **All Agents in Org**   | Admin (not for security purposes) | Admin (not for security purposes) | Admin (not for security purposes) | Admin                    | Admin   |
-| **Selected Agents**     | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin                    | Admin   |
+| Publish To              | User OAuth / Personal Auth        | Action Scoped Auth                | Org Auth w/ Permissions           | Webhook |
+| ----------------------- | --------------------------------- | --------------------------------- | --------------------------------- | ------- |
+| **Whole Organization**  | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
+| **Select Users/Groups** | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
+| **All Agents in Org**   | Admin (not for security purposes) | Admin (not for security purposes) | Admin (not for security purposes) | Admin   |
+| **Selected Agents**     | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
 
 #### 4. Action Invocation
 
