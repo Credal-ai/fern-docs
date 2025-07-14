@@ -88,20 +88,22 @@ _--------- End Context ---------_
   </AccordionGroup>
 
 5. **Data**
-   The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. There are two types of data you can specify here:
+   The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your Agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
+   
+   There are two ways you can provide data to the agent:
 
-   - **Searchable Sources**
-     You should provide your Agent with sufficient data relevant to its area of expertise. It will search these sources for information relevant to user questions, and pass just the most relevant information to the AI model. Use the toggle to enable searchable sources and use the search bar to add sources.
+   - **Attach Data**
+    This allows you as the agent bulder to specify which data sources your agent should consider. You can choose with sources to attach either by searching for them by name or by pasting a link to the source.
 
-     <Frame caption="We provided our infosec agent with all of Credal's information security documentation.">
-       <img src="/docs/assets/copilots/copilot-searchable-data.png" />
-     </Frame>
+    For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
 
-   - **Pinned Data**
-     By pinning data sources, you instruct your agent to pass the full contents of the document to the AI for every user question. You should use this for documents where the entire document is relevant to most questions you expect your agent to address.
      <Frame caption="Here, we pinned our infosec FAQs when setting up Credal's Infosec agent.">
-       <img src="/docs/assets/copilots/copilot-pinned-data.png" />
+       <img src="/docs/assets/copilots/copilot-attached-data.png" />
      </Frame>
+
+   - **User Inputs**
+    Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you  may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
+
 
 ### Deploy Your Agent to Slack
 
