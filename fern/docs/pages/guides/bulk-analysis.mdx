@@ -6,15 +6,15 @@ Credal’s Bulk Analysis feature allows users to analyze a collection of documen
 
 _This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Agents User guide](https://docs.credal.ai/getting-started/agents/in-depth-guide)._
 
-Bulk Analysis is a powerful tool that you can use to **accelerate** analyses of a large number of documents, transcripts, or spreadsheets using LLMs. If you have a large amount of documents or data and you want to be able to classify each, extract key fields, or in any other way ask the same questions across each of the documents, this Credal feature will help you accomplish that by parallelizing your LLM requests for each document.
+Bulk Analysis is a powerful tool that you can use to **accelerate** analyses of a large number of documents, transcripts, or rows in a spreadsheet. If you have many pieces of data and you want to be able to classify each, extract key fields, or ask the same set of questions across each of the documents, Bulk Analysis can help.
 
 In this guide, we will walk through how to set up and run Bulk Analysis in detail. For a quick overview of this feature, visit our [blog](https://www.credal.ai/blog/introducing-bulk-analysis-the-detail-oriented-way-to-interpret-a-collection-of-documents)!
 
 ## Step 1: Prep your source data
 
-The essence of bulk analysis is having a ton of data that you want to perform some bulk action on. 
+The essence of bulk analysis is having many pieces data that you want to perform some analysis on. 
 
-You can choose to either use a Document Collection or a Tabular formed Data Source as your Bulk Analysis template. If you choose a Document Collection, Bulk Analysis will flatten any folder hierarchies and list each individual document as a row in the Bulk Analysis. If you choose a spreadsheet, each row will be considered a separate data source.
+You can choose to either use a Document Collection or a speadsheet as your Bulk Analysis data source. If you choose a Document Collection, Bulk Analysis will flatten any folder hierarchies and list each individual document as a row in the Bulk Analysis. If you choose a spreadsheet, each row will be considered a separate data source.
 
 ### Using a Document Collection
 
@@ -26,13 +26,13 @@ Create a Document Collection and either manually or via API upload data you want
 
 ### Using Tabular Data
 
-Alternatively, if your data is structured in a spreadsheet, you can opt to use this format as your input for Bulk Analysis. This is especially useful if your data is already neatly organized into rows and columns. As of today, Credal will only look at the first sheet in a Google Sheets file. More functionality to come!
+Alternatively, if your data is structured in a spreadsheet, you can opt to use this as the input for Bulk Analysis. This is especially useful if your data is already neatly organized into rows and columns. Currently, Credal will only look at the first sheet in a Google Sheets file.
 
 ## Step 2: Create your first Bulk Anaysis
 
 Navigate to the Bulk Analysis tab on the left of the Credal home page.
 
-Create a new Bulk Analysis the same way you would create a new Document Collection or Agent. The description isn’t being used anywhere but it’s certainly helpful to be as descriptive as possible for collaborative efforts.
+Create a new Bulk Analysis the same way you would create a new Document Collection or Agent. 
 
 ### Linking Source Data
 
@@ -42,7 +42,7 @@ Select the Document Collection or Spreadsheet that you want to analyze.
 
 ### Validating Setup
 
-After linking, double check that the rows of the spreadsheet or files in the Document Collection populate the Preview Table rows (below the Data Source select).
+After linking, double check that the rows of the spreadsheet or files in the Document Collection populate the Preview Table rows.
 
 ## Step 3: Create columns to extract key insights
 
@@ -50,21 +50,21 @@ This is the heart of Bulk Analysis. Now that you’ve selected a collection/spre
 
 ![preview-table.png](/docs/assets/bulk-analysis/in-depth-guide/preview-table.png)
 
-If you are looking to streamline Suggested Questions defined in a Agent (or multiple Agents), click "Import Columns" and choose the questions you care about from any combination of Agents.
+If you want to use prompts that already exist as Suggested Questions in an Agent, click "Import Columns" and choose the questions you care about. You can import columns from multiple Agents.
 
 ![import-columns.png](/docs/assets/bulk-analysis/in-depth-guide/import-columns.png)
 
-Alternatively, you can click on “Add column+” to manually add prompts using a Agent of your choice without any linking:
+Alternatively, you can click on “Add column+” to manually add prompts:
 
 ![empty-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/empty-column-config.png)
 
-The column name you assign should concisely describe the content you are extracting from the data, the prompt will be sent to the LLM along with your document, and the Agent of your choice will be the specialized assistant assigned for the job!
+The column name you assign should concisely describe the content you are extracting from the data. The prompt will be sent to the LLM along with your document, and the Agent you choose will be used to generate the response.
 
-Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Agent has specific context and a customized background prompt that contains the exact guidelines for how I would want to write a cold email. 
+Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Agent has specific context and a customized background prompt that contains the exact guidelines for how to write a cold email. 
 
 ![full-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/full-column-config.png)
 
-In the end, I’ll have a table that looks like this:
+In the end, you'll have a table that looks like this:
 
 ![full-preview-table.png](/docs/assets/bulk-analysis/in-depth-guide/full-preview-table.png)
 
@@ -76,7 +76,7 @@ Writing good prompts is the key to getting meaningful insights from your input d
 
 ![suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
 
-When it comes to what questions you are asking, the freedom is all yours. You might be summarizing content, generating new content, or answering a simple Yes or No question. Let’s say I am analyzing trends for Jira ticket blockers. To accomplish this, I might want to count for each ticket how many blockers stalled progress on it over the course of its completion and analyze what kinds of tickets experienced more blockers than others. The prompts I’d write would then be:
+When it comes to what questions you are asking, the choice is yours. You might be summarizing content, generating new content, or answering a simple Yes or No question. Let’s say I am analyzing trends for Jira ticket blockers. To accomplish this, I might want to count for each ticket how many blockers stalled progress on it over the course of its completion and analyze what kinds of tickets experienced more blockers than others. The prompts I’d write would then be:
 
 ![example-questions.png](/docs/assets/bulk-analysis/in-depth-guide/example-questions.png)
 
@@ -84,11 +84,11 @@ Notice that I do not ask for metadata such as “Assignee” or “Date” since
 
 ### Testing and Refining your Prompts
 
-After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview tab will be super helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering. You can learn more here: [Prompting with Credal 101](https://docs.credal.ai/getting-started/prompting). Once you feel confident, copy-paste over your prompts into the appropriate columns in your Bulk Analysis table.
+After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview table will be helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering. You can learn more here: [Prompting with Credal 101](https://docs.credal.ai/getting-started/prompting).
 
 ## Step 4: Run!
 
-It’s time. And it really is as easy as clicking a button.
+It’s time to run you analysis, which is as easy as clicking a button.
 
 ### Performing a Preview Run
 
@@ -97,6 +97,8 @@ Before running the full analysis, it’s wise to do a preview run on a smaller s
 ![running-preview.png](/docs/assets/bulk-analysis/in-depth-guide/running-preview.png)
 
 ### Conducting a Full Run
+
+Note that you can only do one full run per day, so it's wise to make sure your preview is working as expected first. If you urgently need to run your analysis more than once in a day, contact support@credal.ai.
 
 Once satisfied with the preview, proceed to the “Run” tab to conduct a full run. This will enable you to analyze every document in your collection comprehensively, unlocking thorough and actionable insights.
 
@@ -108,15 +110,15 @@ Once you've navigated to the Run tab to do a full Bulk Analysis, you can do one 
 
 ### Chat with Results
 
-Post-analysis, Credal allows you to interact with your results conversationally. You can ask, “What were some common themes around security and governance?” or “Exactly how many customers mentioned the Salesforce integration as being useful for them?” This interactive feature can highlight trends and deep-dive into specific insights seamlessly.
+Credal allows you to interact with your results conversationally. You can ask, “What were some common themes around security and governance?” or “Exactly how many customers mentioned the Salesforce integration as being useful for them?” This interactive feature can highlight trends and deep-dive into specific insights seamlessly.
 
 ### Download CSV
 
-For further analysis, you can download the results as a CSV file. This is useful for creating charts, aggregations, or integrating results with other data tools. If you’ve crafted your questions well, you can even create numerical charts or extract mathematical findings by attaching the output spreadsheet to the web UI and turning on Code Interpreter!
+For further analysis, you can download the results as a CSV file. This is useful for creating charts, aggregations, or integrating results with other data tools. If you’ve crafted your questions well, you can even create numerical charts or extract mathematical findings.
 
 ### Exploring Further Capabilities
 
 Beyond primary analysis, there are exciting future expansions on the horizon, such as:
 
-1. Transforming Bulk Analysis results into ongoing valuable data assets. This means your output table will be continuously updated without your supervision.
+1. Transforming Bulk Analysis results into ongoing valuable data assets. This means your output table will be continuously updated as new data is added.
 2. Integrating the results into live dashboards like Tableau for continuous visual updates.
