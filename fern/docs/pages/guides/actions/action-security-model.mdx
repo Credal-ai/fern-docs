@@ -2,16 +2,45 @@
 
 No users can execute outside the scope of the credentials and permissions that admins and data owners have explicitly granted.
 
-### Quick Definitions and Answers
+### Quick Definitions
 
+- **Action Provider**: An external system that an Action let you interact with, ex. Jira or Okta.
+- **Action Template**: A type of action available for an Action Provider, ex. "Add User to Okta Group" or "Create Jira Ticket".
+- **Action**: An instance of an Action Template with paramaters configured by a user, ex. "Create IT Support Request Jira Ticket in SI Project".
 - **Invoking an Action**: Prompting an Agent to decide that an Action should be taken.
 - **Executing the Action**: Running the Action using your permissions/scopes.
-- **Which user-level providers can I OAuth into?**: All by default. Admins can prevent shadow IT connections to non-approved sources that happen to be supported by Credal by disabling those actions in the “Admin data sources” tab.
-- **Who can invoke actions?**: Users defined in End User Access configuration in Action Deployment.
-- **Who can execute actions?**: Approvers. If there are no approvers, invokers.
-- **Where are actions invoked?**: In requests made to Agents that have permission to use the Action, as defined in Agent Access configuration. End User Access to these Actions applies transitively.
-- **How do we infer resource level access for org-wide no perm providers and arbitrary webhooks?**: Admins can vet certain groups/users as executors of the action. No one else can configure these granular access settings.
-- **What are action scoped auth credentials?**: There are instances where you'd want to have multiple credentials for a provider (e.g Snowflake/Looker) where you can have a credential per role in each system. These credentials are attached directly to actions, allowing anyone with **End User Access** to that action to use the associated credentials.
+
+### FAQ
+
+- **Where are actions invoked?**: In requests made to Agents that have permission to use the Action, as defined in Agent Access configuration.
+- **Who can invoke actions?**: Users who can access an Agent that the action is attached to. For specific actions with more regulated providers, users must be in the End User Access configuration in an Action's Deployment settings to invoke the action.
+- **Who can execute actions?**: The Action's approvers. If there are no approvers, invokers.
+- **Which user-level providers can I OAuth into?**: All enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
+<!-- - **How do we infer resource level access for org-wide no perm providers and arbitrary webhooks?**: Admins can vet certain groups/users as executors of the action. No one else can configure these granular access settings. -->
+
+### User-scoped Action Providers
+
+The vast majority of Credal's Action Providers are **user-scoped**. By this, it means that the credentials of the user executing the action are used when accessing the Action Provider. Thus, in a standard action configuration¹, it's impossible for the invoking user to perform an operation that they were not already authorized to do so directly in the provider, without Credal.
+
+These Action Providers, including Salesforce, Github, and Notion, are considered low-risk and thus have minimal restrictions.
+
+| Operation                       | Who is Authorized |
+| ---------------------------- | -------------------------- |
+| **Create Action**            | Anyone                     |
+| **Edit/Delete/Share Action** | Action Collaborator        |
+| **Publish to Specific Agents** | Action Collaborator      |
+| **Publish to All Org Agents** | Org Admin                 |
+| **Invoke Action**            | Anyone with access to an Agent with the action attached |
+
+### Action-scoped Action Providers
+
+For providers, the access pattern centers not around individual users, but around different **credentials**[TODO make a superscript footnote]. These credentials are attached directly to actions, allowing anyone with **End User Access** to that action to use the associated credentials.
+
+This is an unusual access pattern and considered to be higher-risk than user-scoped actions usage because it enables users to perform actions that they may not have permissions for in the underlying system. Thus, there is an extra layer of security controls in Credal's system for these providers' actions: end-user allowlisting.
+
+End user allowlists allow an action collaborator to limit which users can execute the action, regardless of what agents the action is published to.
+
+[TODO how do i make this a footnote] There are instances where you'd want to have multiple credentials for a provider, such as where you can have a credential per role in each system. 
 
 ### Action Security Model by Connection Type
 
@@ -20,8 +49,8 @@ No users can execute outside the scope of the credentials and permissions that a
 | Connection Type                                                 | Examples                                           | Resource Level Access                                       |
 | --------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
 | **User OAuth / Personal API keys / Basic Auth / Credal Native** | Salesforce, Credal enterprise search, Jamf, Kandji | In the provider's implementation                            |
-| **Action Scoped Auth**                                          | Snowflake, Looker                                  | ²Trusted allowlist defined in action                        |
 | **Org-level Auth w/ Permissions Supported**                     | Slack, MongoDB, Gong                               | In Credal's implementation of interfacing with provider API |
+| **Action Scoped Auth**                                          | Snowflake, Looker                                  | ²Trusted allowlist defined in action                        |
 | **Fetch from API (Webhook)**                                    | Webhook                                            | ²Trusted allowlist defined in action                        |
 
 #### 2. Connection Creation and Management
