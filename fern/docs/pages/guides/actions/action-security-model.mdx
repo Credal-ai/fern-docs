@@ -1,8 +1,8 @@
-### Ground Truth
+## Ground Truth
 
 No users can execute outside the scope of the credentials and permissions that admins and data owners have explicitly granted.
 
-### Quick Definitions
+## Quick Definitions
 
 - **Action Provider**: An external system that an Action let you interact with, ex. Jira or Okta.
 - **Action Template**: A type of action available for an Action Provider, ex. "Add User to Okta Group" or "Create Jira Ticket".
@@ -10,13 +10,15 @@ No users can execute outside the scope of the credentials and permissions that a
 - **Invoking an Action**: Prompting an Agent to decide that an Action should be taken.
 - **Executing the Action**: Running the Action using your permissions/scopes.
 
-### FAQ
+## FAQ
 
 - **Where are actions invoked?**: In requests made to Agents that have permission to use the Action, as defined in Agent Access configuration.
 - **Who can invoke actions?**: Users who can access an Agent that the action is attached to. For specific actions with more regulated providers, users must be in the End User Access configuration in an Action's Deployment settings to invoke the action.
 - **Who can execute actions?**: The Action's approvers. If there are no approvers, invokers.
 - **Which user-level providers can I OAuth into?**: All enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
 <!-- - **How do we infer resource level access for org-wide no perm providers and arbitrary webhooks?**: Admins can vet certain groups/users as executors of the action. No one else can configure these granular access settings. -->
+
+## Action Provider Categories
 
 ### User-scoped Credential Action Providers
 
@@ -48,7 +50,7 @@ _¹There are instances where you'd want to have multiple credentials for a provi
 
 One special case of an action-scoped credential provider is our OpenAPI action provider, which contains an action ("Webhook") that can be configured to make an arbitrary API request. Due to the risk posed by arbitrary changes to the spec, only admins can modify and publish these actions.
 
-### Multi User Operations
+## Multi User Operations
 
 An operation is a multi-user operation if the approval to carry out a given action in the workflow is someone other than the sender. Credal has HITL approval mechanisms that you can configure to use your credentials or permissions scopes in a cross-functional or multi-user operation. A request that is not initiated by you can only use credentials/scopes if you give explicit permission to do so.
 
