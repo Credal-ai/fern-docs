@@ -1,0 +1,25 @@
+## Multi User Operations
+
+An operation is a multi-user operation if the approval to carry out a given action in the workflow is someone other than the sender. Credal has HITL approval mechanisms that you can configure to use your credentials or permissions scopes in a cross-functional or multi-user operation. A request that is not initiated by you can only use credentials/scopes if you give explicit permission to do so.
+
+### Approval flow
+
+- If you provide approval for an Action, you are allowing Credal to use your credentials to carry out that one specific action. Your credentials are granted for only that action, and any further use must go through your explicit permission.
+- The guard-rails that already exist in the underlying systems remain the ultimate source of truth; Credal just adds a programmable, fully-logged wrapper on top. Credal never manufactures new privileges out of thin air and is simply automating the same approval you would have done manually (like a ping in Slack or a tap on the shoulder)—except now with a perfect audit trail.
+- For these workflows, the approver—not the requester—is on the hook in the audit trail.
+- If permissions enhancement takes place anywhere in an Agent, that agent cannot be deployed to end users by anyone other than a Credal admin.
+
+### Considerations when permissions are enhanced in a request
+
+- The “write” Actions are typically void and don’t bring in sensitive information into the chat history, but the “read” Actions pose DLP risks. Note: We do not recommend expanding access permissions in Agents directly available to end users, rather you should use Agent-to-Agent handoffs for this (see below). Nonetheless, the below features and considerations make multi-user requests airtight in Credal.
+- Let’s say you need to fetch specific sensitive data from a database to answer an employee’s yes/no/etc. question, but they are not allowed to see the raw underlying data. There are a few risks associated with permissions enhancement when automating these sorts of Enterprise operations.
+  - A user seeing the sensitive retrieved information in the context window which is visible to participants of the conversation.
+    - In order to properly manage when your credentials are used, we strongly recommend creating separate agents for each user role involved in the operation. The user-facing agent can then handoff requests to the Agent that will perform sensitive read operations under an approver’s credentials. If a conversation is deemed to be sensitive, end users will not be allowed to view them as the context windows may contain sensitive data used to derive responses. Only the approvers and whomever they share the conversation with can view it.
+    - If you choose to escalate permissions in a conversation between an end user and an Agent, any retrieved data from an action will be redacted from the conversation context window and will only be visible if viewed by the approver.
+  - Adversarial prompt injection (user asking for something they shouldn’t be)
+    - For fields associated with user identity, Credal will assign caller-set parameters to hard code the sender’s email, user ID, requesting agent ID, etc. This will guarantee that Bob can’t ask for Mary’s salary information, for example.
+    - Caller set parameters are not considered credentials, so an approver’s metadata is not used as the caller set parameters, it will always be the original sender.
+  - Mistakes the agent makes or indirect leakage through summaries (hallucinations and implied information)
+    - All Actions in an Agent that undergo permission escalation must have the Action Release Gate turned on. If a builder wants to turn it off for whatever reason, there must be a justification provided with that toggle off. The ARG will require an egress approval step from the Agent owner(s). This way, humans can use their expertise and judgment to ensure DLP.
+
+All three of these provisions together make your multi-user workflows airtight and prevent any unauthorized access, visibility, or indirect leakage.
