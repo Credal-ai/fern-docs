@@ -36,6 +36,8 @@ navigation:
             path: ./docs/pages/guides/actions/action-parameters.mdx
           - page: Action Security Model
             path: ./docs/pages/guides/actions/action-security-model.mdx
+          - page: Action Human Approval
+            path: ./docs/pages/guides/actions/action-human-approval.mdx
           - page: Build Your First Action
             path: ./docs/pages/guides/actions/build-your-first-action.mdx
           - section: Supported Actions
