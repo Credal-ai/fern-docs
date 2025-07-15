@@ -18,7 +18,7 @@ No users can execute outside the scope of the credentials and permissions that a
 - **Which user-level providers can I OAuth into?**: All enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
 <!-- - **How do we infer resource level access for org-wide no perm providers and arbitrary webhooks?**: Admins can vet certain groups/users as executors of the action. No one else can configure these granular access settings. -->
 
-### User-scoped Action Providers
+### User-scoped Credential Action Providers
 
 The vast majority of Credal's Action Providers are **user-scoped**. By this, it means that the credentials of the user executing the action are used when accessing the Action Provider. Thus, in a standard action configuration¹, it's impossible for the invoking user to perform an operation that they were not already authorized to do so directly in the provider, without Credal.
 
@@ -32,55 +32,21 @@ These Action Providers, including Salesforce, Github, and Notion, are considered
 | **Publish to All Org Agents** | Org Admin                 |
 | **Invoke Action**            | Anyone with access to an Agent with the action attached |
 
-### Action-scoped Action Providers
+### Action-scoped Credential Action Providers
 
-For providers, the access pattern centers not around individual users, but around different **credentials**[TODO make a superscript footnote]. These credentials are attached directly to actions, allowing anyone with **End User Access** to that action to use the associated credentials.
+For providers, the access pattern centers not around individual users, but around different **credentials**¹. These credentials are attached directly to actions, allowing anyone with **End-User Access** to that action to use the associated credentials.
 
 This is an unusual access pattern and considered to be higher-risk than user-scoped actions usage because it enables users to perform actions that they may not have permissions for in the underlying system. Thus, there is an extra layer of security controls in Credal's system for these providers' actions: end-user allowlisting.
 
-End user allowlists allow an action collaborator to limit which users can execute the action, regardless of what agents the action is published to.
+End-user allowlists allow an action collaborator to limit which users can execute the action, regardless of what agents the action is published to.
 
-[TODO how do i make this a footnote] There are instances where you'd want to have multiple credentials for a provider, such as where you can have a credential per role in each system. 
+Providers in this category include Looker and Snowflake.
 
-### Action Security Model by Connection Type
+_¹There are instances where you'd want to have multiple credentials for a provider used in different actions, such as where you need a credential per role in each system._
 
-#### 1. Connection Types and Examples
+#### Arbitrary Fetch with Credential
 
-| Connection Type                                                 | Examples                                           | Resource Level Access                                       |
-| --------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
-| **User OAuth / Personal API keys / Basic Auth / Credal Native** | Salesforce, Credal enterprise search, Jamf, Kandji | In the provider's implementation                            |
-| **Org-level Auth w/ Permissions Supported**                     | Slack, MongoDB, Gong                               | In Credal's implementation of interfacing with provider API |
-| **Action Scoped Auth**                                          | Snowflake, Looker                                  | ²Trusted allowlist defined in action                        |
-| **Fetch from API (Webhook)**                                    | Webhook                                            | ²Trusted allowlist defined in action                        |
-
-#### 2. Connection Creation and Management
-
-| Action                       | User OAuth / Personal Auth | Action Scoped Auth  | Org Auth w/ Permissions | Webhook                                            |
-| ---------------------------- | -------------------------- | ------------------- | ----------------------- | -------------------------------------------------- |
-| **Create Connection**        | Anyone                     | Anyone              | Admin                   | Anyone                                             |
-| **Create Action**            | Anyone                     | Anyone              | Anyone                  | ³Admin (until we have version control for actions) |
-| **Edit/Delete/Share Action** | Action Collaborator        | Action Collaborator | Action Collaborator     | ³Admin (until we have version control for actions) |
-
-#### 3. Publishing Actions
-
-| Publish To              | User OAuth / Personal Auth        | Action Scoped Auth                | Org Auth w/ Permissions           | Webhook |
-| ----------------------- | --------------------------------- | --------------------------------- | --------------------------------- | ------- |
-| **Whole Organization**  | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
-| **Select Users/Groups** | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
-| **All Agents in Org**   | Admin (not for security purposes) | Admin (not for security purposes) | Admin (not for security purposes) | Admin   |
-| **Selected Agents**     | Action Collaborator               | Action Collaborator               | Action Collaborator               | Admin   |
-
-#### 4. Action Invocation
-
-- **Who can invoke the Action?** Users in the ¹End User Access list (applies to all connection types)
-
----
-
-¹ **End User Access list**: This refers to the list of users explicitly defined in the Action Deployment configuration who are permitted to invoke the Action.
-
-² **Trusted Allowlist**: If HITL enabled, it’s set of approvers, else it is set of end users with access - trust the admin publishing to verify this is correct
-
-³ **Admin only edits**: Until we have version control for Actions, this will require an admin user for changes to prevent unauthorized behavior changes to published actions.
+One special case of an action-scoped credential provider is our OpenAPI action provider, which contains an action ("Webhook") that can be configured to make an arbitrary API request. Due to the risk posed by arbitrary changes to the spec, only admins can modify and publish these actions.
 
 ### Multi User Operations
 
