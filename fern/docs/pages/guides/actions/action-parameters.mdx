@@ -1,0 +1,24 @@
+
+There are 4 types of action parameters that you can use when creating actions which will give you a strong level of control on how actions are run.
+
+#### 1. Let AI Decide 
+- With this option the field is left empty and the Agent will use its knowledge, or will prompt the user for more information to fill in the required fields.
+
+#### 2. Predefined Value
+- If you know a parameter value will always be the same whenever this action is run, you can set the field as predefined.
+
+#### 3. Multi-Select
+- If you know the parameter's value will be one of multiple options you can set these options with multi-select and let the AI decide which to use.
+
+#### 4. Embedded Parameters
+- You can embed parameters into predefined or multi-select values using the `${PARAM_NAME}` format.
+These parameters are especially useful when you have a template for the parameter value with fields to fill in (e.g a SQL Query)
+- Embedded parameters default to type string (from the Let AI Decide option). If you require a different type, please contact support@credal.ai.
+
+### Example of Action Parameter Types:
+
+<Frame>
+  <img src="/docs/assets/actions/param-types.png" />
+</Frame>
+
+Now lets get to building our first action!

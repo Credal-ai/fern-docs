@@ -1,0 +1,30 @@
+# Connecting to Kandji
+
+The owners of the IT/Security agent will be folks with access to the ITSM tools required to carry out complex operations end to end. For this use case, we will create a connection with Kandji for retrieving a FileVault recovery key and connect it to our Agent.
+
+## Connect to Kandji
+
+You must be an administrator at your organization to connect to Kandji. Head over to the Admin Data sources panel and click on "Connect" to kick off the process. You will be prompted to enter an API key.
+![Connect to Kandji](/docs/assets/it-security-use-cases/connect-to-kandji.png)
+
+## Configure the Action
+
+You are now ready to create an Action. Head over to the Actions tab in the side panel and search for Kandji actions. Select the one for fetching a FV recovery key and give it a name and description. Our list of actions is growing and you can contribute to it here: https://github.com/Credal-ai/actions-sdk
+![Create Kandji Action](/docs/assets/it-security-use-cases/create-kandji-action.png)
+
+The reason that Credal feels like magic is that we can go from user email -> recovery key in one go. However, we must prevent prompt injection attacks where malicious users request keys for someone else's email. We want to make sure that the user email we get the recovery key for is *always* for the user who requested the recovery key. We will deploy this Agent in Slack, so we can trust that the identity associated with the incoming request is from that user's Slack account. By using Caller-Set params with `CREDAL_USER_EMAIL`, you are allowing Credal to propagate the sender's identity and ensure that recovery keys are only generated for the authenticated user's own email address, not an arbitrarily injected email. 
+![Caller Set Params](/docs/assets/it-security-use-cases/caller-set-param.png)
+
+Since this action requires IT credentials, we will include a HITL (human in the loop) step here. Assign the appropriate IT department member(s) to approve the Action. Choose the approvers carefully, as Kandji only supports organization wide API connection unlike our other OAuth connectors.
+![Enable Human Approval](/docs/assets/it-security-use-cases/enable-human-approval.png)
+
+## Connect the Action to our Agent
+
+We will now enable our IT/Security agent to call our Kandji action as necessary. Head over to the Publish tab and only allow our IT/Security agent to call upon this action. It is important that you are careful and judicious about who you give access to this action!
+![Allow IT Agent to Call Kandji Action](/docs/assets/it-security-use-cases/allow-it-agent-to-call-kandji-action.png)
+
+Finally, ensure that your Kandji action is selected in your IT/Security Agent to confirm that the agent will see it as an available action.
+![FV Action Attached to IT Agent](/docs/assets/it-security-use-cases/fv-action-attached-to-it-agent.png)
+
+At this point, you are ready to automate the end to end process of retrieving FileVault recovery keys for users who are locked out of their laptops.
+

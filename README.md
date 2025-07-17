@@ -1,5 +1,5 @@
 # Credal Documentation
-Credal uses Fern for documentation. Checkout our docs at [https://credal.docs.buildwithfern.com](https://credal.docs.buildwithfern.com).
+Credal uses Fern for documentation. Checkout our docs at [https://docs.credal.ai](https://docs.credal.ai).
 ![Preview](./preview.png)
 
 ## What is contained in this repo ?
@@ -17,3 +17,25 @@ are valid.
 
 When the PR is merged, your changes will
 automatically be deployed to the website.
+
+### Local Development server
+
+To run a local development server with hot-reloading you can run the following command
+
+```sh
+fern docs dev
+```
+
+### Hosted URL
+
+To update your documentation on a hosted URL, run
+```
+# npm install -g fern-api
+fern generate --docs
+```
+To preview your documentation, run
+```
+# npm install -g fern-api
+fern generate --docs --preview
+```
+The repository contains GitHub workflows that will automatically run these commands for you. For example, when you make a PR a preview link will be auto-generated and when you merge to main the docs site will update.

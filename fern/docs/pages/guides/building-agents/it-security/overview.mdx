@@ -1,0 +1,15 @@
+# IT Security Management in Credal
+
+IT Security teams are backbone of any successful enterprise. They spend a great deal of time making sure that employees have the resources they need to do great work. A lot of this work involves fetching data from sensitive sources like Jamf Pro or Kandji and responding to user requests. We've heard from our customers that this process can be extremely time consuming and tedious, and could benefit from a great deal of automation.
+
+## The Use Case: User is locked out of their laptop
+
+Let’s say I’m part of the IT team at a medium sized tech company and I handle requests for fetching FV2 recovery keys when users get locked out of their laptop. Every day, I’ll be tagged in the #it-support Slack channel a couple times, for which I’ll open up Kandji or Jamf and query for the user’s recovery key with 2 or 3 separate API calls. Then I’ll DM the user with their FileVault recovery key.
+
+## What makes this hard to automate?
+
+The person kicking off the operation is the person who submitted the request. The person who can actually access Jamf or Kandji is me.
+
+It is extremely important that data visible to the IT/Security team is not visible to end users. So whose credentials do we use? How do we guarantee that responses are safe as they leave the privileged context? How do we make sure users can’t see the output of sensitive API calls?
+
+Let’s give this a go in Credal.

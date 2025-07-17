@@ -1,6 +1,6 @@
 # Bulk Analysis In-Depth Guide
 
-_This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Copilots User guide](https://www.notion.so/AI-Copilots-In-Depth-Guide-73e09c563d9246cca5241890efef5de4?pvs=21)._
+_This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Agents User guide](https://docs.credal.ai/getting-started/agents/in-depth-guide)._
 
 Bulk Analysis is a powerful tool that you can use to **streamline** operations for greater speed, quality, and detail. If you have a massive amount of data you want to deeply understand, this Credal feature will help you accomplish that by extracting the details you care about.
 
@@ -12,7 +12,7 @@ In this guide, we will walk through how to set up and run Bulk Analysis in detai
 
 Today’s Bulk Analysis demonstrates information consolidation. This is the process of combining a substantial amount of data into a single repository which can then be used to generate meaningful findings and evaluations.
 
-Bulk Analysis harnesses the capabilities of Credal Copilots and to granularly analyze each document or row of a spreadsheet that you want to dive deeper into. The analysis will be driven by how you configure your Copilot.
+Bulk Analysis harnesses the capabilities of Credal Agents and to granularly analyze each document or row of a spreadsheet that you want to dive deeper into. The analysis will be driven by how you configure your Agent.
 
 By leveraging Credal’s Bulk Analysis, you can turn almost any data set into actionable insights with ease. This feature goes beyond what a single large language model (LLM) call can achieve, potentially saving weeks of manual labor while providing unparalleled depth of understanding.
 
@@ -25,20 +25,20 @@ Needless to say, this tool is perfect for text based analysis on extremely large
 3. GTM Outbound Lead and Email Generation
 4. Analyzing Call Transcripts for Buying Indication
 
-## Setting up Your Copilot
+## Setting up Your Agent
 
 <aside>
 **Quick Refresher**
 
-**Copilot:** Special-purpose AI assistant with a use case specific foundation model, connected data sources, and custom prompt
+**Agent:** Special-purpose AI assistant with a use case specific foundation model, connected data sources, and custom prompt
 
 </aside>
 
-There are 2 key things you need in your Copilot to make Bulk Analysis work: Suggested Questions and User Input. Each data source will be passed in to the copilot as a User Input which will then be asked each of the suggested questions. If these are not configured in your Copilot, your Bulk Analysis run (preview or not) will error.
+There are 2 key things you need in your Agent to make Bulk Analysis work: Suggested Questions and User Input. Each data source will be passed in to the agent as a User Input which will then be asked each of the suggested questions. If these are not configured in your Agent, your Bulk Analysis run (preview or not) will error.
 
 ### Defining User Inputs
 
-For each row in a spreadsheet or source in a Document Collection, Bulk Analysis will pass that into your Copilot as a “User Input.” Navigate to your Copilot Configuration, toggle the switch to “Include full contents from documents.” This means that your full document or spreadsheet row will be passed to the LLM as is without any search done upon it.
+For each row in a spreadsheet or source in a Document Collection, Bulk Analysis will pass that into your Agent as a “User Input.” Navigate to your Agent Configuration, toggle the switch to “Include full contents from documents.” This means that your full document or spreadsheet row will be passed to the LLM as is without any search done upon it.
 
 ![Screenshot 2024-09-20 at 5.42.29 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.42.29_PM.png)
 
@@ -50,7 +50,7 @@ Add a name and description for your user input. What you name or describe it as 
 
 ### Writing Prompts
 
-This is the heart of what new insights you will discover from your Bulk Analysis. Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends you want to uncover and what insights you want to discover from your bulk analysis source data. To create one, navigate to the “Suggested questions” subsection in the Copilot configuration. Each question corresponds to a column in your final Bulk Analysis table with an extracted insight.
+This is the heart of what new insights you will discover from your Bulk Analysis. Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends you want to uncover and what insights you want to discover from your bulk analysis source data. To create one, navigate to the “Suggested questions” subsection in the Agent configuration. Each question corresponds to a column in your final Bulk Analysis table with an extracted insight.
 
 ![Screenshot 2024-09-20 at 5.49.17 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_5.49.17_PM.png)
 
@@ -86,13 +86,13 @@ Alternatively, if your data is structured in a spreadsheet, you can opt to use t
 
 Navigate to the Bulk Analysis tab on the left of the Credal home page.
 
-Create a new Bulk Analysis the same way you would create a new Document Collection or Copilot. The description isn’t being used anywhere but it’s certainly helpful to be as descriptive as possible for collaborative efforts.
+Create a new Bulk Analysis the same way you would create a new Document Collection or Agent. The description isn’t being used anywhere but it’s certainly helpful to be as descriptive as possible for collaborative efforts.
 
-### Linking Copilot and Source Data
+### Linking Agents and Source Data
 
 ![Screenshot 2024-09-20 at 6.58.01 PM.png](/docs/assets/bulk-analysis/in-depth-guide/Screenshot_2024-09-20_at_6.58.01_PM.png)
 
-Select the Copilot you created from the dropdown and select the Document Collection or Spreadsheet that you want to analyze.
+Select the Agent you created from the dropdown and select the Document Collection or Spreadsheet that you want to analyze.
 
 ### Validating Setup
 
