@@ -5,12 +5,19 @@ The background prompt controls everything from the agent's tone, to the actions 
 Here is an overview of all the information that is included in a Credal background prompt and how you can use it to guide your agent:
 
 ## Role
-Who is the agent? What is their job title? What is their role in the company?
+Who is the agent? What is their job title? What is their role in the company? Knowing who the agent is will help it understand what it is doing and how to respond to user queries.
 
 ## Goal
-What is the agent supposed to accomplish?
+What is the agent supposed to accomplish? This will help the agent understand what the end result should look like to make sure it is properly helping the user.
 
 ## Instructions
-What steps should the agent take to achieve its ultimate goal?
+What steps should the agent take to achieve its ultimate goal? This section controls the overall workflow of the agent. If you want the agent to call actions in a specific order, ask the user for more
+information at a specific point, or look at specific data before making a decision, you can specify that all here.
+
+See the prompt example in ![attaching actions to agents](/docs/pages/guides/agents/attaching-actions.mdx) for more details.
 
 ## Provided Prompt Snippets
+
+Credal has prompt snippets right under the background prompt in the Agent Configuration tab.
+
+![prompt-snippets.png](/docs/assets/prompt-engineering/prompt-snippets.png)
