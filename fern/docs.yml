@@ -12,120 +12,168 @@ title: Credal | Documentation
 navigation:
   - section: Getting Started
     contents:
-      - page: Overview
-        path: ./docs/pages/guides/overview.mdx
-      - link: Credal Quick Start
-        href: https://credalai.notion.site/Credal-Quickstart-Guide-9f1d589bc51a461e9c9860c2180abc58
+    - page: Introduction
+      path: ./docs/pages/introduction.mdx
+    - section: Concepts
+      contents:
+        - page: Agents
+          path: ./docs/pages/concepts/agents.mdx
+        - page: Prompt Engineering
+          path: ./docs/pages/concepts/prompt-engineering.mdx
+        - page: Actions
+          path: ./docs/pages/concepts/actions.mdx
+        - page: Data Sources
+          path: ./docs/pages/concepts/data-sources.mdx
+        - page: Governance
+          path: ./docs/pages/concepts/governance.mdx
+        - page: Permissions
+          path: ./docs/pages/concepts/permissions.mdx
+    - section: Tutorials
+      contents:
+        - section: Employee Onboarding Assistant
+          contents:
+            - page: Overview
+              path: ./docs/pages/tutorials/employee-onboarding/overview.mdx
+            - page: Answer Basic Questions
+              path: ./docs/pages/tutorials/employee-onboarding/version-1.mdx
+            - page: Searching Internal and External Knowledge
+              path: ./docs/pages/tutorials/employee-onboarding/version-2.mdx
+            - page: Connect with Internal Systems
+              path: ./docs/pages/tutorials/employee-onboarding/version-3.mdx
+        - section: IT Security Assistant
+          contents:
+            - page: Overview
+              path: ./docs/pages/tutorials/it-security/overview.mdx
+            - page: Creating Both Agents
+              path: ./docs/pages/tutorials/it-security/creating-both-agents.mdx
+            - page: Kandji Connector
+              path: ./docs/pages/tutorials/it-security/kandji-connector.mdx
+            - page: Action Release Gate
+              path: ./docs/pages/tutorials/it-security/action-release-gate.mdx
+            - page: Deploy to Slack
+              path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
+        - section: Snowflake Query Assistant
+          contents:
+            - page: Overview
+              path: ./docs/pages/tutorials/snowflake-query/overview.mdx
+            - page: Initial Snowflake Setup
+              path: ./docs/pages/tutorials/snowflake-query/initial-setup.mdx
+            - page: Query Approaches
+              path: ./docs/pages/tutorials/snowflake-query/query-approaches.mdx
+            - page: Testing your solution
+              path: ./docs/pages/tutorials/snowflake-query/testing-solution.mdx
+        - section: Salesforce Query Assistant
+          contents:
+            - page: Overview
+              path: ./docs/pages/tutorials/salesforce-query/overview.mdx
+            - page: Salesforce Query Assistant
+              path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
+        - page: Deep Research Agent Setup
+          path: ./docs/pages/use-cases/deep-research-agent.mdx
+  - section: Platform
+    contents:
       - section: Agents
         contents:
           - page: Quick Start
-            path: ./docs/pages/guides/agents/quick-start.mdx
-          - page: In-Depth Guide
-            path: ./docs/pages/guides/agents/in-depth-guide.mdx
+            path: ./docs/pages/platform/agents/quick-start.mdx
+          - page: Picking a Model
+            path: ./docs/pages/platform/agents/model-selection.mdx
+          - page: Attaching and Searching Data
+            path: ./docs/pages/platform/agents/data-search.mdx
+          - page: Writing a Great Background Prompt
+            path: ./docs/pages/platform/agents/background-prompt.mdx
+          - page: Attaching Actions
+            path: ./docs/pages/platform/agents/attaching-actions.mdx
+          - page: Data Processing Tools
+            path: ./docs/pages/platform/agents/data-processing.mdx
+          - page: Monitoring and Tracking Usage
+            path: ./docs/pages/platform/agents/monitoring.mdx
+          - page: Creating Test Cases
+            path: ./docs/pages/platform/agents/test-cases.mdx
           - page: Agent Collaboration
-            path: ./docs/pages/guides/agents/agent-collaboration.mdx
-          - page: Open Source Actions
-            path: ./docs/pages/guides/agents/open-source-actions.mdx
-          - page: Types of Agents
-            path: ./docs/pages/guides/agents/types-of-agents.mdx
+            path: ./docs/pages/platform/agents/agent-collaboration.mdx
+          - page: Deployment Options
+            path: ./docs/pages/platform/agents/deployment.mdx
+          - page: Slack Deployment
+            path: ./docs/pages/platform/agents/slack-deployment.mdx
       - section: Actions
         contents:
-          - page: Overview
-            path: ./docs/pages/guides/actions/overview.mdx
+          - page: Quick Start
+            path: ./docs/pages/platform/actions/overview.mdx
+          - page: Open Source Actions
+            path: ./docs/pages/platform/agents/open-source-actions.mdx
+          - page: Composio Integration
+            path: ./docs/pages/platform/actions/composio.mdx
+          - page: Monitoring Usage
+            path: ./docs/pages/platform/actions/monitoring.mdx
+          - page: Credentials and Security
+            path: ./docs/pages/platform/actions/action-security-model.mdx
+          - page: Human Approval Options
+            path: ./docs/pages/platform/actions/action-human-approval.mdx
           - page: Action Parameters
-            path: ./docs/pages/guides/actions/action-parameters.mdx
-          - page: Action Security Model
-            path: ./docs/pages/guides/actions/action-security-model.mdx
-          - page: Action Human Approval
-            path: ./docs/pages/guides/actions/action-human-approval.mdx
+            path: ./docs/pages/platform/actions/action-parameters.mdx
           - page: Build Your First Action
-            path: ./docs/pages/guides/actions/build-your-first-action.mdx
+            path: ./docs/pages/platform/actions/build-your-first-action.mdx
           - section: Supported Actions
             contents:
               - page: Confluence
-                path: ./docs/pages/guides/actions/action-providers/confluence.mdx
+                path: ./docs/pages/platform/actions/action-providers/confluence.mdx
               - page: Custom Webhooks
-                path: ./docs/pages/guides/actions/action-providers/custom-webhook.mdx
+                path: ./docs/pages/platform/actions/action-providers/custom-webhook.mdx
               - page: Finnhub
-                path: ./docs/pages/guides/actions/action-providers/finnhub.mdx
+                path: ./docs/pages/platform/actions/action-providers/finnhub.mdx
               - page: Firecrawl
-                path: ./docs/pages/guides/actions/action-providers/firecrawl.mdx
+                path: ./docs/pages/platform/actions/action-providers/firecrawl.mdx
               - page: Google Maps
-                path: ./docs/pages/guides/actions/action-providers/google-maps.mdx
+                path: ./docs/pages/platform/actions/action-providers/google-maps.mdx
               - page: Gsuite
-                path: ./docs/pages/guides/actions/action-providers/gsuite.mdx
+                path: ./docs/pages/platform/actions/action-providers/gsuite.mdx
               - page: Jira
-                path: ./docs/pages/guides/actions/action-providers/jira.mdx
+                path: ./docs/pages/platform/actions/action-providers/jira.mdx
               - page: LinkedIn
-                path: ./docs/pages/guides/actions/action-providers/linkedin.mdx
+                path: ./docs/pages/platform/actions/action-providers/linkedin.mdx
               - page: Looker
-                path: ./docs/pages/guides/actions/action-providers/looker.mdx
+                path: ./docs/pages/platform/actions/action-providers/looker.mdx
               - page: Microsoft Teams
-                path: ./docs/pages/guides/actions/action-providers/microsoft-teams.mdx
+                path: ./docs/pages/platform/actions/action-providers/microsoft-teams.mdx
               - page: MongoDB
-                path: ./docs/pages/guides/actions/action-providers/mongodb.mdx
+                path: ./docs/pages/platform/actions/action-providers/mongodb.mdx
               - page: NWS
-                path: ./docs/pages/guides/actions/action-providers/nws.mdx
+                path: ./docs/pages/platform/actions/action-providers/nws.mdx
               - page: OpenStreetMap
-                path: ./docs/pages/guides/actions/action-providers/openstreetmap.mdx
+                path: ./docs/pages/platform/actions/action-providers/openstreetmap.mdx
               - page: Resend
-                path: ./docs/pages/guides/actions/action-providers/resend.mdx
+                path: ./docs/pages/platform/actions/action-providers/resend.mdx
               - page: Salesforce
-                path: ./docs/pages/guides/actions/action-providers/salesforce.mdx
+                path: ./docs/pages/platform/actions/action-providers/salesforce.mdx
               - page: Slack
-                path: ./docs/pages/guides/actions/action-providers/slack.mdx
+                path: ./docs/pages/platform/actions/action-providers/slack.mdx
               - page: Snowflake
-                path: ./docs/pages/guides/actions/action-providers/snowflake.mdx
+                path: ./docs/pages/platform/actions/action-providers/snowflake.mdx
               - page: X
-                path: ./docs/pages/guides/actions/action-providers/x.mdx
+                path: ./docs/pages/platform/actions/action-providers/x.mdx
               - page: Zendesk
-                path: ./docs/pages/guides/actions/action-providers/zendesk.mdx
-      - section: Build Your First Agent
-        contents:
-          - page: Overview
-            path: ./docs/pages/guides/building-agents/overview.mdx
-          - section: Employee Onboarding Assistant
-            contents:
-              - page: Overview
-                path: ./docs/pages/guides/building-agents/employee-onboarding/overview.mdx
-              - page: Answer Basic Questions
-                path: ./docs/pages/guides/building-agents/employee-onboarding/version-1.mdx
-              - page: Searching Internal and External Knowledge
-                path: ./docs/pages/guides/building-agents/employee-onboarding/version-2.mdx
-              - page: Connect with Internal Systems
-                path: ./docs/pages/guides/building-agents/employee-onboarding/version-3.mdx
-          - section: IT Security Assistant
-            contents:
-              - page: Overview
-                path: ./docs/pages/guides/building-agents/it-security/overview.mdx
-              - page: Creating Both Agents
-                path: ./docs/pages/guides/building-agents/it-security/creating-both-agents.mdx
-              - page: Kandji Connector
-                path: ./docs/pages/guides/building-agents/it-security/kandji-connector.mdx
-              - page: Action Release Gate
-                path: ./docs/pages/guides/building-agents/it-security/action-release-gate.mdx
-              - page: Deploy to Slack
-                path: ./docs/pages/guides/building-agents/it-security/deploy-to-slack.mdx
-          - section: Snowflake Query Assistant
-            contents:
-              - page: Overview
-                path: ./docs/pages/guides/building-agents/snowflake-query/overview.mdx
-              - page: Initial Snowflake Setup
-                path: ./docs/pages/guides/building-agents/snowflake-query/initial-setup.mdx
-              - page: Query Approaches
-                path: ./docs/pages/guides/building-agents/snowflake-query/query-approaches.mdx
-              - page: Testing your solution
-                path: ./docs/pages/guides/building-agents/snowflake-query/testing-solution.mdx
-          - page: Salesforce Query Assistant
-            path: ./docs/pages/guides/building-agents/salesforce-example.mdx
+                path: ./docs/pages/platform/actions/action-providers/zendesk.mdx
       - page: Bulk Analysis
-        path: ./docs/pages/guides/bulk-analysis.mdx
-      - page: Permissions Service
-        path: ./docs/pages/guides/permissions-service.mdx
-      - page: Prompting
-        path: ./docs/pages/guides/prompting.mdx
-      - page: Data Sources / Action Providers
-        path: ./docs/pages/guides/data-sources.mdx
+        path: ./docs/pages/platform/bulk-analysis.mdx
+      - page: MCP Gateway
+        path: ./docs/pages/platform/mcp-gateway.mdx
+      - section: Integrations
+        contents:
+          - section: Identity Providers
+            contents:
+              - page: workOS
+                path: ./docs/pages/platform/integrations/idp/workos.mdx
+              - page: Okta
+                path: ./docs/pages/platform/integrations/idp/okta.mdx
+              - page: SAML/SCIM
+                path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
+          - page: Vector Stores
+            path: ./docs/pages/platform/integrations/vector-stores.mdx
+          - page: Data Syncs
+            path: ./docs/pages/platform/integrations/data-syncs.mdx
+          - page: Data Sources / Action Providers
+            path: ./docs/pages/platform/integrations/data-sources.mdx
   - api: API Reference
     snippets:
       python: "credal"
