@@ -16,8 +16,6 @@ navigation:
       path: ./docs/pages/introduction.mdx
     - page: Quickstart
       path: ./docs/pages/quickstart.mdx
-    - page: In-Depth Guide
-      path: ./docs/pages/in-depth-guide.mdx
     - section: Tutorials
       contents:
         - section: Employee Onboarding Assistant
@@ -64,8 +62,8 @@ navigation:
     contents:
       - section: Agents
         contents:
-          - page: Quick Start
-            path: ./docs/pages/platform/agents/quick-start.mdx
+          - page: In-Depth Overview
+            path: ./docs/pages/platform/agents/in-depth-overview.mdx
           # - page: Picking a Model
           #   path: ./docs/pages/platform/agents/model-selection.mdx
           # - page: Attaching and Searching Data
@@ -88,7 +86,7 @@ navigation:
           #   path: ./docs/pages/platform/agents/slack-deployment.mdx
       - section: Actions
         contents:
-          - page: Quick Start
+          - page: Overview
             path: ./docs/pages/platform/actions/overview.mdx
           - page: Open Source Actions
             path: ./docs/pages/platform/actions/open-source-actions.mdx
