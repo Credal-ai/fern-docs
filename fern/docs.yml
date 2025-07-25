@@ -56,8 +56,8 @@ navigation:
               path: ./docs/pages/tutorials/salesforce-query/overview.mdx
             - page: Salesforce Query Assistant
               path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
-        - page: Deep Research Agent Setup
-          path: ./docs/pages/use-cases/deep-research-agent.mdx
+        # - page: Deep Research Agent Setup
+        #   path: ./docs/pages/use-cases/deep-research-agent.mdx
   - section: Platform
     contents:
       - section: Agents
