@@ -16,16 +16,16 @@ navigation:
       path: ./docs/pages/introduction.mdx
     - section: Concepts
       contents:
-        - page: Agents
-          path: ./docs/pages/concepts/agents.mdx
+        # - page: Agents
+        #   path: ./docs/pages/concepts/agents.mdx
         - page: Prompt Engineering
           path: ./docs/pages/concepts/prompt-engineering.mdx
-        - page: Actions
-          path: ./docs/pages/concepts/actions.mdx
-        - page: Data Sources
-          path: ./docs/pages/concepts/data-sources.mdx
-        - page: Governance
-          path: ./docs/pages/concepts/governance.mdx
+        # - page: Actions
+        #   path: ./docs/pages/concepts/actions.mdx
+        # - page: Data Sources
+        #   path: ./docs/pages/concepts/data-sources.mdx
+        # - page: Governance
+        #   path: ./docs/pages/concepts/governance.mdx
         - page: Permissions
           path: ./docs/pages/concepts/permissions.mdx
     - section: Tutorials
@@ -76,36 +76,36 @@ navigation:
         contents:
           - page: Quick Start
             path: ./docs/pages/platform/agents/quick-start.mdx
-          - page: Picking a Model
-            path: ./docs/pages/platform/agents/model-selection.mdx
-          - page: Attaching and Searching Data
-            path: ./docs/pages/platform/agents/data-search.mdx
+          # - page: Picking a Model
+          #   path: ./docs/pages/platform/agents/model-selection.mdx
+          # - page: Attaching and Searching Data
+          #   path: ./docs/pages/platform/agents/data-search.mdx
           - page: Writing a Great Background Prompt
             path: ./docs/pages/platform/agents/background-prompt.mdx
           - page: Attaching Actions
             path: ./docs/pages/platform/agents/attaching-actions.mdx
-          - page: Data Processing Tools
-            path: ./docs/pages/platform/agents/data-processing.mdx
-          - page: Monitoring and Tracking Usage
-            path: ./docs/pages/platform/agents/monitoring.mdx
-          - page: Creating Test Cases
-            path: ./docs/pages/platform/agents/test-cases.mdx
+          # - page: Data Processing Tools
+          #   path: ./docs/pages/platform/agents/data-processing.mdx
+          # - page: Monitoring and Tracking Usage
+          #   path: ./docs/pages/platform/agents/monitoring.mdx
+          # - page: Creating Test Cases
+          #   path: ./docs/pages/platform/agents/test-cases.mdx
           - page: Agent Collaboration
             path: ./docs/pages/platform/agents/agent-collaboration.mdx
           - page: Deployment Options
             path: ./docs/pages/platform/agents/deployment.mdx
-          - page: Slack Deployment
-            path: ./docs/pages/platform/agents/slack-deployment.mdx
+          # - page: Slack Deployment
+          #   path: ./docs/pages/platform/agents/slack-deployment.mdx
       - section: Actions
         contents:
           - page: Quick Start
             path: ./docs/pages/platform/actions/overview.mdx
           - page: Open Source Actions
             path: ./docs/pages/platform/agents/open-source-actions.mdx
-          - page: Composio Integration
-            path: ./docs/pages/platform/actions/composio.mdx
-          - page: Monitoring Usage
-            path: ./docs/pages/platform/actions/monitoring.mdx
+          # - page: Composio Integration
+          #   path: ./docs/pages/platform/actions/composio.mdx
+          # - page: Monitoring Usage
+          #   path: ./docs/pages/platform/actions/monitoring.mdx
           - page: Credentials and Security
             path: ./docs/pages/platform/actions/action-security-model.mdx
           - page: Human Approval Options
@@ -158,22 +158,22 @@ navigation:
         path: ./docs/pages/platform/bulk-analysis.mdx
       - page: MCP Gateway
         path: ./docs/pages/platform/mcp-gateway.mdx
-      - section: Integrations
-        contents:
-          - section: Identity Providers
-            contents:
-              - page: workOS
-                path: ./docs/pages/platform/integrations/idp/workos.mdx
-              - page: Okta
-                path: ./docs/pages/platform/integrations/idp/okta.mdx
-              - page: SAML/SCIM
-                path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
-          - page: Vector Stores
-            path: ./docs/pages/platform/integrations/vector-stores.mdx
-          - page: Data Syncs
-            path: ./docs/pages/platform/integrations/data-syncs.mdx
-          - page: Data Sources / Action Providers
-            path: ./docs/pages/platform/integrations/data-sources.mdx
+      # - section: Integrations
+      #   contents:
+      #     - section: Identity Providers
+      #       contents:
+      #         - page: workOS
+      #           path: ./docs/pages/platform/integrations/idp/workos.mdx
+      #         - page: Okta
+      #           path: ./docs/pages/platform/integrations/idp/okta.mdx
+      #         - page: SAML/SCIM
+      #           path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
+      #     - page: Vector Stores
+      #       path: ./docs/pages/platform/integrations/vector-stores.mdx
+      #     - page: Data Syncs
+      #       path: ./docs/pages/platform/integrations/data-syncs.mdx
+      #     - page: Data Sources / Action Providers
+      #       path: ./docs/pages/platform/integrations/data-sources.mdx
   - api: API Reference
     snippets:
       python: "credal"
