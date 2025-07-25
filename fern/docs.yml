@@ -101,7 +101,7 @@ navigation:
           - page: Quick Start
             path: ./docs/pages/platform/actions/overview.mdx
           - page: Open Source Actions
-            path: ./docs/pages/platform/agents/open-source-actions.mdx
+            path: ./docs/pages/platform/actions/open-source-actions.mdx
           # - page: Composio Integration
           #   path: ./docs/pages/platform/actions/composio.mdx
           # - page: Monitoring Usage
