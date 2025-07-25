@@ -14,20 +14,10 @@ navigation:
     contents:
     - page: Introduction
       path: ./docs/pages/introduction.mdx
-    - section: Concepts
-      contents:
-        # - page: Agents
-        #   path: ./docs/pages/concepts/agents.mdx
-        - page: Prompt Engineering
-          path: ./docs/pages/concepts/prompt-engineering.mdx
-        # - page: Actions
-        #   path: ./docs/pages/concepts/actions.mdx
-        # - page: Data Sources
-        #   path: ./docs/pages/concepts/data-sources.mdx
-        # - page: Governance
-        #   path: ./docs/pages/concepts/governance.mdx
-        - page: Permissions
-          path: ./docs/pages/concepts/permissions.mdx
+    - page: Quickstart
+      path: ./docs/pages/quickstart.mdx
+    - page: In-Depth Guide
+      path: ./docs/pages/in-depth-guide.mdx
     - section: Tutorials
       contents:
         - section: Employee Onboarding Assistant
