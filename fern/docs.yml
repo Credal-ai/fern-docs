@@ -146,8 +146,8 @@ navigation:
         path: ./docs/pages/platform/bulk-analysis.mdx
       - page: MCP Gateway
         path: ./docs/pages/platform/mcp-gateway.mdx
-      # - section: Integrations
-      #   contents:
+      - section: Integrations
+        contents:
       #     - section: Identity Providers
       #       contents:
       #         - page: workOS
@@ -160,8 +160,10 @@ navigation:
       #       path: ./docs/pages/platform/integrations/vector-stores.mdx
       #     - page: Data Syncs
       #       path: ./docs/pages/platform/integrations/data-syncs.mdx
-      #     - page: Data Sources / Action Providers
-      #       path: ./docs/pages/platform/integrations/data-sources.mdx
+          - page: Data Sources / Action Providers
+            path: ./docs/pages/platform/integrations/data-sources.mdx
+          - page: Permissions Service 
+            path: ./docs/pages/platform/integrations/permissions.mdx
   - api: API Reference
     snippets:
       python: "credal"
