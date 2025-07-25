@@ -144,8 +144,8 @@ navigation:
                 path: ./docs/pages/platform/actions/action-providers/zendesk.mdx
       - page: Bulk Analysis
         path: ./docs/pages/platform/bulk-analysis.mdx
-      - page: MCP Gateway
-        path: ./docs/pages/platform/mcp-gateway.mdx
+      # - page: MCP Gateway
+      #   path: ./docs/pages/platform/mcp-gateway.mdx
       - section: Integrations
         contents:
       #     - section: Identity Providers
