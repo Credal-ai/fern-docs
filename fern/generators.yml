@@ -3,7 +3,7 @@ groups:
   typescript-sdk:
     generators:
       - name: fernapi/fern-typescript-node-sdk
-        version: 2.6.3
+        version: 2.6.4
         output:
           location: npm
           package-name: "@credal/sdk"
