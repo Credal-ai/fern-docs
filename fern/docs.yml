@@ -64,8 +64,8 @@ navigation:
         contents:
           - page: In-Depth Overview
             path: ./docs/pages/platform/agents/in-depth-overview.mdx
-          # - page: Picking a Model
-          #   path: ./docs/pages/platform/agents/model-selection.mdx
+          - page: Picking a Model
+            path: ./docs/pages/platform/agents/model-selection.mdx
           # - page: Attaching and Searching Data
           #   path: ./docs/pages/platform/agents/data-search.mdx
           - page: Writing a Great Background Prompt
