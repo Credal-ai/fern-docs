@@ -57,7 +57,14 @@
     "Thambapillai",
     "permissioned",
     "Autoapproved",
-    "ACCOUNTADMIN"
+    "ACCOUNTADMIN",
+    "abcdefg",
+    "upsell",
+    "HEPA",
+    "Agentic",
+    "agentic",
+    "financials",
+    "Financials"
   ],
   "ignorePaths": [
     "node_modules",
