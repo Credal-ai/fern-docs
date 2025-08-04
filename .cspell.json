@@ -48,7 +48,9 @@
     "Hubspot",
     "Ashby",
     "performantly",
-    "rerank"
+    "rerank",
+    "infosec",
+    "Reranking"
   ],
   "ignorePaths": [
     "node_modules",

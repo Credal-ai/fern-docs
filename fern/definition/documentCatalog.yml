@@ -38,7 +38,7 @@ service:
             customMetadata:
               type: optional<unknown>
               docs: |
-                Optional JSON representing any custom metdata for this document
+                Optional JSON representing any custom metadata for this document
             collectionId:
               type: optional<string>
               docs: |
