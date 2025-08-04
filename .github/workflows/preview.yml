@@ -1,10 +1,9 @@
 name: ci
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
-
 jobs:
   preview-docs:
     runs-on: blacksmith-4vcpu-ubuntu-2404
@@ -12,6 +11,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Checkout PR
+        if: github.event_name == 'pull_request_target'
+        run: |
+          git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-${{ github.event.pull_request.number }}
+          git checkout pr-${{ github.event.pull_request.number }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
