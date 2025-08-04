@@ -64,7 +64,8 @@
     "Agentic",
     "agentic",
     "financials",
-    "Financials"
+    "Financials",
+    "buildwithfern"
   ],
   "ignorePaths": [
     "node_modules",
