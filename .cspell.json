@@ -33,7 +33,22 @@
     "changelog",
     "readme",
     "sdk",
-    "SDKs"
+    "SDKs",
+    "SOQL",
+    "ITSM",
+    "HITL",
+    "Jamf",
+    "pypi",
+    "PYPI",
+    "fernapi",
+    "pickleball",
+    "speadsheet",
+    "Preconfigured",
+    "Asana",
+    "Hubspot",
+    "Ashby",
+    "performantly",
+    "rerank"
   ],
   "ignorePaths": [
     "node_modules",
