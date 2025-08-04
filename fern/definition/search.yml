@@ -68,17 +68,17 @@ service:
                   chunks:
                     - chunkId: 8d49fa7e-f09a-4bd4-ae94-4c089c9043a0
                       chunkIndex: 0
-                      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                      text: "The cat sat on the mat."
                       score: 0.9
                     - chunkId: c24f99f9-2477-461b-8f8f-90a82a40879d
                       chunkIndex: 1
-                      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"
+                      text: "The quick brown fox jumps over the lazy dog."
                       score: 0.8
                     - chunkId: 6413d18c-b37f-4985-9045-cc8d6e100a17
                       chunkIndex: 2
-                      text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+                      text: "The lazy dog lazed."
                       score: 0.7
-                  mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  mergedContents: The cat sat on the mat. The quick brown fox jumps over the lazy dog. The lazy dog lazed.
                 - documentId: 90998ceb-1c10-4d2a-96cb-acf89fa3005e
                   documentName: "XYZ Corp - Follow-up transcript"
                   documentUrl: "https://credalai-my.sharepoint.com/:w:/g/credalai_onmicrosoft_com/ESb7bpzm2FdGqPTlXsQW2P4BpBhsrZuKS_PgJlaoJffo9A?e=Ecv5j1"
@@ -89,17 +89,18 @@ service:
                   chunks:
                     - chunkId: 3664912a-3edb-4d88-b624-80db99d383e6
                       chunkIndex: 0
-                      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                      text: "The cat sat on the mat."
                       score: 0.7
                     - chunkId: da9d43a4-2927-442c-8e5c-b9ef86f56fc3
                       chunkIndex: 1
-                      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"
+                      text: "The quick brown fox jumps over the lazy dog."
                       score: 0.9
                     - chunkId: 8d882e9f-8eda-479b-ae2a-359ebae7b626
                       chunkIndex: 2
-                      text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+                      text: "The lazy dog lazed."
                       score: 0.75
-                  mergedContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  mergedContents: The cat sat on the mat. The quick brown fox jumps over the lazy dog. The lazy dog lazed.
+
 types:
   DocumentCollectionSearchOptions:
     properties:
