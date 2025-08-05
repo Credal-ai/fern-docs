@@ -1,0 +1,32 @@
+imports:
+  common: ./common.yml
+
+types:
+  HumanConfirmationChannel:
+    union:
+      directMessage: DirectMessage
+      slackThread: SlackThread
+      conversation: Conversation
+  DirectMessage:
+    properties:
+      channelId: string
+  SlackThread:
+    properties:
+      channelId: string
+      threadTimestamp: string
+  Conversation:
+    properties:
+      conversationId: uuid
+  InvokeActionResponse:
+    properties:
+      actionInvocationId: uuid
+      actionInvocationStatus: ActionStatus
+  ActionStatus:
+    enum:
+      - PENDING_APPROVAL
+      - APPROVED_IN_PROGRESS
+      - NO_APPROVAL_NEEDED_IN_PROGRESS
+      - APPROVED_SUCCEEDED
+      - APPROVED_FAILED
+      - NO_APPROVAL_NEEDED_SUCCEEDED
+      - NO_APPROVAL_NEEDED_FAILED
