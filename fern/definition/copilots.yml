@@ -526,7 +526,7 @@ types:
     properties:
       message: string
       dataChunk: string
-      jsonObject: optional<unknown>
+      structuredOutput: optional<unknown>
 
   InsertedAuditLog:
     properties:
