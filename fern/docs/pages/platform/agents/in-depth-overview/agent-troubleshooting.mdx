@@ -2,7 +2,7 @@
 
 If you get an error message that the AI is currently unreachable, there may be a few causes.
 
-[https://codahosted.io/docs/D9tK5avz_V/blobs/bl-RLj-VP5SsZ/338612d1be82e18dcc1aee07beb96a74080fcb9b50ebb56abab204523825aa9e9217996961ca3fd25fdc2a92bb25998d334e5a2f33f13982a482d60304c48267f4eb7e349fefc5b611dc27bef74ce632546e98d938df7fe33b70dd679a2b26382fb5922a](https://codahosted.io/docs/D9tK5avz_V/blobs/bl-RLj-VP5SsZ/338612d1be82e18dcc1aee07beb96a74080fcb9b50ebb56abab204523825aa9e9217996961ca3fd25fdc2a92bb25998d334e5a2f33f13982a482d60304c48267f4eb7e349fefc5b611dc27bef74ce632546e98d938df7fe33b70dd679a2b26382fb5922a)
+![agent-troubleshooting.png](/docs/assets/agents/create-steps/agent-troubleshooting.png)
 
 1. **Too much context data**: This error can also appear if too much context data is being pulled into each prompt through a combination of pinned data, context, Q&A, and searchable sources. This happens because the data the agent reviews each time is running up against the AI’s length limits. Reducing the amount of data that the AI reviews every time can resolve the issue.
    1. Sometimes having too many pinned sources, or pinned sources that are too large, can alone cause this issue as those sources will be read by the AI in their entirety each time a user asks a question. Try moving your pinned sources to searchable sources to resolve the issue.
