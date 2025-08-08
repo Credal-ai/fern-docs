@@ -26,6 +26,10 @@ Messages can be sent in the main channel or they can be sent as a reply in a thr
 ## How Agents Decide When to Help
 When you deploy an Agent to a Slack channel, you are adding to a bucket of Agents that the Credal bot can choose to respond with in that Slack channel to any given message. The Credal bot decides which agent to respond with using the routing configuration in each agent's deployment settings. There are five ways you can deploy an agent's response behavior.
 
+<Frame>
+  <img src="/docs/assets/agents/routing-options.png" />
+</Frame>
+
 1. "Respond to all messages" - The agent tries to help with every message in the channel. If multiple agents have this setting, the agent configured first will respond.
 
 2. "Respond when a bot is tagged" - The agent only helps when you specifically mention its bot (@botname). This is the Credal bot by default. If multiple agents have this setting, the agent configured first will respond.
@@ -45,3 +49,37 @@ When creating your custom Slack app, refer to the following document and then re
 https://credalai.notion.site/Credal-Co-Pilots-Slack-App-Manifest-1c36c60bfc9345148e9a087c00cc2e89?source=copy_link
 
 Custom bots and the Credal bot behave separately, so if you have both a Custom bot and Credal bot in a channel, it's possible to see both respond based on their deployment settings.
+
+## Advanced options
+
+1. Link to Credal web
+
+<Frame>
+  <img src="/docs/assets/agents/link-to-credal-web.png" />
+</Frame>
+
+For debugging purposes, you can turn on this toggle to easily open the conversation in the web UI. This is especially helpful when inspecting action calls and the context window during your bot's testing phase.
+
+2. Thread response behavior
+
+<Frame>
+  <img src="/docs/assets/agents/let-credal-decide.png" />
+</Frame>
+
+Credal agents can be told to decide when to response. They only make this decision when responding to the thread owner and will ignore messages from other participants in the conversation. This feature is in beta so please reach out with any feedback, questions, or requests!
+
+3. Background tasks
+
+<Frame>
+  <img src="/docs/assets/agents/background-tasks.png" />
+</Frame>
+
+By turning on this toggle, you are letting Credal process requests in the background without necessarily responding to the end user. Example when this is useful: syncing all Slack communications silently to a Jira ticket as comments without cluttering the Slack channel with responses. 
+
+4. Customize response when Credal is uncertain
+
+<Frame>
+  <img src="/docs/assets/agents/customize-uncertain.png" />
+</Frame>
+
+Sometimes, a lengthy "I don't know" can be annoying. Customize Credal's reaction when it has nothing meaningful to add.
