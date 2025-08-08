@@ -4,27 +4,26 @@ Credal’s AI Agents empower users to set up dedicated assistants for a wide ran
 
 Agents can assist with any task that combines AI and data. They are designed to be experts on the data and context you provide. They combine AI with your data to provide accurate, context-aware responses, while citing their sources.
 
-**Contents:**
 
 ## 1. **Setting up a Agent**
 
 _It’s helpful to have a good sense of what you want your agent to do from the start, so you can set it up to achieve its objectives._
 
-To get started:
+To get started: 
 
-1. On your left sidebar, Select “Agents”:
+On your left sidebar, Select “Agents”:
 
-![agents_lhs](/docs/assets/copilots/copilots_lhs.png)
+![agent-left-nav](/docs/assets/agents/create-steps/agent-left-nav.png)
 
-1. Select the “Create new agent” button.
+Then click **“Create New Agent”**:
 
-![create_new_agent_button](/docs/assets/copilots/create_new_copilot_button.png)
+![after-clicking-agent](/docs/assets/agents/create-steps/after-clicking-agent.png)
 
-1. Give your agent a name and add a description of its function in the pop-out form. You can always come back and edit these later.
+Give your agent a name and add a description of its function in the pop-out form. You can always come back and edit these later.
 
-![agent_description](/docs/assets/copilots/copilot_description.png)
+![agent-creation-popup](/docs/assets/agents/create-steps/agent-creation-popup.png)
 
-1. Then select “Create Agent.”
+Then select “Create Agent.”
 
 ## 2. **Configuring a Agent**
 
@@ -36,98 +35,106 @@ The name and description of your agent will already be populated and can be edit
 
 ### b. AI **Model**
 
-1. **Model Selection**
+1. **Model Selection** - Here you can choose the foundation AI model you want your agent to use from the drop-down menu. More advanced models, like o1, are both more expensive and more capable than earlier models. When selecting a model, you may want to consider your budget, the volume of queries you expect the agent to receive, and the complexity of the task.
+   
+   GPT-4o is a good starting point for most use cases, as it’s very capable and relatively affordable. If you are unsure of the best choice, running some test queries is a good way to gauge a model’s performance for your use case.
+![agent-different-models-dropdown.png](/docs/assets/agents/create-steps/agent-different-models-dropdown.png) 
+      
 
-Here you can choose the foundation AI model you want your agent to use from the drop-down menu.
+2. **Creativity** - You can set the level of creativity you want your agent to have by making a selection from the panel below. For most use cases, you’ll want “precise” or “balanced”. More creativity means the agent will try more unusual responses, while more precision means the agent will rely more on the context and data you provide. 
+   The creativity setting is a bit like having an “eccentric genius” on the team: a lot of what is says may be off, but it’ll occasionally produce something really unique and interesting: most useful for marketing, brainstorming, or creative writing use cases.
 
-More advanced models, like o1, are both more expensive and more capable than earlier models. When selecting a model, you may want to consider your budget, the volume of queries you expect the agent to receive, and the complexity of the task.
-
-![model_selection.png](/docs/assets/copilots/model_selection.png)
-
-GPT-4o is a good starting point for most use cases, as it’s very capable and relatively affordable. If you are unsure of the best choice, running some test queries is a good way to gauge a model’s performance for your use case.
-
-1. **Creativity**
-
-You can set the level of creativity you want your agent to have by making a selection from the panel below. For most use cases, you’ll want “precise” or “balanced”. More creativity means the agent will try more unusual responses, while more precision means the agent will rely more on the context and data you provide. The creativity setting is a bit like having an “eccentric genius” on the team: a lot of what is says may be off, but it’ll occasionally produce something really unique and interesting: most useful for marketing, brainstorming, or creative writing use cases.
-
-![creativity.png](/docs/assets/copilots/creativity.png)
+         ![agent-model-creativity.png](/docs/assets/agents/create-steps/agent-model-creativity.png)
 
 ### c. **Prompt**
 
 Here you can provide a background prompt, which will provide the agent with context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and to the point and to let users know when it is unsure of the answer.
 
-![background_prompt.png](/docs/assets/copilots/background_prompt.png)
+![agent-prompt.png](/docs/assets/agents/create-steps/agent-prompt.png)
 
-You can revise this prompt to include the background information and instructions relevant to your agent. When thinking about the level of detail you should provide, consider how you might explain the agent’s assignment to a new employee. Your explanation might include:
+You can revise this prompt to include the background information and instructions relevant to your Agent. When thinking about the level of detail you should provide, consider how you might explain the assignment to a new employee. Your explanation might include:
 
-- background information on the company;
-- the intended users;
-- the topics the agent will be dealing with;
-- any relevant guidelines or policies; and
-- specific instructions on how to format or word a response.
+- Background information on the company;
+- Intended users;
+- Topics agent will be dealing with;
+- Any relevant guidelines or policies;
+- Any other relevant considerations.
 
 The content and depth of prompts will vary by use case.
 
-### **Example Prompt 1: Federal Rules of Court Agent**
-
-_You are a diligent, objective, detail-oriented, assistant. Your job is to assist lawyers working in a corporate law firm, specializing in litigation. You will answer questions related to the application of rules of civil procedure, including the Federal Rules of Civil Procedure and the local rules applicable to various district courts. You will respond to questions and prompts truthfully._
+<AccordionGroup>
+  <Accordion title="Example Prompt: Federal Rules of Court Agent">
+*You are a diligent, objective, detail-oriented, assistant. Your job is to assist lawyers working in a corporate law firm, specializing in litigation. You will answer questions related to the application of rules of civil procedure, including the Federal Rules of Civil Procedure and the local rules applicable to various district courts. You will respond to questions and prompts truthfully.*
 
 _Instructions:_
 
 - _Below is context to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answer based only on the context provided._
 - _If you're unsure of an answer, you can say "I don't know" or "I'm not sure"._
-- _When providing a response, always include a reference to the rule number which contains the answer, using the format “1.A.iii”_
+- _When providing a response, always include a reference to the rule number which contains the answer._
 
 _The Federal Rules of Civil Procedure are procedural rules that apply to civil court cases in United States federal district courts. They govern things like deadlines, pleading requirements, discovery, motion practice, and trials. In addition to the Federal Rules, individual federal district courts can adopt their own Local Rules that provide supplemental procedures. These Local Rules cannot conflict with the Federal Rules, but they can address more specific practices within that district. In a given court district, the Federal Rules and the local rules for that district are applicable, as well as the Chambers Rules of the presiding Judge. Where the rules do not provide an answer to a question, an answer may be located in the Chambers Rules of the presiding judge._
 
-_--- Start Context ---_
-
-_{{data}}
---- End Context ---_
-
-### **Example Prompt 2: Credal’s Information Security Agent**
-
-_You are a friendly helpful, honest assistant, who helps Credal company employees answer questions and prompts truthfully about information security questionnaires. Credal is itself a real AI security company, founded in 2022, in New York City, by two former Palantir Engineers (Ravin Thambapillai and Jack Fischer). Below is contextual information from Credal's documentation to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answers based on the context provided. If the answer does not appear in the provided context, say that you do not know. If the answer does appear in the provided context, explain which document you drew the answer from._
-
-Adhere to the following guidelines when formatting your response:
-
-1. Be brief. Do not include phrases like “according to the context provided”.
-2. Use numbered lists, not bulleted lists
-3. When referencing links, use this format: If there is a link anywhere in the response, a reference, listed source, or JIRA ticket, then always describe it in this format: '[NAME OF SOURCE] (URL)’
-
-_--- Start Context ---_
-
-_{{data}}_
-
+_--- Start Context ---_  
+_{{data}}_  
 _--- End Context ---_
+  </Accordion>
+
+  <Accordion title="Example Prompt: Credal's Information Security Agent">
+*You are a friendly helpful, honest assistant, who helps Credal company employees answer questions and prompts truthfully about information security questionnaires. Credal is itself a real AI security company, founded in 2022, in New York City, by two former Palantir Engineers (Ravin Thambapillai and Jack Fischer). Below is contextual information from Credal's documentation to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answers based on the context provided. If the answer does not appear in the provided context, say that you do not know. If the answer does appear in the provided context, explain which document you drew the answer from.*
+
+_--------- Context: ---------_  
+_{{data}}_  
+_--------- End Context ---------_
+  </Accordion>
+</AccordionGroup>
+
+**Organization Prompt**: 
+This setting, when enabled, appends a fixed set of Credal-provided background instructions to every agent in your organization.
+These rules cannot be edited and ensure that all agents follow core ethical and professional guidelines, such as:
+
+   1. Always answering honestly.
+   2. Never insulting or maligning any human being, whether they are a Credal employee or otherwise.
+
+This helps maintain consistent, respectful, and trustworthy behavior across all deployed agents.
+
+![agent-orginization-prompt.png](/docs/assets/agents/create-steps/agent-orginization-prompt.png)
 
 **Suggested Questions** allow you to save prompts that would be frequently used in a given Agent, eliminating the need to repeatedly paste the same prompts.
 
 For instance, in a Agent built to synthesize research reports, you can save the following prompts: Summarize this paper, Extract the results, and List citations.
 
-![agent_suggested_questions.png
-](/docs/assets/copilots/copilot_suggested_questions.png)
+![agent_suggested_questions.png](/docs/assets/agents/create-steps/agent_suggested_questions.png)
 
 The saved Suggested Questions are displayed below the Agent prompt box and enable the user to auto-populate the prompt in one click.
 
-![saved_suggested_questions_display.png](/docs/assets/copilots/saved_suggested_questions_display.png)
+![agent_saved_suggested_questions.png](/docs/assets/agents/create-steps/agent_saved_suggested_questions.png)
+
 
 ### d. **Model Q&A Pairs**
 
 In the prompt section, you can also provide some model Q&A pairs. This lets the agent know what a good answer looks like. To add a pair, select the “Add Pair” button and insert your question and answer in the pop-out form.
 
-![saved_suggested_questions_display.png](/docs/assets/copilots/saved_suggested_questions_display.png)
+![saved_suggested_questions_display.png](/docs/assets/agents/create-steps/agent_saved_suggested_questions.png)
 
 Your Q&A pairs should reflect the form and depth of response you are looking for. For example, if your agent’s job is to review and summarize documents, your model Q&A should include a model example of a summary, showing the type of information that should be included.
 
-### e. **Data**
+### e. **Actions**
+
+In this section, you can attach one or more **published actions** to the agent. Actions allow agents to dynamically connect to external systems or trigger workflows based on user input.
+
+- Use the dropdown to search for and select an existing published action.  
+- Choose **Create New Action** to define a new action and link it to this agent.  
+- Existing actions in the list display their name, creator, and description (e.g., creating a Zendesk ticket, reading emails, posting in Slack channels, or creating Asana tasks).  
+
+Attaching the right actions ensures that your agent can not only respond to questions but also execute real-world tasks across integrated systems.
+![agent-existing-action-options.png](/docs/assets/agents/create-steps/agent-existing-action-options.png)
+
+
+### f. **Data**
 
 The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries.
 
-1. **Pinned Data**
-
-By pinning data sources, you can instruct your agent to refer to certain sources when answering _every_ user query. You should use this for documents that will relate to most queries you expect your agent to address. If you have a document that you almost always want to agent to refer to, put it here. This could include answers to FAQs or a sales playbook. As pinned sources will be read in their entirety every time a user asks a question, they should only be used for a limited amount of high quality data to avoid overwhelming the AI with too much data on every question.
-
+   **Pinned Data** - By pinning data sources, you can instruct your agent to refer to certain sources when answering _every_ user query. You should use this for documents that will relate to most queries you expect your agent to address. If you have a document that you almost always want to agent to refer to, put it here. This could include answers to FAQs or a sales playbook. As pinned sources will be read in their entirety every time a user asks a question, they should only be used for a limited amount of high quality data to avoid overwhelming the AI with too much data on every question.
 To use this feature, use the toggle to turn on pinned sources and search for sources to pin in the search bar below.
 
 ![Here, we pinned our infosec FAQs when setting up Credal’s Infosec agent. ](/docs/assets/copilots/pinned_infosec_FAQs_example.png)
@@ -165,7 +172,7 @@ Whether it’s an annual report, an incident Slack channel, or any other documen
 
 ![agent_user_inputs_section.png](/docs/assets/copilots/copilot_user_inputs_section.png)
 
-### f. Tools
+### g. Tools
 
 Agents have the ability to use predefined tools. Many of the tools are in Beta, so reach out to [support@credal.ai](mailto:support@credal.ai) if you have any questions or feedback.
 
