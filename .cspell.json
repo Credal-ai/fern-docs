@@ -65,7 +65,8 @@
     "agentic",
     "financials",
     "Financials",
-    "buildwithfern"
+    "buildwithfern",
+    "Chatbots"
   ],
   "ignorePaths": [
     "node_modules",
