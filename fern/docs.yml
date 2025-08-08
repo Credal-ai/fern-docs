@@ -98,10 +98,12 @@ navigation:
           #   path: ./docs/pages/platform/agents/test-cases.mdx
           - page: Agent Collaboration
             path: ./docs/pages/platform/agents/agent-collaboration.mdx
-          - page: Deployment Options
-            path: ./docs/pages/platform/agents/deployment.mdx
-          # - page: Slack Deployment
-          #   path: ./docs/pages/platform/agents/slack-deployment.mdx
+          - section: Deploying Agents
+            contents:
+              - page: Overview
+                path: ./docs/pages/platform/agents/deployment/overview.mdx
+              - page: Slack Deployment
+                path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
       - section: Actions
         contents:
           - page: Overview
