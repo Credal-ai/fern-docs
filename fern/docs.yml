@@ -62,8 +62,26 @@ navigation:
     contents:
       - section: Agents
         contents:
-          - page: In-Depth Overview
-            path: ./docs/pages/platform/agents/in-depth-overview.mdx
+          - section: In-Depth Overview
+            contents:
+              - page: Setting Up An Agent
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-setup-page.mdx
+              - page: Configure An Agent
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure.mdx
+              - page: Evaluate
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
+              - page: Deploying An Agent
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-deploy.mdx
+              - page: Querying Your Agent
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-querying.mdx
+              - page: Sharing Your Agent
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-sharing.mdx
+              - page: Feedback
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-feedback.mdx
+              - page: Troubleshooting
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
+              - page: Contact Support
+                path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
           - page: Picking a Model
             path: ./docs/pages/platform/agents/model-selection.mdx
           # - page: Attaching and Searching Data

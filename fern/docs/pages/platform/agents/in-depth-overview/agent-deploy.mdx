@@ -1,0 +1,68 @@
+Once you have a agent set up, you can use it directly in Credal, or deploy it to Slack or other tools through the API. You can set up a deployment in the “Deploy” tab.
+
+### a. Credal UI
+
+To let other people at your organization use your agent, use this toggle.
+
+![enable_agent_in_credal_ui](/docs/assets/copilots/enable_copilot_in_credal_ui.png)
+
+The agent will now be available for everyone at your organization to chat with:
+
+![chat_with_agent.png](/docs/assets/copilots/chat_with_copilot.png)
+
+### b. Slack
+
+To deploy a agent through Slack, simply use the below toggle to turn on Slack deployments and select the channel(s) you want to deploy it to.
+
+![slack_deployment_toggle.png](/docs/assets/copilots/slack_deployment_toggle.png)
+
+You can choose to have your agent answer all messages in a given channel or only those that meet certain criteria:
+
+![slack_deployment_settings_all_messages.png](/docs/assets/copilots/slack_deployment_settings_all_messages.png)
+
+![slack_advanced_filter_settings.png](/docs/assets/copilots/slack_advanced_filter_settings.png)
+
+- **All messages**: will answer all queries in the connected Slack channel.
+- **All relevant messages**: will respond to all queries matching the description of the agent.
+- **All messages matching filter**: will respond to messages that match the filter criteria.  
+  In the example on the left, the agent will only respond to prompts containing “?”.
+
+If more than one agent is deployed to a given Slack channel, Credal will triage user requests based on the description of each agent to determine which, if any, should answer the question.
+
+### b-2. Slack Private Channels
+
+Deploying into a private channel in Slack is exactly the same as deploying into a public one, but with one extra step — the Credal integration must be added to the channel first.
+
+First, click into the channel in Slack, and then click on the channel name over the top.  
+In the screenshot below, this is the button called “credal-founders” (this is the name of an example private channel. Your button will have the name of your private channel):
+
+![channel_name_in_slack.png](/docs/assets/copilots/channel_name_in_slack.png)
+
+When you do that, you will see the below screen — click the integrations tab as shown below:
+
+![integrations.png](/docs/assets/copilots/integrations.png)
+
+Finally, you should see an option to **Add apps to `YOUR CHANNEL NAME`**.  
+
+Search for [Credal.ai](http://Credal.ai) and then click “Add”:
+
+![add_apps_to_channel.png](/docs/assets/copilots/add_apps_to_channel.png)
+
+### c. API
+
+You can connect your agent to other applications or build your own tools that route queries to your agent through a unique API. Use the toggle to enable API access and generate a agent API key.  
+See our [API documentation](https://docs.credal.ai/api-reference/copilots) for more information on implementation.
+
+![enable_agent_api_access.png](/docs/assets/copilots/enable_copilot_api_access.png)
+
+### d. Custom Slack Apps (Branding, Name, Profile Picture)
+
+Credal supports custom Slack Apps, commonly known as Slack "bots", for your individual Agent.  
+Although the process is a little more involved than using the simple “Deploy Agent to Slack” button, it does give you some additional benefits, such as:
+
+- The ability for users to DM the bot directly.
+- The ability to upload custom images, icons, slash commands, etc. in Slack.
+
+To learn how to do this, see the documentation for [Creating a custom SlackApp in Credal](https://www.notion.so/Credal-Co-Pilots-Slack-App-Manifest-1c36c60bfc9345148e9a087c00cc2e89?pvs=21).
+
+Contact your Credal team for help with setup.
