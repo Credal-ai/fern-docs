@@ -66,8 +66,22 @@ navigation:
             contents:
               - page: Setting Up An Agent
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-setup-page.mdx
-              - page: Configure An Agent
-                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure.mdx
+              - section: Configure An Agent
+                contents:
+                  - page: a. Name and Description
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/name-and-description.mdx
+                  - page: b. AI Model
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/ai-model.mdx
+                  - page: c. Prompt
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/prompt.mdx
+                  - page: d. Model Q&A Pairs
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/model-qa-pairs.mdx
+                  - page: e. Actions
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/actions.mdx
+                  - page: f. Data
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
+                  - page: g. Tools
+                    path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
               - page: Evaluate
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
               - page: Deploying An Agent
@@ -82,12 +96,12 @@ navigation:
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
               - page: Contact Support
                 path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
-          - page: Picking a Model
-            path: ./docs/pages/platform/agents/model-selection.mdx
+          # - page: Picking a Model
+          #   path: ./docs/pages/platform/agents/model-selection.mdx
           # - page: Attaching and Searching Data
           #   path: ./docs/pages/platform/agents/data-search.mdx
-          - page: Writing a Great Background Prompt
-            path: ./docs/pages/platform/agents/background-prompt.mdx
+          # - page: Writing a Great Background Prompt
+          #   path: ./docs/pages/platform/agents/background-prompt.mdx
           - page: Attaching Actions
             path: ./docs/pages/platform/agents/attaching-actions.mdx
           # - page: Data Processing Tools
