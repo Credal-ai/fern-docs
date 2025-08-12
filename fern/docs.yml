@@ -183,6 +183,8 @@ navigation:
       #       path: ./docs/pages/platform/integrations/data-syncs.mdx
           - page: Data Sources / Action Providers
             path: ./docs/pages/platform/integrations/data-sources.mdx
+          - page: Data Processing
+            path: ./docs/pages/platform/agents/data-processing.mdx
           - page: Metadata and Smart Filtering
             path: ./docs/pages/platform/integrations/metadata-and-smart-filtering.mdx
           - page: Bring Your Own Custom Data Sources
