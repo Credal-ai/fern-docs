@@ -62,22 +62,32 @@ navigation:
     contents:
       - section: Agents
         contents:
-          - page: In-Depth Overview
-            path: ./docs/pages/platform/agents/in-depth-overview.mdx
-          - page: Picking a Model
-            path: ./docs/pages/platform/agents/model-selection.mdx
-          # - page: Attaching and Searching Data
-          #   path: ./docs/pages/platform/agents/data-search.mdx
-          - page: Writing a Great Background Prompt
-            path: ./docs/pages/platform/agents/background-prompt.mdx
+          - page: Setting Up An Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-setup-page.mdx
+          - section: Configure An Agent
+            contents:
+              - page: a. Name and Description
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/name-and-description.mdx
+              - page: b. AI Model
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/ai-model.mdx
+              - page: c. Prompt
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/prompt.mdx
+              - page: d. Model Q&A Pairs
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/model-qa-pairs.mdx
+              - page: e. Actions
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/actions.mdx
+              - page: f. Data
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
+              - page: g. Tools
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
+          - page: Evaluate
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
+          - page: Querying Your Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-querying.mdx
+          - page: Sharing Your Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-sharing.mdx
           - page: Attaching Actions
             path: ./docs/pages/platform/agents/attaching-actions.mdx
-          # - page: Data Processing Tools
-          #   path: ./docs/pages/platform/agents/data-processing.mdx
-          # - page: Monitoring and Tracking Usage
-          #   path: ./docs/pages/platform/agents/monitoring.mdx
-          # - page: Creating Test Cases
-          #   path: ./docs/pages/platform/agents/test-cases.mdx
           - page: Agent Collaboration
             path: ./docs/pages/platform/agents/agent-collaboration.mdx
           - section: Deploying Agents
@@ -86,6 +96,15 @@ navigation:
                 path: ./docs/pages/platform/agents/deployment/overview.mdx
               - page: Slack Deployment
                 path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
+              - page: API Deployment
+                path: ./docs/pages/platform/agents/deployment/api-deployment.mdx  
+          - page: Feedback
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-feedback.mdx
+          - page: Troubleshooting
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
+          - page: Contact Support
+            path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
+
       - section: Actions
         contents:
           - page: Overview
@@ -190,7 +209,7 @@ navbar-links:
 
 colors:
   accentPrimary:
-    light: "#5849EC"
+    light: "#228be6"
 
 favicon: docs/assets/favicon.png
 
