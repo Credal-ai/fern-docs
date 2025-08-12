@@ -1,27 +1,27 @@
-To ensure that you get the most accurate and helpful responses from Credal, it's crucial to craft your prompts effectively.
+To get the most accurate and helpful responses from Credal, it's essential to craft your prompts effectively.
 
-Here's why prompt engineering is worth your attention:
+Here's why prompt engineering matters:
 
-1. **Improves Accuracy**: Well-crafted prompts lead to more precise and relevant answers, reducing the likelihood of misinterpretations or general responses.
-2. **Saves Time**: By clearly directing the AI, you can obtain the desired information with fewer attempts.
-3. **Enhances Complexity Handling**: Complex tasks often require nuanced understanding. Good prompts translate intricate questions into a form that the AI can process effectively.
-4. **Facilitates Innovation**: Mastering prompt engineering allows you to push the boundaries of AI’s applications, driving innovation and enabling new solutions to complex problems.
+1. **Improves Accuracy**: Well-crafted prompts lead to more precise and relevant answers, reducing the likelihood of misinterpretations or generic responses.
+2. **Saves Time**: By clearly directing the AI, you can get the information you need in fewer attempts.
+3. **Handles Complex Tasks**: Complex tasks require nuanced understanding. Good prompts help translate intricate questions into a form the AI can process effectively.
+4. **Drives Innovation**: Mastering prompt engineering allows you to push the boundaries of AI applications, driving innovation and enabling new solutions to complex problems.
 
-This guide will provide you with the foundational understanding and practical steps to optimize your interactions with Credal for precise and valuable responses.
+This guide provides the foundational understanding and practical steps to optimize your interactions with Credal for precise and valuable responses.
 
 ## 1. What is the Background Prompt
 
-This is arguably the most effective way to customize your agent. It defines the landscape in which your agent operates, detailing its role, response style, and the types of queries it should handle. Crafting an effective background prompt ensures your agent can seamlessly integrate into your specific use case.
+This is arguably the most effective way to customize your agent. It defines the environment in which your agent operates, detailing its role, response style, and the types of queries it should handle. Creating an effective background prompt ensures your agent seamlessly integrates into your specific use case.
 
 ## 2. Constructing a Background Prompt
 
 ### Role and Goal
 
-Outline the specific role your agent is expected to fulfill. Include details such as:
+Define the specific role your agent will fulfill. Include details such as:
 
-- **Who**: The specific team or individual utilizing the agent.
-- **What**: The usual nature of queries or tasks it will address.
-- **Where**: The operational context, be it customer service, technical support, etc.
+- **Who**: The specific team or individual using the agent.
+- **What**: The typical nature of queries or tasks it will address.
+- **Where**: The operational context, such as customer service, technical support, etc.
 
 **Example**
 
@@ -32,7 +32,7 @@ You assist the financial advisory team by analyzing client interactions to enhan
 
 ### Output Format
 
-LLM's can be a bit unpredictable, but luckily we can just tell them what to do with clear instructions. Providing a template for expected responses is an example of this. 
+LLMs can be unpredictable, but fortunately we can direct them with clear instructions. Providing a template for expected responses is one effective approach. 
 
 Here’s an example of setting up an output format for entity extraction:
 
@@ -58,9 +58,9 @@ Provide a riddle using the following structure:
 
 ### Response Guidelines
 
-Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Agent will only know as much as you tell it. Noticing that the responses are too long? Specify response length! Is there too much fluff in the language? Ask for concise language. 
+Create detailed instructions that anticipate potential pitfalls and standard operational procedures. Your agent will only know what you tell it. Are responses too long? Specify the desired length! Is the language too verbose? Ask for concise responses. 
 
-Credal has prompt snippets right under the background prompt in the Agent Configuration tab. We recommend using those as a starting point for generating more useful responses, however your specific use case may require much more detail!
+Credal provides prompt snippets directly under the background prompt in the Agent Configuration tab. We recommend using these as a starting point for generating more useful responses, though your specific use case may require additional detail!
 
 ![prompt-snippets.png](/docs/assets/prompt-engineering/prompt-snippets.png)
 
