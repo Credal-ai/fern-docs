@@ -4,26 +4,26 @@ No users can execute outside the scope of the credentials and permissions that a
 
 ## Quick Definitions
 
-- **Action Provider**: An external system that an Action let you interact with, ex. Jira or Okta.
-- **Action Template**: A type of action available for an Action Provider, ex. "Add User to Okta Group" or "Create Jira Ticket".
-- **Action**: An instance of an Action Template with parameters configured by a user, ex. "Create IT Support Request Jira Ticket in SI Project".
-- **Invoking an Action**: Prompting an Agent to decide that an Action should be taken.
-- **Executing the Action**: Running the Action using your permissions/scopes.
+- **Action Provider**: An external system that an action lets you interact with, e.g., Jira or Okta.
+- **Action Template**: A type of action available for an action provider, e.g., "Add User to Okta Group" or "Create Jira Ticket".
+- **Action**: An instance of an action template with parameters configured by a user, e.g., "Create IT Support Request Jira Ticket in SI Project".
+- **Invoking an Action**: Prompting an agent to decide that an action should be taken.
+- **Executing the Action**: Running the action using your permissions/scopes.
 
 ## FAQ
 
-- **Where are actions invoked?**: In requests made to Agents that have permission to use the Action, as defined in Agent Access configuration.
-- **Who can invoke actions?**: Users who can access an Agent that the action is attached to. For specific actions with more regulated providers, users must be in the End User Access configuration in an Action's Deployment settings to invoke the action.
-- **Who can execute actions?**: The Action's approvers. If there are no approvers, invokers.
-- **Which user-level providers can I OAuth into?**: All enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
+- **Where are actions invoked?**: In requests made to agents that have permission to use the action, as defined in Agent Access configuration.
+- **Who can invoke actions?**: Users who can access an agent that the action is attached to. For specific actions with more regulated providers, users must be in the End User Access configuration in an action's Deployment settings to invoke the action.
+- **Who can execute actions?**: The action's approvers. If there are no approvers, then the invokers.
+- **Which user-level providers can I OAuth into?**: All providers enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
 
 ## Action Provider Categories
 
 ### User-scoped Credential Action Providers
 
-The vast majority of Credal's Action Providers are **user-scoped**. By this, it means that the credentials of the user executing the action are used when accessing the Action Provider. Thus, in a standard action configuration¹, it's impossible for the invoking user to perform an operation that they were not already authorized to do so directly in the provider, without Credal.
+The vast majority of Credal's action providers are **user-scoped**. This means that the credentials of the user executing the action are used when accessing the action provider. Thus, in a standard action configuration¹, it's impossible for the invoking user to perform an operation that they were not already authorized to do directly in the provider, without Credal.
 
-These Action Providers, including Salesforce, Github, and Notion, are considered low-risk and thus have minimal restrictions.
+These action providers, including Salesforce, GitHub, and Notion, are considered low-risk and thus have minimal restrictions.
 
 | Operation                       | Who is Authorized |
 | ---------------------------- | -------------------------- |
@@ -31,29 +31,29 @@ These Action Providers, including Salesforce, Github, and Notion, are considered
 | **Edit/Delete/Share Action** | Action Collaborator        |
 | **Publish to Specific Agents** | Action Collaborator      |
 | **Publish to All Org Agents** | Org Admin                 |
-| **Invoke Action**            | Anyone with access to an Agent with the action attached |
+| **Invoke Action**            | Anyone with access to an agent with the action attached |
 
 ### Action-scoped Credential Action Providers
 
-For providers, the access pattern centers not around individual users, but around different **credentials**¹. These credentials are attached directly to actions, allowing anyone with **End-User Access** to that action to use the associated credentials.
+For these providers, the access pattern centers not around individual users, but around different **credentials**¹. These credentials are attached directly to actions, allowing anyone with **End-User Access** to that action to use the associated credentials.
 
-This is an unusual access pattern and considered to be higher-risk than user-scoped actions usage because it enables users to perform actions that they may not have permissions for in the underlying system. Thus, there is an extra layer of security controls in Credal's system for these providers' actions: end-user allowlisting.
+This is an unusual access pattern and is considered to be higher-risk than user-scoped action usage because it enables users to perform actions that they may not have permissions for in the underlying system. Thus, there is an extra layer of security controls in Credal's system for these providers' actions: end-user allowlisting.
 
-End-user allowlists allow an action collaborator to limit which users can execute the action, regardless of what agents the action is published to.
+End-user allowlists allow an action collaborator to limit which users can execute the action, regardless of which agents the action is published to.
 
 Providers in this category include Looker and Snowflake.
 
-_¹There are instances where you'd want to have multiple credentials for a provider used in different actions, such as where you need a credential per role in each system._
+_¹There are instances where you'd want to have multiple credentials for a provider used in different actions, such as when you need a credential per role in each system._
 
 #### Arbitrary Fetch with Credential
 
-One special case of an action-scoped credential provider is our OpenAPI action provider, which contains an action ("Webhook") that can be configured to make an arbitrary API request. Due to the risk posed by arbitrary changes to the spec, only admins can modify and publish these actions.
+One special case of an action-scoped credential provider is our OpenAPI action provider, which contains an action ("Webhook") that can be configured to make an arbitrary API request. Due to the risk posed by arbitrary changes to the specification, only admins can modify and publish these actions.
 
 ### Human Approval & Multi-User Action Invocation Flows
 
-Human Approval is a layer on top of Credal's Action Security model that enables additional action governance and unlocks more complex actions use cases.
+Human Approval is a layer on top of Credal's action security model that enables additional action governance and unlocks more complex action use cases.
 
-Separately from respecting the permissions of a user in an Action Provider's underlying system, it's often important to be able to double-check an agent's work before performing an operation in that system. For instance, a user may want to validate the phrasing used when invoking an action to modify a Notion document on company expense policies.
+Separately from respecting the permissions of a user in an action provider's underlying system, it's often important to be able to double-check an agent's work before performing an operation in that system. For instance, a user may want to validate the phrasing used when invoking an action to modify a Notion document on company expense policies.
 
 In other cases, it may be desirable for users to kick off an action invocation despite not having the permissions in the underlying system to execute that action. Using the human approval flow, it's possible to request for someone with those permissions to approve the action and execute it on the original user's behalf.
 
