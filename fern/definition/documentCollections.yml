@@ -68,15 +68,14 @@ service:
       method: GET
       request:
         name: ListDocumentsInCollectionRequest
-        body:
-          properties:
-            collectionId:
-              type: uuid
-              docs: The ID of the document collection you want to add to.
+        query-parameters:
+          collectionId:
+            type: uuid
+            docs: The ID of the document collection to list documents from.
       response: ListDocumentsInCollectionResponse
       examples:
         - name: listDocumentsInCollectionExample
-          request:
+          query-parameters:
             collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
           response:
             body:
