@@ -1,24 +1,39 @@
+When you create an action, you can give it “parameters.” Think of parameters as blanks to fill in, so the action knows exactly what to update. These are inherited from action templates.
 
-There are 4 types of action parameters that you can use when creating actions, which will give you strong control over how actions are run.
+The following types of action parameters are currently supported:
 
-#### 1. Let AI Decide 
-- With this option, the field is left empty and the agent will use its knowledge or prompt the user for more information to fill in the required fields.
+#### 1. AI Generated (default, most common)
+Leave the field empty, and let AI figure out the value from context clues or prompt the user for more details.
 
-#### 2. Predefined Value
-- If you know a parameter value will always be the same whenever this action is run, you can set the field as predefined.
+*Example use case: Let’s say you want AI to help create tasks in Asana based on a product roadmap. With this option, AI will look at the conversation and determine the most reasonable due dates to set for these tasks.*
 
-#### 3. Multi-Select
-- If you know the parameter's value will be one of multiple options, you can set these options with multi-select and let the AI decide which to use.
+#### 2. Predefined
+For when you know a parameter value should always be the same whenever this action is run.
 
-#### 4. Embedded Parameters
-- You can embed parameters into predefined or multi-select values using the `${PARAM_NAME}` format.
-These parameters are especially useful when you have a template for the parameter value with fields to fill in (e.g., a SQL query).
-- Embedded parameters default to type string (from the Let AI Decide option). If you require a different type, please contact support@credal.ai.
+#### 3. Multi-select
+For when the parameter can only be one of a list of specific values, and you want AI to pick the right one from that list.
 
-### Example of Action Parameter Types:
+*Example use case: In Salesforce, when creating a new lead, you could define the Lead Source as “Website,” “Event,” or “Referral.” AI will then choose one based on context about the lead.*
+
+#### 4. Caller-set
+For when the value should be a property of the person (or system) running the action, often based on their account information.
+
+*Example use case: A user in Slack wants to open a Jira support ticket by triggering the “Create” action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action.*
+
+#### 5. Schema
+A custom schema, in YAML format, for defining JSON objects including nested fields.
+
+*Example use case: If you have a follow up email template, and want AI to fill in the client name, date, and topic based on the call transcript information, you can define the parameter "Email Copy" as:*
+
+```
+Subject: Meeting with ${CLIENT_NAME} on ${DATE}
+Body: Hi ${CLIENT_NAME}, looking forward to our meeting on ${DATE} about ${TOPIC}
+```
+
+### Example Action Parameter Types:
 
 <Frame>
   <img src="/docs/assets/actions/param-types.png" />
 </Frame>
 
-Now let's get to building our first action!
+Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to “Predefined”, then embed the AI-decided parts using the `${PARAM_NAME}` format.
