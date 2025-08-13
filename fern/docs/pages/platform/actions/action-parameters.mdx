@@ -21,13 +21,19 @@ For when the value should be a property of the person (or system) running the ac
 *Example use case: A user in Slack wants to open a Jira support ticket by triggering the “Create” action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action.*
 
 #### 5. Schema
-A custom schema, in YAML format, for defining JSON objects including nested fields.
+A custom schema, in YAML format, for defining a structured output with specific fields (e.g., JSON objects with predefined fields). Helpful for giving AI the layout in advance so it can focus on figuring out field values.
 
-*Example use case: If you have a follow up email template, and want AI to fill in the client name, date, and topic based on the call transcript information, you can define the parameter "Email Copy" as:*
+*Example use case: You’re creating a Jira ticket with custom fields that differ across projects. You can specify exactly which fields should appear and the type of data each field should contain.*
 
 ```
-Subject: Meeting with ${CLIENT_NAME} on ${DATE}
-Body: Hi ${CLIENT_NAME}, looking forward to our meeting on ${DATE} about ${TOPIC}
+required: [name, age]
+parameters:
+  name:
+    type: string
+    description: User's full name
+  age:
+    type: number
+    description: User's age in years
 ```
 
 ### Example Action Parameter Types:
