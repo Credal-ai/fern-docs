@@ -12,6 +12,8 @@ For when you know a parameter value should always be the same value whenever thi
 
 *Example use case: If you always log bugs in the same Jira project (e.g., “Customer Support Issues”), you can set the parameter `ProjectID = “Customer Support Issues”` once and forget about it.*
 
+Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to “Predefined”, then embed the AI-decided parts using the `${PARAM_NAME}` format.
+
 #### 3. Multi-select
 For when the parameter can only be one from a list of specific values, and you want AI to pick the right one from that list.
 
@@ -37,8 +39,6 @@ parameters:
     type: number
     description: User's age in years
 ```
-
-Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to “Predefined”, then embed the AI-decided parts using the `${PARAM_NAME}` format.
 
 ### Example Action Parameter Types:
 
