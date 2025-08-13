@@ -61,6 +61,32 @@ service:
                 externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
                 resourceType: GOOGLE_DRIVE_ITEM
 
+    listDocumentsInCollection:
+      availability: pre-release
+      path: /listDocumentsInCollection
+      docs: List documents in a collection
+      method: GET
+      request:
+        name: ListDocumentsInCollectionRequest
+        query-parameters:
+          collectionId:
+            type: uuid
+            docs: The ID of the document collection to list documents from.
+      response: ListDocumentsInCollectionResponse
+      examples:
+        - name: listDocumentsInCollectionExample
+          query-parameters:
+            collectionId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+          response:
+            body:
+              resourceIdentifiers:
+                - type: external-resource-id
+                  externalResourceId: 170NrBm0Do7gdzvr54UvyslPVWkQFOA0lgNycFmdZJQr
+                  resourceType: GOOGLE_DRIVE_ITEM
+                - type: external-resource-id
+                  externalResourceId: 398KAHdfkjsdf09r54UvyslPVWkQFOA0lOiu34in923
+                  resourceType: GOOGLE_DRIVE_ITEM
+
     createCollection:
       availability: pre-release
       path: /createCollection
@@ -187,6 +213,9 @@ types:
   DeleteCollectionResponse:
     properties:
       collectionId: uuid
+  ListDocumentsInCollectionResponse:
+    properties:
+      resourceIdentifiers: list<common.ResourceIdentifier>
   MongoSourceFieldsConfig:
     properties:
       body: string
