@@ -36,7 +36,7 @@ service:
               docs: |
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<unknown>
+              type: optional<map<string, unknown>>
               docs: |
                 Optional JSON representing any custom metadata for this document
             collectionId:
@@ -114,7 +114,7 @@ types:
         docs: |
           The identifier for the resource you want to patch
       metadata:
-        type: unknown
+        type: map<string, unknown>
         docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
   DocumentMetadataPatchRequest:
     properties:
