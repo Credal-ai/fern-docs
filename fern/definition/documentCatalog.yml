@@ -54,7 +54,7 @@ service:
             awaitVectorStoreSync:
               type: optional<boolean>
               docs: |
-                If specified, the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after upload.
+                If specified, the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after this call returns.
       response: UploadDocumentResponse
       examples:
         - name: Example1
