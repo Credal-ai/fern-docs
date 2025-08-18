@@ -42,7 +42,7 @@ service:
             collectionId:
               type: optional<string>
               docs: |
-                If specified, document will also be added to a particular document collection
+                If specified, the document will also be added to the provided document collection. The document does not immediately start appearing in searches of that collection due to an asynchronous embedding process. To await this process and have this endpoint return only when that embedding process is complete, use the `awaitVectorStoreSync` parameter.
             forceUpdate:
               type: optional<boolean>
               docs: |
@@ -51,6 +51,10 @@ service:
               type: optional<boolean>
               docs: |
                 If specified, document will be accessible to everyone within the organization of the uploader
+            awaitVectorStoreSync:
+              type: optional<boolean>
+              docs: |
+                If specified, the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after this call returns.
       response: UploadDocumentResponse
       examples:
         - name: Example1
