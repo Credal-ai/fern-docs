@@ -36,7 +36,7 @@ service:
               docs: |
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<map<string, unknown>>
+              type: optional<map<string, string | int | boolean>>
               docs: |
                 Optional JSON representing any custom metadata for this document
             collectionId:
