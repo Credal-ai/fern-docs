@@ -183,8 +183,14 @@ navigation:
       #       path: ./docs/pages/platform/integrations/data-syncs.mdx
           - page: Data Sources / Action Providers
             path: ./docs/pages/platform/integrations/data-sources.mdx
-          - page: Metadata and Smart Filtering
-            path: ./docs/pages/platform/integrations/metadata-and-smart-filtering.mdx
+          - section: Metadata and Smart Filtering
+            contents:
+              - page: Smart Filtering (beta)
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/smart-filtering.mdx
+              - page: Collection Schemas
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/collection-schemas.mdx
+              - page: AI Entity Extraction (beta)
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction.mdx
           - page: Bring Your Own Custom Data Sources
             path: ./docs/pages/platform/integrations/bring-your-own-data.mdx
           - page: Permissions Service 
