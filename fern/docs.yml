@@ -16,7 +16,7 @@ navigation:
       path: ./docs/pages/introduction.mdx
     - page: Quickstart
       path: ./docs/pages/quickstart.mdx
-    - section: Tutorials
+    - section: Tutorials: Common First Agents
       contents:
         - section: Employee Onboarding Assistant
           contents:
