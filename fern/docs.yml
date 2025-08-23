@@ -12,52 +12,52 @@ title: Credal | Documentation
 navigation:
   - section: Getting Started
     contents:
-    - page: Introduction
-      path: ./docs/pages/introduction.mdx
-    - page: Quickstart
-      path: ./docs/pages/quickstart.mdx
-    - section: Tutorials
-      contents:
-        - section: Employee Onboarding Assistant
-          contents:
-            - page: Overview
-              path: ./docs/pages/tutorials/employee-onboarding/overview.mdx
-            - page: Answer Basic Questions
-              path: ./docs/pages/tutorials/employee-onboarding/version-1.mdx
-            - page: Searching Internal and External Knowledge
-              path: ./docs/pages/tutorials/employee-onboarding/version-2.mdx
-            - page: Connect with Internal Systems
-              path: ./docs/pages/tutorials/employee-onboarding/version-3.mdx
-        - section: IT Security Assistant
-          contents:
-            - page: Overview
-              path: ./docs/pages/tutorials/it-security/overview.mdx
-            - page: Creating Both Agents
-              path: ./docs/pages/tutorials/it-security/creating-both-agents.mdx
-            - page: Kandji Connector
-              path: ./docs/pages/tutorials/it-security/kandji-connector.mdx
-            - page: Action Release Gate
-              path: ./docs/pages/tutorials/it-security/action-release-gate.mdx
-            - page: Deploy to Slack
-              path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
-        - section: Snowflake Query Assistant
-          contents:
-            - page: Overview
-              path: ./docs/pages/tutorials/snowflake-query/overview.mdx
-            - page: Initial Snowflake Setup
-              path: ./docs/pages/tutorials/snowflake-query/initial-setup.mdx
-            - page: Query Approaches
-              path: ./docs/pages/tutorials/snowflake-query/query-approaches.mdx
-            - page: Testing your solution
-              path: ./docs/pages/tutorials/snowflake-query/testing-solution.mdx
-        - section: Salesforce Query Assistant
-          contents:
-            - page: Overview
-              path: ./docs/pages/tutorials/salesforce-query/overview.mdx
-            - page: Salesforce Query Assistant
-              path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
-        # - page: Deep Research Agent Setup
-        #   path: ./docs/pages/use-cases/deep-research-agent.mdx
+      - page: Introduction
+        path: ./docs/pages/introduction.mdx
+      - page: Quickstart
+        path: ./docs/pages/quickstart.mdx
+      - section: "Tutorials: Common First Agents"
+        contents:
+          - section: Employee Onboarding Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/employee-onboarding/overview.mdx
+              - page: Answer Basic Questions
+                path: ./docs/pages/tutorials/employee-onboarding/version-1.mdx
+              - page: Searching Internal and External Knowledge
+                path: ./docs/pages/tutorials/employee-onboarding/version-2.mdx
+              - page: Connect with Internal Systems
+                path: ./docs/pages/tutorials/employee-onboarding/version-3.mdx
+          - section: IT Security Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/it-security/overview.mdx
+              - page: Creating Both Agents
+                path: ./docs/pages/tutorials/it-security/creating-both-agents.mdx
+              - page: Kandji Connector
+                path: ./docs/pages/tutorials/it-security/kandji-connector.mdx
+              - page: Action Release Gate
+                path: ./docs/pages/tutorials/it-security/action-release-gate.mdx
+              - page: Deploy to Slack
+                path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
+          - section: Snowflake Query Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/snowflake-query/overview.mdx
+              - page: Initial Snowflake Setup
+                path: ./docs/pages/tutorials/snowflake-query/initial-setup.mdx
+              - page: Query Approaches
+                path: ./docs/pages/tutorials/snowflake-query/query-approaches.mdx
+              - page: Testing your solution
+                path: ./docs/pages/tutorials/snowflake-query/testing-solution.mdx
+          - section: Salesforce Query Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/salesforce-query/overview.mdx
+              - page: Salesforce Query Assistant
+                path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
+          # - page: Deep Research Agent Setup
+          #   path: ./docs/pages/use-cases/deep-research-agent.mdx
   - section: Platform
     contents:
       - section: Agents
@@ -97,7 +97,7 @@ navigation:
               - page: Slack Deployment
                 path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
               - page: API Deployment
-                path: ./docs/pages/platform/agents/deployment/api-deployment.mdx  
+                path: ./docs/pages/platform/agents/deployment/api-deployment.mdx
           - page: Feedback
             path: ./docs/pages/platform/agents/in-depth-overview/agent-feedback.mdx
           - page: Troubleshooting
@@ -169,18 +169,18 @@ navigation:
       #   path: ./docs/pages/platform/mcp-gateway.mdx
       - section: Integrations
         contents:
-      #     - section: Identity Providers
-      #       contents:
-      #         - page: workOS
-      #           path: ./docs/pages/platform/integrations/idp/workos.mdx
-      #         - page: Okta
-      #           path: ./docs/pages/platform/integrations/idp/okta.mdx
-      #         - page: SAML/SCIM
-      #           path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
-      #     - page: Vector Stores
-      #       path: ./docs/pages/platform/integrations/vector-stores.mdx
-      #     - page: Data Syncs
-      #       path: ./docs/pages/platform/integrations/data-syncs.mdx
+          #     - section: Identity Providers
+          #       contents:
+          #         - page: workOS
+          #           path: ./docs/pages/platform/integrations/idp/workos.mdx
+          #         - page: Okta
+          #           path: ./docs/pages/platform/integrations/idp/okta.mdx
+          #         - page: SAML/SCIM
+          #           path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
+          #     - page: Vector Stores
+          #       path: ./docs/pages/platform/integrations/vector-stores.mdx
+          #     - page: Data Syncs
+          #       path: ./docs/pages/platform/integrations/data-syncs.mdx
           - page: Data Sources / Action Providers
             path: ./docs/pages/platform/integrations/data-sources.mdx
           - section: Metadata and Smart Filtering
@@ -193,7 +193,7 @@ navigation:
                 path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction.mdx
           - page: Bring Your Own Custom Data Sources
             path: ./docs/pages/platform/integrations/bring-your-own-data.mdx
-          - page: Permissions Service 
+          - page: Permissions Service
             path: ./docs/pages/platform/integrations/permissions.mdx
   - api: API Reference
     snippets:

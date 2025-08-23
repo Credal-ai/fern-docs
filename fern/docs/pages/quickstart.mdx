@@ -83,6 +83,7 @@ _The Federal Rules of Civil Procedure are procedural rules that apply to civil c
 _--- Start Context ---_  
 _{{data}}_  
 _--- End Context ---_
+
   </Accordion>
 
   <Accordion title="Example Prompt: Credal's Information Security Agent">
@@ -91,11 +92,12 @@ _--- End Context ---_
 _--------- Context: ---------_  
 _{{data}}_  
 _--------- End Context ---------_
+
   </Accordion>
 </AccordionGroup>
 
 5. **Data**  
-   The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
+    The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
 
    There are two ways you can provide data to the agent:
 
@@ -104,17 +106,17 @@ _--------- End Context ---------_
 
      For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
 
-        <Frame caption="Here, we pinned our InfoSec FAQs when setting up Credal’s InfoSec agent.">
-          <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" />
-        </Frame>
+     <Frame caption="Here, we pinned our InfoSec FAQs when setting up Credal’s InfoSec agent.">
+       <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" />
+     </Frame>
 
-    - **User Inputs**  
-      Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
+   - **User Inputs**  
+     Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
 
-  **Advanced Settings**  
+   **Advanced Settings**  
     There are some advanced settings you can use to control how your agent searches through the attached data. For most use cases, you should leave the default settings.
 
-    For advanced use cases, you can specify how many of the most relevant chunks (a chunk is roughly 2-3 sentences) the agent should read. You can also set a relevancy score cutoff.
+   For advanced use cases, you can specify how many of the most relevant chunks (a chunk is roughly 2-3 sentences) the agent should read. You can also set a relevancy score cutoff.
 
 ---
 
@@ -137,7 +139,7 @@ You can choose to have your agent answer all messages in a given channel or only
 </Frame>
 
 - **All messages**: will answer all queries in the connected Slack channel.
-- **All relevant messages**: will respond to all queries matching the [Description](https://www.notion.so/Getting-Started-With-AI-Copilots-171cfe73b8df496a9db29f60046eaf06?pvs=21) of the agent.
+- **All relevant messages**: will respond to all queries matching the [Description](/platform/agents/configure-an-agent/a-name-and-description) of the agent.
 - **All messages matching filter**: will respond to messages that match the filter criteria. In the example in the screenshot, the agent will only respond to prompts containing “?”.
 
 <Frame>
@@ -154,7 +156,7 @@ If more than one agent is deployed to a given Slack channel, Credal will triage 
 
 ---
 
-📘 Refer to the [detailed guide](https://docs.credal.ai/platform/agents/setting-up-an-agent)
+📘 Looking for a more in-depth guide? Refer to the [Agents Platform section](https://docs.credal.ai/platform/agents/setting-up-an-agent)
 
 ## Support
 
