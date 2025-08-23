@@ -36,13 +36,13 @@ service:
               docs: |
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<unknown>
+              type: optional<map<string, unknown>>
               docs: |
-                Optional JSON representing any custom metdata for this document
+                Optional JSON representing any custom metadata for this document
             collectionId:
               type: optional<string>
               docs: |
-                If specified, document will also be added to a particular document collection
+                If specified, the document will also be added to the provided document collection. The document does not immediately start appearing in searches of that collection due to an asynchronous embedding process. To await this process and have this endpoint return only when that embedding process is complete, use the `awaitVectorStoreSync` parameter.
             forceUpdate:
               type: optional<boolean>
               docs: |
@@ -51,12 +51,16 @@ service:
               type: optional<boolean>
               docs: |
                 If specified, document will be accessible to everyone within the organization of the uploader
+            awaitVectorStoreSync:
+              type: optional<boolean>
+              docs: |
+                If specified, the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after this call returns.
       response: UploadDocumentResponse
       examples:
         - name: Example1
           request:
             documentName: My Document
-            documentContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            documentContents: Lorem ipsum...
             documentExternalId: 73eead26-d124-4940-b329-5f068a0a8db9
             allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
             uploadAsUserEmail: "jack@credal.ai"
@@ -114,7 +118,7 @@ types:
         docs: |
           The identifier for the resource you want to patch
       metadata:
-        type: unknown
+        type: map<string, unknown>
         docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
   DocumentMetadataPatchRequest:
     properties:
