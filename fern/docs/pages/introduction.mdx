@@ -1,15 +1,19 @@
 ---
 title: Introduction
-subtitle: Welcome to Credal's documentation! Here you'll find information to get started as well as our API Reference.
+subtitle: Welcome to Credal's documentation! Here you'll find information to get started, including our API Reference.
 ---
 
 <CardGroup cols={2}>
   <Card
     title="Quickstart"
     icon="fa-solid fa-bolt"
-    href="https://credalai.notion.site/Credal-Quickstart-Guide-9f1d589bc51a461e9c9860c2180abc58"
+    href="/getting-started/quickstart"
   />
-  <Card title="API Reference" icon="fa-solid fa-code" href="/api-reference/copilots/send-message" />
+  <Card
+    title="API Reference"
+    icon="fa-solid fa-code"
+    href="/api-reference/copilots/send-message"
+  />
   <Card title="Blog" icon="fa-solid fa-signal" href="https://credal.ai/blog" />
   <Card
     title="Security"
@@ -18,29 +22,47 @@ subtitle: Welcome to Credal's documentation! Here you'll find information to get
   />
 </CardGroup>
 
-## Why Credal
+## What is Credal?
 
-1. **Secure**: Integrate in weeks, not months. We offer a modern, well-documented API.
+Credal is a platform that empowers enterprises to build secure, intelligent AI agents tailored to any workflow, with native support for enterprise data and access controls.
 
-2. **Connections**: We connect to every major data source and provide secure APIs and Chatbots that let employees safely use that data with AI in their normal workflows.
+## What is an Agent?
 
-3. **Loved by developers**: The Credal features are backwards-compatible with OpenAI and Anthropic. This means you can add Credal's security benefits to your app, without significant code changes.
+An agent is more than just a chatbot. It's a system capable of reasoning and taking actions to achieve goals. It combines two core capabilities:
+
+1. **Reasoning** – Analyzing information, context, or instructions to determine the next steps.
+2. **Action-taking** – Performing tasks such as calling APIs, generating outputs, or interacting with external systems based on its reasoning.
+
+Unlike simple chatbots that just respond, agents **reason and act**. For example:
+
+- A chatbot might answer: “It’s 75°F and sunny in New York.”
+- An agent could fulfill: "Book me a flight to New York for tomorrow," by searching for flights, choosing the best option, and completing the booking.
+
+## Why Credal?
+
+### 1. **Enterprise Data Integrations**
+
+Connect to all major enterprise data sources—Slack, Confluence, Google Drive, Salesforce, databases, and more—for unified search, knowledge retrieval, and advanced analytics. With enterprise-grade security, every API connection and query follows your organization's access controls, ensuring your agents can safely surface insights and documents across your company's knowledge base. Whether answering questions, driving business processes, or enabling complex workflows, your data remains fully protected.
+
+### 2. **Agentic Capabilities**
+
+Build intelligent agents that collaborate to execute multi-step workflows across your enterprise data. Agents automatically share capabilities—when one agent learns to query Salesforce, every agent in your organization can leverage that skill. Design sophisticated, secure workflows where specialized agents coordinate on complex tasks, accelerating decision-making while maintaining strict data governance.
+
+### 3. **Deploy Anywhere**
+
+Deploy your agents wherever your teams work. Use them on the web, in Slack, through APIs, with other agents, or in any chat interface (with more integrations coming soon). Every deployment inherits Credal's enterprise-grade security, ensuring your knowledge remains private while your teams stay productive.
 
 ## Security
 
-Our Founders and employees have received Government security clearances
-in the US and UK. We have led internationally recognized AI security projects
-for the US Government's Military and Healthcare infrastructure. We have
-leveraged this experience to make sure our application is built securely from the ground up.
+Credal is built for enterprises—designed to meet the security, compliance, and governance standards required by large organizations.
 
-- Data encrypted at all times in transit and at rest.
+- SOC 2 Type II certified, HIPAA-ready, and compliant with the EU/UK/Swiss Data Privacy Framework
+- Credal mirrors your existing permissions (Slack, Google, Salesforce, etc.), so agents only access what users are already authorized to see
+- Supports human-in-the-loop approval flows and detailed audit logs
+- Flexible deployment: Cloud or on-prem, with SSO and SCIM integration for identity and access management
 
-- Regular penetration testing and vulnerability scanning.
-
-- 24/7 monitoring of security logs from CloudWatch, Guard Duty, and other tools.
-
-- Supports single tenant deployment.
+With Credal, enterprises can confidently deploy AI agents that accelerate knowledge workflows without ever compromising security or compliance.
 
 ## Support
 
-For questions or support, please reach out to support@credal.ai.
+For questions or support? Reach out to our team at **[support@credal.ai](mailto:support@credal.ai)**.

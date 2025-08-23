@@ -1,62 +1,70 @@
-Credal's AI Agents empower users to set up **dedicated assistants** for a wide range of use cases, from customer support to contract review.
+---
+title: Quickstart
+---
 
-You can think of Agents as special purposes AIs that you create, by specifying an AI model, data they should use, and a custom prompt.
+Credal's AI agents empower you to build **dedicated assistants** for a wide range of enterprise use cases, from customer support to contract review.
 
-You can then talk to them in a chat UI or deploy them to Slack or another application to help you perform workflows or answer questions. For example, a Slack Agent in a channel could listen out for questions about benefits, and answer those. They combine AI with your data to provide accurate, context-aware responses, while citing their sources.
+Agents are purpose-built AIs you create by selecting a model, attaching data sources, and writing a custom prompt. You can interact with them through a chat UI or deploy them to Slack and other applications to perform workflows or answer questions.
+
+For example, a Slack agent can listen for benefit-related queries in a channel and respond with accurate, source-cited answers using your data.
 
 <Steps>
+
 ### Create Your Agent
 
-From the main screen, click “Agents” in the navigation menu:
+From the main screen, click **“Agents”** in the navigation menu:
 
 <Frame>
-  <img src="/docs/assets/copilots/copilots-link.png" />
+  <img src="/docs/assets/agents/create-steps/agent-left-nav.png" />
 </Frame>
 
-Then click “Create Agent”:
+Then click **“Create New Agent”**:
 
 <Frame>
-  <img src="/docs/assets/copilots/create-copilot.png" />
+  <img src="/docs/assets/agents/create-steps/after-clicking-agent.png" />
 </Frame>
 
-Give your agent a Name and add a Description of its function in the pop-out form. You can always come back and edit these later. _Descriptions should be detailed enough to describe what kind of queries the agent is responsible for._
+Give your agent a **Name** and add a **Description** of its function in the pop-out form. You can always edit these later. Descriptions should be detailed enough to explain what types of queries the agent handles.
 
 <Frame>
-  <img src="/docs/assets/copilots/create-copilot-form.png" />
+  <img src="/docs/assets/agents/create-steps/agent-creation-popup.png" />
 </Frame>
 
-You can click on “Agents” in your left sidebar anytime to view the full list of Agents you've created or that have been shared with you.
+You can access all created and shared agents by clicking **“Published”** in the Agents tab.
 
 <Frame>
-  <img src="/docs/assets/copilots/copilots-list.png" />
+  <img src="/docs/assets/agents/create-steps/agent-published.png" />
 </Frame>
 
-### Configure the Agent
+---
 
-Now your agent is set up, Credal will automatically direct you to the configure page, where you can tune your agent for your use case. You can return to this page to edit your settings at any time. (For a detailed explanation of all the options, please see our [Detailed Agents User Guide](https://docs.credal.ai/getting-started/agents/in-depth-guide).)
+### Configure Your Agent
 
-1. Your **Metadata** (Name + Description) will be set already.
-2. You can use the default **Model** (GPT-4o) for now, but feel free to experiment with OpenAI o1, Claude or any of the other models too.
-3. **Creativity**. We recommend starting with “balanced” or “precise”; “creative” is best for brainstorming, creative writing, or marketing use cases.
+Now that your agent is set up, Credal automatically directs you to the configuration page, where you can tune your agent for your use case. You can return to this page to edit your settings at any time.
+
+For a deeper walkthrough, see our [Detailed Agents User Guide](https://docs.credal.ai/getting-started/agents/in-depth-guide).
+
+1. **Metadata** – Name and Description are already set.
+2. **Model** – The default is GPT-4o, but you can try Gemini 2.5 Flash, Claude 4 Sonnet, or other supported models.
+3. **Creativity** – We recommend starting with “Balanced” or “Precise.” Choose “Creative” for open-ended tasks like brainstorming or marketing.
 
 <Frame>
-  <img src="/docs/assets/copilots/copilot-model-creativity.png" />
+  <img src="/docs/assets/agents/create-steps/agent-different-models-dropdown.png" />
 </Frame>
 
-4. **Prompt**
-   Here you can provide a custom prompt, which will provide the agent with context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and to the point and to let users know when it is unsure of the answer.
+4. **Prompt** – Here you can provide a custom prompt that gives the agent context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and direct, and to let users know when they're unsure of the answer.
 
 <Frame>
-  <img src="/docs/assets/copilots/copilot-prompt.png" />
+  <img src="/docs/assets/agents/create-steps/agent-prompt.png" />
 </Frame>
 
-You can revise this prompt to include the background information and instructions relevant to your Agent. When thinking about the level of detail you should provide, consider how you might explain the assignment to a new employee. Your explanation might include:
+You can revise this prompt to include the background information and instructions relevant to your agent. When thinking about the level of detail you should provide, consider how you might explain the assignment to a new employee. Your explanation might include:
 
-- background information on the company;
-- the intended users;
-- the topics the agent will be dealing with;
-- any relevant guidelines or policies; and
-- any other relevant considerations.
+- Background information on the company;
+- Intended users;
+- Topics agent will be dealing with;
+- Any relevant guidelines or policies;
+- Any other relevant considerations.
 
 The content and depth of prompts will vary by use case.
 
@@ -72,75 +80,84 @@ _Instructions:_
 
 _The Federal Rules of Civil Procedure are procedural rules that apply to civil court cases in United States federal district courts. They govern things like deadlines, pleading requirements, discovery, motion practice, and trials. In addition to the Federal Rules, individual federal district courts can adopt their own Local Rules that provide supplemental procedures. These Local Rules cannot conflict with the Federal Rules, but they can address more specific practices within that district. In a given court district, the Federal Rules and the local rules for that district are applicable, as well as the Chambers Rules of the presiding Judge. Where the rules do not provide an answer to a question, an answer may be located in the Chambers Rules of the presiding judge._
 
-_--- Start Context ---_
-_{{data}}_
+_--- Start Context ---_  
+_{{data}}_  
 _--- End Context ---_
 
   </Accordion>
-  <Accordion title="Example Prompt: Credal's Information Security Agent">
-    *You are a friendly helpful, honest assistant, who helps Credal company employees answer questions and prompts truthfully about information security questionnaires. Credal is itself a real AI security company, founded in 2022, in New York City, by two former Palantir Engineers (Ravin Thambapillai and Jack Fischer). Below is contextual information from Credal's documentation to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answers based on the context provided. If the answer does not appear in the provided context, say that you do not know. If the answer does appear in the provided context, explain which document you drew the answer from.*
 
-_--------- Context: ---------_
-_{{data}}_
+  <Accordion title="Example Prompt: Credal's Information Security Agent">
+*You are a friendly helpful, honest assistant, who helps Credal company employees answer questions and prompts truthfully about information security questionnaires. Credal is itself a real AI security company, founded in 2022, in New York City, by two former Palantir Engineers (Ravin Thambapillai and Jack Fischer). Below is contextual information from Credal's documentation to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answers based on the context provided. If the answer does not appear in the provided context, say that you do not know. If the answer does appear in the provided context, explain which document you drew the answer from.*
+
+_--------- Context: ---------_  
+_{{data}}_  
 _--------- End Context ---------_
 
   </Accordion>
-  </AccordionGroup>
+</AccordionGroup>
 
-5. **Data**
-   The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your Agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
-   
+5. **Data**  
+    The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
+
    There are two ways you can provide data to the agent:
 
-   - **Attach Data**
-    This allows you as the agent builder to specify which data sources your agent should consider. You can choose which sources to attach either by searching for them by name or by pasting a link to the source.
+   - **Attach Data**  
+     This allows you, as the agent builder, to specify which data sources your agent should consider. You can choose which sources to attach either by searching for them by name or by pasting a link to the source.
 
-    For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
+     For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
 
-     <Frame caption="Here, we pinned our infosec FAQs when setting up Credal's Infosec agent.">
-       <img src="/docs/assets/copilots/copilot-attached-data.png" />
+     <Frame caption="Here, we pinned our InfoSec FAQs when setting up Credal’s InfoSec agent.">
+       <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" />
      </Frame>
 
-   - **User Inputs**
-    Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you  may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
+   - **User Inputs**  
+     Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
 
-  - **Advanced Settings**
-    There are some advanced setting you can use to control how your agent searches through the attached data. For most use cases, you should leave the default settings.
-    
-    For advanced use cases, you can specify how many of the most relevent chunks (a chunk is roughly 2-3 sentences) the agent should read. You can also set a relevancy score cutoff.
+   **Advanced Settings**  
+    There are some advanced settings you can use to control how your agent searches through the attached data. For most use cases, you should leave the default settings.
 
+   For advanced use cases, you can specify how many of the most relevant chunks (a chunk is roughly 2-3 sentences) the agent should read. You can also set a relevancy score cutoff.
+
+---
 
 ### Deploy Your Agent to Slack
 
-Once you have a agent set up, you can use it directly in Credal, or deploy it to Slack or other tools through the API. You can set up a deployment in the “Deploy” tab. For this short guide, we'll cover Slack only; please refer to the detailed guide for the other options.
+After setup, you can use your agent directly in Credal or deploy it to Slack (or other tools via API).  
+This guide covers Slack. For other integrations, see the [full documentation](https://docs.credal.ai/getting-started/agents/in-depth-guide).
 
-To deploy a agent through Slack, simply use the below toggle to turn on Slack deployments and select the channel(s) you want to deploy it to.
+To deploy to Slack, toggle Slack Deployment **on** and select the target channels:
 
 <Frame>
-  <img src="/docs/assets/copilots/copilot-deploy-to-slack.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
 </Frame>
 
+If multiple agents are deployed to a single channel, Credal uses their descriptions to decide which one should respond.  
 You can choose to have your agent answer all messages in a given channel or only those that meet certain criteria:
 
 <Frame>
-  <img src="/docs/assets/copilots/copilot-deploy-to-slack.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-configure.png" />
 </Frame>
 
 - **All messages**: will answer all queries in the connected Slack channel.
-- **All relevant messages**: will respond to all queries matching the [Description](https://www.notion.so/Getting-Started-With-AI-Copilots-171cfe73b8df496a9db29f60046eaf06?pvs=21) of the agent.
+- **All relevant messages**: will respond to all queries matching the [Description](/platform/agents/configure-an-agent/a-name-and-description) of the agent.
 - **All messages matching filter**: will respond to messages that match the filter criteria. In the example in the screenshot, the agent will only respond to prompts containing “?”.
 
 <Frame>
-  <img src="/docs/assets/copilots/relevant-slack.png" />
-</Frame>
-<Frame>
-  <img src="/docs/assets/copilots/relevant-slack-filter.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
 </Frame>
 
 If more than one agent is deployed to a given Slack channel, Credal will triage user requests based on the Description of each agent to determine which, if any, should answer the question.
 
-   </Steps>
+<Frame>
+  <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" />
+</Frame>
 
-That's all! The [detailed guide](https://docs.credal.ai/getting-started/agents/in-depth-guide) contains more information, including on deploying this to non-Slack applications, and a more detailed explanation of the options in Copilots.
+</Steps>
 
-For questions or support, reach out to your Credal team on Slack or at [support@credal.ai](mailto:support@credal.ai).
+---
+
+📘 Looking for a more in-depth guide? Refer to the [Agents Platform section](https://docs.credal.ai/platform/agents/setting-up-an-agent)
+
+## Support
+
+For questions or support? Reach out to our team at **[support@credal.ai](mailto:support@credal.ai)**.

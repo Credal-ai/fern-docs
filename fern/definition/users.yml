@@ -23,5 +23,5 @@ types:
     properties:
       userEmail: string
       metadata:
-        type: unknown
+        type: map<string, unknown>
         docs: Key-value object of metadata for user. Keys will be merged with any existing values but can also be set to `null` to effectively remove
