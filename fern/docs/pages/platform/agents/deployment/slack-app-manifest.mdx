@@ -1,0 +1,77 @@
+# Credal Agents Slack App Manifest
+
+Credal Agents can be setup as a custom slack app which users can DM with, and custom slash commands etc can be set.
+
+To do so:
+
+1. Visit: https://api.slack.com/apps
+2. Hit `Create an App` → `From a Manifest` → `JSON` → paste the blob below
+You'll want to configure every field in the `[$VALUE]`  format
+3. Go to the App Home settings ( https://api.slack.com/apps/$$$$APP_ID$$$$/app-home? ) and at the bottom, check "Allow users to send Slash commands and messages from the messages tab"
+4. To enable DMs for your agent go to: `App Home` → `Messages Tab` and enable: `Allow users to send Slash commands and messages from the messages tab`
+5. Once done, there’s one more step left, which is to provide the Credentials for this slackApp to Credal. If you are not an admin of your Credal organization or you don’t already know how to do this, reach out to support@credal.ai to get help.
+
+Video Walkthrough: Loom Video Going Over Setup
+
+```json
+{
+  "display_information": {
+  "name": "[$NAME]",
+  "description": "[$DESCRIPTION]",
+  "background_color": "#131415",
+  "long_description": "[$LONG_DESCRIPTION]"
+  },
+"features": {
+  "bot_user": {
+  "display_name": "[$NAME]",
+  "always_online": false
+  },
+"app_home": {
+  "home_tab_enabled": false,
+  "messages_tab_enabled": true,
+  "messages_tab_read_only_enabled": true
+  }
+},
+"oauth_config": {
+  "redirect_urls": [
+  "https://app.credal.ai/custom-auth/slack"
+  ],
+  "scopes": {
+    "bot": [
+    "app_mentions:read",
+    "channels:history",
+    "channels:join",
+    "channels:read",
+    "chat:write",
+    "im:history",
+    "im:write",
+    "reactions:read",
+    "reactions:write",
+    "users.profile:read",
+    "users:read",
+    "users:read.email",
+    "groups:history",
+    "groups:read"
+    ]
+}
+},
+"settings": {
+  "event_subscriptions": {
+  "request_url": "https://app.credal.ai/api/slack-events",
+  "bot_events": [
+  "app_mention",
+  "message.channels",
+  "message.groups",
+  "message.im"
+  ]
+},
+"interactivity": {
+  "is_enabled": true,
+  "request_url": "https://app.credal.ai/api/slack"
+  },
+  "org_deploy_enabled": false,
+  "socket_mode_enabled": false,
+  "token_rotation_enabled": false
+}
+}
+```
