@@ -96,7 +96,7 @@ navigation:
                 path: ./docs/pages/platform/agents/deployment/overview.mdx
               - page: Slack Deployment
                 path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
-              - page: Slack App Manifest
+              - page: Custom Dedicated Slack Bots
                 path: ./docs/pages/platform/agents/deployment/slack-app-manifest.mdx
               - page: API Deployment
                 path: ./docs/pages/platform/agents/deployment/api-deployment.mdx
