@@ -80,6 +80,8 @@ navigation:
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
               - page: g. Tools
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
+              - page: h. Data Processing
+                path: ./docs/pages/platform/agents/in-depth-overview/data-processing.mdx
           - page: Evaluate
             path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
           - page: Querying Your Agent
