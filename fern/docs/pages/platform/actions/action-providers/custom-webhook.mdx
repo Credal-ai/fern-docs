@@ -86,6 +86,15 @@ Once you have generated your OpenAPI spec, paste it into the required field in y
 - Ensure all required fields (like `base URL`, `security`, and `path`) are correctly filled.
 - After pasting, hit “Save.”
 
+### (Optional) Include X-Credal-User Header
+
+If you check the **Include X-Credal-User header** box (visible under the spec input), the outbound request will include an `X-Credal-User` HTTP header whose value is the authenticated Credal user invoking the action (e.g. their email or user id). This is useful for:
+
+- Downstream auditing / traceability (knowing which end user triggered the call).
+- Applying per-user authorization in your receiving service.
+
+If your target API does not expect or allow unknown custom headers, simply leave this box unchecked.
+
 ## Step 3: Input Parameters and Keys
 
 Once saved, the system will automatically detect the parameters and keys needed for your API call. These will appear below.
