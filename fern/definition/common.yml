@@ -58,3 +58,10 @@ types:
         value: "=="
       - name: CONTAINS
         value: "contains"
+  CustomMetadataValue:
+    discriminated: false
+    union:
+      - string
+      - integer
+      - boolean
+      - date
