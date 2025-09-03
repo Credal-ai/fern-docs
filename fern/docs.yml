@@ -171,6 +171,10 @@ navigation:
         path: ./docs/pages/platform/bulk-analysis.mdx
       # - page: MCP Gateway
       #   path: ./docs/pages/platform/mcp-gateway.mdx
+      - section: Administration
+        contents:
+          - page: Single Sign-On (SSO)
+            path: ./docs/pages/platform/sso.mdx
       - section: Integrations
         contents:
           #     - section: Identity Providers
