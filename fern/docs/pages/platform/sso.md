@@ -20,19 +20,17 @@ OAuth is ready to use immediately with no additional configuration required.
 
 For enterprise organizations, we recommend upgrading to SAML (Security Assertion Markup Language) with SCIM (System for Cross-domain Identity Management) provisioning.
 
-### Benefits of SAML
+SAML is an alternative to OAuth while SCIM allows for synchronous user and group data push. For example, SCIM allows instant deactivation of offboarded employees in Credal.ai and other third-party apps.
 
-- **Centralized Identity Management** - Single point of control for user authentication
-- **Enhanced Security** - Advanced authentication policies and multi-factor authentication
-- **Compliance** - Meets enterprise security and audit requirements
-- **Seamless Integration** - Works with existing identity providers (Okta, Azure AD, etc.)
+### Additional RBAC Controls
 
-### Benefits of SCIM
+Enabling group-push via SAML/SCIM allows administrators to configure group access to roles in Credal such as administrator/developer.
+
+### Benefits of SAML/SCIM
 
 - **Automated User Provisioning** - Automatically create user accounts when added to your identity provider
 - **Real-time Deprovisioning** - Immediately revoke access when users leave your organization
 - **Group Management** - Sync organizational groups and permissions
-- **Reduced Admin Overhead** - Eliminate manual user management tasks
 
 ### Supported Identity Providers
 
@@ -40,19 +38,11 @@ Credal supports virtually all identity providers, including Okta, Azure Active D
 
 ## Setup
 
-To configure SAML/SCIM for your Credal deployment, please contact your dedicated Credal team. Our team will work with you to:
+To configure SAML/SCIM for your Credal deployment, please contact your dedicated Credal team. Our team will send you an automated self-serve setup tutorial to,
 
 1. Configure your identity provider settings
 2. Set up SAML assertions and attribute mapping
-3. Enable SCIM provisioning endpoints
-4. Test the integration thoroughly
-5. Provide ongoing support
+3. Enable SCIM provisioning
+4. Test the integration
 
-**Contact your Credal team** to get started with SAML/SCIM configuration.
-
-## Security Considerations
-
-- SAML/SCIM provides enterprise-grade security with detailed audit logging
-- User permissions are synced with your existing access controls
-- Session management follows your organization's security policies
-- All authentication flows are encrypted and comply with industry standards
+We are available to assist with setup. Contact your Credal team to get started with SAML/SCIM configuration.
