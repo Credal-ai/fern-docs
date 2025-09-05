@@ -200,7 +200,7 @@ navigation:
       - section: Administration
         contents:
           - page: Single Sign-On (SSO)
-            path: ./docs/pages/platform/sso.mdx
+            path: ./docs/pages/administration/sso.mdx
   - api: API Reference
     snippets:
       python: "credal"
