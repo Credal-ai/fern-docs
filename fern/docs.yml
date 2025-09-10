@@ -32,12 +32,12 @@ navigation:
             contents:
               - page: Overview
                 path: ./docs/pages/tutorials/it-security/overview.mdx
-              - page: Creating Both Agents
-                path: ./docs/pages/tutorials/it-security/creating-both-agents.mdx
-              - page: Kandji Connector
-                path: ./docs/pages/tutorials/it-security/kandji-connector.mdx
-              - page: Action Release Gate
-                path: ./docs/pages/tutorials/it-security/action-release-gate.mdx
+              - page: Answer Questions with Data
+                path: ./docs/pages/tutorials/it-security/use-data.mdx
+              - page: Track Tickets in Jira
+                path: ./docs/pages/tutorials/it-security/connect-to-jira.mdx
+              - page: Trigger Automations
+                path: ./docs/pages/tutorials/it-security/triggering-automations.mdx
               - page: Deploy to Slack
                 path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
           - section: Snowflake Query Assistant
