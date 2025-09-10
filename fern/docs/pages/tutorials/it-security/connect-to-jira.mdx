@@ -6,12 +6,26 @@ An important part of enabling IT teams with AI tools is being able to measure ti
 
 To ensure that you are connected to Jira, go to the "Action Provider" page and connect to Jira.
 
-Now we can go to the Actions tab on the left hand side panel and hit "Create new Action." Type in "jira" in the search bar to filter down to Jira actions, then hit "Bulk create Jira actions." Now select the following templates:
+Now we can go to the Actions tab on the left hand side panel and hit "Create new Action." 
+
+Type in "jira" in the search bar to filter down to Jira actions, then hit "Bulk create Jira actions." 
+
+![Search for Jira](/docs/assets/it-security-use-cases/search-for-jira-actions.png)
+
+Now select the following templates:
 1. Get details of a ticket in Jira (Template name: `getJiraTicketDetails`)
 2. Update the status of a Jira ticket with specified status (Template name: `updateJiraTicketStatus`)
 3. Update a Jira ticket with new content specified (Template name: `updateJiraTicketDetails`)
 
-Fill out the fields that will be the same across all actions, in this case it's just the project key. Then add these actions to your Ask IT agent. 
+![Bulk select](/docs/assets/it-security-use-cases/bulk-select.png)
+
+Fill out the fields that will be the same across all actions, in this case it's just the project key.
+
+![Bulk config](/docs/assets/it-security-use-cases/bulk-config.png)
+
+Then add these actions to your Ask IT agent. 
+
+![Add to agent](/docs/assets/it-security-use-cases/attach-to-agent.png)
 
 Note: If you are not using Atlassian Assist, you should create another action for creating the ticket and prompt the Agent to do so at the appropriate time. 
 
@@ -20,16 +34,21 @@ Note: If you are not using Atlassian Assist, you should create another action fo
 Let's navigate to each of these actions by searching for them in the Drafts section. We should give each one a high quality name and description because this is what the agent will use to decide when to use it. We can also pre-configure action parameters to reduce chance of error when the Agent is deciding what to fill into each blank. 
 
 For the `getJiraTicketDetails` action:
-
+![Ticket details metadata](/docs/assets/it-security-use-cases/fetch-ticket-details.png)
 
 For the `updateJiraTicketStatus` action:
+![Ticket status metadata](/docs/assets/it-security-use-cases/close-the-ticket.png)
 
 Let's set the status parameter to be "Closed."
 
+![Closed](/docs/assets/it-security-use-cases/closed.png)
 
 For the `updateJiraTicketDetails` action:
+![Ticket tagging metadata](/docs/assets/it-security-use-cases/update-status.png)
 
 We want to mark the ticket as "AI deflected." 
+
+![AI deflected tag](/docs/assets/it-security-use-cases/custom-field.png)
 
 You can use the "Test Action" button to ensure that they are working as expected.
 
@@ -37,7 +56,7 @@ You can use the "Test Action" button to ensure that they are working as expected
 
 At this point, your IT/Security agent's Actions section should have the following actions.
 
-<insert img>
+![Actions attached](/docs/assets/it-security-use-cases/attached-actions.png)
 
 Now that we have created our actions and attached them to the agent, we want to make sure the agent knows exactly how to use them. Let's revise our prompt to have the following instructions.
 
