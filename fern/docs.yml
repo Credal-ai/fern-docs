@@ -12,8 +12,6 @@ title: Credal | Documentation
 navigation:
   - section: Getting Started
     contents:
-      - page: Introduction
-        path: ./docs/pages/introduction.mdx
       - page: Quickstart
         path: ./docs/pages/quickstart.mdx
       - page: Agent Building Webinars
