@@ -16,6 +16,8 @@ navigation:
         path: ./docs/pages/introduction.mdx
       - page: Quickstart
         path: ./docs/pages/quickstart.mdx
+      - page: Agent Building Webinars
+        path: ./docs/pages/webinars.mdx
       - section: "Tutorials: Common First Agents"
         contents:
           - section: Employee Onboarding Assistant
