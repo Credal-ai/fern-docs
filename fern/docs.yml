@@ -9,14 +9,12 @@ instances:
 
 title: Credal | Documentation
 
-landing-page:
-  page: Introduction
-  path: ./docs/pages/introduction.mdx
-  slug: /
-
 navigation:
   - section: Getting Started
     contents:
+      - page: Introduction
+        path: ./docs/pages/introduction.mdx
+        hidden: true
       - page: Quickstart
         path: ./docs/pages/quickstart.mdx
       - page: Agent Building Webinars
