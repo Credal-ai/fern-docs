@@ -16,6 +16,8 @@ navigation:
         path: ./docs/pages/introduction.mdx
       - page: Quickstart
         path: ./docs/pages/quickstart.mdx
+      - page: Agent Building Webinars
+        path: ./docs/pages/webinars.mdx
       - section: "Tutorials: Common First Agents"
         contents:
           - section: Employee Onboarding Assistant
@@ -32,12 +34,12 @@ navigation:
             contents:
               - page: Overview
                 path: ./docs/pages/tutorials/it-security/overview.mdx
-              - page: Creating Both Agents
-                path: ./docs/pages/tutorials/it-security/creating-both-agents.mdx
-              - page: Kandji Connector
-                path: ./docs/pages/tutorials/it-security/kandji-connector.mdx
-              - page: Action Release Gate
-                path: ./docs/pages/tutorials/it-security/action-release-gate.mdx
+              - page: Answer Questions with Data
+                path: ./docs/pages/tutorials/it-security/use-data.mdx
+              - page: Track Tickets in Jira
+                path: ./docs/pages/tutorials/it-security/connect-to-jira.mdx
+              # - page: Trigger Automations
+              #   path: ./docs/pages/tutorials/it-security/triggering-automations.mdx
               - page: Deploy to Slack
                 path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
           - section: Snowflake Query Assistant
@@ -80,6 +82,8 @@ navigation:
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
               - page: g. Tools
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
+              - page: h. Data Processing
+                path: ./docs/pages/platform/agents/in-depth-overview/data-processing.mdx
           - page: Evaluate
             path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
           - page: Querying Your Agent
@@ -96,6 +100,8 @@ navigation:
                 path: ./docs/pages/platform/agents/deployment/overview.mdx
               - page: Slack Deployment
                 path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
+              - page: Custom Dedicated Slack Bots
+                path: ./docs/pages/platform/agents/deployment/slack-app-manifest.mdx
               - page: API Deployment
                 path: ./docs/pages/platform/agents/deployment/api-deployment.mdx
           - page: Feedback
@@ -193,8 +199,10 @@ navigation:
                 path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction.mdx
           - page: Bring Your Own Custom Data Sources
             path: ./docs/pages/platform/integrations/bring-your-own-data.mdx
-          - page: Permissions Service
-            path: ./docs/pages/platform/integrations/permissions.mdx
+      - section: Administration
+        contents:
+          - page: Single Sign-On (SSO)
+            path: ./docs/pages/administration/sso.mdx
   - api: API Reference
     snippets:
       python: "credal"
@@ -215,7 +223,8 @@ navbar-links:
 
 colors:
   accentPrimary:
-    light: "#228be6"
+    light: "#135291"
+    dark: "#4DABF7"
 
 favicon: docs/assets/favicon.png
 
