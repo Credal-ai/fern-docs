@@ -16,6 +16,11 @@ In the top right, click "Create New App", then select "From a manifest". Select 
 
 Make sure "JSON" is selected, then paste the following manifest template in. Make sure you change `[$NAME]`, `[$DESCRIPTION]`, and `[$LONG_DESCRIPTION]` to the branding for your application. You'll later have the opportunity to set a picture as well.
 
+After creating the app from the manifest:
+
+3. Go to the App Home settings (https://api.slack.com/apps/$$$$APP_ID$$$$/app-home?) and at the bottom, check "Allow users to send Slash commands and messages from the messages tab"
+4. To enable DMs for your agent go to: `App Home` → `Messages Tab` and enable: `Allow users to send Slash commands and messages from the messages tab`
+
 ```json
 {
     "display_information":
@@ -93,10 +98,8 @@ Make sure "JSON" is selected, then paste the following manifest template in. Mak
 }
 ```
 
-If you have any trouble with this step, it's also covered in the video provided for Step 2.
-
 ## Step 2: Share information with Credal
 
-Reach out to your Credal POC or support@credal.ai to get started on this. Credal will provide a video explaining what information we require, where to find it, and how to share it.
+Reach out to your Credal POC or support@credal.ai to get started on this. Credal will provide a video (Video Walkthrough: Loom Video Going Over Setup) explaining what information we require, where to find it, and how to share it.
 
 Once we complete step 2, your custom Slack app will be live!
