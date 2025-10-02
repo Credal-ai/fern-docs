@@ -8,7 +8,7 @@ service:
       availability: pre-release
       path: /createCopilot
       method: POST
-      docs: Create a new copilot. The API key used will be added to the copilot for future Requests
+      docs: Create a new agent. The API key used will be added to the agent for future Requests
       request:
         name: CreateCopilotRequest
         body:
@@ -16,21 +16,21 @@ service:
             name:
               type: string
               docs: |
-                A descriptive name for the copilot.
+                A descriptive name for the agent.
             description:
               type: string
               docs: |
-                An in depth name for the copilot's function. Useful for routing requests to the right copilot.
+                An in depth name for the agent's function. Useful for routing requests to the right agent.
             collaborators:
               type: list<common.Collaborator>
               docs: |
-                A list of collaborator emails and roles that will have access to the copilot.
+                A list of collaborator emails and roles that will have access to the agent.
       response: CreateCopilotResponse
       examples:
         - name: Example0
           request:
-            name: Customer Copilot
-            description: This copilot is used to answer customer requests based on internal documentation.
+            name: Customer Agent
+            description: This agent is used to answer customer requests based on internal documentation.
             collaborators:
               - email: test@gmail.com
                 role: editor
@@ -41,7 +41,7 @@ service:
     createConversation:
       path: /createConversation
       method: POST
-      docs: OPTIONAL. Create a new conversation with the Copilot. The conversation ID can be used in the `sendMessage` endpoint. The `sendMessage` endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
+      docs: OPTIONAL. Create a new conversation with the Agent. The conversation ID can be used in the `sendMessage` endpoint. The `sendMessage` endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
       request:
         name: CreateConversationRequest
         body:
@@ -49,7 +49,7 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
+                Credal-generated Agent ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -73,7 +73,7 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
+                Credal-generated Agent ID to specify which agent to route the request to.
             userEmail:
               type: string
               docs: |
@@ -95,6 +95,7 @@ service:
             messageFeedback:
               feedback: NEGATIVE
               suggestedAnswer: "Yes, Credal is SOC 2 compliant."
+              descriptiveFeedback: "The response should be extremely clear and concise."
 
     sendMessage:
       path: /sendMessage
@@ -106,11 +107,11 @@ service:
             agentId:
               type: uuid
               docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
+                Credal-generated Agent ID to specify which agent to route the request to.
             message:
               type: string
               docs: |
-                The message you want to send to your copilot.
+                The message you want to send to your agent.
             userEmail:
               type: string
               docs: |
@@ -196,7 +197,7 @@ service:
                     {
                       title: "SOC 2 Compliance",
                       url: "https://www.credal.ai/soc2",
-                      content: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                      contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
                     },
                   ]
                 messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
@@ -204,7 +205,7 @@ service:
     streamMessage:
       availability: pre-release
       docs: |
-        This endpoint allows you to send a message to a specific copilot and get the response back as a streamed set of Server-Sent Events.
+        This endpoint allows you to send a message to a specific agent and get the response back as a streamed set of Server-Sent Events.
       path: /streamMessage
       method: POST
       request:
@@ -214,11 +215,11 @@ service:
             copilotId:
               type: uuid
               docs: |
-                Credal-generated Copilot ID to specify which agent to route the request to.
+                Credal-generated Agent ID to specify which agent to route the request to.
             message:
               type: string
               docs: |
-                The message you want to send to your copilot.
+                The message you want to send to your agent.
             email:
               type: string
               docs: |
@@ -266,7 +267,7 @@ service:
                       {
                         title: "SOC 2 Compliance",
                         url: "https://www.credal.ai/soc2",
-                        content: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                        contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
                       },
                     ]
                   warnings: []
@@ -282,6 +283,9 @@ service:
                 data:
                   event: data_chunk
                   chunk: Credal is SOC 2 compliant.
+              - event: end_of_message
+                data:
+                  event: end_of_message
               - event: final_chunk
                 data:
                   event: final_chunk
@@ -324,12 +328,56 @@ service:
                   policyTriggers: []
                   warnings: []
                   blocks: ["This request contains PII"]
+        - name: Example Error
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c25
+            message: Is Credal SOC 2 compliant?
+            email: ravin@credal.ai
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
+          response:
+            stream:
+              - event: initial
+                data:
+                  event: initial
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  webSearchResults:
+                    [
+                      {
+                        title: "SOC 2 Compliance",
+                        url: "https://www.credal.ai/soc2",
+                        contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                      },
+                    ]
+                  warnings: []
+              - event: error_chunk
+                data:
+                  event: error_chunk
+                  error:
+                    message: This is an error
+              - event: end_of_message
+                data:
+                  event: end_of_message
+              - event: final_chunk
+                data:
+                  event: final_chunk
+                  sources: []
 
     addCollectionToCopilot:
       availability: pre-release
       path: /addCollectionToCopilot
       method: POST
-      docs: Link a collection with a copilot. The API Key used must be added to both the collection and the copilot beforehand.
+      docs: Link a collection with a agent. The API Key used must be added to both the collection and the agent beforehand.
       request:
         name: AddCollectionToCopilotRequest
         body:
@@ -337,7 +385,7 @@ service:
             copilotId:
               type: uuid
               docs: |
-                Credal-generated copilot ID to add the collection to.
+                Credal-generated Agent ID to add the collection to.
             collectionId:
               type: uuid
               docs: |
@@ -352,7 +400,7 @@ service:
       availability: pre-release
       path: /removeCollectionFromCopilot
       method: POST
-      docs: Unlink a collection with a copilot. The API Key used must be added to both the collection and the copilot beforehand.
+      docs: Unlink a collection with a agent. The API Key used must be added to both the collection and the agent beforehand.
       request:
         name: RemoveCollectionFromCopilotRequest
         body:
@@ -360,7 +408,7 @@ service:
             copilotId:
               type: uuid
               docs: |
-                Credal-generated copilot ID to add the collection to.
+                Credal-generated agent ID to add the collection to.
             collectionId:
               type: uuid
               docs: |
@@ -375,7 +423,7 @@ service:
       availability: pre-release
       path: /updateConfiguration
       method: POST
-      docs: Update the configuration for a copilot
+      docs: Update the configuration for a agent
       request:
         name: UpdateConfigurationRequest
         body:
@@ -383,7 +431,7 @@ service:
             copilotId:
               type: uuid
               docs: |
-                Credal-generated copilot ID to add the collection to.
+                Credal-generated agent ID to add the collection to.
             configuration:
               type: Configuration
       examples:
@@ -391,8 +439,8 @@ service:
           request:
             copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
             configuration:
-              name: Customer Copilot
-              description: This copilot is used to answer customer requests based on internal documentation.
+              name: Customer Agent
+              description: This agent is used to answer customer requests based on internal documentation.
               prompt: You are a polite, helpful assistant used to answer customer requests.
               aiEndpointConfiguration:
                 baseUrl: https://api.openai.com/v1/
@@ -437,7 +485,7 @@ types:
         type: MessageReply
         docs: |
           Returned when there is a reply
-          fetched from the copilot.
+          fetched from the agent.
       blocked_result:
         type: MessageBlocked
         docs: |
@@ -472,12 +520,13 @@ types:
     properties:
       title: string
       url: string
-      content: string
+      contents: string
 
   ResponseChunk:
     properties:
       message: string
       dataChunk: string
+      structuredOutput: optional<unknown>
 
   InsertedAuditLog:
     properties:
@@ -506,6 +555,7 @@ types:
     properties:
       feedback: FeedbackEnum
       suggestedAnswer: optional<string>
+      descriptiveFeedback: optional<string>
 
   Configuration:
     properties:
@@ -586,6 +636,9 @@ types:
     properties:
       sources: list<ReferencedSource>
 
+  EndOfMessageChunk:
+    properties: {}
+
   BlockedChunk:
     properties:
       conversationId: uuid
@@ -593,10 +646,20 @@ types:
       blocks: list<string>
       policyTriggers: list<PolicyTrigger>
 
+  ErrorChunkData:
+    properties:
+      message: string
+
+  ErrorChunk:
+    properties:
+      error: ErrorChunkData
+
   StreamingChunk:
     discriminant: event
     union:
       initial: InitialChunk
       data_chunk: DataChunk
+      end_of_message: EndOfMessageChunk
       final_chunk: FinalChunk
       blocked: BlockedChunk
+      error_chunk: ErrorChunk
