@@ -223,8 +223,7 @@ navbar-links:
 
 colors:
   accentPrimary:
-    light: "#135291"
-    dark: "#4DABF7"
+    light: "#228be6"
 
 favicon: docs/assets/favicon.png
 
