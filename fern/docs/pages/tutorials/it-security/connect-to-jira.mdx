@@ -1,0 +1,89 @@
+# Tracking Requests in Jira
+
+An important part of enabling IT teams with AI tools is being able to measure ticket deflection accurately. To do this, you can have your agent track and update ticket statuses dynamically. You can create Jira tickets directly from Credal or you can use the Atlassian Assist tool to manage creating tickets and syncing Jira comments and Slack thread messages. We will assume that Atlassian Assist is being used to automatically create tickets and will respond to the user message with the ticket details. 
+
+## Create Jira Actions
+
+To ensure that you are connected to Jira, go to the "Action Provider" page and connect to Jira.
+
+Now we can go to the Actions tab on the left hand side panel and hit "Create new Action." 
+
+Type in "jira" in the search bar to filter down to Jira actions, then hit "Bulk create Jira actions." 
+
+![Search for Jira](/docs/assets/it-security-use-cases/search-for-jira-actions.png)
+
+Now select the following templates:
+1. Get details of a ticket in Jira (Template name: `getJiraTicketDetails`)
+2. Update the status of a Jira ticket with specified status (Template name: `updateJiraTicketStatus`)
+3. Update a Jira ticket with new content specified (Template name: `updateJiraTicketDetails`)
+
+![Bulk select](/docs/assets/it-security-use-cases/bulk-select.png)
+
+Fill out the fields that will be the same across all actions, in this case it's just the project key.
+
+![Bulk config](/docs/assets/it-security-use-cases/bulk-config.png)
+
+Then add these actions to your Ask IT agent. 
+
+![Add to agent](/docs/assets/it-security-use-cases/attach-to-agent.png)
+
+Note: If you are not using Atlassian Assist, you should create another action for creating the ticket and prompt the Agent to do so at the appropriate time. 
+
+## Configuring the Actions
+
+Let's navigate to each of these actions by searching for them in the Drafts section. We should give each one a high quality name and description because this is what the agent will use to decide when to use it. We can also pre-configure action parameters to reduce chance of error when the Agent is deciding what to fill into each blank. 
+
+For the `getJiraTicketDetails` action:
+![Ticket details metadata](/docs/assets/it-security-use-cases/fetch-ticket-details.png)
+
+For the `updateJiraTicketStatus` action:
+![Ticket status metadata](/docs/assets/it-security-use-cases/close-the-ticket.png)
+
+Let's set the status parameter to be "Closed."
+
+![Closed](/docs/assets/it-security-use-cases/closed.png)
+
+For the `updateJiraTicketDetails` action:
+![Ticket tagging metadata](/docs/assets/it-security-use-cases/update-status.png)
+
+We want to mark the ticket as "AI deflected." 
+
+![AI deflected tag](/docs/assets/it-security-use-cases/custom-field.png)
+
+You can use the "Test Action" button to ensure that they are working as expected.
+
+## Revise the Agent's Instructions 
+
+At this point, your IT/Security agent's Actions section should have the following actions.
+
+![Actions attached](/docs/assets/it-security-use-cases/attached-actions.png)
+
+Now that we have created our actions and attached them to the agent, we want to make sure the agent knows exactly how to use them. Let's revise our prompt to have the following instructions.
+
+```
+Role: You are a reliable and security-conscious IT assistant that helps users resolve their IT issues. Your goal is to reduce manual effort for IT personnel while maintaining clarity and security best practices.
+
+**Instructions**
+Step 1: Thoroughly read and understand the user query.
+Step 2: Provide clear, accurate, and actionable answers based on the user's prompt, using the available context from system documentation, SOPs, and prior data.
+Step 3: End each question with "Did this resolve your issue?" If the user responds with yes, close the Jira ticket. If it was AI deflected, mark it as so. If you don't have the issue ID, ask the user for it.
+
+
+**Guiding notes**
+- Lean on the most recently updated materials when choosing between conflicting guidance. Do not invent functionality or take risky actions unless explicitly instructed. Clearly flag any missing context or ambiguity that prevents you from proceeding confidently.
+- Advise the user to contact Ria Balli if you can't answer the question.
+
+**Style guide** (You are used in Slack)
+-Please hide ALL referenced sources. Do not show them ever.
+-If you're unsure of an answer, you can say "I don't know" or "I'm not sure".
+-Do not use ** to try to bold content. It does not work in slack. To bold content, just use a single *.
+-Do not use # other markdown headings formatting. It does not work in slack. Do not use markdown hashtags.
+-Exclude non-critical information
+
+user metadata: {{user_metadata}}
+
+--- Start Context ---
+{{data}}
+--- End Context ---
+
+```

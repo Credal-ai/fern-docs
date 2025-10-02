@@ -1,0 +1,113 @@
+# Fetch an API or Trigger a Webhook
+
+<embed src="/docs/assets/actions/custom_webhook.mp4" type="video/mp4" />
+
+## Step 1: Generate OpenAPI 3 Spec for the API Call
+
+To get started, you need to create an OpenAPI 3 spec that describes the API you want to call. Follow the instructions below:
+
+1. **Base URL**: Ensure that the `servers` field contains the base URL of the API you want to call.
+2. **Security**: Include the security scheme for your API. Currently, we support:
+   - **Basic Authentication**
+   - **Bearer Token Authentication**
+   - **API Key Authentication**
+   For your API, ensure you add one of the following security schemes:
+   - `Basic` (for Basic Authentication)
+   - `Bearer` (for Bearer Token Authentication)
+   - `apiKey` (for API Key Authentication)
+
+3. **Paths**: The current functionality supports only the first path in your spec. Include the relevant API path under the `paths` field.
+
+Here’s an example OpenAPI 3 spec for a hypothetical Google Address Validation API:
+
+```yaml
+openapi: "3.0.0"
+info:
+  title: "Google Address Validation API"
+  description: "API for validating addresses using Google Maps Address Validation."
+  version: "1.0.0"
+servers:
+  - url: "https://addressvalidation.googleapis.com/v1"
+security:
+  - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+paths:
+  /validateAddress:
+    post:
+      summary: "Validate an address"
+      operationId: "validateAddress"
+      parameters:
+        - name: "addressLines"
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: "Address lines."
+        - name: "regionCode"
+          in: query
+          schema:
+            type: string
+          description: "Region code (e.g., 'US')."
+        - name: "locality"
+          in: query
+          schema:
+            type: string
+          description: "City or locality."
+        - name: "administrativeArea"
+          in: query
+          schema:
+            type: string
+          description: "State or province."
+        - name: "postalCode"
+          in: query
+          schema:
+            type: string
+          description: "ZIP or postal code."
+      responses:
+        "200":
+          description: "Address validation result."
+        "400":
+          description: "Bad request, likely due to invalid input."
+        "401":
+          description: "Unauthorized, invalid API key."
+        "500":
+          description: "Internal server error."
+```
+
+## Step 2: Paste Your Spec and Save
+
+Once you have generated your OpenAPI spec, paste it into the required field in your tool.
+
+- Ensure all required fields (like `base URL`, `security`, and `path`) are correctly filled.
+- After pasting, hit “Save.”
+
+### (Optional) Include X-Credal-User Header
+
+If you check the **Include X-Credal-User header** box (visible under the spec input), the outbound request will include an `X-Credal-User` HTTP header whose value is the authenticated Credal user invoking the action (e.g. their email or user id). This is useful for:
+
+- Downstream auditing / traceability (knowing which end user triggered the call).
+- Applying per-user authorization in your receiving service.
+
+If your target API does not expect or allow unknown custom headers, simply leave this box unchecked.
+
+## Step 3: Input Parameters and Keys
+
+Once saved, the system will automatically detect the parameters and keys needed for your API call. These will appear below.
+
+- Input the required parameters.
+- Enter your **API Key** (or token, depending on the chosen security scheme) and lock it in.
+- The system will encrypt and store your key in the backend, and it will no longer be visible after it's locked. You can only replace the key if needed.
+
+## Step 4: Make the API Call
+
+After inputting all parameters and locking your API key:
+
+1. **Test the API Call**: You can now trigger the API call using the parameters you’ve provided.
+2. **Review the Response**: Analyze the response returned by the API to ensure everything works as expected.

@@ -1,0 +1,56 @@
+---
+title: Data Sources
+---
+
+You can attach data if you’d like your agent to reference specific documents or collections.
+
+This tells the agent upfront that this particular source is more relevant than other sources, rather than leaving it up to guesswork from the agent. For example, a sales agent might want to pull from the Sales Playbook document collection. Your agent will rely on this data (along with the background prompt) to answer user queries. 
+
+You’re telling the agent that this source is important for this task, and to look here first, but the agent still has flexibility - it may use other sources if they’re useful.
+
+**1. Attaching Sources**
+
+You can either select a synced source, sync a URL, or upload your own files. If you want to attach a document collection, this will be under select a source.
+
+![copilot_data_sources.png](/docs/assets/copilots/copilot_data_sources.png)
+
+**2. Bookmarking Data**
+
+By bookmarking (or pinning) data sources, you can force your agent to refer to certain sources for _every_ user query, as opposed to just prioritizing the attached data. You should use this for documents that will relate to most queries you expect your agent to address. If you have a document that you always want your agent to refer to, put it here. This could include answers to FAQs or a sales playbook. As pinned sources will be read in their entirety every time a user asks a question, they should only be used for a limited amount of high quality data to avoid overwhelming the AI with too much data on every question.
+
+To use this feature, click the "pin" button on the source after uploading your data.
+
+![copilot_pin_document.png](/docs/assets/copilots/copilot_pin_document.png)
+
+**3. Add User Input**
+
+The Add user input feature allows users to upload their own documents in addition to, or instead of, any pre-attached data. This enables more flexible workflows where each conversation can be customized with user-provided files.
+
+When this option is configured, the agent will prompt users to attach their documents at the start of a conversation. The input can be marked as required (users must upload a file to proceed) or optional. 
+
+We strongly recommend leaving the defaults of "Allow multiple documents" and AI reads full inputs", except in very specific circumstances where you are certain that this is not what you want to do.
+
+![copilot_add_user_input.png](/docs/assets/copilots/copilot_add_user_input.png)
+
+**4. Tailoring Source Retrieval**
+
+Note: These are advanced settings. The agent comes with defaults that work well for most cases. Only adjust these if you want more control over how the agent searches your documents.
+
+When the agent answers a question, it looks through your documents and pulls out pieces of text (called “chunks”) to help form a response. You can fine-tune how it does this:
+
+   ![tailoring_source_retrieval.gif](/docs/assets/copilots/tailoring_source_retrieval.gif)
+
+   - **Number of chunks:** Think of this as how many pieces of text the agent gathers before answering. If you know your document is in the data provided to your agent, but the agent is not finding it, try expanding the number of chunks. Most agents can safely go up to around 100 chunks without problems. If you find that your agent is finding the right data, but that it is getting confused or distracted by less relevant information, trying cutting the number of chunks down.
+
+   💡 Tip: The fewer chunks, the faster and cleaner the answer. The more chunks, the more context the agent has. The number of chunks should be set the lowest possible value that generates accurate answers to avoid drawing too much data into every prompt (and overwhelming the AI).
+
+   - **Similarity threshold:** This controls how closely a piece of text must match the question for the agent to use it. 
+   At lower settings, the agent will cast a wider net, pulling in more possible matches. This is helpful for broad or fuzzy questions.
+   At higher settings, the agent will be pickier, only pulling in very close matches. This is helpful for specific questions where you only want the most relevant answer.
+
+   When adjusting these settings, you may also want to consider spend—the more data you pull into each query, the more the cost will increase. Also, more data isn’t always more useful. Drawing too much data into each query can introduce noise and distract the agent from the relevant information. Optimizing these settings can help control spend and improve the focus and accuracy of responses.
+
+<aside>
+💡 Tip: Clearly naming your documents can help your agent distinguish and identify them. This can be helpful if you want to ask questions that refer to specific documents.
+
+</aside>
