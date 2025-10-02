@@ -5,6 +5,7 @@ Credal can support the creation of custom Slack apps, which allow your organizat
 ![Custom Slack App Example](/assets/agents/deployment/custom-slack-app.png)
 
 There are two steps to configuring a custom Slack app:
+
 1. Create the application in Slack using the template below
 2. Share some key information about the Slack app with the Credal team to complete the configuration. This step will eventually be automated, but is manual while the feature is in beta.
 
@@ -23,78 +24,64 @@ After creating the app from the manifest:
 
 ```json
 {
-    "display_information":
-    {
-        "name": "[$NAME]",
-        "description": "[$DESCRIPTION]",
-        "background_color": "#131415",
-        "long_description": "[$LONG_DESCRIPTION]"
+  "display_information": {
+    "name": "[$NAME]",
+    "description": "[$DESCRIPTION]",
+    "background_color": "#131415",
+    "long_description": "[$LONG_DESCRIPTION]"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "[$NAME]",
+      "always_online": false
     },
-    "features":
-    {
-        "bot_user":
-        {
-            "display_name": "[$NAME]",
-            "always_online": false
-        },
-        "app_home":
-        {
-            "home_tab_enabled": true,
-            "messages_tab_enabled": true,
-            "messages_tab_read_only_enabled": true
-        }
-    },
-    "oauth_config":
-    {
-        "redirect_urls":
-        [
-            "https://app.credal.ai/custom-auth/slack"
-        ],
-        "scopes":
-        {
-            "bot":
-            [
-                "app_mentions:read",
-                "channels:history",
-                "channels:join",
-                "channels:read",
-                "chat:write",
-                "chat:write.public",
-                "im:history",
-                "im:write",
-                "incoming-webhook",
-                "reactions:read",
-                "reactions:write",
-                "users.profile:read",
-                "users:read",
-                "users:read.email",
-                "groups:history",
-                "groups:read"
-            ]
-        }
-    },
-    "settings":
-    {
-        "event_subscriptions":
-        {
-            "request_url": "https://app.credal.ai/api/slack-events",
-            "bot_events":
-            [
-                "app_mention",
-                "message.channels",
-                "message.groups",
-                "message.im"
-            ]
-        },
-        "interactivity":
-        {
-            "is_enabled": true,
-            "request_url": "https://app.credal.ai/api/slack"
-        },
-        "org_deploy_enabled": false,
-        "socket_mode_enabled": false,
-        "token_rotation_enabled": false
+    "app_home": {
+      "home_tab_enabled": true,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": true
     }
+  },
+  "oauth_config": {
+    "redirect_urls": ["https://app.credal.ai/custom-auth/slack"],
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "channels:history",
+        "channels:join",
+        "channels:read",
+        "chat:write",
+        "chat:write.public",
+        "im:history",
+        "im:write",
+        "incoming-webhook",
+        "reactions:read",
+        "reactions:write",
+        "users.profile:read",
+        "users:read",
+        "users:read.email",
+        "groups:history",
+        "groups:read"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://app.credal.ai/api/slack-events",
+      "bot_events": [
+        "app_mention",
+        "message.channels",
+        "message.groups",
+        "message.im"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://app.credal.ai/api/slack"
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
 }
 ```
 
