@@ -1,0 +1,102 @@
+# Custom Dedicated Slack Bots
+
+Credal can support the creation of custom Slack apps, which allow your organization to create a Slack app (like a bot) with a custom name and profile picture that connects to one specific agent. For example, you could create a Slack app called "Magic 8 Ball" with a custom logo, and when users tag that app or DM with it, all queries are routed to your specific agent.
+
+![Custom Slack App Example](/assets/agents/deployment/custom-slack-app.png)
+
+There are two steps to configuring a custom Slack app:
+1. Create the application in Slack using the template below
+2. Share some key information about the Slack app with the Credal team to complete the configuration. This step will eventually be automated, but is manual while the feature is in beta.
+
+## Step 1: Create the application
+
+To start, navigate to https://api.slack.com/apps
+
+In the top right, click "Create New App", then select "From a manifest". Select the Slack workspace you want to deploy this app to.
+
+Make sure "JSON" is selected, then paste the following manifest template in. Make sure you change `[$NAME]`, `[$DESCRIPTION]`, and `[$LONG_DESCRIPTION]` to the branding for your application. You'll later have the opportunity to set a picture as well.
+
+```json
+{
+    "display_information":
+    {
+        "name": "[$NAME]",
+        "description": "[$DESCRIPTION]",
+        "background_color": "#131415",
+        "long_description": "[$LONG_DESCRIPTION]"
+    },
+    "features":
+    {
+        "bot_user":
+        {
+            "display_name": "[$NAME]",
+            "always_online": false
+        },
+        "app_home":
+        {
+            "home_tab_enabled": true,
+            "messages_tab_enabled": true,
+            "messages_tab_read_only_enabled": true
+        }
+    },
+    "oauth_config":
+    {
+        "redirect_urls":
+        [
+            "https://app.credal.ai/custom-auth/slack"
+        ],
+        "scopes":
+        {
+            "bot":
+            [
+                "app_mentions:read",
+                "channels:history",
+                "channels:join",
+                "channels:read",
+                "chat:write",
+                "chat:write.public",
+                "im:history",
+                "im:write",
+                "incoming-webhook",
+                "reactions:read",
+                "reactions:write",
+                "users.profile:read",
+                "users:read",
+                "users:read.email",
+                "groups:history",
+                "groups:read"
+            ]
+        }
+    },
+    "settings":
+    {
+        "event_subscriptions":
+        {
+            "request_url": "https://app.credal.ai/api/slack-events",
+            "bot_events":
+            [
+                "app_mention",
+                "message.channels",
+                "message.groups",
+                "message.im"
+            ]
+        },
+        "interactivity":
+        {
+            "is_enabled": true,
+            "request_url": "https://app.credal.ai/api/slack"
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": false,
+        "token_rotation_enabled": false
+    }
+}
+```
+
+If you have any trouble with this step, it's also covered in the video provided for Step 2.
+
+## Step 2: Share information with Credal
+
+Reach out to your Credal POC or support@credal.ai to get started on this. Credal will provide a video explaining what information we require, where to find it, and how to share it.
+
+Once we complete step 2, your custom Slack app will be live!

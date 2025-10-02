@@ -1,0 +1,69 @@
+## Overview
+This tutorial guides you through creating the initial version of "The Orienteer," a simple but effective onboarding assistant that answers common questions using a company FAQ document and knows when to escalate to subject matter experts.
+
+## The Orienteer v1 Workflow
+1. User asks a question
+2. Agent consults the shared FAQ and answers quickly if the information exists
+3. Returns to the user with an answer or tags the relevant SME if the answer is unclear
+
+## Implementation Steps
+
+### Step 1: Create Your Agent
+
+1. Navigate to the [Agents](https://app.credal.ai/agents) page and click "Create New Agent"
+2. Name your agent "The Orienteer"
+3. Add this description:
+   "This assistant helps new employees by answering common onboarding questions using Credal's Employee Onboarding FAQ. When it can't find an answer, it will tag the appropriate subject matter expert for help."
+
+**Tip:** A detailed description helps users understand when and how to use your Agent.
+
+### Step 2: Upload the FAQs and List of SMEs
+
+At Credal, key resources are stored in Confluence and spreadsheets. To make these accessible to your agent:
+
+1. Locate the FAQ document and SME list
+2. Obtain shareable links for both resources
+3. Go to the "Data" section of your Agent
+4. Upload both documents:
+   - The Employee Onboarding FAQ document
+   - The SME list spreadsheet (containing names, areas of expertise, and contact information)
+
+**Note:** Ensure these documents are properly formatted and up-to-date before uploading.
+
+### Step 3: Add the "Send a Slack Message" Action
+
+To enable your agent to tag SMEs when needed:
+
+1. Click on the "Actions" tab in the right side panel
+2. Create a new Action named "Send a Slack message"
+3. Configure it to send messages to the #onboarding Slack channel
+4. Ensure your organization is connected to Slack
+5. Verify you have previously interacted with a Credal Slack bot
+
+**Alternative Approach:** If deploying directly in the #onboarding Slack channel, you can skip creating this Action and instead modify your instructions to have the assistant tag SMEs directly in its responses.
+
+### Step 4: Provide Instructions to "The Orienteer"
+
+Add the following instructions to guide your agent's behavior:
+
+```
+You are "The Orienteer," an onboarding assistant for new Credal employees. Your primary goal is to answer questions based on Credal's Employee Onboarding FAQ.
+
+When you receive a user question:
+
+1. Search the FAQ document to find a relevant answer
+2. If you find a matching entry, provide the answer clearly to the user
+3. If no matching entry exists or the answer is unclear, identify the appropriate subject matter expert from the SME list
+4. Tag that SME in the #onboarding Slack channel with the user's question
+
+Always be friendly and helpful. Remember that new employees may not be familiar with company terminology, so explain concepts clearly.
+```
+
+## Testing Your Implementation
+
+1. Ask a simple question that should be covered in the FAQ
+2. Ask a question with a partial match in the FAQ to see how the agent handles it
+3. Ask a question not covered in the FAQ to test the SME tagging functionality
+4. Verify that the agent maintains a friendly, helpful tone appropriate for new employees
+
+This initial version of The Orienteer provides a solid foundation that you can build upon in future iterations, adding more sophisticated capabilities while maintaining the core functionality of quickly answering common questions and knowing when to involve human experts.

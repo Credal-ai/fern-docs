@@ -36,13 +36,13 @@ service:
               docs: |
                 The external URL of the document you want to upload. If provided Credal will link to this URL.
             customMetadata:
-              type: optional<unknown>
+              type: optional<map<string, common.CustomMetadataValue>>
               docs: |
-                Optional JSON representing any custom metdata for this document
+                Optional JSON representing any custom metadata for this document
             collectionId:
               type: optional<string>
               docs: |
-                If specified, document will also be added to a particular document collection
+                If specified, the document will also be added to the provided document collection. This operation is eventually consistent, meaning the document does not immediately start appearing in searches of that collection due to an asynchronous embedding process. To achieve strong consistency use the `awaitVectorStoreSync` parameter.
             forceUpdate:
               type: optional<boolean>
               docs: |
@@ -51,18 +51,37 @@ service:
               type: optional<boolean>
               docs: |
                 If specified, document will be accessible to everyone within the organization of the uploader
+            awaitVectorStoreSync:
+              type: optional<boolean>
+              docs: |
+                Document uploads are eventually consistent by default. If specified `true` the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after this call returns.
       response: UploadDocumentResponse
       examples:
         - name: Example1
           request:
             documentName: My Document
-            documentContents: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            documentContents: Lorem ipsum...
             documentExternalId: 73eead26-d124-4940-b329-5f068a0a8db9
             allowedUsersEmailAddresses: ["jack@credal.ai", "ravin@credal.ai"]
             uploadAsUserEmail: "jack@credal.ai"
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+    syncSourceByUrl:
+      path: /syncSourceByUrl
+      availability: in-development
+      docs: Sync a document from a source URL. Does not support recursive web search. Reach out to a Credal representative for access.
+      method: POST
+      request: SyncSourceByUrlRequest
+      response: SyncSourceByUrlResponse
+      examples:
+        - name: Example0
+          request:
+            sourceUrl: "https://drive.google.com/file/d/123456/view"
+            uploadAsUserEmail: "ria@credal.ai"
+          response:
+            body:
+              sourceId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
     metadata:
       path: /metadata
       docs: Bulk patch metadata for documents, synced natively by Credal or manual API uploads
@@ -99,9 +118,16 @@ types:
         docs: |
           The identifier for the resource you want to patch
       metadata:
-        type: unknown
+        type: map<string, unknown>
         docs: Key-value object of metadata for document. Keys will be merged with any existing values but can also be set to `null` to effectively remove
   DocumentMetadataPatchRequest:
     properties:
       sources: list<DocumentMetadataPatch>
       uploadAsUserEmail: string
+  SyncSourceByUrlRequest:
+    properties:
+      uploadAsUserEmail: string
+      sourceUrl: string
+  SyncSourceByUrlResponse:
+    properties:
+      sourceId: uuid

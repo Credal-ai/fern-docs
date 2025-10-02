@@ -1,0 +1,47 @@
+When you create an action, you can give it “parameters.” Think of parameters as blanks to fill in, so the action knows exactly what to update. These are inherited from action templates.
+
+The following types of action parameters are currently supported:
+
+#### 1. AI Generated (default, most common)
+Let AI decide the value from context clues or by asking the user for more details.
+
+*Example use case: Let’s say you want AI to help create tasks in Asana based on a product roadmap. The AI will look at the conversation and determine the most reasonable due dates to set for these tasks.*
+
+#### 2. Predefined
+For when you know a parameter value should always be the same value whenever this action is run.
+
+*Example use case: If you always log bugs in the same Jira project (e.g., “Customer Support Issues”), you can set the parameter `ProjectID = “Customer Support Issues”` once and forget about it.*
+
+Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to “Predefined”, then embed the AI-decided parts using the `${PARAM_NAME}` format.
+
+#### 3. Multi-select
+For when the parameter can only be one from a list of specific values, and you want AI to pick the right one from that list.
+
+*Example use case: In Salesforce, when creating a new lead, you could define the parameter `Lead Source` as “Website,” “Event,” or “Referral.” AI will then choose one based on context about the lead.*
+
+#### 4. Caller-set
+For when the value comes from a property of the person (or system) running the action, often based on their account information.
+
+*Example use case: A user in Slack wants to open a Jira support ticket by triggering the “Create” action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action by selecting `CREDAL_USER_EMAIL`.*
+
+#### 5. Schema
+A custom schema, in YAML format, for defining a structured output with specific fields (e.g., JSON objects with predefined fields). Helpful for giving AI the layout in advance so it can focus on figuring out field values.
+
+*Example use case: You’re creating a Jira ticket with custom fields that differ across projects. You can specify exactly which fields should appear and the type of data each field should contain.*
+
+```
+required: [name, age]
+parameters:
+  name:
+    type: string
+    description: User's full name
+  age:
+    type: number
+    description: User's age in years
+```
+
+### Example Action Parameter Types:
+
+<Frame>
+  <img src="/docs/assets/actions/param-types.png" />
+</Frame>

@@ -1,45 +1,240 @@
 instances:
   - url: credal.docs.buildwithfern.com
     custom-domain: docs.credal.ai
+    edit-this-page:
+      github:
+        owner: Credal-ai
+        repo: fern-docs
+        branch: main
 
 title: Credal | Documentation
 
 navigation:
   - section: Getting Started
     contents:
-      - page: Overview
-        path: ./docs/pages/guides/overview.mdx
-      - page: Copilots
-        path: ./docs/pages/guides/copilots.mdx
+      - page: Introduction
+        path: ./docs/pages/introduction.mdx
+      - page: Quickstart
+        path: ./docs/pages/quickstart.mdx
+      - page: Agent Building Webinars
+        path: ./docs/pages/webinars.mdx
+      - section: "Tutorials: Common First Agents"
+        contents:
+          - section: Employee Onboarding Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/employee-onboarding/overview.mdx
+              - page: Answer Basic Questions
+                path: ./docs/pages/tutorials/employee-onboarding/version-1.mdx
+              - page: Searching Internal and External Knowledge
+                path: ./docs/pages/tutorials/employee-onboarding/version-2.mdx
+              - page: Connect with Internal Systems
+                path: ./docs/pages/tutorials/employee-onboarding/version-3.mdx
+          - section: IT Security Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/it-security/overview.mdx
+              - page: Answer Questions with Data
+                path: ./docs/pages/tutorials/it-security/use-data.mdx
+              - page: Track Tickets in Jira
+                path: ./docs/pages/tutorials/it-security/connect-to-jira.mdx
+              # - page: Trigger Automations
+              #   path: ./docs/pages/tutorials/it-security/triggering-automations.mdx
+              - page: Deploy to Slack
+                path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
+          - section: Snowflake Query Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/snowflake-query/overview.mdx
+              - page: Initial Snowflake Setup
+                path: ./docs/pages/tutorials/snowflake-query/initial-setup.mdx
+              - page: Query Approaches
+                path: ./docs/pages/tutorials/snowflake-query/query-approaches.mdx
+              - page: Testing your solution
+                path: ./docs/pages/tutorials/snowflake-query/testing-solution.mdx
+          - section: Salesforce Query Assistant
+            contents:
+              - page: Overview
+                path: ./docs/pages/tutorials/salesforce-query/overview.mdx
+              - page: Salesforce Query Assistant
+                path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
+          # - page: Deep Research Agent Setup
+          #   path: ./docs/pages/use-cases/deep-research-agent.mdx
+  - section: Platform
+    contents:
+      - section: Agents
+        contents:
+          - page: Setting Up An Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-setup-page.mdx
+          - section: Configure An Agent
+            contents:
+              - page: a. Name and Description
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/name-and-description.mdx
+              - page: b. AI Model
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/ai-model.mdx
+              - page: c. Prompt
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/prompt.mdx
+              - page: d. Model Q&A Pairs
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/model-qa-pairs.mdx
+              - page: e. Actions
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/actions.mdx
+              - page: f. Data
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
+              - page: g. Tools
+                path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
+              - page: h. Data Processing
+                path: ./docs/pages/platform/agents/in-depth-overview/data-processing.mdx
+          - page: Evaluate
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
+          - page: Querying Your Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-querying.mdx
+          - page: Sharing Your Agent
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-sharing.mdx
+          - page: Attaching Actions
+            path: ./docs/pages/platform/agents/attaching-actions.mdx
+          - page: Agent Collaboration
+            path: ./docs/pages/platform/agents/agent-collaboration.mdx
+          - section: Deploying Agents
+            contents:
+              - page: Overview
+                path: ./docs/pages/platform/agents/deployment/overview.mdx
+              - page: Slack Deployment
+                path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
+              - page: Custom Dedicated Slack Bots
+                path: ./docs/pages/platform/agents/deployment/slack-app-manifest.mdx
+              - page: API Deployment
+                path: ./docs/pages/platform/agents/deployment/api-deployment.mdx
+          - page: Feedback
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-feedback.mdx
+          - page: Troubleshooting
+            path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
+          - page: Contact Support
+            path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
+
+      - section: Actions
+        contents:
+          - page: Overview
+            path: ./docs/pages/platform/actions/overview.mdx
+          - page: Open Source Actions
+            path: ./docs/pages/platform/actions/open-source-actions.mdx
+          # - page: Composio Integration
+          #   path: ./docs/pages/platform/actions/composio.mdx
+          # - page: Monitoring Usage
+          #   path: ./docs/pages/platform/actions/monitoring.mdx
+          - page: Credentials and Security
+            path: ./docs/pages/platform/actions/action-security-model.mdx
+          - page: Human Approval Options
+            path: ./docs/pages/platform/actions/action-human-approval.mdx
+          - page: Action Parameters
+            path: ./docs/pages/platform/actions/action-parameters.mdx
+          - page: Build Your First Action
+            path: ./docs/pages/platform/actions/build-your-first-action.mdx
+          - section: Supported Actions
+            contents:
+              - page: Confluence
+                path: ./docs/pages/platform/actions/action-providers/confluence.mdx
+              - page: Custom Webhooks
+                path: ./docs/pages/platform/actions/action-providers/custom-webhook.mdx
+              - page: Finnhub
+                path: ./docs/pages/platform/actions/action-providers/finnhub.mdx
+              - page: Firecrawl
+                path: ./docs/pages/platform/actions/action-providers/firecrawl.mdx
+              - page: Google Maps
+                path: ./docs/pages/platform/actions/action-providers/google-maps.mdx
+              - page: Gsuite
+                path: ./docs/pages/platform/actions/action-providers/gsuite.mdx
+              - page: Jira
+                path: ./docs/pages/platform/actions/action-providers/jira.mdx
+              - page: LinkedIn
+                path: ./docs/pages/platform/actions/action-providers/linkedin.mdx
+              - page: Looker
+                path: ./docs/pages/platform/actions/action-providers/looker.mdx
+              - page: Microsoft Teams
+                path: ./docs/pages/platform/actions/action-providers/microsoft-teams.mdx
+              - page: MongoDB
+                path: ./docs/pages/platform/actions/action-providers/mongodb.mdx
+              - page: NWS
+                path: ./docs/pages/platform/actions/action-providers/nws.mdx
+              - page: OpenStreetMap
+                path: ./docs/pages/platform/actions/action-providers/openstreetmap.mdx
+              - page: Resend
+                path: ./docs/pages/platform/actions/action-providers/resend.mdx
+              - page: Salesforce
+                path: ./docs/pages/platform/actions/action-providers/salesforce.mdx
+              - page: Slack
+                path: ./docs/pages/platform/actions/action-providers/slack.mdx
+              - page: Snowflake
+                path: ./docs/pages/platform/actions/action-providers/snowflake.mdx
+              - page: X
+                path: ./docs/pages/platform/actions/action-providers/x.mdx
+              - page: Zendesk
+                path: ./docs/pages/platform/actions/action-providers/zendesk.mdx
       - page: Bulk Analysis
-        path: ./docs/pages/guides/bulk-analysis.mdx
-      - page: Permissions Service
-        path: ./docs/pages/guides/permissions-service.mdx
-      - page: OAuth
-        path: ./docs/pages/guides/oauth.mdx
-      - page: Prompting
-        path: ./docs/pages/guides/prompting.mdx
+        path: ./docs/pages/platform/bulk-analysis.mdx
+      # - page: MCP Gateway
+      #   path: ./docs/pages/platform/mcp-gateway.mdx
+      - section: Integrations
+        contents:
+          #     - section: Identity Providers
+          #       contents:
+          #         - page: workOS
+          #           path: ./docs/pages/platform/integrations/idp/workos.mdx
+          #         - page: Okta
+          #           path: ./docs/pages/platform/integrations/idp/okta.mdx
+          #         - page: SAML/SCIM
+          #           path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
+          #     - page: Vector Stores
+          #       path: ./docs/pages/platform/integrations/vector-stores.mdx
+          #     - page: Data Syncs
+          #       path: ./docs/pages/platform/integrations/data-syncs.mdx
+          - page: Data Sources / Action Providers
+            path: ./docs/pages/platform/integrations/data-sources.mdx
+          - section: Metadata and Smart Filtering
+            contents:
+              - page: Smart Filtering (beta)
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/smart-filtering.mdx
+              - page: Collection Schemas
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/collection-schemas.mdx
+              - page: AI Entity Extraction (beta)
+                path: ./docs/pages/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction.mdx
+          - page: Bring Your Own Custom Data Sources
+            path: ./docs/pages/platform/integrations/bring-your-own-data.mdx
+      - section: Administration
+        contents:
+          - page: Single Sign-On (SSO)
+            path: ./docs/pages/administration/sso.mdx
   - api: API Reference
     snippets:
       python: "credal"
       typescript: "@credal/sdk"
 
+default-language: python
+
 navbar-links:
-  - type: secondary
+  - type: minimal
     text: Contact us
     url: mailto:support@credal.ai
-  - type: primary
+  - type: secondary
+    text: System Status
+    url: https://status.credal.ai
+  - type: filled
     text: Start using Credal
     url: https://app.credal.ai/signin
 
 colors:
   accentPrimary:
-    light: "#5849EC"
+    light: "#228be6"
 
 favicon: docs/assets/favicon.png
 
 logo:
-  href: https://credal.ai/
+  href: https://docs.credal.ai/
   light: docs/assets/credal-dark-logo.svg
   dark: docs/assets/credal-light-logo.svg
   height: 30
+
+css: ./styles.css
+
+redirects:
+  - source: /getting-started/data-integrations
+    destination: /getting-started/data-sources-action-providers
