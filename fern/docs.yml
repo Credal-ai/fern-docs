@@ -235,6 +235,10 @@ logo:
 
 css: ./styles.css
 
+settings: 
+  hide-404-page: true
+  http-snippets: false
+
 redirects:
   - source: /getting-started/data-integrations
     destination: /getting-started/data-sources-action-providers
