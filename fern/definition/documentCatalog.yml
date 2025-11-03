@@ -81,16 +81,59 @@ service:
               type: file
               docs: |
                 The file to upload. Supported formats: PDF (.pdf), Word (.docx), Excel (.xlsx, .xls), PowerPoint (.pptx, .ppt), CSV (.csv), and text files.
-            metadata:
+            documentName:
+              type: optional<string>
+              docs: |
+                The name of the document you want to upload. If not provided, the original filename will be used.
+            uploadAsUserEmail:
               type: string
               docs: |
-                JSON string containing upload metadata. Must include: uploadAsUserEmail (string), documentExternalId (string). Optional fields: documentName (string), allowedUsersEmailAddresses (array of strings), documentExternalUrl (string), customMetadata (object), collectionId (string UUID), forceUpdate (boolean), internalPublic (boolean), sourceSystemUpdated (ISO date string).
+                [Legacy] The user on behalf of whom the document should be uploaded. In most cases, this can simply be the email of the developer making the API call. This field will be removed in the future in favor of purely specifying permissions via allowedUsersEmailAddresses.
+            documentExternalId:
+              type: string
+              docs: |
+                The external ID of the document. This is typically the ID as it exists in its original external system. Uploads to the same external ID will update the document in Credal.
+            allowedUsersEmailAddresses:
+              type: optional<string>
+              docs: |
+                Users allowed to access the document. Can be provided as a JSON array string (e.g., ["user1@example.com","user2@example.com"]) or comma-separated list (e.g., "user1@example.com,user2@example.com"). Unlike Credal's out of the box connectors which reconcile various permissions models from 3rd party software, for custom uploads the caller is responsible for specifying who can access the document and currently flattening groups if applicable. Documents can also be marked as internal public.
+            documentExternalUrl:
+              type: optional<string>
+              docs: |
+                The external URL of the document you want to upload. If provided Credal will link to this URL.
+            customMetadata:
+              type: optional<string>
+              docs: |
+                Optional JSON string representing any custom metadata for this document (e.g., '{"key1":"value1","key2":"value2"}').
+            collectionId:
+              type: optional<string>
+              docs: |
+                If specified, the document will also be added to the provided document collection. This operation is eventually consistent, meaning the document does not immediately start appearing in searches of that collection due to an asynchronous embedding process. To achieve strong consistency use the `awaitVectorStoreSync` parameter.
+            forceUpdate:
+              type: optional<string>
+              docs: |
+                If set to "true", document contents will be re-uploaded and re-embedded even if the document already exists in Credal.
+            internalPublic:
+              type: optional<string>
+              docs: |
+                If set to "true", document will be accessible to everyone within the organization of the uploader.
+            sourceSystemUpdated:
+              type: optional<string>
+              docs: |
+                ISO 8601 date string indicating when the document was last updated in the source system (e.g., "2025-11-03T21:15:00Z").
+            awaitVectorStoreSync:
+              type: optional<string>
+              docs: |
+                Document uploads are eventually consistent by default. If set to "true" the API will wait for the vector store to be updated before returning. This is useful if you want to ensure that the document is immediately searchable after this call returns.
       response: UploadDocumentResponse
       examples:
         - name: PDFUpload
           request:
             file: $file(document.pdf)
-            metadata: '{"uploadAsUserEmail":"jack@credal.ai","documentExternalId":"doc-123","documentName":"Company Policy","allowedUsersEmailAddresses":["jack@credal.ai","ravin@credal.ai"]}'
+            uploadAsUserEmail: jack@credal.ai
+            documentExternalId: doc-123
+            documentName: Company Policy
+            allowedUsersEmailAddresses: '["jack@credal.ai","ravin@credal.ai"]'
           response:
             body:
               documentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
