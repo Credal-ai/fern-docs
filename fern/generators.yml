@@ -1,9 +1,14 @@
+metadata:
+  description: "Official client library for Credal APIs"
+  authors:
+    - name: "Credal.ai"
+      email: "support@credal.ai"
 default-group: python-local
 groups:
   typescript-sdk:
     generators:
       - name: fernapi/fern-typescript-node-sdk
-        version: 3.29.0
+        version: 3.29.2
         output:
           location: npm
           package-name: "@credal/sdk"
@@ -18,7 +23,7 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.36.0
+        version: 4.36.2
         output:
           location: pypi
           package-name: "credal"
@@ -29,7 +34,7 @@ groups:
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.36.0
+        version: 4.36.2
         output:
           location: local-file-system
           path: ../generated/python
