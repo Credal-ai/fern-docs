@@ -465,6 +465,57 @@ service:
             body:
               copilotId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
 
+    export:
+      availability: pre-release
+      path: /export
+      method: POST
+      docs: |
+        Export copilot configurations for backup or migration purposes. This endpoint requires admin privileges and the 'ai-usage-analytics-log.export' scope. Returns all deployed copilots with their full configuration including model settings, tools, and deployment details. Optional date filters can be applied to narrow down results.
+      request:
+        name: ExportCopilotsRequest
+        body:
+          properties:
+            agentCreatedFrom:
+              type: optional<datetime>
+              docs: |
+                Filter copilots created on or after this datetime (ISO 8601 format).
+            agentCreatedTo:
+              type: optional<datetime>
+              docs: |
+                Filter copilots created before or on this datetime (ISO 8601 format).
+            versionCreatedFrom:
+              type: optional<datetime>
+              docs: |
+                Filter copilot versions created on or after this datetime (ISO 8601 format).
+            versionCreatedTo:
+              type: optional<datetime>
+              docs: |
+                Filter copilot versions created before or on this datetime (ISO 8601 format).
+      response: list<ExportedCopilot>
+      examples:
+        - name: Example0
+          request:
+            agentCreatedFrom: "2024-01-01T00:00:00Z"
+            agentCreatedTo: "2024-12-31T23:59:59Z"
+          response:
+            body:
+              - id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+                name: "Customer Support Agent"
+                description: "Handles customer inquiries based on internal documentation"
+                modelConfiguration:
+                  modelProvider: "openai"
+                  modelName: "gpt-4"
+                  temperature: 0.7
+                aiEndpointConfiguration:
+                  baseUrl: "https://api.openai.com/v1/"
+                toolConfigurations: []
+                inputs: []
+                deploymentConfiguration:
+                  isDeployed: true
+                agentCreatedDatetime: "2024-06-15T10:30:00Z"
+                versionCreatedDatetime: "2024-06-20T14:45:00Z"
+                isDeployed: true
+
 types:
   # CreateConversationRequest:
   #   properties:
@@ -652,3 +703,39 @@ types:
       final_chunk: FinalChunk
       blocked: BlockedChunk
       error_chunk: ErrorChunk
+
+  ExportedCopilot:
+    properties:
+      id:
+        type: uuid
+        docs: The unique identifier of the copilot.
+      name:
+        type: string
+        docs: The name of the deployed copilot version.
+      description:
+        type: string
+        docs: The description of the deployed copilot version.
+      modelConfiguration:
+        type: unknown
+        docs: Model configuration including provider, model name, temperature, and other settings.
+      aiEndpointConfiguration:
+        type: unknown
+        docs: AI endpoint configuration including base URL and authentication details.
+      toolConfigurations:
+        type: unknown
+        docs: List of tool configurations available to the copilot.
+      inputs:
+        type: unknown
+        docs: Input variable configurations for the copilot.
+      deploymentConfiguration:
+        type: unknown
+        docs: Deployment settings and configuration.
+      agentCreatedDatetime:
+        type: datetime
+        docs: ISO 8601 timestamp when the copilot was originally created.
+      versionCreatedDatetime:
+        type: datetime
+        docs: ISO 8601 timestamp when the deployed version was created.
+      isDeployed:
+        type: boolean
+        docs: Indicates if the copilot is currently deployed (always true for export results).
