@@ -470,7 +470,13 @@ service:
       path: /export
       method: POST
       docs: |
-        Export copilot configurations for backup or migration purposes. This endpoint requires admin privileges and the 'ai-usage-analytics-log.export' scope. Returns all deployed copilots with their full configuration including model settings, tools, and deployment details. Optional date filters can be applied to narrow down results.
+        Export copilot configurations for backup or migration purposes.
+
+        **IMPORTANT**: This endpoint requires:
+        - Admin privileges
+        - The 'ai-usage-analytics-log.export' scope on the API key
+
+        Returns all deployed copilots with their full configuration including model settings, tools, and deployment details. Optional date filters can be applied to narrow down results.
       request:
         name: ExportCopilotsRequest
         body:
