@@ -497,6 +497,14 @@ service:
               type: optional<datetime>
               docs: |
                 Filter copilot versions created before or on this datetime (ISO 8601 format).
+            limit:
+              type: optional<integer>
+              docs: |
+                Maximum number of copilots to return. Must be a positive integer with a maximum value of 1000. Defaults to 100.
+            offset:
+              type: optional<integer>
+              docs: |
+                Number of copilots to skip before returning results. Must be a non-negative integer. Defaults to 0. Use with limit for pagination.
       response: list<ExportedCopilot>
       examples:
         - name: Example0
