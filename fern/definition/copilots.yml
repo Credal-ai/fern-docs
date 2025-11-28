@@ -501,11 +501,11 @@ service:
               type: optional<integer>
               docs: |
                 Maximum number of copilots to return. Must be a positive integer with a maximum value of 1000. Defaults to 100.
-            offset:
-              type: optional<integer>
+            cursor:
+              type: optional<string>
               docs: |
-                Number of copilots to skip before returning results. Must be a non-negative integer. Defaults to 0. Use with limit for pagination.
-      response: list<ExportedCopilot>
+                Cursor for pagination. Use the cursor returned in the previous response to fetch the next page of results. If not provided, returns the first page.
+      response: ExportCopilotsResponse
       examples:
         - name: Example0
           request:
@@ -513,22 +513,25 @@ service:
             agentCreatedTo: "2024-12-31T23:59:59Z"
           response:
             body:
-              - id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
-                name: "Customer Support Agent"
-                description: "Handles customer inquiries based on internal documentation"
-                modelConfiguration:
-                  modelProvider: "openai"
-                  modelName: "gpt-4"
-                  temperature: 0.7
-                aiEndpointConfiguration:
-                  baseUrl: "https://api.openai.com/v1/"
-                toolConfigurations: []
-                inputs: []
-                deploymentConfiguration:
+              data:
+                - id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+                  name: "Customer Support Agent"
+                  description: "Handles customer inquiries based on internal documentation"
+                  modelConfiguration:
+                    modelProvider: "openai"
+                    modelName: "gpt-4"
+                    temperature: 0.7
+                  aiEndpointConfiguration:
+                    baseUrl: "https://api.openai.com/v1/"
+                  toolConfigurations: []
+                  inputs: []
+                  deploymentConfiguration:
+                    isDeployed: true
+                  agentCreatedDatetime: "2024-06-15T10:30:00Z"
+                  versionCreatedDatetime: "2024-06-20T14:45:00Z"
                   isDeployed: true
-                agentCreatedDatetime: "2024-06-15T10:30:00Z"
-                versionCreatedDatetime: "2024-06-20T14:45:00Z"
-                isDeployed: true
+              hasMore: true
+              nextCursor: "bc30e7ca-1caf-22fg-c36b-fgdb84eg5d4b"
 
 types:
   # CreateConversationRequest:
@@ -753,3 +756,15 @@ types:
       isDeployed:
         type: boolean
         docs: Indicates if the copilot is currently deployed (always true for export results).
+
+  ExportCopilotsResponse:
+    properties:
+      data:
+        type: list<ExportedCopilot>
+        docs: List of exported copilots matching the query filters.
+      hasMore:
+        type: boolean
+        docs: Indicates whether there are more results available for pagination.
+      nextCursor:
+        type: optional<string>
+        docs: Cursor to use for fetching the next page of results. This is a UUID string. If null or not present, there are no more results.
