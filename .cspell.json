@@ -71,7 +71,8 @@
     "financials",
     "Financials",
     "buildwithfern",
-    "Chatbots"
+    "Chatbots",
+    "Fivetran's"
   ],
   "ignorePaths": [
     "node_modules",
