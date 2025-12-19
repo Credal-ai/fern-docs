@@ -13,7 +13,7 @@ No users can execute outside the scope of the credentials and permissions that a
 ## FAQ
 
 - **Where are actions invoked?**: In requests made to agents that have permission to use the action, as defined in Agent Access configuration.
-- **Who can invoke actions?**: Users who can access an agent that the action is attached to. For specific actions with more regulated providers, users must be in the End User Access configuration in an action's Deployment settings to invoke the action.
+- **Who can invoke actions?**: Users who can access an agent that the action is attached to. Users who can access those agents will be able to invoke all actions within them.
 - **Who can execute actions?**: The action's approvers. If there are no approvers, then the invokers.
 - **Which user-level providers can I OAuth into?**: All providers enabled by your organization's admins. Admins can prevent shadow IT connections to non-approved providers by disabling those actions in the [Admin Data Sources](https://app.credal.ai/admin/data-sources#action-configuration) tab.
 
