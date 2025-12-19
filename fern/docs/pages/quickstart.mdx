@@ -4,7 +4,7 @@ title: Quickstart
 
 Credal's AI agents empower you to build **dedicated assistants** for a wide range of enterprise use cases, from customer support to contract review.
 
-Agents are purpose-built AIs you create by selecting a model, attaching data sources, and writing a custom prompt. You can interact with them through a chat UI or deploy them to Slack and other applications to perform workflows or answer questions.
+Agents are purpose-built AIs you create by selecting a model, attaching data sources, and writing a custom prompt. You can interact with them through a chat UI or publish them to Slack and other applications to perform workflows or answer questions.
 
 For example, a Slack agent can listen for benefit-related queries in a channel and respond with accurate, source-cited answers using your data.
 
@@ -120,18 +120,18 @@ _--------- End Context ---------_
 
 ---
 
-### Deploy Your Agent to Slack
+### Publish Your Agent to Slack
 
-After setup, you can use your agent directly in Credal or deploy it to Slack (or other tools via API).  
+After setup, you can use your agent directly in Credal or publish it to Slack (or other tools via API).  
 This guide covers Slack. For other integrations, see the [full documentation](https://docs.credal.ai/getting-started/agents/in-depth-guide).
 
-To deploy to Slack, toggle Slack Deployment **on** and select the target channels:
+Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
 </Frame>
 
-If multiple agents are deployed to a single channel, Credal uses their descriptions to decide which one should respond.  
+If multiple agents are published to a single channel, Credal uses their descriptions to decide which one should respond.  
 You can choose to have your agent answer all messages in a given channel or only those that meet certain criteria:
 
 <Frame>
@@ -146,7 +146,7 @@ You can choose to have your agent answer all messages in a given channel or only
   <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
 </Frame>
 
-If more than one agent is deployed to a given Slack channel, Credal will triage user requests based on the Description of each agent to determine which, if any, should answer the question.
+If more than one agent is published to a given Slack channel, Credal will triage user requests based on the Description of each agent to determine which, if any, should answer the question.
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" />
