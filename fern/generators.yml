@@ -14,7 +14,7 @@ groups:
           package-name: '@credal/sdk'
           token: OIDC
         github:
-          repository: credal-ai/credal-typescript-sdk
+          repository: Credal-ai/credal-typescript-sdk
           mode: pull-request
         config:
           namespaceExport: Credal
