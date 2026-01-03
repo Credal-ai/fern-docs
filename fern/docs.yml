@@ -40,7 +40,7 @@ navigation:
                 path: ./docs/pages/tutorials/it-security/connect-to-jira.mdx
               # - page: Trigger Automations
               #   path: ./docs/pages/tutorials/it-security/triggering-automations.mdx
-              - page: Deploy to Slack
+              - page: Publish to Slack
                 path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
           - section: Snowflake Query Assistant
             contents:
@@ -92,11 +92,11 @@ navigation:
             path: ./docs/pages/platform/agents/attaching-actions.mdx
           - page: Agent Collaboration
             path: ./docs/pages/platform/agents/agent-collaboration.mdx
-          - section: Deploying Agents
+          - section: Publishing Agents
             contents:
               - page: Overview
                 path: ./docs/pages/platform/agents/deployment/overview.mdx
-              - page: Slack Deployment
+              - page: Agents in Slack
                 path: ./docs/pages/platform/agents/deployment/slack-deployment.mdx
               - page: Custom Dedicated Slack Bots
                 path: ./docs/pages/platform/agents/deployment/slack-app-manifest.mdx

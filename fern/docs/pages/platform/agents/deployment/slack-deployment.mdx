@@ -1,6 +1,6 @@
-# Slack Deployment
+# Making Agents available in Slack
 
-Credal lets you deploy Agents to Slack channels where they can answer questions, help with tasks, and provide information based on your company's data. This guide explains how these agents work in Slack and how to set them up.
+Credal lets you publish Agents to Slack channels where they can answer questions, help with tasks, and provide information based on your company's data. This guide explains how these agents work in Slack and how to set them up.
 
 ---
 
@@ -27,9 +27,9 @@ Messages can be sent in the main channel or as a reply in a thread.
 ---
 
 ## How Agents Decide When to Help
-When you deploy an Agent to a Slack channel, you are adding to a bucket of Agents that the Credal bot can choose to respond with in that Slack channel to any given message. The Credal bot decides which agent to respond with using the routing configuration in each agent’s deployment settings.
+When you publish an Agent to a Slack channel, you are adding to a bucket of Agents that the Credal bot can choose to respond with in that Slack channel to any given message. The Credal bot decides which agent to respond with using the routing configuration in each agent’s publishing settings.
 
-Deployment response behaviors:
+Agent response behaviors:
 
 <Frame>
   <img src="/docs/assets/agents/routing-options.png" />
@@ -49,14 +49,14 @@ Deployment response behaviors:
 
 ---
 
-## Deploying to Slack
-To deploy to Slack, toggle **Slack Deployment** on and select the target channels:
+## Publishing to Slack
+Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
 </Frame>
 
-If multiple agents are deployed to a single channel, Credal uses their Descriptions to determine which should respond.  
+If multiple agents are published to a single channel, Credal uses their Descriptions to determine which should respond.  
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
@@ -73,7 +73,7 @@ Example filter setup: respond only to prompts containing `?`.
 ---
 
 ## Slack Private Channels
-Deploying into a private channel works like public channels but requires adding the Credal integration first.
+Publishing into a private channel works like public channels but requires adding the Credal integration first.
 
 1. In Slack, open the channel and click its name (e.g., `credal-founders`).
 2. Go to the **Integrations** tab.
@@ -92,7 +92,7 @@ You can optionally tie any particular agent to a Custom bot for a specialized fu
 
 When creating your custom Slack app, refer to the internal guide: [Slack App Manifest](./slack-app-manifest).
 
-Custom bots and the Credal bot behave separately, so if you have both a Custom bot and Credal bot in a channel, it's possible to see both respond based on their deployment settings.
+Custom bots and the Credal bot behave separately, so if you have both a Custom bot and Credal bot in a channel, it's possible to see both respond based on their routing settings.
 
 ---
 
