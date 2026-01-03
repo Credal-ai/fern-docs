@@ -24,7 +24,7 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.46.3
+        version: 4.46.6
         output:
           location: pypi
           package-name: credal
@@ -36,7 +36,7 @@ groups:
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.46.3
+        version: 4.46.6
         output:
           location: local-file-system
           path: ../generated/python
