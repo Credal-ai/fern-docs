@@ -12,7 +12,7 @@ groups:
         output:
           location: npm
           package-name: '@credal/sdk'
-          token: ${NPM_TOKEN}
+          token: OIDC
         github:
           repository: credal-ai/credal-typescript-sdk
           mode: pull-request
