@@ -6,9 +6,7 @@ instances:
         owner: Credal-ai
         repo: fern-docs
         branch: main
-
 title: Credal | Documentation
-
 navigation:
   - section: Getting Started
     contents:
@@ -18,7 +16,7 @@ navigation:
         path: ./docs/pages/quickstart.mdx
       - page: Agent Building Webinars
         path: ./docs/pages/webinars.mdx
-      - section: "Tutorials: Common First Agents"
+      - section: 'Tutorials: Common First Agents'
         contents:
           - section: Employee Onboarding Assistant
             contents:
@@ -38,8 +36,6 @@ navigation:
                 path: ./docs/pages/tutorials/it-security/use-data.mdx
               - page: Track Tickets in Jira
                 path: ./docs/pages/tutorials/it-security/connect-to-jira.mdx
-              # - page: Trigger Automations
-              #   path: ./docs/pages/tutorials/it-security/triggering-automations.mdx
               - page: Publish to Slack
                 path: ./docs/pages/tutorials/it-security/deploy-to-slack.mdx
           - section: Snowflake Query Assistant
@@ -56,8 +52,6 @@ navigation:
             contents:
               - page: Overview
                 path: ./docs/pages/tutorials/salesforce-query/salesforce-example.mdx
-          # - page: Deep Research Agent Setup
-          #   path: ./docs/pages/use-cases/deep-research-agent.mdx
   - section: Platform
     contents:
       - section: Agents
@@ -108,17 +102,12 @@ navigation:
             path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
           - page: Contact Support
             path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
-
       - section: Actions
         contents:
           - page: Overview
             path: ./docs/pages/platform/actions/overview.mdx
           - page: Open Source Actions
             path: ./docs/pages/platform/actions/open-source-actions.mdx
-          # - page: Composio Integration
-          #   path: ./docs/pages/platform/actions/composio.mdx
-          # - page: Monitoring Usage
-          #   path: ./docs/pages/platform/actions/monitoring.mdx
           - page: Credentials and Security
             path: ./docs/pages/platform/actions/action-security-model.mdx
           - page: Human Approval Options
@@ -169,22 +158,8 @@ navigation:
                 path: ./docs/pages/platform/actions/action-providers/zendesk.mdx
       - page: Bulk Analysis
         path: ./docs/pages/platform/bulk-analysis.mdx
-      # - page: MCP Gateway
-      #   path: ./docs/pages/platform/mcp-gateway.mdx
       - section: Integrations
         contents:
-          #     - section: Identity Providers
-          #       contents:
-          #         - page: workOS
-          #           path: ./docs/pages/platform/integrations/idp/workos.mdx
-          #         - page: Okta
-          #           path: ./docs/pages/platform/integrations/idp/okta.mdx
-          #         - page: SAML/SCIM
-          #           path: ./docs/pages/platform/integrations/idp/saml-scim.mdx
-          #     - page: Vector Stores
-          #       path: ./docs/pages/platform/integrations/vector-stores.mdx
-          #     - page: Data Syncs
-          #       path: ./docs/pages/platform/integrations/data-syncs.mdx
           - page: Data Sources / Action Providers
             path: ./docs/pages/platform/integrations/data-sources.mdx
           - section: Metadata and Smart Filtering
@@ -205,11 +180,13 @@ navigation:
             path: ./docs/pages/administration/audit-log-data-exports.mdx
   - api: API Reference
     snippets:
-      python: "credal"
-      typescript: "@credal/sdk"
-
+      python: credal
+      typescript: '@credal/sdk'
+  - section: FAQs
+    contents:
+      - page: Questions and Answers
+        path: ./docs/pages/faqs/questions-and-answers.mdx
 default-language: python
-
 navbar-links:
   - type: minimal
     text: Contact us
@@ -220,25 +197,19 @@ navbar-links:
   - type: filled
     text: Start using Credal
     url: https://app.credal.ai/signin
-
 colors:
   accentPrimary:
-    light: "#228be6"
-
+    light: '#228be6'
 favicon: docs/assets/favicon.png
-
 logo:
   href: https://docs.credal.ai/
   light: docs/assets/credal-dark-logo.svg
   dark: docs/assets/credal-light-logo.svg
   height: 30
-
 css: ./styles.css
-
-settings: 
+settings:
   hide-404-page: true
   http-snippets: false
-
 redirects:
   - source: /getting-started/data-integrations
     destination: /getting-started/data-sources-action-providers
