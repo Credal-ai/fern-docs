@@ -182,10 +182,6 @@ navigation:
     snippets:
       python: credal
       typescript: '@credal/sdk'
-  - section: FAQs
-    contents:
-      - page: Questions and Answers
-        path: ./docs/pages/faqs/questions-and-answers.mdx
 default-language: python
 navbar-links:
   - type: minimal
