@@ -1,0 +1,137 @@
+---
+title: 'FAQs: Common Questions and Answers'
+slug: getting-started/faqs
+---
+
+## **General**
+
+**How is Credal different from just using ChatGPT or Claude directly?**
+
+ChatGPT and Claude are great tools, and we recommend Credal is used *with* these tools. While ChatGPT and Claude focus on providing a consumer grade chat experience, Credal focusses on providing *secure*, *domain specific agents that have unparalleled understanding of your Enterprise, but which you can chat with in whatever your favorite chat client is - whether that’s ChatGPT, Claude, or just directly in Slack or teams.*
+
+Credal provides a secure, unified understanding of your internal systems, respecting all existing access permissions and Enterprise AI policies (e.g., a user can only search for documents they already have access to, or update systems that have been marked safe for Agents). That secure unified understanding of your systems is available in your existing chat surfaces, including ChatGPT, Claude and others.
+
+**What LLMs (Large Language Models) does Credal use?**
+
+Credal is model-agnostic. We support leading models including OpenAI’s Anthropic’s and Google’s. You can choose the best model for your specific use case or allow Credal to route queries to the most appropriate model automatically.
+
+## **Security & Privacy**
+
+**Is my data secure with Credal?**
+
+Yes. Security is our top priority. Credal uses enterprise-grade encryption for data in transit and at rest. We are SOC 2 compliant and support HIPAA-compliant environments. We do not train our public models on your data.
+
+**How does Credal handle data permissions?**
+
+Credal mirrors the permissions of your source systems. If a user asks a question, the AI only generates an answer based on documents and data that specific user is allowed to see in the source system (e.g., Google Drive or Slack). If they don’t have access to the source file, Credal won’t use it to answer their question.
+
+**Does Credal store my company’s data?**
+
+Credal indexes your data to allow for semantic search and retrieval, but this index is strictly governed by your security policies. We do not retain your data for model training purposes.
+
+## **Features & Capabilities**
+
+**What data sources can I connect to Credal?**
+
+Credal supports [*out-of-the-box integrations*](https://www.credal.ai/security) with major enterprise tools, including:
+
+- Knowledge Sources: Google Drive, Confluence, SharePoint, Notion, Box.
+- Communication: Slack (Channels and DMs), Gmail, Microsoft Teams.
+- Development & Ops: Jira, GitHub, GitLab, Linear, PagerDuty.
+- Business Systems: Salesforce, HubSpot, Zendesk.
+
+**What are “Agents” in Credal?**
+
+Agents are specialized AI assistants you can build to handle specific tasks. For example, you can build an “Onboarding Agent” that has access to HR documents to answer new hire questions, or a “Sales Agent” that can look up deal details and update opportunity stages. Agents can be given specific instructions (prompts) and tools (actions).
+
+**Can I build my own custom actions?**
+
+Yes. Beyond our built-in actions (like “Draft Email” or “Search Jira”), developers can build custom actions to connect Credal Agents to internal APIs or proprietary databases, allowing agents to perform complex workflows unique to your business.
+
+**Can I deploy Agents to Slack or Microsoft Teams?**
+
+Yes. Once you build an Agent in Credal, you can deploy it directly to Slack channels or Microsoft Teams. You can have a general “Employee Assistant” for the whole company or specialized bots for specific channels (e.g., an IT Support bot in the #help-it channel).
+
+## **Getting Started**
+
+**Do I need to be an engineer to build an Agent?**
+
+No. Credal is designed as both a set of APIs and a no-code platform. Business users can create powerful agents by simply selecting data sources, writing plain-English instructions (prompts), and choosing available actions.
+
+**How do I get started?**
+
+You can start by connecting your key data sources (like Google Drive or Slack) in the “Integrations” tab. From there, try asking the “General Agent” questions about your company documentation to see the power of search. To build a specialized tool, navigate to the “Agents” section and click “Create New Agent.”
+
+**What is the “Deep Research” feature?**
+
+For complex questions that require more than a quick lookup, Credal offers a “Deep Research” capability. This allows the AI to spend more time (up to 30 minutes) analyzing multiple documents, synthesizing information, and producing a comprehensive report or answer, rather than just a quick chat response.
+
+## **Building & Configuration**
+
+**How do I start building an Agent if I don’t know where to begin?**
+
+If you’re unsure how to structure your agent, try using our Builder Buddy. It’s a built-in assistant that can help you write a system prompt, suggest necessary actions, and even recommend the best model for your use case. You can ask it things like, *“I want to build an agent that summarizes Salesforce opportunities. What prompt and actions should I use?”*
+
+**What is the “Agent Building Wizard”?**
+
+The Agent Building Wizard is a guided setup tool that simplifies the creation process. It walks you through 3-7 steps (depending on complexity) to define your agent’s role, connect data sources, and attach actions. It’s the fastest way to get a working agent up and running without manually configuring every setting.
+
+**Can I use XML tags in my system prompt?**
+
+Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your system prompt is a best practice, especially when using Claude models. It helps the AI clearly distinguish between different parts of your instructions, leading to more accurate and structured responses.
+
+## **Actions & Tools**
+
+**My Agent isn’t triggering the action I attached. Why?**
+
+If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an email), check the following:
+
+1. Prompt Instructions: Does your system prompt explicitly tell the Agent *when* to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
+2. Tool Description: Ensure the action’s description clearly explains what it does. The AI uses this description to decide if the tool is relevant.
+3. Model Choice: Some models are better at tool use than others. We generally recommend Claude 3.5 Sonnet for complex action-taking workflows.
+
+**I’m getting an “Action Error” or “Forbidden” message. How do I fix it?**
+
+This usually means there’s a permission or configuration issue.
+
+- Permissions: Check if the user interacting with the Agent has the correct permissions in the source system (e.g., do they have a Salesforce license?).
+- OAuth: If you’re using a custom connector or MCP server, ensure the OAuth credentials are correctly configured and not expired.
+- Parameters: If building a custom action, verify that the API parameter names in your definition match exactly what the external API expects.
+-
+
+## **Debugging & Optimization**
+
+**My Agent’s response is cut off or it forgets previous context. What’s wrong?**
+
+This can happen if the conversation history becomes too long or if a sub-agent returns a massive amount of data.
+
+- Context Window: Try switching to a model with a larger context window (like Claude 3.5 Sonnet or GPT-4o).
+- Summarization: Instruct your Agent (or sub-agents) to be concise. If a sub-agent returns 50 pages of text, the main Agent might struggle to process it all.
+
+**How can I see why my Agent failed?**
+
+If you encounter a generic error (like \{} or “Workflow execution failed”), it’s often a system-level timeout or a specific action failure.
+
+- Check the “Thinking” Logs: If you have “Thinking” enabled, expand the logs to see where the Agent got stuck.
+- Simplify: Try removing one action or data source at a time to isolate the culprit.
+- Contact Support: If the error persists, share the Conversation URL (e.g., app.credal.ai/chat/…) with our support team so we can trace the specific execution ID.
+
+**Why is my Agent giving incorrect dates or hallucinating info?**
+
+- Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). Some older models (like early versions of Opus) had known issues with date calculation; switching to Sonnet often fixes this.
+- Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: *“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”*
+
+**How do I know if a specific document or data source is working?**
+
+The best way to verify a data source is to ask a question in the **Preview** tab that can only be answered by that specific document.
+
+- Check the Citations: When the agent responds, look at the **Sources** list attached to the answer. If your document is listed there, the agent successfully retrieved it.
+- **Verify Permissions:&#x20;**&#x49;f the agent cannot answer, ensure the document is in a collection the agent has access to and that you have the necessary permissions to view the file yourself.
+
+**How do I test my agent?**
+
+You can test your agent using the following methods:
+
+- **Use the Preview Tab:&#x20;**&#x54;his is the quickest way to test. Open the **Preview** tab in the agent builder and ask questions live. This allows you to see exactly how the agent interprets your prompt and which data sources it uses.
+- **Create Test Cases:** For more robust testing, you can set up **Test Cases**(sometimes referred to as "Golden Answers"). This allows you to upload a list of questions and expected answers (e.g., from a spreadsheet) to verify that the agent answers consistently and accurately against a standard.
+- Provide Feedback: During testing, you can give a **thumbs up or thumbs down** to the agent's responses. This provides feedback that helps the agent understand which answers are good or bad, allowing it to improve over time.
