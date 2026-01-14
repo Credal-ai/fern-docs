@@ -1,13 +1,38 @@
-The evaluate tab helps you analyze your agent’s responses to a set of test questions. You can use this feature to monitor the responses to questions over time and gauge the effect of any changes, such as the provision of additional data or feedback.
+The Evaluate tab helps you systematically measure your agent's performance using test questions and scoring rubrics. You can use this feature to monitor response quality over time and gauge the effect of any changes, such as updates to your agent's configuration, data sources, or instructions.
 
-To use this function, use the “Add pair” button and add questions and the expected correct answers.
+### **Adding Test Cases**
 
-![evaluate_tab_interface.png](/docs/assets/copilots/evaluate_tab_interface.png)
+To get started, click the **"Add test case"** button to add test questions.
 
-Then select the “Generate AI Answers” button in the top right to run your test queries.
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-14T16:05:06.650Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
 
-![generate_AI_answers_button.png](/docs/assets/copilots/generate_AI_answers_button.png)
 
-Your agent will then generate answers for your review. If the AI generated answer is helpful and accurate, you can promote it as your new expected answer by clicking the check icon to the right of the AI generated response. This will become your expected answer, which can be compared against future AI generated answers to monitor the impact of any changes to your agent.
+For each question, you can define a **rubric** that specifies the criteria for a good answer. Rubrics are more flexible than exact expected answers because they allow you to evaluate responses based on key characteristics rather than requiring word-for-word matches.
 
-![promote_AI_answer_example.png](/docs/assets/copilots/promote_AI_answer_example.png)
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-14T16:06:19.933Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
+
+
+### **Creating Rubrics**
+
+When creating a rubric, you can specify multiple criteria and assign point values to each. For example:
+
+- "The answer must cite \[specific document name] as a source" (30 points)
+- "The answer must correctly identify the number of employees" (40 points)
+- "The response should mention both the GTM and Engineering teams" (30 points)
+
+### **Running Evaluations**
+
+Now, click the **"Generate AI Answers"** button in the top right to test your agent against all test cases.
+
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-14T16:11:28.673Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
+
+
+Your agent will generate answers and automatically score them based on your defined rubrics. You'll be able to:
+
+- **View scores** for each test case on a 0-100 scale
+- **Compare performance** with the "Past Scores" column, which shows the last 3 evaluation runs
+- **Track improvements** as you iterate on your agent's configuration
+
+This systematic approach helps you optimize your agent with confidence, ensuring that changes improve response quality before deploying them to users.
+
+See a video of this feature in action: 
