@@ -78,8 +78,6 @@ navigation:
                 path: ./docs/pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
               - page: h. Data Processing
                 path: ./docs/pages/platform/agents/in-depth-overview/data-processing.mdx
-          - page: Evaluate
-            path: ./docs/pages/platform/agents/in-depth-overview/agent-evaluate.mdx
           - page: Querying Your Agent
             path: ./docs/pages/platform/agents/in-depth-overview/agent-querying.mdx
           - page: Sharing Your Agent
@@ -102,8 +100,6 @@ navigation:
             path: ./docs/pages/platform/agents/in-depth-overview/agent-feedback.mdx
           - page: Troubleshooting
             path: ./docs/pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
-          - page: Contact Support
-            path: ./docs/pages/platform/agents/in-depth-overview/contact-support.mdx
       - section: Actions
         contents:
           - page: Overview
@@ -184,6 +180,10 @@ navigation:
     snippets:
       python: credal
       typescript: '@credal/sdk'
+  - section: Agents
+    contents:
+      - page: Evaluating Your Agent
+        path: ./docs/pages/platform/agents/evaluating-your-agent.mdx
 default-language: python
 navbar-links:
   - type: minimal
