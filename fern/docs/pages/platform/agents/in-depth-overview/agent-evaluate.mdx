@@ -1,13 +1,34 @@
-The evaluate tab helps you analyze your agent’s responses to a set of test questions. You can use this feature to monitor the responses to questions over time and gauge the effect of any changes, such as the provision of additional data or feedback.
+The Evaluate tab helps you systematically test and measure your agent's performance across a set of test questions. You can use this feature to monitor response quality over time and gauge the impact of changes such as prompt updates, data additions, or configuration adjustments.
 
-To use this function, use the “Add pair” button and add questions and the expected correct answers.
+### Adding Test Cases
 
-![evaluate_tab_interface.png](/docs/assets/copilots/evaluate_tab_interface.png)
+Use the "Add Test Case(s)" button to create test questions. You can optionally provide expected answers for reference, though these are not required for evaluation.
 
-Then select the “Generate AI Answers” button in the top right to run your test queries.
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-16T18:33:40.256Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
 
-![generate_AI_answers_button.png](/docs/assets/copilots/generate_AI_answers_button.png)
+### **Creating Rubrics**
 
-Your agent will then generate answers for your review. If the AI generated answer is helpful and accurate, you can promote it as your new expected answer by clicking the check icon to the right of the AI generated response. This will become your expected answer, which can be compared against future AI generated answers to monitor the impact of any changes to your agent.
+For each test question, you can define a custom rubric that specifies what makes a good answer. Rubrics allow you to:
 
-![promote_AI_answer_example.png](/docs/assets/copilots/promote_AI_answer_example.png)
+- Set specific criteria the answer should meet (e.g., "Must cite the XYZ document as a source")
+- Assign point values to different criteria
+- Provide scoring guidance for the evaluation
+
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-16T18:33:01.065Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
+
+**Running Evaluations**
+
+Click "Generate AI Answers" to test your agent against all questions. The agent will generate responses and automatically score them based on your defined rubrics.
+
+<img src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-16T18:32:24.668Z/platform/agents/evaluate/image.png" alt="image" title="image" noZoom={false} />
+
+### **Tracking Performance**
+
+- View scores for each response based on your rubric criteria
+- Compare current scores against past evaluations in the "Past Scores" column
+- Monitor how configuration changes impact agent performance across versions
+- Use version control to test different agent configurations and compare results
+
+**Note:** The Evaluate tab currently runs tests on your Preview version of the agent.
+
+Watch a video walking you how to use the Evaluate tab below: 
