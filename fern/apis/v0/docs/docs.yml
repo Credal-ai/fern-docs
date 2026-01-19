@@ -1,0 +1,7 @@
+navigation: 
+  - section: Introduction
+    contents: 
+      - page: My Page
+        path: ../../../docs/pages/introduction.mdx  # relative path to the file
+  - api: API Reference
+    api-name: v0

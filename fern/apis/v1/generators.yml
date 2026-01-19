@@ -1,0 +1,43 @@
+metadata:
+  description: Official client library for Credal APIs
+  authors:
+    - name: Credal.ai
+      email: support@credal.ai
+default-group: python-local
+groups:
+  typescript-sdk:
+    generators:
+      - name: fernapi/fern-typescript-node-sdk
+        version: 3.43.7
+        output:
+          location: npm
+          package-name: '@credal/sdk'
+          token: OIDC
+        github:
+          repository: Credal-ai/credal-typescript-sdk
+          mode: pull-request
+        config:
+          namespaceExport: Credal
+          includeApiReference: true
+          allowCustomFetcher: true
+        smart-casing: false
+  python-sdk:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 4.46.14
+        output:
+          location: pypi
+          package-name: credal
+          token: ${PYPI_TOKEN}
+        github:
+          repository: credal-ai/credal-python-sdk
+          mode: pull-request
+        smart-casing: false
+  python-local:
+    generators:
+      - name: fernapi/fern-python-sdk
+        version: 4.46.14
+        output:
+          location: local-file-system
+          path: ../generated/python
+        smart-casing: false

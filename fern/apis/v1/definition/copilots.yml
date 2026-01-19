@@ -1,0 +1,770 @@
+imports:
+  common: ./common.yml
+service:
+  base-path: /v0/copilots
+  auth: true
+  endpoints:
+    createCopilot:
+      availability: pre-release
+      path: /createCopilot
+      method: POST
+      docs: Create a new agent. The API key used will be added to the agent for future Requests
+      request:
+        name: CreateCopilotRequest
+        body:
+          properties:
+            name:
+              type: string
+              docs: |
+                A descriptive name for the agent.
+            description:
+              type: string
+              docs: |
+                An in depth name for the agent's function. Useful for routing requests to the right agent.
+            collaborators:
+              type: list<common.Collaborator>
+              docs: |
+                A list of collaborator emails and roles that will have access to the agent.
+      response: CreateCopilotResponse
+      examples:
+        - name: Example0
+          request:
+            name: Customer Agent
+            description: This agent is used to answer customer requests based on internal documentation.
+            collaborators:
+              - email: test@gmail.com
+                role: editor
+          response:
+            body:
+              agentId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
+    createConversation:
+      path: /createConversation
+      method: POST
+      docs: OPTIONAL. Create a new conversation with the Agent. The conversation ID can be used in the `sendMessage` endpoint. The `sendMessage` endpoint automatically creates new conversations upon first request, but calling this endpoint can simplify certain use cases where it is helpful for the application to have the conversation ID before the first message is sent.
+      request:
+        name: CreateConversationRequest
+        body:
+          properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated Agent ID to specify which agent to route the request to.
+            userEmail:
+              type: string
+              docs: |
+                End-user for the conversation.
+      response: CreateConversationResponse
+      examples:
+        - name: Example0
+          request:
+            agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            userEmail: ravin@credal.ai
+          response:
+            body:
+              conversationId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+    provideMessageFeedback:
+      path: /provideMessageFeedback
+      method: POST
+      request:
+        name: ProvideMessageFeedbackRequest
+        body:
+          properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated Agent ID to specify which agent to route the request to.
+            userEmail:
+              type: string
+              docs: |
+                The user profile you want to use when providing feedback.
+            messageId:
+              type: uuid
+              docs: |
+                The message ID for which feedback is being provided.
+            messageFeedback:
+              type: MessageFeedback
+              docs: |
+                The feedback provided by the user.
+      examples:
+        - name: Example0
+          request:
+            userEmail: ravin@credal.ai
+            messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
+            agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            messageFeedback:
+              feedback: NEGATIVE
+              suggestedAnswer: "Yes, Credal is SOC 2 compliant."
+              descriptiveFeedback: "The response should be extremely clear and concise."
+
+    sendMessage:
+      path: /sendMessage
+      method: POST
+      request:
+        name: SendMessageRequest
+        body:
+          properties:
+            agentId:
+              type: uuid
+              docs: |
+                Credal-generated Agent ID to specify which agent to route the request to.
+            message:
+              type: string
+              docs: |
+                The message you want to send to your agent.
+            userEmail:
+              type: string
+              docs: |
+                The user profile you want to use when sending the message.
+            conversationId:
+              type: optional<uuid>
+              docs: |
+                Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+            inputVariables:
+              type: optional<list<InputVariable>>
+              availability: in-development
+              docs: |
+                Optional input variables to be used in the message. Map the name of the variable to a list of urls.
+      response: SendAgentMessageResponse
+      examples:
+        - name: Example0
+          request:
+            agentId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            message: Is Credal SOC 2 compliant?
+            userEmail: ravin@credal.ai
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
+          response:
+            body:
+              sendChatResult:
+                type: ai_response_result
+                conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                response:
+                  message: "Based on the context provided, Credal is SOC 2 compliant..."
+                  dataChunk: "...SOC 2 is a technical audit that requires companies to establish and follow strict information security policies and procedures. Credal's SOC 2 report is available upon request..."
+                warnings: []
+                inserted_audit_log:
+                  id: 5842804e-ffbe-4f8d-873e-f007fff93440
+                referencedSources:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                  ]
+                sourcesInDataContext:
+                  [
+                    {
+                      id: "1",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123456",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document",
+                      url: "https://drive.google.com/file/d/123456/view",
+                    },
+                    {
+                      id: "2",
+                      externalResourceId:
+                        {
+                          externalResourceId: "123457",
+                          resourceType: "GOOGLE_DRIVE_ITEM",
+                        },
+                      name: "Example Document 2",
+                      url: "https://drive.google.com/file/d/123457/view",
+                    },
+                  ]
+                webSearchResults:
+                  [
+                    {
+                      title: "SOC 2 Compliance",
+                      url: "https://www.credal.ai/soc2",
+                      contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                    },
+                  ]
+                messageId: dd721cd8-4bf2-4b94-9869-258df3dab9dc
+
+    streamMessage:
+      availability: pre-release
+      docs: |
+        This endpoint allows you to send a message to a specific agent and get the response back as a streamed set of Server-Sent Events.
+      path: /streamMessage
+      method: POST
+      request:
+        name: StreamMessageRequest
+        body:
+          properties:
+            copilotId:
+              type: uuid
+              docs: |
+                Credal-generated Agent ID to specify which agent to route the request to.
+            message:
+              type: string
+              docs: |
+                The message you want to send to your agent.
+            email:
+              type: string
+              docs: |
+                The user profile you want to use when sending the message.
+            conversationId:
+              type: optional<uuid>
+              docs: |
+                Credal-generated conversation ID for sending follow up messages. Conversation ID is returned after initial message. Optional, to be left off for first messages on new conversations.
+            inputVariables:
+              type: optional<list<InputVariable>>
+              availability: in-development
+              docs: |
+                Optional input variables to be used in the message. Map the name of the variable to a list of urls.
+      response-stream:
+        docs: |
+          This endpoint returns a stream of server sent events. These can be in two formats - one is an initial event, followed by multiple data chunks, followed by a final chunk, or the other format is just one blocked event. See the examples for more details.
+        type: StreamingChunk
+        format: sse
+      examples:
+        - name: Example Success
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            message: Is Credal SOC 2 compliant?
+            email: ravin@credal.ai
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
+          response:
+            stream:
+              - event: initial
+                data:
+                  event: initial
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  webSearchResults:
+                    [
+                      {
+                        title: "SOC 2 Compliance",
+                        url: "https://www.credal.ai/soc2",
+                        contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                      },
+                    ]
+                  warnings: []
+              - event: data_chunk
+                data:
+                  event: data_chunk
+                  chunk: Based on
+              - event: data_chunk
+                data:
+                  event: data_chunk
+                  chunk: the context provided,
+              - event: data_chunk
+                data:
+                  event: data_chunk
+                  chunk: Credal is SOC 2 compliant.
+              - event: end_of_message
+                data:
+                  event: end_of_message
+              - event: final_chunk
+                data:
+                  event: final_chunk
+                  sources:
+                    [
+                      {
+                        id: "1",
+                        externalResourceId:
+                          {
+                            externalResourceId: "123456",
+                            resourceType: "GOOGLE_DRIVE_ITEM",
+                          },
+                        name: "Example Document",
+                        url: "https://drive.google.com/file/d/123456/view",
+                      },
+                    ]
+        - name: Example Blocked
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            message: Is this user eligible for benefits based on their date of birth?
+            email: ravin@credal.ai
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c26] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c24,
+                    ],
+                },
+              ]
+          response:
+            stream:
+              - event: blocked
+                data:
+                  event: blocked
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  warnings: []
+                  blocks: ["This request contains PII"]
+        - name: Example Error
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c25
+            message: Is Credal SOC 2 compliant?
+            email: ravin@credal.ai
+            inputVariables:
+              [
+                { name: "input1", ids: [82e4b12a-6990-45d4-8ebd-85c00e030c24] },
+                {
+                  name: "input2",
+                  ids:
+                    [
+                      82e4b12a-6990-45d4-8ebd-85c00e030c25,
+                      82e4b12a-6990-45d4-8ebd-85c00e030c26,
+                    ],
+                },
+              ]
+          response:
+            stream:
+              - event: initial
+                data:
+                  event: initial
+                  conversationId: fc938005-92db-411a-88eb-32ca50d5f744
+                  webSearchResults:
+                    [
+                      {
+                        title: "SOC 2 Compliance",
+                        url: "https://www.credal.ai/soc2",
+                        contents: "Credal is SOC 2 compliant. Learn more about SOC 2 compliance at Credal.",
+                      },
+                    ]
+                  warnings: []
+              - event: error_chunk
+                data:
+                  event: error_chunk
+                  error:
+                    message: This is an error
+              - event: end_of_message
+                data:
+                  event: end_of_message
+              - event: final_chunk
+                data:
+                  event: final_chunk
+                  sources: []
+
+    addCollectionToCopilot:
+      availability: pre-release
+      path: /addCollectionToCopilot
+      method: POST
+      docs: Link a collection with a agent. The API Key used must be added to both the collection and the agent beforehand.
+      request:
+        name: AddCollectionToCopilotRequest
+        body:
+          properties:
+            copilotId:
+              type: uuid
+              docs: |
+                Credal-generated Agent ID to add the collection to.
+            collectionId:
+              type: uuid
+              docs: |
+                Credal-generated collection ID to add.
+      examples:
+        - name: Example0
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
+
+    removeCollectionFromCopilot:
+      availability: pre-release
+      path: /removeCollectionFromCopilot
+      method: POST
+      docs: Unlink a collection with a agent. The API Key used must be added to both the collection and the agent beforehand.
+      request:
+        name: RemoveCollectionFromCopilotRequest
+        body:
+          properties:
+            copilotId:
+              type: uuid
+              docs: |
+                Credal-generated agent ID to add the collection to.
+            collectionId:
+              type: uuid
+              docs: |
+                Credal-generated collection ID to add.
+      examples:
+        - name: Example0
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            collectionId: def1055f-83c5-43d6-b558-f7a38e7b299e
+
+    updateConfiguration:
+      availability: pre-release
+      path: /updateConfiguration
+      method: POST
+      docs: Update the configuration for a agent
+      request:
+        name: UpdateConfigurationRequest
+        body:
+          properties:
+            copilotId:
+              type: uuid
+              docs: |
+                Credal-generated agent ID to add the collection to.
+            configuration:
+              type: Configuration
+      examples:
+        - name: Example0
+          request:
+            copilotId: 82e4b12a-6990-45d4-8ebd-85c00e030c24
+            configuration:
+              name: Customer Agent
+              description: This agent is used to answer customer requests based on internal documentation.
+              prompt: You are a polite, helpful assistant used to answer customer requests.
+              aiEndpointConfiguration:
+                baseUrl: https://api.openai.com/v1/
+                apiKey: <YOUR_API_KEY_HERE>
+
+    deleteCopilot:
+      availability: pre-release
+      path: /deleteCopilot
+      method: DELETE
+      # docs: Delete copilot
+      request:
+        name: DeleteCopilotRequest
+        body:
+          properties:
+            id:
+              type: uuid
+              docs: Copilot ID
+      response: DeleteCopilotResponse
+      examples:
+        - name: Example0
+          request:
+            id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+          response:
+            body:
+              copilotId: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+
+    export:
+      availability: pre-release
+      path: /export
+      method: POST
+      docs: |
+        Export copilot configurations for backup or migration purposes.
+
+        **IMPORTANT**: This endpoint requires:
+        - Admin privileges
+        - The 'ai-usage-analytics-log.export' scope on the API key
+
+        Returns all deployed copilots with their full configuration including model settings, tools, and deployment details. Optional date filters can be applied to narrow down results.
+      request:
+        name: ExportCopilotsRequest
+        body:
+          properties:
+            agentCreatedFrom:
+              type: optional<datetime>
+              docs: |
+                Filter copilots created on or after this datetime (ISO 8601 format).
+            agentCreatedTo:
+              type: optional<datetime>
+              docs: |
+                Filter copilots created before or on this datetime (ISO 8601 format).
+            versionCreatedFrom:
+              type: optional<datetime>
+              docs: |
+                Filter copilot versions created on or after this datetime (ISO 8601 format).
+            versionCreatedTo:
+              type: optional<datetime>
+              docs: |
+                Filter copilot versions created before or on this datetime (ISO 8601 format).
+            limit:
+              type: optional<integer>
+              docs: |
+                Maximum number of copilots to return. Must be a positive integer with a maximum value of 1000. Defaults to 100.
+            cursor:
+              type: optional<string>
+              docs: |
+                Cursor for pagination. Use the cursor returned in the previous response to fetch the next page of results. If not provided, returns the first page.
+      response: ExportCopilotsResponse
+      examples:
+        - name: Example0
+          request:
+            agentCreatedFrom: "2024-01-01T00:00:00Z"
+            agentCreatedTo: "2024-12-31T23:59:59Z"
+          response:
+            body:
+              data:
+                - id: "ac20e6ba-0bae-11ef-b25a-efca73df4c3a"
+                  name: "Customer Support Agent"
+                  description: "Handles customer inquiries based on internal documentation"
+                  modelConfiguration:
+                    modelProvider: "openai"
+                    modelName: "gpt-4"
+                    temperature: 0.7
+                  aiEndpointConfiguration:
+                    baseUrl: "https://api.openai.com/v1/"
+                  toolConfigurations: []
+                  inputs: []
+                  deploymentConfiguration:
+                    isDeployed: true
+                  agentCreatedDatetime: "2024-06-15T10:30:00Z"
+                  versionCreatedDatetime: "2024-06-20T14:45:00Z"
+                  isDeployed: true
+              hasMore: true
+              nextCursor: "bc30e7ca-1caf-42fa-c36b-fadb84ef5d4b"
+
+types:
+  # CreateConversationRequest:
+  #   properties:
+  #     userEmail: string
+  CreateConversationResponse:
+    properties:
+      conversationId: uuid
+
+  SendAgentMessageResponse:
+    properties:
+      sendChatResult: SendMessageResponse
+
+  SendMessageResponse:
+    union:
+      ai_response_result:
+        type: MessageReply
+        docs: |
+          Returned when there is a reply
+          fetched from the agent.
+      blocked_result:
+        type: MessageBlocked
+        docs: |
+          Returned when Credal detects possible
+          infosec violations and blocks the message.
+
+  InputVariable:
+    properties:
+      name: string
+      ids: list<uuid>
+
+  MessageReply:
+    properties:
+      conversationId: uuid
+      response: ResponseChunk
+      warnings: list<string>
+      inserted_audit_log: InsertedAuditLog
+      referencedSources: list<ReferencedSource>
+      sourcesInDataContext: list<ReferencedSource>
+      webSearchResults: list<WebSearchResult>
+      messageId: uuid
+
+  ReferencedSource:
+    properties:
+      id: string
+      externalResourceId: common.ExternalResourceId
+      name: string
+      url: optional<string>
+
+  WebSearchResult:
+    properties:
+      title: string
+      url: string
+      contents: string
+
+  ResponseChunk:
+    properties:
+      message: string
+      dataChunk: string
+      structuredOutput: optional<unknown>
+
+  InsertedAuditLog:
+    properties:
+      id: uuid
+
+  MessageBlocked:
+    properties:
+      conversationId: uuid
+      blocks: list<string>
+      warnings: list<string>
+      inserted_audit_log: InsertedAuditLog
+
+  FeedbackEnum:
+    enum:
+      - POSITIVE
+      - NEGATIVE
+
+  MessageFeedback:
+    properties:
+      feedback: FeedbackEnum
+      suggestedAnswer: optional<string>
+      descriptiveFeedback: optional<string>
+
+  Configuration:
+    properties:
+      aiEndpointConfiguration: optional<AIEndpointConfiguration>
+      name: optional<string>
+      description: optional<string>
+      prompt: optional<string>
+
+  AIEndpointConfiguration:
+    properties:
+      baseUrl: string
+      apiKey: string
+
+  CreateCopilotResponse:
+    properties:
+      agentId: uuid
+
+  DeleteCopilotResponse:
+    properties:
+      copilotId: uuid
+
+  StringFieldSchema:
+    properties:
+      field: string
+      operator: common.Operator
+      value: string
+
+  NumberFieldSchema:
+    properties:
+      field: string
+      operator: common.Operator
+      value: integer
+
+  BooleanFieldSchema:
+    properties:
+      field: string
+      operator: literal<"==">
+      value: boolean
+
+  DatetimeFieldSchema:
+    properties:
+      field: string
+      operator: common.Operator
+      value: date
+
+  Filter:
+    discriminant: fieldType
+    union:
+      string: StringFieldSchema
+      number: NumberFieldSchema
+      boolean: BooleanFieldSchema
+      datetime: DatetimeFieldSchema
+
+  CollectionFilteredData:
+    properties:
+      collectionId: uuid
+      filteredDataIds: list<uuid>
+      filters: list<Filter>
+
+  DataFilter:
+    properties:
+      semanticSearchTerms: list<string>
+      webSearchTerm: list<string>
+      filteredDataSourcesPerCollection: list<CollectionFilteredData>
+
+  InitialChunk:
+    properties:
+      conversationId: string
+      warnings: list<string>
+      webSearchResults: list<WebSearchResult>
+      dataFilters: optional<DataFilter>
+
+  DataChunk:
+    properties:
+      chunk: string
+
+  FinalChunk:
+    properties:
+      sources: list<ReferencedSource>
+
+  EndOfMessageChunk:
+    properties: {}
+
+  BlockedChunk:
+    properties:
+      conversationId: uuid
+      warnings: list<string>
+      blocks: list<string>
+
+  ErrorChunkData:
+    properties:
+      message: string
+
+  ErrorChunk:
+    properties:
+      error: ErrorChunkData
+
+  StreamingChunk:
+    discriminant: event
+    union:
+      initial: InitialChunk
+      data_chunk: DataChunk
+      end_of_message: EndOfMessageChunk
+      final_chunk: FinalChunk
+      blocked: BlockedChunk
+      error_chunk: ErrorChunk
+
+  ExportedCopilot:
+    properties:
+      id:
+        type: uuid
+        docs: The unique identifier of the copilot.
+      name:
+        type: string
+        docs: The name of the deployed copilot version.
+      description:
+        type: string
+        docs: The description of the deployed copilot version.
+      modelConfiguration:
+        type: unknown
+        docs: Model configuration including provider, model name, temperature, and other settings.
+      aiEndpointConfiguration:
+        type: unknown
+        docs: AI endpoint configuration including base URL and authentication details.
+      toolConfigurations:
+        type: unknown
+        docs: List of tool configurations available to the copilot.
+      inputs:
+        type: unknown
+        docs: Input variable configurations for the copilot.
+      deploymentConfiguration:
+        type: unknown
+        docs: Deployment settings and configuration.
+      agentCreatedDatetime:
+        type: datetime
+        docs: ISO 8601 timestamp when the copilot was originally created.
+      versionCreatedDatetime:
+        type: datetime
+        docs: ISO 8601 timestamp when the deployed version was created.
+      isDeployed:
+        type: boolean
+        docs: Indicates if the copilot is currently deployed (always true for export results).
+
+  ExportCopilotsResponse:
+    properties:
+      data:
+        type: list<ExportedCopilot>
+        docs: List of exported copilots matching the query filters.
+      hasMore:
+        type: boolean
+        docs: Indicates whether there are more results available for pagination.
+      nextCursor:
+        type: optional<string>
+        docs: Cursor to use for fetching the next page of results. This is a UUID string. If null or not present, there are no more results.
