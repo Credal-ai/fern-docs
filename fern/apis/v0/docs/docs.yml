@@ -1,0 +1,6 @@
+navigation: 
+  - api: API Reference
+    api-name: v0
+    snippets:
+      python: credal
+      typescript: '@credal/sdk'
