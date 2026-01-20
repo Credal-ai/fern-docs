@@ -12,7 +12,7 @@ products:
     path: ./docs/credal-guide.yml
     icon: fa-solid fa-book
   - display-name: API Reference
-    path: ./apis/v1/docs/docs.yml
+    path: ./apis/v0/docs/docs.yml
     versions:
       - display-name: v0
         path: ./apis/v0/docs/docs.yml
