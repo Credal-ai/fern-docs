@@ -23,7 +23,9 @@ jobs:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          fern generate --group typescript-sdk --version ${{ inputs.version }} --log-level debug
+          VERSION=${{ inputs.version }}
+          MAJOR_VERSION=$(echo "${VERSION%%.*}")
+          fern generate --group typescript-sdk --version ${{ inputs.version }} --api "v$MAJOR_VERSION" --log-level debug
 
       - name: Regenerate Docs
         env:
