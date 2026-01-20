@@ -28,7 +28,7 @@ Agents have the ability to use predefined tools. Many of the tools are in Beta, 
 
    When configuring the Schema, there are a few things to keep in mind:
 
-   - The Name must match the name of a metadata field you have on the documents in your collection. That metadata can be set when uploading the data via the [uploadDocumentContents API endpoint](api-reference/document-catalog/metadata) or patched in after the fact using the [metadata endpoint](api-reference/document-catalog/metadata).
+   - The Name must match the name of a metadata field you have on the documents in your collection. That metadata can be set when uploading the data via the [uploadDocumentContents API endpoint](/api-reference/v-0/api-reference/document-catalog/metadata) or patched in after the fact using the [metadata endpoint](/api-reference/v-0/api-reference/document-catalog/metadata).
    - The description is used by the LLM to decide when to filter on each field, so be as descriptive as possible.
    - Checking “Categorical” indicates that there are a small number of values this field might have (less than 50). When it is checked, Credal will detect all the possible values and provide those to the LLM so that it knows what values it can filter for.
 
