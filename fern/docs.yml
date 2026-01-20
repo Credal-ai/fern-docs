@@ -9,7 +9,7 @@ instances:
 title: Credal | Documentation
 products:
   - display-name: User Guide
-    path: ./docs/guide.yml
+    path: ./docs/user-guide.yml
     icon: fa-solid fa-book
   - display-name: API Reference
     path: ./apis/v0/docs/docs.yml
