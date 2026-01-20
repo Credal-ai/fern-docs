@@ -4,6 +4,7 @@ navigation:
       - page: Introduction
         path: ./pages/introduction.mdx
       - page: Quickstart
+        slug: quickstart
         path: ./pages/quickstart.mdx
       - page: Agent Building Webinars
         path: ./pages/webinars.mdx
