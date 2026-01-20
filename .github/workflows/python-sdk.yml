@@ -26,7 +26,9 @@ jobs:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN}}
         run: |
-          fern generate --group python-sdk --version ${{ inputs.version }} --log-level debug
+          VERSION=${{ inputs.version }}
+          MAJOR_VERSION=$(echo "${VERSION%%.*}")
+          fern generate --group python-sdk --version ${{ inputs.version }} --api "v$MAJOR_VERSION" --log-level debug
 
       - name: Regenerate Docs
         env:
