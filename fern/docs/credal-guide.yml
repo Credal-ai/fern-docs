@@ -1,0 +1,173 @@
+navigation:
+  - section: Getting Started
+    contents:
+      - page: Introduction
+        path: ./pages/introduction.mdx
+      - page: Quickstart
+        path: ./pages/quickstart.mdx
+      - page: Agent Building Webinars
+        path: ./pages/webinars.mdx
+      - section: 'Tutorials: Common First Agents'
+        contents:
+          - section: Employee Onboarding Assistant
+            contents:
+              - page: Overview
+                path: ./pages/tutorials/employee-onboarding/overview.mdx
+              - page: Answer Basic Questions
+                path: ./pages/tutorials/employee-onboarding/version-1.mdx
+              - page: Searching Internal and External Knowledge
+                path: ./pages/tutorials/employee-onboarding/version-2.mdx
+              - page: Connect with Internal Systems
+                path: ./pages/tutorials/employee-onboarding/version-3.mdx
+          - section: IT Security Assistant
+            contents:
+              - page: Overview
+                path: ./pages/tutorials/it-security/overview.mdx
+              - page: Answer Questions with Data
+                path: ./pages/tutorials/it-security/use-data.mdx
+              - page: Track Tickets in Jira
+                path: ./pages/tutorials/it-security/connect-to-jira.mdx
+              - page: Publish to Slack
+                path: ./pages/tutorials/it-security/deploy-to-slack.mdx
+          - section: Snowflake Query Assistant
+            contents:
+              - page: Overview
+                path: ./pages/tutorials/snowflake-query/overview.mdx
+              - page: Initial Snowflake Setup
+                path: ./pages/tutorials/snowflake-query/initial-setup.mdx
+              - page: Query Approaches
+                path: ./pages/tutorials/snowflake-query/query-approaches.mdx
+              - page: Testing your solution
+                path: ./pages/tutorials/snowflake-query/testing-solution.mdx
+          - section: Salesforce Query Assistant
+            contents:
+              - page: Overview
+                path: ./pages/tutorials/salesforce-query/salesforce-example.mdx
+      - page: FAQs
+        path: ./pages/getting-started/faqs.mdx
+  - section: Platform
+    contents:
+      - section: Agents
+        contents:
+          - page: Setting Up An Agent
+            path: ./pages/platform/agents/in-depth-overview/agent-setup-page.mdx
+          - section: Configure An Agent
+            contents:
+              - page: a. Name and Description
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/name-and-description.mdx
+              - page: b. AI Model
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/ai-model.mdx
+              - page: c. Prompt
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/prompt.mdx
+              - page: d. Model Q&A Pairs
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/model-qa-pairs.mdx
+              - page: e. Actions
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/actions.mdx
+              - page: f. Data
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
+              - page: g. Tools
+                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
+              - page: h. Data Processing
+                path: ./pages/platform/agents/in-depth-overview/data-processing.mdx
+          - page: Evaluating Your Agent
+            path: ./pages/platform/agents/in-depth-overview/agent-evaluate.mdx
+          - page: Querying Your Agent
+            path: ./pages/platform/agents/in-depth-overview/agent-querying.mdx
+          - page: Sharing Your Agent
+            path: ./pages/platform/agents/in-depth-overview/agent-sharing.mdx
+          - page: Attaching Actions
+            path: ./pages/platform/agents/attaching-actions.mdx
+          - page: Agent Collaboration
+            path: ./pages/platform/agents/agent-collaboration.mdx
+          - section: Publishing Agents
+            contents:
+              - page: Overview
+                path: ./pages/platform/agents/deployment/overview.mdx
+              - page: Agents in Slack
+                path: ./pages/platform/agents/deployment/slack-deployment.mdx
+              - page: Custom Dedicated Slack Bots
+                path: ./pages/platform/agents/deployment/slack-app-manifest.mdx
+              - page: API Deployment
+                path: ./pages/platform/agents/deployment/api-deployment.mdx
+          - page: Feedback
+            path: ./pages/platform/agents/in-depth-overview/agent-feedback.mdx
+          - page: Troubleshooting
+            path: ./pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
+          - page: Contact Support
+            path: ./pages/platform/agents/in-depth-overview/contact-support.mdx
+      - section: Actions
+        contents:
+          - page: Overview
+            path: ./pages/platform/actions/overview.mdx
+          - page: Open Source Actions
+            path: ./pages/platform/actions/open-source-actions.mdx
+          - page: Credentials and Security
+            path: ./pages/platform/actions/action-security-model.mdx
+          - page: Human Approval Options
+            path: ./pages/platform/actions/action-human-approval.mdx
+          - page: Action Parameters
+            path: ./pages/platform/actions/action-parameters.mdx
+          - page: Build Your First Action
+            path: ./pages/platform/actions/build-your-first-action.mdx
+          - section: Supported Actions
+            contents:
+              - page: Confluence
+                path: ./pages/platform/actions/action-providers/confluence.mdx
+              - page: Custom Webhooks
+                path: ./pages/platform/actions/action-providers/custom-webhook.mdx
+              - page: Finnhub
+                path: ./pages/platform/actions/action-providers/finnhub.mdx
+              - page: Firecrawl
+                path: ./pages/platform/actions/action-providers/firecrawl.mdx
+              - page: Google Maps
+                path: ./pages/platform/actions/action-providers/google-maps.mdx
+              - page: Gsuite
+                path: ./pages/platform/actions/action-providers/gsuite.mdx
+              - page: Jira
+                path: ./pages/platform/actions/action-providers/jira.mdx
+              - page: LinkedIn
+                path: ./pages/platform/actions/action-providers/linkedin.mdx
+              - page: Looker
+                path: ./pages/platform/actions/action-providers/looker.mdx
+              - page: Microsoft Teams
+                path: ./pages/platform/actions/action-providers/microsoft-teams.mdx
+              - page: MongoDB
+                path: ./pages/platform/actions/action-providers/mongodb.mdx
+              - page: NWS
+                path: ./pages/platform/actions/action-providers/nws.mdx
+              - page: OpenStreetMap
+                path: ./pages/platform/actions/action-providers/openstreetmap.mdx
+              - page: Resend
+                path: ./pages/platform/actions/action-providers/resend.mdx
+              - page: Salesforce
+                path: ./pages/platform/actions/action-providers/salesforce.mdx
+              - page: Slack
+                path: ./pages/platform/actions/action-providers/slack.mdx
+              - page: Snowflake
+                path: ./pages/platform/actions/action-providers/snowflake.mdx
+              - page: X
+                path: ./pages/platform/actions/action-providers/x.mdx
+              - page: Zendesk
+                path: ./pages/platform/actions/action-providers/zendesk.mdx
+      - page: Bulk Analysis
+        path: ./pages/platform/bulk-analysis.mdx
+      - section: Integrations
+        contents:
+          - page: Data Sources / Action Providers
+            path: ./pages/platform/integrations/data-sources.mdx
+          - section: Metadata and Smart Filtering
+            contents:
+              - page: Smart Filtering (beta)
+                path: ./pages/platform/integrations/metadata-and-smart-filtering/smart-filtering.mdx
+              - page: Collection Schemas
+                path: ./pages/platform/integrations/metadata-and-smart-filtering/collection-schemas.mdx
+              - page: AI Entity Extraction (beta)
+                path: ./pages/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction.mdx
+          - page: Bring Your Own Custom Data Sources
+            path: ./pages/platform/integrations/bring-your-own-data.mdx
+      - section: Administration
+        contents:
+          - page: Single Sign-On (SSO)
+            path: ./pages/administration/sso.mdx
+          - page: Audit Log / Data Exports
+            path: ./pages/administration/audit-log-data-exports.mdx
