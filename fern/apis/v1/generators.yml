@@ -14,8 +14,7 @@ groups:
           package-name: '@credal/sdk'
           token: OIDC
         github:
-          repository: Credal-ai/credal-typescript-sdk
-          branch: v1
+          repository: Credal-ai/credal-typescript-sdk-v1
           mode: pull-request
         config:
           namespaceExport: Credal
@@ -31,8 +30,7 @@ groups:
           package-name: credal
           token: ${PYPI_TOKEN}
         github:
-          repository: credal-ai/credal-python-sdk
-          branch: v1
+          repository: Credal-ai/credal-python-sdk-v1
           mode: pull-request
         smart-casing: false
   python-local:
