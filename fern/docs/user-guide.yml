@@ -60,6 +60,7 @@ navigation:
                 path: ./pages/platform/agents/configure-steps/prompt.mdx
               - section: Add Connectors
                 contents:
+                  # coming soon: overview page
                   - page: Data
                     path: ./pages/platform/agents/configure-steps/connectors/data.mdx
                   - page: Actions
