@@ -48,7 +48,7 @@ navigation:
         path: ./pages/getting-started/faqs.mdx
   - section: Platform
     contents:
-      - section: Agents
+      - section: Agent Builder
         contents:
           - section: Configuration
             contents:
@@ -86,7 +86,7 @@ navigation:
                 path: ./pages/platform/agents/deployment/slack-app-manifest.mdx
               - page: API Deployment
                 path: ./pages/platform/agents/deployment/api-deployment.mdx
-      - section: Actions
+      - section: Governed Actions
         contents:
           - page: Overview
             path: ./pages/platform/actions/overview.mdx
