@@ -99,8 +99,10 @@ navigation:
           - page: Action Parameters
             path: ./pages/platform/actions/action-parameters.mdx
       - page: Bulk Analysis
+        # Soon to be rebranded into workflows, but the credal way :) 
         path: ./pages/platform/bulk-analysis.mdx
       - section: Integrations
+        # Soon to be renamed Document Collections
         contents:
           - page: Data Sources / Action Providers
             path: ./pages/platform/integrations/data-sources.mdx
@@ -115,8 +117,10 @@ navigation:
           - page: Bring Your Own Custom Data Sources
             path: ./pages/platform/integrations/bring-your-own-data.mdx
       - section: Administration
+        # Soon to be renamed Admin Control Center
         contents:
           - page: Single Sign-On (SSO)
             path: ./pages/administration/sso.mdx
           - page: Audit Log / Data Exports
             path: ./pages/administration/audit-log-data-exports.mdx
+      # coming soon... Enterprise search
