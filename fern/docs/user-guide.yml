@@ -60,14 +60,14 @@ navigation:
                 path: ./pages/platform/agents/configure-steps/prompt.mdx
               - section: Add Connectors
                 contents:
-                  - page: Syncing Data
+                  - page: Data
                     path: ./pages/platform/agents/configure-steps/connectors/data.mdx
-                  - page: SaaS Providers
+                  - page: Actions
                     path: ./pages/platform/agents/configure-steps/connectors/saas.mdx
                   - page: Document Collections
                     path: ./pages/platform/agents/configure-steps/connectors/document-collections.mdx
-                  - page: Credal MCP Servers
-                    path: ./pages/platform/agents/configure-steps/connectors/mcp-servers.mdx
+                  # - page: Credal MCP Servers
+                  #   path: ./pages/platform/agents/configure-steps/connectors/mcp-servers.mdx
               - page: Agent Collaboration
                 path: ./pages/platform/agents/configure-steps/agent-collaboration.mdx
               - page: Memory and Feedback
