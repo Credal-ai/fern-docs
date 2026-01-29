@@ -69,13 +69,13 @@ navigation:
                   - page: Credal MCP Servers
                     path: ./pages/platform/agents/configure-steps/connectors/mcp-servers.mdx
               - page: Agent Collaboration
-                path: ./pages/platform/agents/agent-collaboration.mdx
+                path: ./pages/platform/agents/configure-steps/agent-collaboration.mdx
               - page: Memory and Feedback
-                path: ./pages/platform/agents/agent-feedback.mdx
+                path: ./pages/platform/agents/configure-steps/agent-feedback.mdx
           - page: Testing Your Agent
             path: ./pages/platform/agents/agent-testing.mdx
           - page: Evaluating Your Agent
-            path: ./pages/platform/agents/configure-steps/agent-evaluate.mdx
+            path: ./pages/platform/agents/agent-evaluate.mdx
           - section: Publishing Agents
             contents:
               - page: Overview
