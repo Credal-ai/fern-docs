@@ -31,6 +31,7 @@ _The Federal Rules of Civil Procedure are procedural rules that apply to civil c
 _--- Start Context ---_  
 _{{data}}_  
 _--- End Context ---_
+
   </Accordion>
 
   <Accordion title="Example Prompt: Credal's Information Security Agent">
@@ -39,6 +40,7 @@ _--- End Context ---_
 _--------- Context: ---------_  
 _{{data}}_  
 _--------- End Context ---------_
+
   </Accordion>
 </AccordionGroup>
 
@@ -53,6 +55,18 @@ For instance, in a Agent built to synthesize research reports, you can save the 
 The saved Suggested Questions are displayed below the Agent prompt box and enable the user to auto-populate the prompt in one click.
 
 ![agent_saved_suggested_questions.png](/docs/assets/agents/create-steps/agent_saved_suggested_questions.png)
+
+---
+
+## Model Q&A Pairs
+
+In the prompt section, you can also provide some model Q&A pairs. This lets the agent know what a good answer looks like. To add a pair, select the "Add Pair" button and insert your question and answer in the pop-out form.
+
+![saved_suggested_questions_display.png](/docs/assets/agents/create-steps/agent_saved_suggested_questions.png)
+
+Your Q&A pairs should reflect the form and depth of response you are looking for. For example, if your agent's job is to review and summarize documents, your model Q&A should include a model example of a summary, showing the type of information that should be included.
+
+---
 
 # Writing a Background Prompt
 
@@ -71,9 +85,11 @@ Here's why prompt engineering is worth your attention:
 Here is an overview of all the information that is included in a Credal background prompt and how you can use it to guide your agent:
 
 ## Role
+
 Who is the agent? What is their job title? What is their role in the company? Knowing who the agent is will help it understand what it is doing and how to respond to user queries.
 
 ## Goal
+
 What is the agent supposed to accomplish? This will help the agent understand what the end result should look like to make sure it is properly helping the user.
 
 ## Output Format
@@ -104,7 +120,7 @@ Provide a riddle using the following structure:
 ## Instructions
 
 What steps should the agent take to achieve its ultimate goal? This section controls the overall workflow of the agent. If you want the agent to call actions in a specific order, ask the user for more
-information at a specific point, or look at specific data before making a decision, you can specify that all here. 
+information at a specific point, or look at specific data before making a decision, you can specify that all here.
 
 Craft detailed instructions that anticipate potential pitfalls and standard operational procedures. Your Agent will only know as much as you tell it. Noticing that the responses are too long? Specify response length! Think there's too much fluff in the language? Ask for concise language.
 
@@ -176,11 +192,13 @@ Features 3:
 Avoid imprecise language. Precise prompts lead to more accurate outcomes:
 
 **Less effective:**
+
 ```
 The description for this product should be fairly short, a few sentences only.
 ```
 
 **Better:**
+
 ```
 Describe this product in a 3 to 5 sentence paragraph.
 ```
@@ -190,11 +208,13 @@ Describe this product in a 3 to 5 sentence paragraph.
 Provide positive instructions to guide the model effectively.
 
 **Less effective:**
+
 ```
 DO NOT REPEAT.
 ```
 
 **Better:**
+
 ```
 Encourage concise problem-solving with clear instructions. Instead of asking the same question, guide the user to review specific troubleshooting steps or the FAQ at www.example.com/FAQ.
 ```

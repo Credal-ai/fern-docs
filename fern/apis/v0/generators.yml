@@ -11,7 +11,7 @@ groups:
         version: 3.43.13
         output:
           location: npm
-          package-name: '@credal/sdk'
+          package-name: "@credal/sdk"
           token: OIDC
         github:
           repository: Credal-ai/credal-typescript-sdk

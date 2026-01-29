@@ -8,7 +8,7 @@ navigation:
         path: ./pages/quickstart.mdx
       - page: Agent Building Webinars
         path: ./pages/webinars.mdx
-      - section: 'Tutorials: Common First Agents'
+      - section: "Tutorials: Common First Agents"
         contents:
           - section: Employee Onboarding Assistant
             contents:
@@ -50,36 +50,32 @@ navigation:
     contents:
       - section: Agents
         contents:
-          - page: Setting Up An Agent
-            path: ./pages/platform/agents/in-depth-overview/agent-setup-page.mdx
-          - section: Configure An Agent
+          - section: Configuration
             contents:
-              - page: a. Name and Description
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/name-and-description.mdx
-              - page: b. AI Model
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/ai-model.mdx
-              - page: c. Prompt
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/prompt.mdx
-              - page: d. Model Q&A Pairs
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/model-qa-pairs.mdx
-              - page: e. Actions
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/actions.mdx
-              - page: f. Data
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/data.mdx
-              - page: g. Tools
-                path: ./pages/platform/agents/in-depth-overview/agent-configure-sections/tools.mdx
-              - page: h. Data Processing
-                path: ./pages/platform/agents/in-depth-overview/data-processing.mdx
+              - page: Setting Up An Agent
+                path: ./pages/platform/agents/configure-steps/agent-setup-page.mdx
+              - page: Choosing a Model
+                path: ./pages/platform/agents/configure-steps/ai-model.mdx
+              - page: Writing Instructions
+                path: ./pages/platform/agents/configure-steps/prompt.mdx
+              - section: Add Connectors
+                contents:
+                  - page: Syncing Data
+                    path: ./pages/platform/agents/configure-steps/connectors/data.mdx
+                  - page: SaaS Providers
+                    path: ./pages/platform/agents/configure-steps/connectors/saas.mdx
+                  - page: Document Collections
+                    path: ./pages/platform/agents/configure-steps/connectors/document-collections.mdx
+                  - page: Credal MCP Servers
+                    path: ./pages/platform/agents/configure-steps/connectors/mcp-servers.mdx
+              - page: Agent Collaboration
+                path: ./pages/platform/agents/agent-collaboration.mdx
+              - page: Memory and Feedback
+                path: ./pages/platform/agents/agent-feedback.mdx
+          - page: Testing Your Agent
+            path: ./pages/platform/agents/agent-testing.mdx
           - page: Evaluating Your Agent
-            path: ./pages/platform/agents/in-depth-overview/agent-evaluate.mdx
-          - page: Querying Your Agent
-            path: ./pages/platform/agents/in-depth-overview/agent-querying.mdx
-          - page: Sharing Your Agent
-            path: ./pages/platform/agents/in-depth-overview/agent-sharing.mdx
-          - page: Attaching Actions
-            path: ./pages/platform/agents/attaching-actions.mdx
-          - page: Agent Collaboration
-            path: ./pages/platform/agents/agent-collaboration.mdx
+            path: ./pages/platform/agents/configure-steps/agent-evaluate.mdx
           - section: Publishing Agents
             contents:
               - page: Overview
@@ -90,12 +86,6 @@ navigation:
                 path: ./pages/platform/agents/deployment/slack-app-manifest.mdx
               - page: API Deployment
                 path: ./pages/platform/agents/deployment/api-deployment.mdx
-          - page: Feedback
-            path: ./pages/platform/agents/in-depth-overview/agent-feedback.mdx
-          - page: Troubleshooting
-            path: ./pages/platform/agents/in-depth-overview/agent-troubleshooting.mdx
-          - page: Contact Support
-            path: ./pages/platform/agents/in-depth-overview/contact-support.mdx
       - section: Actions
         contents:
           - page: Overview
@@ -108,48 +98,6 @@ navigation:
             path: ./pages/platform/actions/action-human-approval.mdx
           - page: Action Parameters
             path: ./pages/platform/actions/action-parameters.mdx
-          - page: Build Your First Action
-            path: ./pages/platform/actions/build-your-first-action.mdx
-          - section: Supported Actions
-            contents:
-              - page: Confluence
-                path: ./pages/platform/actions/action-providers/confluence.mdx
-              - page: Custom Webhooks
-                path: ./pages/platform/actions/action-providers/custom-webhook.mdx
-              - page: Finnhub
-                path: ./pages/platform/actions/action-providers/finnhub.mdx
-              - page: Firecrawl
-                path: ./pages/platform/actions/action-providers/firecrawl.mdx
-              - page: Google Maps
-                path: ./pages/platform/actions/action-providers/google-maps.mdx
-              - page: Gsuite
-                path: ./pages/platform/actions/action-providers/gsuite.mdx
-              - page: Jira
-                path: ./pages/platform/actions/action-providers/jira.mdx
-              - page: LinkedIn
-                path: ./pages/platform/actions/action-providers/linkedin.mdx
-              - page: Looker
-                path: ./pages/platform/actions/action-providers/looker.mdx
-              - page: Microsoft Teams
-                path: ./pages/platform/actions/action-providers/microsoft-teams.mdx
-              - page: MongoDB
-                path: ./pages/platform/actions/action-providers/mongodb.mdx
-              - page: NWS
-                path: ./pages/platform/actions/action-providers/nws.mdx
-              - page: OpenStreetMap
-                path: ./pages/platform/actions/action-providers/openstreetmap.mdx
-              - page: Resend
-                path: ./pages/platform/actions/action-providers/resend.mdx
-              - page: Salesforce
-                path: ./pages/platform/actions/action-providers/salesforce.mdx
-              - page: Slack
-                path: ./pages/platform/actions/action-providers/slack.mdx
-              - page: Snowflake
-                path: ./pages/platform/actions/action-providers/snowflake.mdx
-              - page: X
-                path: ./pages/platform/actions/action-providers/x.mdx
-              - page: Zendesk
-                path: ./pages/platform/actions/action-providers/zendesk.mdx
       - page: Bulk Analysis
         path: ./pages/platform/bulk-analysis.mdx
       - section: Integrations

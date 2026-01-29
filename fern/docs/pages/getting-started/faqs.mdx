@@ -1,5 +1,5 @@
 ---
-title: 'FAQs: Common Questions and Answers'
+title: "FAQs: Common Questions and Answers"
 slug: getting-started/faqs
 ---
 
@@ -7,7 +7,7 @@ slug: getting-started/faqs
 
 **How is Credal different from just using ChatGPT or Claude directly?**
 
-ChatGPT and Claude are great tools, and we recommend Credal is used *with* these tools. While ChatGPT and Claude focus on providing a consumer grade chat experience, Credal focusses on providing *secure*, *domain specific agents that have unparalleled understanding of your Enterprise, but which you can chat with in whatever your favorite chat client is - whether that’s ChatGPT, Claude, or just directly in Slack or teams.*
+ChatGPT and Claude are great tools, and we recommend Credal is used _with_ these tools. While ChatGPT and Claude focus on providing a consumer grade chat experience, Credal focusses on providing _secure_, _domain specific agents that have unparalleled understanding of your Enterprise, but which you can chat with in whatever your favorite chat client is - whether that’s ChatGPT, Claude, or just directly in Slack or teams._
 
 Credal provides a secure, unified understanding of your internal systems, respecting all existing access permissions and Enterprise AI policies (e.g., a user can only search for documents they already have access to, or update systems that have been marked safe for Agents). That secure unified understanding of your systems is available in your existing chat surfaces, including ChatGPT, Claude and others.
 
@@ -33,7 +33,7 @@ Credal indexes your data to allow for semantic search and retrieval, but this in
 
 **What data sources can I connect to Credal?**
 
-Credal supports [*out-of-the-box integrations*](https://www.credal.ai/security) with major enterprise tools, including:
+Credal supports [_out-of-the-box integrations_](https://www.credal.ai/security) with major enterprise tools, including:
 
 - Knowledge Sources: Google Drive, Confluence, SharePoint, Notion, Box.
 - Communication: Slack (Channels and DMs), Gmail, Microsoft Teams.
@@ -70,7 +70,7 @@ For complex questions that require more than a quick lookup, Credal offers a “
 
 **How do I start building an Agent if I don’t know where to begin?**
 
-If you’re unsure how to structure your agent, try using our Builder Buddy. It’s a built-in assistant that can help you write a system prompt, suggest necessary actions, and even recommend the best model for your use case. You can ask it things like, *“I want to build an agent that summarizes Salesforce opportunities. What prompt and actions should I use?”*
+If you’re unsure how to structure your agent, try using our Builder Buddy. It’s a built-in assistant that can help you write a system prompt, suggest necessary actions, and even recommend the best model for your use case. You can ask it things like, _“I want to build an agent that summarizes Salesforce opportunities. What prompt and actions should I use?”_
 
 **What is the “Agent Building Wizard”?**
 
@@ -86,7 +86,7 @@ Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your sy
 
 If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an email), check the following:
 
-1. Prompt Instructions: Does your system prompt explicitly tell the Agent *when* to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
+1. Prompt Instructions: Does your system prompt explicitly tell the Agent _when_ to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
 2. Tool Description: Ensure the action’s description clearly explains what it does. The AI uses this description to decide if the tool is relevant.
 3. Model Choice: Some models are better at tool use than others. We generally recommend Claude 3.5 Sonnet for complex action-taking workflows.
 
@@ -119,7 +119,7 @@ If you encounter a generic error (like \{} or “Workflow execution failed”), 
 **Why is my Agent giving incorrect dates or hallucinating info?**
 
 - Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). Some older models (like early versions of Opus) had known issues with date calculation; switching to Sonnet often fixes this.
-- Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: *“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”*
+- Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: _“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”_
 
 **How do I know if a specific document or data source is working?**
 
