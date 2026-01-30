@@ -100,7 +100,7 @@ navigation:
           - page: Action Parameters
             path: ./pages/platform/actions/action-parameters.mdx
       - page: Bulk Analysis
-        # Soon to be rebranded into workflows, but the credal way :) 
+        # Soon to be turned into workflows, but the credal way :) 
         path: ./pages/platform/bulk-analysis.mdx
       - section: Integrations
         # Soon to be renamed Document Collections
