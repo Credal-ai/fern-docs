@@ -32,7 +32,7 @@ navbar-links:
     url: https://app.credal.ai/signin
 colors:
   accentPrimary:
-    light: '#228be6'
+    light: "#228be6"
 favicon: docs/assets/favicon.png
 logo:
   href: https://docs.credal.ai/

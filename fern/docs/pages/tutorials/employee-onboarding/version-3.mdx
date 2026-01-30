@@ -1,7 +1,9 @@
 ## Overview
+
 This tutorial guides you through creating the final version of "The Orienteer," an advanced onboarding assistant that answers employee questions, collects feedback, and takes appropriate actions based on that feedback, including tagging relevant SMEs when needed.
 
 ## The Orienteer v3 Workflow
+
 1. User asks a question
 2. Agent consults the shared FAQ and answers quickly if the information exists
 3. Otherwise, consults the company knowledge base to find the answer
@@ -56,6 +58,7 @@ RESPONSE FORMULATION:
 ### Step 2: Create a Jira Ticket Creation Action
 
 Create an action that can post Jira tickets based on user feedback. This action should:
+
 - Accept parameters for ticket title, description, priority, and assignee
 - Post to the ONB Credal Project
 - Return confirmation when the ticket is created
@@ -68,6 +71,7 @@ Note: Ensure you have proper permissions set up for Jira actions. Only use write
    "This assistant is an expert at updating Confluence pages. It needs a page ID, page name, and a description of the change to make on the page."
 
 2. Use this background prompt for the Confluence Page Editor:
+
 ```
 You are a Confluence page updater. You will be given a page ID, page name, and update to make to the document.
 
@@ -79,6 +83,7 @@ When trying to update the page, first fetch the HTML content and overwrite the p
 ```
 
 3. Create two actions for this agent:
+
    - An action to fetch HTML content from a Confluence page
    - An action to overwrite a Confluence page with new content
 
@@ -130,14 +135,14 @@ When the user provides feedback, take appropriate action:
    - Use the "Confluence Page Editor" action to update the FAQ document
    - Add both the question and your answer as a new entry
    - Inform the user that their Q&A has been added to help future employees
-   
+
 2. For negative feedback (1-3 rating) or reports of missing/unclear information:
    - Use the "Create Jira Ticket" action to create a ticket in the ONB Credal Project
    - Include the original question, your answer, and the user's feedback
    - Set priority based on feedback severity (1 rating = High, 2-3 rating = Medium)
    - Assign to the Onboarding Team lead or the relevant SME if one was identified
    - Inform the user that their feedback has been logged for improvement
-   
+
 3. For suggestions or edge cases:
    - Thank the user for their input
    - Consider both updating the FAQ and creating a ticket based on the nature of the feedback
