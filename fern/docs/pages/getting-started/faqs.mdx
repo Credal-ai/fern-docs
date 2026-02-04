@@ -19,13 +19,13 @@ Credal is model-agnostic. We support leading models including OpenAI’s Anthrop
 
 Credal agents are often a little slower than a straight‑through ChatGPT or other LLMs because they are doing different, more extensive, work. For example, Credal agents may be searching your enterprise's non-public internal document collections, verifying permissions, or orchestrating with subagents, which takes additional milliseconds to seconds. You can speed up agents' responses in a number of ways:
 
-1\. Simplify things for them through clear prompts
+1. Simplify things for them through clear prompts
 
-2\. Reducing the complexity of the agent build by cutting down on the number of its actions, and documents or other sources it has to query (but this has tradeoffs, because, for instance, if the agent has fewer sources to query, it will naturally be less thorough).
+2. Reducing the complexity of the agent build by cutting down on the number of its actions, and documents or other sources it has to query (but this has tradeoffs, because, for instance, if the agent has fewer sources to query, it will naturally be less thorough).
 
-3\. Try changing the model (for instance to Gemini Flash)
+3. Try changing the model (for instance to Gemini Flash)
 
-4\. Avoid using sub-agents with very simple agents who don't need subagents.
+4. Avoid using sub-agents with very simple agents who don't need subagents.
 
 ChatGPT and other LLMs, used in isolation, are searching exclusively public sources and are not orchestrating anything at all - and are thus often extremely speedy. But do not confuse a speedy response for a high-quality one.
 
