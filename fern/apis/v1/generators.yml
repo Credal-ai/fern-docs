@@ -8,7 +8,7 @@ groups:
   typescript-sdk:
     generators:
       - name: fernapi/fern-typescript-node-sdk
-        version: 3.43.7
+        version: 3.48.2
         output:
           location: npm
           package-name: "@credal/sdk"
@@ -24,7 +24,7 @@ groups:
   python-sdk:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.46.14
+        version: 4.57.2
         output:
           location: pypi
           package-name: credal
@@ -36,7 +36,7 @@ groups:
   python-local:
     generators:
       - name: fernapi/fern-python-sdk
-        version: 4.46.14
+        version: 4.57.2
         output:
           location: local-file-system
           path: ../generated/python
