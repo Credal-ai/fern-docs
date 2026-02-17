@@ -46,3 +46,6 @@ settings:
 redirects:
   - source: /getting-started/data-integrations
     destination: /getting-started/data-sources-action-providers
+
+experimental:
+  dynamic-snippets: false
