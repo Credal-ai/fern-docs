@@ -1,0 +1,50 @@
+# Connecting an Agent to a Slack Workflow
+
+Credal now supports triggering agents via Slack Workflows — on a schedule or based on a condition. This unlocks automation use cases that weren't possible before, like sending a daily digest, running a check on a cadence, or automatically responding to events in your workspace.
+
+<Note>
+  The agent will respond in the thread of the workflow message rather than posting directly to the channel.
+</Note>
+
+<div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+  <iframe
+    src="https://www.loom.com/embed/4515a790e2c84bab995a335b821cfd41"
+    frameBorder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowFullScreen
+    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+  ></iframe>
+</div>
+
+## Prerequisites
+
+Before setting up a Slack Workflow trigger, your agent must already be published to Slack. If you haven't done this yet, follow the [Agents in Slack](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack) guide first.
+
+## Setup
+
+### Step 1: Publish your agent to Slack
+
+In your agent's **Publish** settings, go to **Slack Channels**, enable **Talk to your agent in Slack**, and add the agent to the channel where your Slack Workflow will post.
+
+### Step 2: Enable "Respond to Slack Workflows"
+
+In the same Slack publishing settings, toggle on **Respond to Slack Workflows**.
+
+<Frame>
+  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
+</Frame>
+
+### Step 3: Paste in your Workflow ID
+
+Copy your Slack Workflow ID and paste it into the **Workflow ID** field in Credal.
+
+<Callout intent="info">
+  Make sure the body text of your Slack Workflow message is structured to trigger the agent correctly based on your agent's routing settings (e.g. matching a filter, or triggering on all messages).
+</Callout>
+
+## Example use cases
+
+- **Daily digest** – Schedule a workflow to run each morning and have the agent summarize overnight alerts, tickets, or news.
+- **Conditional alerts** – Trigger the agent when a specific condition is met in your workflow (e.g. a form submission, an approval event, or an external webhook).
+- **Recurring reports** – Run the agent on a weekly cadence to generate and post summaries from connected data sources.
