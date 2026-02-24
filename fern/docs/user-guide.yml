@@ -44,10 +44,6 @@ navigation:
             contents:
               - page: Overview
                 path: ./pages/tutorials/salesforce-query/salesforce-example.mdx
-          - section: Slack Workflow Automation
-            contents:
-              - page: Connecting an Agent to a Slack Workflow
-                path: ./pages/tutorials/slack-workflows/slack-workflows.mdx
       - page: FAQs
         path: ./pages/getting-started/faqs.mdx
   - section: Platform
@@ -90,6 +86,8 @@ navigation:
                 path: ./pages/platform/agents/deployment/slack-deployment.mdx
               - page: Custom Dedicated Slack Bots
                 path: ./pages/platform/agents/deployment/slack-app-manifest.mdx
+              - page: Slack Workflow Automation
+                path: ./pages/tutorials/slack-workflows/slack-workflows.mdx
               - page: API Deployment
                 path: ./pages/platform/agents/deployment/api-deployment.mdx
       - section: Governed Actions
