@@ -86,6 +86,8 @@ navigation:
                 path: ./pages/platform/agents/deployment/slack-deployment.mdx
               - page: Custom Dedicated Slack Bots
                 path: ./pages/platform/agents/deployment/slack-app-manifest.mdx
+              - page: Slack Workflow Automation
+                path: ./pages/tutorials/slack-workflows/slack-workflows.mdx
               - page: API Deployment
                 path: ./pages/platform/agents/deployment/api-deployment.mdx
       - section: Governed Actions
