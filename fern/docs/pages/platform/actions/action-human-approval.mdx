@@ -1,6 +1,6 @@
 ## Multi-User Operations
 
-An operation is a multi-user operation if the approval to carry out a given action in the workflow comes from someone other than the sender. Credal has human-in-the-loop (HITL) approval mechanisms that you can configure to use your credentials or permission scopes in a cross-functional or multi-user operation. A request that is not initiated by you can only use your credentials/scopes if you give explicit permission to do so.
+An operation is a multi-user operation if the approval to carry out a given action in the workflow comes from someone other than the sender. Credal has human-in-the-loop (HITL) approval mechanisms that you can configure to use your credentials or permission scopes in a cross-functional or multi-user operation. These mechanisms build on the [action security model](/user-guide/platform/governed-actions/credentials-and-security). A request that is not initiated by you can only use your credentials/scopes if you give explicit permission to do so.
 
 ### Approval flow
 
@@ -17,7 +17,7 @@ An operation is a multi-user operation if the approval to carry out a given acti
     - In order to properly manage when your credentials are used, we strongly recommend creating separate agents for each user role involved in the operation. The user-facing agent can then handoff requests to the Agent that will perform sensitive read operations under an approver’s credentials. If a conversation is deemed to be sensitive, end users will not be allowed to view them as the context windows may contain sensitive data used to derive responses. Only the approvers and whomever they share the conversation with can view it.
     - If you choose to escalate permissions in a conversation between an end user and an Agent, any retrieved data from an action will be redacted from the conversation context window and will only be visible if viewed by the approver.
   - Adversarial prompt injection (user asking for something they shouldn’t be)
-    - For fields associated with user identity, Credal will assign caller-set parameters to hard code the sender’s email, user ID, requesting agent ID, etc. This will guarantee that Bob can’t ask for Mary’s salary information, for example.
+    - For fields associated with user identity, Credal will assign [caller-set parameters](/user-guide/platform/governed-actions/action-parameters) to hard code the sender’s email, user ID, requesting agent ID, etc. This will guarantee that Bob can’t ask for Mary’s salary information, for example.
     - Caller set parameters are not considered credentials, so an approver’s metadata is not used as the caller set parameters, it will always be the original sender.
   - Mistakes the agent makes or indirect leakage through summaries (hallucinations and implied information)
     - All Actions in an Agent that undergo permission escalation must have the Action Release Gate turned on. If a builder wants to turn it off for whatever reason, there must be a justification provided with that toggle off. The ARG will require an egress approval step from the Agent owner(s). This way, humans can use their expertise and judgment to ensure DLP.

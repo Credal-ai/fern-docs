@@ -57,13 +57,13 @@ RESPONSE FORMULATION:
 
 ### Step 2: Create a Jira Ticket Creation Action
 
-Create an action that can post Jira tickets based on user feedback. This action should:
+Create an [action](/user-guide/platform/governed-actions/overview) that can post Jira tickets based on user feedback. This action should:
 
 - Accept parameters for ticket title, description, priority, and assignee
 - Post to the ONB Credal Project
 - Return confirmation when the ticket is created
 
-Note: Ensure you have proper permissions set up for Jira actions. Only use write-actions like creating Jira tickets in public projects where appropriate.
+Note: Ensure you have proper [permissions](/user-guide/platform/governed-actions/credentials-and-security) set up for Jira actions. Only use write-actions like creating Jira tickets in public projects where appropriate.
 
 ### Step 3: Create a Confluence Page Update Action
 
@@ -87,7 +87,7 @@ When trying to update the page, first fetch the HTML content and overwrite the p
    - An action to fetch HTML content from a Confluence page
    - An action to overwrite a Confluence page with new content
 
-4. Ask a Credal admin to publish this Agent and attach it as an Action to your "The Orienteer" agent.
+4. Ask a Credal admin to [publish this Agent and attach it as an Action](/user-guide/platform/agent-builder/configuration/agent-collaboration) to your "The Orienteer" agent.
 
 ### Step 4: Update the Final Prompt to Process Feedback and Take Action
 

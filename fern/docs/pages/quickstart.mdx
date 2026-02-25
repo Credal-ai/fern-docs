@@ -42,17 +42,17 @@ You can access all created and shared agents by clicking **“Published”** in 
 
 Now that your agent is set up, Credal automatically directs you to the configuration page, where you can tune your agent for your use case. You can return to this page to edit your settings at any time.
 
-For a deeper walkthrough, see our [Detailed Agents User Guide](/user-guide/platform/agents).
+For a deeper walkthrough, see our [Detailed Agents User Guide](/user-guide/platform/agent-builder/configuration/setting-up-an-agent).
 
 1. **Metadata** – Name and Description are already set.
-2. **Model** – Choose from the latest models across OpenAI, Anthropic, Google, and Cerebras. Cerebras is worth trying if speed is a priority — it runs open-source models on specialized hardware for significantly faster responses. If you're unsure, the default is a solid starting point.
+2. **Model** – [Choose from the latest models](/user-guide/platform/agent-builder/configuration/choosing-a-model) across OpenAI, Anthropic, Google, and Cerebras. Cerebras is worth trying if speed is a priority — it runs open-source models on specialized hardware for significantly faster responses. If you're unsure, the default is a solid starting point.
 3. **Creativity** – We recommend starting with “Balanced” or “Precise.” Choose “Creative” for open-ended tasks like brainstorming or marketing.
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-different-models-dropdown.png" />
 </Frame>
 
-4. **Prompt** – Here you can provide a custom prompt that gives the agent context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and direct, and to let users know when they're unsure of the answer.
+4. **[Prompt](/user-guide/platform/agent-builder/configuration/writing-instructions)** – Here you can provide a custom prompt that gives the agent context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and direct, and to let users know when they're unsure of the answer.
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-prompt.png" />
@@ -123,7 +123,7 @@ _--------- End Context ---------_
 ### Publish Your Agent to Slack
 
 After setup, you can use your agent directly in Credal or publish it to Slack (or other tools via API).
-This guide covers Slack. For other integrations, see the [full documentation](/user-guide/platform/agents/publishing-agents).
+This guide covers Slack. For other integrations, see the [full documentation](/user-guide/platform/agent-builder/publishing-agents/overview).
 
 Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
@@ -139,7 +139,7 @@ You can choose to have your agent answer all messages in a given channel or only
 </Frame>
 
 - **All messages**: will answer all queries in the connected Slack channel.
-- **All relevant messages**: will respond to all queries matching the [Description](/user-guide/platform/agents/configure-an-agent/a-name-and-description) of the agent.
+- **All relevant messages**: will respond to all queries matching the [Description](/user-guide/platform/agent-builder/configuration/setting-up-an-agent) of the agent.
 - **All messages matching filter**: will respond to messages that match the filter criteria. In the example in the screenshot, the agent will only respond to prompts containing “?”.
 
 <Frame>
@@ -156,7 +156,7 @@ If more than one agent is published to a given Slack channel, Credal will triage
 
 ---
 
-📘 Looking for a more in-depth guide? Refer to the [Agents Platform section](/user-guide/platform/agents)
+📘 Looking for a more in-depth guide? Refer to the [Agents Platform section](/user-guide/platform/agent-builder/configuration/setting-up-an-agent)
 
 ## Support
 

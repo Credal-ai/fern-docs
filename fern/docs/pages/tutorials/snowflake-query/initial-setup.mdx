@@ -55,7 +55,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 2. Name your agent "Snowflake Data Extractor"
 3. Add this description:
    > This assistant helps employees query data from snowflake getting metrics, analysis and human-readable responses on the data.
-4. Enable Code Interpreter (required for image generation)
+4. Enable [Code Interpreter](/user-guide/platform/agent-builder/configuration/choosing-a-model) (required for image generation)
    > Output from the runSnowflakeQuery Action is passed into Open AI Code Interpreter for image generation and analysis (depending on your parameter setup)
 
 <Frame>
@@ -83,7 +83,7 @@ Access to Snowflake data is controlled at two levels:
 1. **Credential Access**:
    - Only the creator of a Snowflake credential can attach it to an Action.
 2. **Action Access**:
-   - You can specify exactly which users or groups can use this Action through the End User Access settings
+   - You can specify exactly which users or groups can use this Action through the [End User Access settings](/user-guide/platform/governed-actions/credentials-and-security)
    - This ensures that only authorized personnel can execute queries using the attached Snowflake credentials
 
 **Important Security Note**: Any user with end-user access to an Action will be able to use the attached Snowflake credentials through that Action. Ensure you carefully manage the End User Access list to maintain proper data security.
@@ -98,7 +98,7 @@ Access to Snowflake data is controlled at two levels:
 ### Step 4: Model Choice
 
 The base model you select will affect queries generated and analysis of results.
-It's recommended to use a thinking model with reasoning enabled for complex queries, however the model you select also depends on the query approach. You may want to use a smaller non-reasoning model for query templates which are more well defined compared to snowflake views.
+It's recommended to use a [thinking model](/user-guide/platform/agent-builder/configuration/choosing-a-model) with reasoning enabled for complex queries, however the model you select also depends on the query approach. You may want to use a smaller non-reasoning model for query templates which are more well defined compared to snowflake views.
 
 ### Step 5: Choose your query approach
 
