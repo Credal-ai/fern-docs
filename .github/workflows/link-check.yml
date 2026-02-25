@@ -1,0 +1,45 @@
+name: Link Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    # Only run when docs content actually changes
+    paths:
+      - "fern/docs/**"
+      - "fern/docs.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/docs/**"
+      - "fern/docs.yml"
+  schedule:
+    # Weekly on Mondays at 09:00 UTC — catches external links that go stale
+    # even when no docs have changed
+    - cron: "0 9 * * 1"
+
+jobs:
+  link-check:
+    name: Check external links
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Scan all markdown and YAML in the docs tree.
+          # API definition files (fern/apis/) are intentionally excluded
+          # because they contain placeholder example URLs.
+          args: >-
+            --config .lychee.toml
+            --verbose
+            "fern/docs/**/*.md"
+            "fern/docs/**/*.mdx"
+            "fern/docs/**/*.yml"
+            "fern/docs/**/*.yaml"
+            "fern/docs.yml"
+          fail: true
