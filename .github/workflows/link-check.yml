@@ -27,7 +27,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
@@ -43,3 +42,5 @@ jobs:
             "fern/docs/**/*.yaml"
             "fern/docs.yml"
           fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
