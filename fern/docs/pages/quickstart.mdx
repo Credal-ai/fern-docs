@@ -45,7 +45,7 @@ Now that your agent is set up, Credal automatically directs you to the configura
 For a deeper walkthrough, see our [Detailed Agents User Guide](/user-guide/platform/agents).
 
 1. **Metadata** – Name and Description are already set.
-2. **Model** – The default is GPT-4o, but you can try Gemini 2.5 Flash, Claude 4 Sonnet, or other supported models.
+2. **Model** – Choose from the latest models across OpenAI, Anthropic, Google, and Cerebras. Cerebras is worth trying if speed is a priority — it runs open-source models on specialized hardware for significantly faster responses. If you're unsure, the default is a solid starting point.
 3. **Creativity** – We recommend starting with “Balanced” or “Precise.” Choose “Creative” for open-ended tasks like brainstorming or marketing.
 
 <Frame>
@@ -80,8 +80,8 @@ _Instructions:_
 
 _The Federal Rules of Civil Procedure are procedural rules that apply to civil court cases in United States federal district courts. They govern things like deadlines, pleading requirements, discovery, motion practice, and trials. In addition to the Federal Rules, individual federal district courts can adopt their own Local Rules that provide supplemental procedures. These Local Rules cannot conflict with the Federal Rules, but they can address more specific practices within that district. In a given court district, the Federal Rules and the local rules for that district are applicable, as well as the Chambers Rules of the presiding Judge. Where the rules do not provide an answer to a question, an answer may be located in the Chambers Rules of the presiding judge._
 
-_--- Start Context ---_  
-_{{data}}_  
+_--- Start Context ---_
+_{{data}}_
 _--- End Context ---_
 
   </Accordion>
@@ -89,19 +89,19 @@ _--- End Context ---_
   <Accordion title="Example Prompt: Credal's Information Security Agent">
 *You are a friendly helpful, honest assistant, who helps Credal company employees answer questions and prompts truthfully about information security questionnaires. Credal is itself a real AI security company, founded in 2022, in New York City, by two former Palantir Engineers (Ravin Thambapillai and Jack Fischer). Below is contextual information from Credal's documentation to help you answer, followed by a prompt: read it and provide a helpful, honest, and to the point answers based on the context provided. If the answer does not appear in the provided context, say that you do not know. If the answer does appear in the provided context, explain which document you drew the answer from.*
 
-_--------- Context: ---------_  
-_{{data}}_  
+_--------- Context: ---------_
+_{{data}}_
 _--------- End Context ---------_
 
   </Accordion>
 </AccordionGroup>
 
-5. **Data**  
+5. **Data**
     The data you provide will be the source of truth for your agent. Your agent will rely on this data (along with the prompt and Q&A pairs) to answer user queries. You should provide your agent with sufficient data relevant to its area of expertise. The data you attach is the most important source of knowledge for the agent.
 
    There are two ways you can provide data to the agent:
 
-   - **Attach Data**  
+   - **Attach Data**
      This allows you, as the agent builder, to specify which data sources your agent should consider. You can choose which sources to attach either by searching for them by name or by pasting a link to the source.
 
      For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
@@ -110,10 +110,10 @@ _--------- End Context ---------_
        <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" />
      </Frame>
 
-   - **User Inputs**  
+   - **User Inputs**
      Alternatively, you may want to allow the user to attach one or more source documents at the time of their question. For example, you may create an agent for generating meeting notes based on a transcript, and you want to allow your user to provide a different transcript each time they use the agent. This can be accomplished by creating a user input.
 
-   **Advanced Settings**  
+   **Advanced Settings**
     There are some advanced settings you can use to control how your agent searches through the attached data. For most use cases, you should leave the default settings.
 
    For advanced use cases, you can specify how many of the most relevant chunks (a chunk is roughly 2-3 sentences) the agent should read. You can also set a relevancy score cutoff.
@@ -122,7 +122,7 @@ _--------- End Context ---------_
 
 ### Publish Your Agent to Slack
 
-After setup, you can use your agent directly in Credal or publish it to Slack (or other tools via API).  
+After setup, you can use your agent directly in Credal or publish it to Slack (or other tools via API).
 This guide covers Slack. For other integrations, see the [full documentation](/user-guide/platform/agents/publishing-agents).
 
 Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
@@ -131,7 +131,7 @@ Go to "Slack Channels" in your agents "Publish" settings and enable the ability 
   <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
 </Frame>
 
-If multiple agents are published to a single channel, Credal uses their descriptions to decide which one should respond.  
+If multiple agents are published to a single channel, Credal uses their descriptions to decide which one should respond.
 You can choose to have your agent answer all messages in a given channel or only those that meet certain criteria:
 
 <Frame>

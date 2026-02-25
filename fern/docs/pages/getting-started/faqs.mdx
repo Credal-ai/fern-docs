@@ -13,7 +13,7 @@ Credal provides a secure, unified understanding of your internal systems, respec
 
 **What LLMs (Large Language Models) does Credal use?**
 
-Credal is model-agnostic. We support leading models including OpenAI’s Anthropic’s and Google’s. You can choose the best model for your specific use case or allow Credal to route queries to the most appropriate model automatically.
+Credal is model-agnostic. We support leading models from OpenAI, Anthropic, Google, and Cerebras. You can choose the best model for your specific use case or allow Credal to route queries to the most appropriate model automatically.
 
 **Why is it taking my agent longer to respond to my query than when I ask ChatGPT, Claude, or another model directly?**
 
@@ -21,7 +21,7 @@ Credal agents are often a little slower than a straight‑through ChatGPT or oth
 
 1. Simplify things for them through clear prompts
 2. Reducing the complexity of the agent build by cutting down on the number of its actions, and documents or other sources it has to query (but this has tradeoffs, because, for instance, if the agent has fewer sources to query, it will naturally be less thorough).
-3. Try changing the model (for instance to Gemini Flash)
+3. Try a Cerebras-powered model — Cerebras runs open-source models on specialized hardware built for speed, and can significantly reduce response times. See [Choosing a Model](/user-guide/platform/agent-builder/configuration/choosing-a-model) for more details.
 4. Avoid using sub-agents with very simple agents who don't need subagents.
 
 ## **Security & Privacy**
@@ -87,7 +87,7 @@ The Agent Building Wizard is a guided setup tool that simplifies the creation pr
 
 **Can I use XML tags in my system prompt?**
 
-Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your system prompt is a best practice, especially when using Claude models. It helps the AI clearly distinguish between different parts of your instructions, leading to more accurate and structured responses.
+Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your system prompt is a best practice. It helps the AI clearly distinguish between different parts of your instructions, leading to more accurate and structured responses.
 
 ## **Actions & Tools**
 
@@ -97,7 +97,7 @@ If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an 
 
 1. Prompt Instructions: Does your system prompt explicitly tell the Agent *when* to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
 2. Tool Description: Ensure the action’s description clearly explains what it does. The AI uses this description to decide if the tool is relevant.
-3. Model Choice: Some models are better at tool use than others. We generally recommend Claude 3.5 Sonnet for complex action-taking workflows.
+3. Model Choice: Some models are better at tool use than others. For complex action-taking workflows, try a more capable model from the model selector.
 
 **I’m getting an “Action Error” or “Forbidden” message. How do I fix it?**
 
@@ -114,7 +114,7 @@ This usually means there’s a permission or configuration issue.
 
 This can happen if the conversation history becomes too long or if a sub-agent returns a massive amount of data.
 
-- Context Window: Try switching to a model with a larger context window (like Claude 3.5 Sonnet or GPT-4o).
+- Context Window: Try switching to a model with a larger context window — model descriptions in the selector note context window size.
 - Summarization: Instruct your Agent (or sub-agents) to be concise. If a sub-agent returns 50 pages of text, the main Agent might struggle to process it all.
 
 **How can I see why my Agent failed?**
@@ -127,7 +127,7 @@ If you encounter a generic error (like \{} or “Workflow execution failed”), 
 
 **Why is my Agent giving incorrect dates or hallucinating info?**
 
-- Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). Some older models (like early versions of Opus) had known issues with date calculation; switching to Sonnet often fixes this.
+- Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). If date calculation seems off, try switching to a newer model.
 - Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: *“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”*
 
 **How do I know if a specific document or data source is working?**
