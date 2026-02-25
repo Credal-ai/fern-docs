@@ -6,6 +6,11 @@
 #   429        rate-limited by the server; site is up, just throttling bots
 accept = "200..=206,429"
 
+# Only check http/https links — skip root-relative paths (/user-guide/...,
+# /docs/assets/...) and relative file links that lychee can't resolve locally.
+# Those are valid Fern site links; external URL reachability is all we care about.
+scheme = ["https", "http"]
+
 # Per-request timeout in seconds
 timeout = 30
 
