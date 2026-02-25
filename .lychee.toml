@@ -1,6 +1,10 @@
 # lychee link checker configuration
 # https://github.com/lycheeverse/lychee
 
+# Resolve root-relative paths (/user-guide/…, /docs/assets/…) against the
+# live docs site rather than trying to stat them as local files.
+base_url = "https://docs.credal.ai"
+
 # Accepted HTTP status codes — treat these as "link is alive"
 #   200..=206  normal success range
 #   429        rate-limited by the server; site is up, just throttling bots
@@ -19,9 +23,9 @@ max_concurrency = 10
 # These are intentionally skipped because they require auth, expire, or
 # block headless clients — their breakage is not actionable in CI.
 exclude = [
-  # Root-relative paths (Fern site links, /docs/assets/ images, /api-reference/…)
-  # cannot be resolved from local files without a root dir — skip them all.
-  "^/",
+  # Relative Fern internal links (.mdx extension) — valid for Fern's nav
+  # resolver but resolve to 404 when checked against the live site URL.
+  "\\.mdx(#.*)?$",
 
   # Google Docs / Drive require a Google login
   "^https://docs\\.google\\.com/",
