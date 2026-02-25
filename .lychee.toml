@@ -1,8 +1,10 @@
 # lychee link checker configuration
 # https://github.com/lycheeverse/lychee
 
-# Resolve root-relative paths (/user-guide/…, /docs/assets/…) against the
-# live docs site rather than trying to stat them as local files.
+# base_url is required only so lychee can construct URLs from root-relative
+# paths (e.g. /user-guide/…, /docs/assets/…) without crashing. All resolved
+# docs.credal.ai URLs are immediately excluded below — we never actually fetch
+# them. Internal link correctness is Fern's job (fern-check CI step).
 base_url = "https://docs.credal.ai"
 
 # Accepted HTTP status codes — treat these as "link is alive"
@@ -23,8 +25,13 @@ max_concurrency = 10
 # These are intentionally skipped because they require auth, expire, or
 # block headless clients — their breakage is not actionable in CI.
 exclude = [
+  # All docs.credal.ai URLs — covers root-relative paths resolved via base_url
+  # (/user-guide/…, /docs/assets/…, /api-reference/…) and any explicit links.
+  # Fern's own checker validates internal navigation; lychee only checks external links.
+  "^https://docs\\.credal\\.ai/",
+
   # Relative Fern internal links (.mdx extension) — valid for Fern's nav
-  # resolver but resolve to 404 when checked against the live site URL.
+  # resolver but not real URLs.
   "\\.mdx(#.*)?$",
 
   # Google Docs / Drive require a Google login
