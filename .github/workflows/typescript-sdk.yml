@@ -20,6 +20,12 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Cache npm
+        uses: useblacksmith/stickydisk@v1
+        with:
+          key: ${{ runner.os }}-npm
+          path: ~/.npm
+
       - name: Install the Fern CLI
         run: npm install -g fern-api
 
