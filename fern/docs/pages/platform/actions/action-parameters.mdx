@@ -24,7 +24,7 @@ _Example use case: In Salesforce, when creating a new lead, you could define the
 
 #### 4. Caller-set
 
-For when the value comes from a property of the person (or system) running the action, often based on their account information.
+For when the value comes from a property of the person (or system) running the action, often based on their account information. Caller-set parameters are also used in [multi-user approval workflows](/user-guide/platform/governed-actions/human-approval-options) to prevent users from impersonating others.
 
 _Example use case: A user in Slack wants to open a Jira support ticket by triggering the “Create” action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action by selecting `CREDAL_USER_EMAIL`._
 
