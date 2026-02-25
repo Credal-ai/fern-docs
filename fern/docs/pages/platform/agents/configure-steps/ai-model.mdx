@@ -7,8 +7,8 @@ title: AI Model
 A key piece of building an effective agent is choosing the right foundation AI model for your use case.  
 By default, Credal gives you access to the latest set of models from major providers: **OpenAI, Anthropic and Google**.
 
-Here you can choose the foundation AI model you want your agent to use from the drop-down menu.  
-More advanced models, like **o1**, are both more expensive and more capable than earlier models.  
+Here you can choose the foundation AI model you want your agent to use from the drop-down menu.
+More advanced models are both more expensive and more capable than earlier models.
 When selecting a model, you may want to consider:
 
 - **Reasoning capabilities:** Different models vary in their ability to execute multi-step reasoning, decompose complex tasks and follow nuanced instructions.
@@ -17,7 +17,7 @@ When selecting a model, you may want to consider:
 - **Tool calling limitations:** This includes the ability to select the right tools, extract/format requests, make parallel requests and handle responses (objects, streaming, etc.).
 - **Speed & cost:** More capable models may be slower and more expensive. Response time and budget constraints should guide your choice.
 
-**Tip:** GPT-4o is a good starting point for most use cases, as it’s very capable and relatively affordable. If you’re unsure, run test queries to gauge performance for your needs.
+**Tip:** If you’re unsure where to start, use the Preview tab to run test queries and compare model responses before publishing your agent.
 
 ![agent-different-models-dropdown.png](/docs/assets/agents/create-steps/agent-different-models-dropdown.png)
 
@@ -29,9 +29,11 @@ Credal can help you make an informed choice with:
 
 If there’s a model you’d like to use but don’t see in the platform, reach out so we can look into adding it.
 
-<Note>
+<Callout intent="info" icon="fa-solid fa-rotate" title="Automatic Model Fallback">
 If the model you’ve selected becomes deprecated or unavailable, your agent will automatically fall back to the default model for new agents at that time. To avoid unexpected behavior, review your agent’s model selection periodically and update it if the chosen model has been retired.
-</Note>
+
+If your chosen model is temporarily experiencing an outage or is overloaded, Credal will automatically fail over to another model to keep your agent running. You can always confirm the exact model — and even the cloud infrastructure — used for any given request in **Audit Logs**.
+</Callout>
 
 ---
 
