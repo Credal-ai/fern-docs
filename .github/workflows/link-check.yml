@@ -4,7 +4,9 @@ on:
   pull_request:
     branches:
       - main
-    # Only run when docs content or this workflow actually changes
+    # Run when docs content or this workflow's own config changes.
+    # The paths filter is identical for pull_request and push — GitHub Actions
+    # doesn't support a shared anchor for this, so it's intentionally repeated.
     paths:
       - "fern/docs/**"
       - "fern/docs.yml"
@@ -20,7 +22,7 @@ on:
       - ".lychee.toml"
   schedule:
     # Weekly on Mondays at 09:00 UTC — catches external links that go stale
-    # even when no docs have changed
+    # even when no docs content has changed.
     - cron: "0 9 * * 1"
 
 jobs:
@@ -31,19 +33,17 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          # Scan all markdown and YAML in the docs tree.
-          # API definition files (fern/apis/) are intentionally excluded
-          # because they contain placeholder example URLs.
+          # Only scan .mdx and .yml files — no .md or .yaml files exist in this
+          # tree, so including those globs just produces noisy "no files found"
+          # warnings. fern/apis/ is intentionally omitted (placeholder example URLs).
           args: >-
             --config .lychee.toml
-            --verbose
-            "fern/docs/**/*.md"
             "fern/docs/**/*.mdx"
             "fern/docs/**/*.yml"
-            "fern/docs/**/*.yaml"
             "fern/docs.yml"
           fail: true
         env:

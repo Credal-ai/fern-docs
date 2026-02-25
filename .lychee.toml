@@ -1,15 +1,21 @@
 # lychee link checker configuration
 # https://github.com/lycheeverse/lychee
+#
+# This job checks only external URLs. Internal Fern links (/user-guide/…,
+# /docs/assets/…, relative .mdx paths) are validated by the fern-check step
+# and are excluded here — checking them against the live site would produce
+# false failures whenever a PR introduces a page that doesn't exist yet.
+#
+# Workaround for lychee's URL construction behaviour:
+#   lychee crashes on root-relative paths (e.g. /user-guide/foo) before any
+#   exclude filter runs. base_url gives it a domain to construct a valid URL,
+#   and the docs.credal.ai exclude pattern below immediately discards it.
 
-# base_url is required only so lychee can construct URLs from root-relative
-# paths (e.g. /user-guide/…, /docs/assets/…) without crashing. All resolved
-# docs.credal.ai URLs are immediately excluded below — we never actually fetch
-# them. Internal link correctness is Fern's job (fern-check CI step).
 base_url = "https://docs.credal.ai"
 
-# Accepted HTTP status codes — treat these as "link is alive"
+# Accepted HTTP status codes — treat these as "link is alive".
 #   200..=206  normal success range
-#   429        rate-limited by the server; site is up, just throttling bots
+#   429        rate-limited by the server; the site is up, just throttling bots
 accept = "200..=206,429"
 
 # Per-request timeout in seconds
@@ -18,21 +24,22 @@ timeout = 30
 # Retry transient failures before marking a link broken
 max_retries = 3
 
-# Parallel requests (keep moderate to avoid triggering rate-limits)
+# Parallel requests — kept moderate to avoid triggering rate limits
 max_concurrency = 10
 
-# Exclude URLs matching these patterns (regex).
-# These are intentionally skipped because they require auth, expire, or
-# block headless clients — their breakage is not actionable in CI.
 exclude = [
-  # All docs.credal.ai URLs — covers root-relative paths resolved via base_url
-  # (/user-guide/…, /docs/assets/…, /api-reference/…) and any explicit links.
-  # Fern's own checker validates internal navigation; lychee only checks external links.
+  # All docs.credal.ai URLs. Root-relative paths (/user-guide/…, /docs/assets/…,
+  # /api-reference/…) are resolved here via base_url and then immediately dropped.
   "^https://docs\\.credal\\.ai/",
 
-  # Relative Fern internal links (.mdx extension) — valid for Fern's nav
-  # resolver but not real URLs.
+  # Relative .mdx links (e.g. ./action-human-approval.mdx) — these are valid
+  # Fern-internal navigation references, not fetchable URLs.
   "\\.mdx(#.*)?$",
+
+  # app.credal.ai requires authentication; all paths redirect 307 → /signin
+  # which returns 200, so these would pass anyway — but excluding makes the
+  # intent explicit and avoids the misleading redirect noise in logs.
+  "^https://app\\.credal\\.ai/",
 
   # Google Docs / Drive require a Google login
   "^https://docs\\.google\\.com/",
@@ -42,7 +49,7 @@ exclude = [
   "^https://.*\\.sharepoint\\.com/",
 
   # Zoom webinar registration links expire after the event
-  "^https://.*zoom\\.us/webinar/",
+  "^https://.*\\.zoom\\.us/webinar/",
 
   # YouTube and Loom embed URLs routinely return 403 to headless clients
   "^https://www\\.youtube\\.com/embed/",
