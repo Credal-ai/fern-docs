@@ -17,6 +17,12 @@ When selecting a model, you may want to consider:
 - **Tool calling limitations:** This includes the ability to select the right tools, extract/format requests, make parallel requests and handle responses (objects, streaming, etc.).
 - **Speed & cost:** More capable models may be slower and more expensive. Response time and budget constraints should guide your choice.
 
+<Callout intent=”info” icon=”fa-solid fa-bolt” title=”Cerebras: Extremely Fast Inference”>
+**Cerebras** is a specialized AI infrastructure provider that delivers significantly faster response times than traditional cloud providers. Unlike OpenAI, Anthropic, or Google, Cerebras doesn’t develop its own proprietary models — instead, it runs popular open-source models (such as open-source variants from OpenAI and others) on custom hardware built for speed.
+
+Cerebras is an especially good choice when your agent needs to respond quickly — for example, customer-facing agents, real-time workflows, or any use case where latency matters. It’s also a solid starting point for general use.
+</Callout>
+
 **Tip:** If you’re unsure where to start, use the Preview tab to run test queries and compare model responses before publishing your agent.
 
 ![agent-different-models-dropdown.png](/docs/assets/agents/create-steps/agent-different-models-dropdown.png)
@@ -29,13 +35,7 @@ Credal can help you make an informed choice with:
 
 If there’s a model you’d like to use but don’t see in the platform, reach out so we can look into adding it.
 
-<Callout intent="info" icon="fa-solid fa-bolt" title="Cerebras: Extremely Fast Inference">
-**Cerebras** is a specialized AI infrastructure provider that delivers significantly faster response times than traditional cloud providers. Unlike OpenAI, Anthropic, or Google, Cerebras doesn’t develop its own proprietary models — instead, it runs popular open-source models (such as open-source variants from OpenAI and others) on custom hardware built for speed.
-
-Cerebras is an especially good choice when your agent needs to respond quickly — for example, customer-facing agents, real-time workflows, or any use case where latency matters. It’s also a solid starting point for general use.
-</Callout>
-
-<Callout intent="info" icon="fa-solid fa-rotate" title="Automatic Model Fallback">
+<Callout intent=”info” icon=”fa-solid fa-rotate” title=”Automatic Model Fallback”>
 If the model you’ve selected becomes deprecated or unavailable, your agent will automatically fall back to the default model for new agents at that time. To avoid unexpected behavior, review your agent’s model selection periodically and update it if the chosen model has been retired.
 
 If your chosen model is temporarily experiencing an outage or is overloaded, Credal will automatically fail over to another model to keep your agent running. You can always confirm the exact model — and even the cloud infrastructure — used for any given request in **Audit Logs**.
