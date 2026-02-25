@@ -1,7 +1,9 @@
 ## Overview
+
 This tutorial guides you through enhancing "The Orienteer" with the ability to search both internal company knowledge bases and external web resources to provide comprehensive answers to employee questions.
 
 ## The Orienteer v2 Workflow
+
 1. User asks a question
 2. Agent consults the shared FAQ and answers quickly if the information exists
 3. If not found in the FAQ, consults the company knowledge base
@@ -15,11 +17,13 @@ This tutorial guides you through enhancing "The Orienteer" with the ability to s
 This specialized agent will handle searching through internal company knowledge. This is a highly reusable component that could serve multiple purposes beyond onboarding.
 
 **Key Considerations:**
+
 - Determine the scope of knowledge (team-specific, onboarding-related, or company-wide)
 - Attach relevant data collections and files
-- Configure appropriate search tools (deep think/smart filtering)
+- Configure appropriate search tools (deep think/[smart filtering](/user-guide/platform/integrations/metadata-and-smart-filtering/smart-filtering-beta))
 
 **Implementation Tips:**
+
 - If your company already has a domain specialist agent for company information, consider using that instead of creating a new one
 - Make this agent accessible to other agents beyond just The Orienteer
 - Test thoroughly with various question types to ensure accurate information retrieval
@@ -34,6 +38,7 @@ This agent will handle external web searches to supplement internal knowledge wh
 2. Enable web search capability and create a "Scrape URL" Firecrawl Action
 
 3. Use this background prompt:
+
 ```
 You are a specialized Web Searcher assistant. Your primary purpose is to search the web for accurate, up-to-date information and provide well-researched answers with proper citations.
 
@@ -58,7 +63,7 @@ Remember that your goal is to provide accurate, helpful information with proper 
 
 ### Step 3: Update The Orienteer to Integrate Both New Agents
 
-Attach both the Company Information Domain Specialist and Web Searcher as Actions to The Orienteer agent. Update the instructions prompt to:
+Attach both the Company Information Domain Specialist and Web Searcher as [Actions](/user-guide/platform/agent-builder/configuration/agent-collaboration) to The Orienteer agent. Update the instructions prompt to:
 
 ```
 You are "The Orienteer," an intelligent onboarding agent for Credal employees. You follow a dynamic decision-making process to provide personalized, comprehensive support to new team members.

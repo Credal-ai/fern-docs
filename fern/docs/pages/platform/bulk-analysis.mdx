@@ -4,7 +4,7 @@ Credal's Bulk Analysis feature allows users to analyze a collection of documents
 
 ## In Depth Guide
 
-_This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Agents User guide](https://docs.credal.ai/getting-started/agents/in-depth-guide)._
+_This is a 20 minute guide to setting up and running a Bulk Analysis in Credal. Prerequisites are that you have read the [AI Agents User guide](/user-guide/platform/agent-builder/configuration/setting-up-an-agent)._
 
 Bulk Analysis is a powerful tool that you can use to **accelerate** analyses of a large number of documents, transcripts, or rows in a spreadsheet. If you have many pieces of data and you want to be able to classify each, extract key fields, or ask the same set of questions across each of the documents, Bulk Analysis can help.
 
@@ -12,15 +12,15 @@ In this guide, we will walk through how to set up and run Bulk Analysis in detai
 
 ## Step 1: Prep your source data
 
-The essence of bulk analysis is having many pieces of data that you want to analyze. 
+The essence of bulk analysis is having many pieces of data that you want to analyze.
 
-You can choose to use either a Document Collection or a spreadsheet as your Bulk Analysis data source. If you choose a Document Collection, Bulk Analysis will flatten any folder hierarchies and list each individual document as a row in the analysis. If you choose a spreadsheet, each row will be treated as a separate data source.
+You can choose to use either a [Document Collection](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections) or a spreadsheet as your Bulk Analysis data source. If you choose a Document Collection, Bulk Analysis will flatten any folder hierarchies and list each individual document as a row in the analysis. If you choose a spreadsheet, each row will be treated as a separate data source.
 
 ### Using a Document Collection
 
-Navigate to the “Document Collection” tab on the left of the Credal UI. 
+Navigate to the “Document Collection” tab on the left of the Credal UI.
 
-Create a Document Collection and either manually or via API upload data you want to analyze to Credal. This might be sales transcripts as a series of documents, a Jira project, or a folder with meeting notes. 
+Create a Document Collection and either manually or via API upload data you want to analyze to Credal. This might be sales transcripts as a series of documents, a Jira project, or a folder with meeting notes.
 
 ![bulk-analysis-tab.png](/docs/assets/bulk-analysis/in-depth-guide/bulk-analysis-tab.png)
 
@@ -32,13 +32,13 @@ Alternatively, if your data is structured in a spreadsheet, you can opt to use t
 
 Navigate to the Bulk Analysis tab on the left of the Credal home page.
 
-Create a new Bulk Analysis the same way you would create a new Document Collection or Agent. 
+Create a new Bulk Analysis the same way you would create a new Document Collection or Agent.
 
 ### Linking Source Data
 
 ![link-source-data.png](/docs/assets/bulk-analysis/in-depth-guide/link-source-data.png)
 
-Select the Document Collection or Spreadsheet that you want to analyze. 
+Select the Document Collection or Spreadsheet that you want to analyze.
 
 ### Validating Setup
 
@@ -60,7 +60,7 @@ Alternatively, you can click on “Add column+” to manually add prompts:
 
 The column name you assign should concisely describe the content you are extracting from the data. The prompt will be sent to the LLM along with your document, and the Agent you choose will be used to generate the response.
 
-Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Agent has specific context and a customized background prompt that contains the exact guidelines for how to write a cold email. 
+Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Agent has specific context and a customized background prompt that contains the exact guidelines for how to write a cold email.
 
 ![full-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/full-column-config.png)
 
@@ -72,7 +72,7 @@ Notice how each column has a specific detail it’s extracting or content it is 
 
 ### Writing Good Prompts
 
-Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends and insights you want to uncover from your bulk analysis source data. We highly recommend testing initially with the Suggested Questions feature in the Agent configuration tab. 
+Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends and insights you want to uncover from your bulk analysis source data. We highly recommend testing initially with the Suggested Questions feature in the Agent configuration tab.
 
 ![suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
 
@@ -80,11 +80,11 @@ When it comes to what questions you are asking, the choice is yours. You might b
 
 ![example-questions.png](/docs/assets/bulk-analysis/in-depth-guide/example-questions.png)
 
-Notice that I do not ask for metadata such as “Assignee” or “Date” since this data is structured data on a ticket. Credal will automatically export that information for you. Now once I run my Bulk Analysis,  I have the ability to detect any outliers for # of blockers, access what they were, and understand whether the bottleneck is in the frontend or backend team.
+Notice that I do not ask for metadata such as “Assignee” or “Date” since this data is structured data on a ticket. Credal will automatically export that information for you. Now once I run my Bulk Analysis, I have the ability to detect any outliers for # of blockers, access what they were, and understand whether the bottleneck is in the frontend or backend team.
 
 ### Testing and Refining your Prompts
 
-After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview table will be helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering. You can learn more here: [Prompting with Credal 101](https://docs.credal.ai/getting-started/prompting).
+After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview table will be helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering.
 
 ## Step 4: Run!
 

@@ -1,0 +1,74 @@
+You can ask your agent questions through Credal or via third party applications you have published it to.
+
+### a. **Hosting Agents through Credal's UI**
+
+To use a agent in Credal, select your agent by clicking _Select Agent_ in the chat menu.
+
+![agent-select.png](/docs/assets/agents/create-steps/agent-select.png)
+
+This will open a popup where you can select your desired agent.
+![agent-select-from-input.png](/docs/assets/agents/create-steps/agent-select-from-input.png)
+
+Then simply type your questions in the search bar. Your agent will return an answer, citing the sources relied upon, which you can click to review.
+
+![agent-select-query.png](/docs/assets/agents/create-steps/agent-select-query.png)
+
+### b. Using Agents within **third party apps** by API
+
+If you have published your agent to a third-party application, your queries will be directed to your agent through your unique agent API.
+
+In Slack, simply enter a query into a Slack channel the agent is connected to to get a response. The agent will respond with a , indicating it is thinking of an answer, before sending a response in a reply.
+
+How and when your agent responds will depend on what queries you have asked it to respond to in the "Publish" tab and your other configuration settings.
+
+### **Example 1: Respond to all messages**
+
+If you have set your agent to respond to “all messages", it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal’s Information Security Copilot to respond to all messages:
+
+![slack_all_messages_query_example.png](/docs/assets/copilots/slack_all_messages_query_example.png)
+
+![slack_out_of_scope_response.png](/docs/assets/copilots/slack_out_of_scope_response.png)
+
+> _Because this agent is set to be precise, when asked a question outside its expertise it responds that it does not have the context to answer. If this agent was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
+
+### **Example 2: Respond to relevant messages**
+
+If you have set your agent to respond to only a selection of messages, such as all relevant messages, or those matching a filter, the agent will only respond to queries that match that criteria.
+
+Here, we set Credal’s Information Security Copilot to only respond to relevant messages:
+
+![*Here, the Agent responded as the question fell within its scope—questions on information security at Credal.*](/docs/assets/copilots/slack_relevant_query_response.png)
+
+_Here, the Agent responded as the question fell within its scope—questions on information security at Credal._
+
+![*This question fell outside of the Agent's scope, and it did not respond.*](/docs/assets/copilots/slack_ignored_query_example.png)
+
+_This question fell outside of the Agent's scope, and it did not respond._
+
+### c. Creating effective prompts
+
+A well-engineered prompt can yield better results from your agent. Some strategies to keep in mind as you write your prompts are:
+
+- Use clear and direct language.
+- Leverage keywords or naming conventions in your data set to point your agent to the right information (particularly if you know what documents you want it to look at).
+- Focus your prompt on the most complex or important part of the query.
+- Use iterative or sequential prompting by structuring your prompts in a logical sequence, especially when trying to explore a topic in depth. Start with a broad prompt and then follow up with more detailed questions. This not only helps in building context but also in creating a framework for the AI to understand the progression of the inquiry.
+
+For a more in-depth look at prompt optimization, see this [blog post](https://www.credal.ai/blog/takeaways-from-using-llms-on-corporate-documents) or the [Writing Instructions](/user-guide/platform/agent-builder/configuration/writing-instructions) guide.
+
+---
+
+## Troubleshooting
+
+To systematically measure and track agent quality over time, see the [Evaluating Your Agent](/user-guide/platform/agent-builder/evaluating-your-agent) guide.
+
+### a. **The AI is unreachable**
+
+If you get an error message that the AI is currently unreachable, there may be a few causes.
+
+![agent-troubleshooting.png](/docs/assets/agents/create-steps/agent-troubleshooting.png)
+
+1. **Too much context data**: This error can also appear if too much context data is being pulled into each prompt through a combination of pinned data, context, Q&A, and searchable sources. This happens because the data the agent reviews each time is running up against the AI's length limits. Reducing the amount of data that the AI reviews every time can resolve the issue.
+   1. Sometimes having too many pinned sources, or pinned sources that are too large, can alone cause this issue as those sources will be read by the AI in their entirety each time a user asks a question. Try moving your pinned sources to searchable sources to resolve the issue.
+   2. If that does not work, try reducing the volume of other context being considered in each prompt. Start by reducing the number of chunks returned when your agent searches for relevant data. If you are still seeing problems, contact Credal support for assistance.
+2. **System outage**: This error can also appear if the AI provider is experiencing an outage or degraded performance. Credal monitors for outages and will automatically fail over to another model to keep your agent running. If the issue persists, you can also manually switch your agent to a model from a different provider in the model selector.

@@ -1,0 +1,54 @@
+The Evaluate tab helps you systematically test and measure your agent's performance across a set of test questions. For basic interactive testing, see [Testing Your Agent](/user-guide/platform/agent-builder/testing-your-agent). You can use this feature to monitor response quality over time and gauge the impact of changes such as prompt updates, data additions, or configuration adjustments.
+
+### Adding Test Cases
+
+Use the "Add Test Case(s)" button to create test questions. You can optionally provide expected answers for reference, though these are not required for evaluation.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/agent-eval.png" />
+</Frame>
+
+### **Creating Rubrics**
+
+For each test question, you can define a custom rubric that specifies what makes a good answer. Rubrics allow you to:
+
+- Set specific criteria the answer should meet (e.g., "Must cite the XYZ document as a source").
+- Assign point values to different criteria.
+- Provide scoring guidance for the evaluation.
+
+<img
+  src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-16T18:33:01.065Z/platform/agents/evaluate/image.png"
+  alt="image"
+  title="image"
+  noZoom={false}
+/>
+
+### **Running Evaluations**
+
+Click "Generate AI Answers" to test your agent against all questions. The agent will generate responses and automatically score them based on your defined rubrics.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-case.png" />
+</Frame>
+
+### **Tracking Performance**
+
+- View scores for each response based on your rubric criteria.
+- Compare current scores against past evaluations in the "Past Scores" column.
+- Monitor how configuration changes impact agent performance across versions.
+- Use version control to test different agent configurations and compare results.
+
+**Note:** The Evaluate tab currently runs tests on your Preview version of the agent.
+
+Watch a video walking you through how to use the Evaluate tab below:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/NoH4O8Ztv1o?si=Vr7fhjhMXQhruoCZ"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>

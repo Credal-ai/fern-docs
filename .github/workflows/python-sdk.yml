@@ -13,10 +13,18 @@ jobs:
     runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cache npm
+        uses: useblacksmith/stickydisk@v1
+        with:
+          key: ${{ runner.os }}-npm
+          path: ~/.npm
 
       - name: Download Fern
         run: npm install -g fern-api
@@ -26,7 +34,9 @@ jobs:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN}}
         run: |
-          fern generate --group python-sdk --version ${{ inputs.version }} --log-level debug
+          VERSION=${{ inputs.version }}
+          MAJOR_VERSION=$(echo "${VERSION%%.*}")
+          fern generate --group python-sdk --version ${{ inputs.version }} --api "v$MAJOR_VERSION" --log-level debug
 
       - name: Regenerate Docs
         env:

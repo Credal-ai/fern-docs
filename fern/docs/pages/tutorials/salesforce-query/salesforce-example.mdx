@@ -12,11 +12,11 @@ Many companies use Salesforce, and a common pain point is that the interface is 
 
 ![Create a new agent](/docs/assets/copilots/create_new_agent.png)
 
-3. **Create a Salesforce query action**: Navigate to the [Actions tab](https://app.credal.ai/actions) and click Create New Action. For this use case, “Retrieve Salesforce records by SOQL query” gets the best breadth of results. Make sure to give your new action a detailed name and description so the agent knows when to call it. Publish it to your new agent.
+3. **Create a Salesforce query action**: Navigate to the [Actions tab](https://app.credal.ai/actions) and click Create New Action. For this use case, “Retrieve Salesforce records by SOQL query” gets the best breadth of results. Make sure to give your new action a detailed name and description so the agent knows when to call it (see [Action Parameters](/user-guide/platform/governed-actions/action-parameters) for tips on parameter configuration). Publish it to your new agent.
 
 ![Create a new action](/docs/assets/copilots/create_new_salesforce_action.png)
 
-4. **Add your action to your agent**: Scroll down to the Actions section of your agent. Add your action to your agent using the “Select a published action” box.
+4. **Add your action to your agent**: Scroll down to the Connectors section of your agent. Add your action to your agent using the “Select a published action” box.
 
 ![Add Salesforce action to agent](/docs/assets/copilots/add_salesforce_action_to_agent.png)
 
@@ -32,8 +32,19 @@ You can then customize the rest of the prompt for your precise use case. This is
 
 ![Add files to agent](/docs/assets/copilots/add_files_to_agent.png)
 
-7. **Choose a model for your agent**: Since this task relies heavily on the LLM generating well-formed SOQL queries, Claude sonnet would be a good choice here since writing quality code is one of its strong suits.
+7. **[Choose a model](/user-guide/platform/agent-builder/configuration/choosing-a-model) for your agent**: Since this task relies heavily on the LLM generating well-formed SOQL queries, a model with strong coding capabilities is a good choice here.
 
 Congrats! You have successfully made an agent that can query your Salesforce data.
 
 See a demo of the Salesforce Query Assistant in action:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/l7Dofe68yuQ?si=VseZjyBY7gskYTme"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>

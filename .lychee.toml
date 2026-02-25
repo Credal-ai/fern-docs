@@ -1,0 +1,57 @@
+# lychee link checker configuration
+# https://github.com/lycheeverse/lychee
+#
+# This job checks only external URLs. Internal Fern links (/user-guide/…,
+# /docs/assets/…, relative .mdx paths) are validated by the fern-check step
+# and are excluded here — checking them against the live site would produce
+# false failures whenever a PR introduces a page that doesn't exist yet.
+#
+# Workaround for lychee's URL construction behaviour:
+#   lychee crashes on root-relative paths (e.g. /user-guide/foo) before any
+#   exclude filter runs. base_url gives it a domain to construct a valid URL,
+#   and the docs.credal.ai exclude pattern below immediately discards it.
+
+base_url = "https://docs.credal.ai"
+
+# Accepted HTTP status codes — treat these as "link is alive".
+#   200..=206  normal success range
+#   429        rate-limited by the server; the site is up, just throttling bots
+accept = "200..=206,429"
+
+# Per-request timeout in seconds
+timeout = 30
+
+# Retry transient failures before marking a link broken
+max_retries = 3
+
+# Parallel requests — kept moderate to avoid triggering rate limits
+max_concurrency = 10
+
+exclude = [
+  # All docs.credal.ai URLs. Root-relative paths (/user-guide/…, /docs/assets/…,
+  # /api-reference/…) are resolved here via base_url and then immediately dropped.
+  "^https://docs\\.credal\\.ai/",
+
+  # Relative .mdx links (e.g. ./action-human-approval.mdx) — these are valid
+  # Fern-internal navigation references, not fetchable URLs.
+  "\\.mdx(#.*)?$",
+
+  # app.credal.ai requires authentication; all paths redirect 307 → /signin
+  # which returns 200, so these would pass anyway — but excluding makes the
+  # intent explicit and avoids the misleading redirect noise in logs.
+  "^https://app\\.credal\\.ai/",
+
+  # Google Docs / Drive require a Google login
+  "^https://docs\\.google\\.com/",
+  "^https://drive\\.google\\.com/",
+
+  # SharePoint requires a Microsoft login
+  "^https://.*\\.sharepoint\\.com/",
+
+  # Zoom webinar registration links expire after the event
+  "^https://.*\\.zoom\\.us/webinar/",
+
+  # YouTube and Loom embed URLs routinely return 403 to headless clients
+  "^https://www\\.youtube\\.com/embed/",
+  "^https://www\\.loom\\.com/embed/",
+]

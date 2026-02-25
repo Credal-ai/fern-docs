@@ -5,13 +5,16 @@ Credal lets you publish Agents to Slack channels where they can answer questions
 ---
 
 ## The Basics: Bots in Slack
+
 Think of Slack bots like helpful team members that never sleep. When you message them, they respond automatically. There are two types of bots you can use with Credal:
+
 - **The Credal bot** – The default bot that comes with Credal.
 - **Custom bots** – Specialized bots you can create (e.g., @HRBot for HR questions or @ITBot for tech support).
 
 ---
 
 ## How Messages Work
+
 There are two ways to interact with a bot:
 
 1. **Mentioning a bot directly** (@Credal.ai or @CustomBotName)  
@@ -27,6 +30,7 @@ Messages can be sent in the main channel or as a reply in a thread.
 ---
 
 ## How Agents Decide When to Help
+
 When you publish an Agent to a Slack channel, you are adding to a bucket of Agents that the Credal bot can choose to respond with in that Slack channel to any given message. The Credal bot decides which agent to respond with using the routing configuration in each agent’s publishing settings.
 
 Agent response behaviors:
@@ -34,7 +38,6 @@ Agent response behaviors:
 <Frame>
   <img src="/docs/assets/agents/routing-options.png" />
 </Frame>
-
 
 1. **Respond to all messages** - The agent tries to help with every message in the channel. If multiple agents have this setting, the agent configured first will respond.
 
@@ -46,25 +49,23 @@ Agent response behaviors:
 
 5. **Respond to all relevant messages that match a filter** - The above two settings combined.
 
-
 ---
 
 ## Publishing to Slack
+
 Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
 </Frame>
 
-If multiple agents are published to a single channel, Credal uses their Descriptions to determine which should respond.  
+If multiple agents are published to a single channel, Credal uses their [Descriptions](/user-guide/platform/agent-builder/configuration/setting-up-an-agent) to determine which should respond.
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
 </Frame>
 
-
 Example filter setup: respond only to prompts containing `?`.
-
 
 <Frame>
   <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" />
@@ -73,6 +74,7 @@ Example filter setup: respond only to prompts containing `?`.
 ---
 
 ## Slack Private Channels
+
 Publishing into a private channel works like public channels but requires adding the Credal integration first.
 
 1. In Slack, open the channel and click its name (e.g., `credal-founders`).
@@ -90,7 +92,7 @@ Publishing into a private channel works like public channels but requires adding
 
 You can optionally tie any particular agent to a Custom bot for a specialized function. This is a 1 to 1 relationship, so that bot can only respond as that agent and that agent can only be used in Slack channels if its custom app is triggered.
 
-When creating your custom Slack app, refer to the internal guide: [Slack App Manifest](./slack-app-manifest).
+When creating your custom Slack app, refer to the internal guide: [Slack App Manifest](/user-guide/platform/agent-builder/publishing-agents/custom-dedicated-slack-bots).
 
 Custom bots and the Credal bot behave separately, so if you have both a Custom bot and Credal bot in a channel, it's possible to see both respond based on their routing settings.
 
@@ -104,15 +106,17 @@ By enabling the advanced settings option, the user will see additional options.
   <img src="/docs/assets/agents/create-steps/agent-slack-advance-settings.png" />
 </Frame>
 
-1. **Thread Response Behavior** – Choose how the agent responds in threads:  
-   - **Let Credal Decide** – Agent decides when to respond.  
-   - **Require @Credal Mention** – Only responds when directly mentioned.  
-   *(Optional)* Enable **Run agentic workflows even if no response is needed**.
+1. **Thread Response Behavior** – Choose how the agent responds in threads:
 
-2. **Customize response if Credal is uncertain** – Define how the agent reacts when unsure:  
-   - **Default** – Standard fallback response.  
-   - **React with Emoji** – Adds an emoji reaction instead of replying with text.  
-   - **Respond with Phrase** – Uses a custom phrase when uncertain.  
+   - **Let Credal Decide** – Agent decides when to respond.
+   - **Require @Credal Mention** – Only responds when directly mentioned.  
+     _(Optional)_ Enable **Run agentic workflows even if no response is needed**.
+
+2. **Customize response if Credal is uncertain** – Define how the agent reacts when unsure:
+
+   - **Default** – Standard fallback response.
+   - **React with Emoji** – Adds an emoji reaction instead of replying with text.
+   - **Respond with Phrase** – Uses a custom phrase when uncertain.
    - **No response** – Remains silent.
 
 3. **Show referenced sources in Slack response** – Toggle to display source links in agent replies.
@@ -121,6 +125,6 @@ By enabling the advanced settings option, the user will see additional options.
 
 5. **Add link to Credal web chat** – Toggle to include a direct link to the conversation in Credal's web UI.
 
-6. **Customize missing credentials response** – Choose between:  
-   - **Default** – Standard message when credentials are missing.  
+6. **Customize missing credentials response** – Choose between:
+   - **Default** – Standard message when credentials are missing.
    - **Respond with Custom Message** – Customizable text for missing credentials.

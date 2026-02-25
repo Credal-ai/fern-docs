@@ -11,7 +11,7 @@ This guide provides the foundational understanding and practical steps to optimi
 
 ## 1. What is the Background Prompt
 
-This is arguably the most effective way to customize your agent. It defines the environment in which your agent operates, detailing its role, response style, and the types of queries it should handle. Creating an effective background prompt ensures your agent seamlessly integrates into your specific use case.
+The [background prompt](/user-guide/platform/agent-builder/configuration/writing-instructions) is arguably the most effective way to customize your agent. It defines the environment in which your agent operates, detailing its role, response style, and the types of queries it should handle. Creating an effective background prompt ensures your agent seamlessly integrates into your specific use case.
 
 ## 2. Constructing a Background Prompt
 
@@ -32,7 +32,7 @@ You assist the financial advisory team by analyzing client interactions to enhan
 
 ### Output Format
 
-LLMs can be unpredictable, but fortunately we can direct them with clear instructions. Providing a template for expected responses is one effective approach. 
+LLMs can be unpredictable, but fortunately we can direct them with clear instructions. Providing a template for expected responses is one effective approach.
 
 Here’s an example of setting up an output format for entity extraction:
 
@@ -58,7 +58,7 @@ Provide a riddle using the following structure:
 
 ### Response Guidelines
 
-Create detailed instructions that anticipate potential pitfalls and standard operational procedures. Your agent will only know what you tell it. Are responses too long? Specify the desired length! Is the language too verbose? Ask for concise responses. 
+Create detailed instructions that anticipate potential pitfalls and standard operational procedures. Your agent will only know what you tell it. Are responses too long? Specify the desired length! Is the language too verbose? Ask for concise responses.
 
 Credal provides prompt snippets directly under the background prompt in the Agent Configuration tab. We recommend using these as a starting point for generating more useful responses, though your specific use case may require additional detail!
 
@@ -181,11 +181,11 @@ We currently don’t support autocompleting prompts for our Slack integration. F
 
 ## 7. Use the Latest Model
 
-Utilize the most recent and capable models to achieve the best results. Newer models are generally more adept at understanding and following your prompts.
+Utilize the most recent and capable [models](/user-guide/platform/agent-builder/configuration/choosing-a-model) to achieve the best results. Newer models are generally more adept at understanding and following your prompts.
 
 ## 8. Incorporate Feedback Loops
 
-Continuously refine your prompts based on your impression of Agent responses to improve accuracy and relevance. Negative feedback logs are a great resource for this!
+Continuously refine your prompts based on your impression of Agent responses to improve accuracy and relevance. [Negative feedback logs](/user-guide/platform/agent-builder/configuration/memory-and-feedback) are a great resource for this!
 
 We are currently working on some features that will incorporate negative feedback and usage trends into the agent configuration workflow by suggesting ways in which you can improve your background prompt. Stay tuned!
 

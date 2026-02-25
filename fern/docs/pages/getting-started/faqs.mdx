@@ -7,13 +7,22 @@ slug: getting-started/faqs
 
 **How is Credal different from just using ChatGPT or Claude directly?**
 
-ChatGPT and Claude are great tools, and we recommend Credal is used *with* these tools. While ChatGPT and Claude focus on providing a consumer grade chat experience, Credal focusses on providing *secure*, *domain specific agents that have unparalleled understanding of your Enterprise, but which you can chat with in whatever your favorite chat client is - whether that’s ChatGPT, Claude, or just directly in Slack or teams.*
+ChatGPT, Claude, and other LLMs are great tools, and we recommend Credal is used _with_ these tools. While ChatGPT and Claude focus on providing a consumer grade chat experience, Credal focusses on providing _secure_, _domain specific agents that have unparalleled understanding of your Enterprise, but which you can chat with in whatever your favorite chat client is - whether that’s ChatGPT, Claude, or just directly in Slack or teams._
 
 Credal provides a secure, unified understanding of your internal systems, respecting all existing access permissions and Enterprise AI policies (e.g., a user can only search for documents they already have access to, or update systems that have been marked safe for Agents). That secure unified understanding of your systems is available in your existing chat surfaces, including ChatGPT, Claude and others.
 
 **What LLMs (Large Language Models) does Credal use?**
 
-Credal is model-agnostic. We support leading models including OpenAI’s Anthropic’s and Google’s. You can choose the best model for your specific use case or allow Credal to route queries to the most appropriate model automatically.
+Credal is model-agnostic. We support leading models from OpenAI, Anthropic, Google, and Cerebras. You can choose the best model for your specific use case or allow Credal to route queries to the most appropriate model automatically.
+
+**Why is it taking my agent longer to respond to my query than when I ask ChatGPT, Claude, or another model directly?**
+
+Credal agents are often a little slower than a straight‑through ChatGPT or other LLMs because they are doing different, more extensive, work. For example, Credal agents may be searching your enterprise's non-public internal document collections, verifying permissions, or orchestrating with subagents, which takes additional milliseconds to seconds. You can speed up agents' responses in a number of ways:
+
+1. Simplify things for them through clear prompts
+2. Reducing the complexity of the agent build by cutting down on the number of its actions, and documents or other sources it has to query (but this has tradeoffs, because, for instance, if the agent has fewer sources to query, it will naturally be less thorough).
+3. Try a Cerebras-powered model — Cerebras runs open-source models on specialized hardware built for speed, and can significantly reduce response times. See [Choosing a Model](/user-guide/platform/agent-builder/configuration/choosing-a-model) for more details.
+4. Avoid using sub-agents with very simple agents who don't need subagents.
 
 ## **Security & Privacy**
 
@@ -33,7 +42,7 @@ Credal indexes your data to allow for semantic search and retrieval, but this in
 
 **What data sources can I connect to Credal?**
 
-Credal supports [*out-of-the-box integrations*](https://www.credal.ai/security) with major enterprise tools, including:
+Credal supports [_out-of-the-box integrations_](/user-guide/platform/integrations/data-sources-action-providers) with major enterprise tools, including:
 
 - Knowledge Sources: Google Drive, Confluence, SharePoint, Notion, Box.
 - Communication: Slack (Channels and DMs), Gmail, Microsoft Teams.
@@ -46,11 +55,11 @@ Agents are specialized AI assistants you can build to handle specific tasks. For
 
 **Can I build my own custom actions?**
 
-Yes. Beyond our built-in actions (like “Draft Email” or “Search Jira”), developers can build custom actions to connect Credal Agents to internal APIs or proprietary databases, allowing agents to perform complex workflows unique to your business.
+Yes. Beyond our built-in actions (like “Draft Email” or “Search Jira”), developers can build [custom actions](/user-guide/platform/governed-actions/overview) to connect Credal Agents to internal APIs or proprietary databases, allowing agents to perform complex workflows unique to your business.
 
 **Can I deploy Agents to Slack or Microsoft Teams?**
 
-Yes. Once you build an Agent in Credal, you can deploy it directly to Slack channels or Microsoft Teams. You can have a general “Employee Assistant” for the whole company or specialized bots for specific channels (e.g., an IT Support bot in the #help-it channel).
+Yes. Once you build an Agent in Credal, you can [deploy it directly to Slack channels](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack) or Microsoft Teams. You can have a general “Employee Assistant” for the whole company or specialized bots for specific channels (e.g., an IT Support bot in the #help-it channel).
 
 ## **Getting Started**
 
@@ -70,7 +79,7 @@ For complex questions that require more than a quick lookup, Credal offers a “
 
 **How do I start building an Agent if I don’t know where to begin?**
 
-If you’re unsure how to structure your agent, try using our Builder Buddy. It’s a built-in assistant that can help you write a system prompt, suggest necessary actions, and even recommend the best model for your use case. You can ask it things like, *“I want to build an agent that summarizes Salesforce opportunities. What prompt and actions should I use?”*
+If you’re unsure how to structure your agent, try using our Builder Buddy. It’s a built-in assistant that can help you write a system prompt, suggest necessary actions, and even recommend the best model for your use case. You can ask it things like, _“I want to build an agent that summarizes Salesforce opportunities. What prompt and actions should I use?”_
 
 **What is the “Agent Building Wizard”?**
 
@@ -78,7 +87,7 @@ The Agent Building Wizard is a guided setup tool that simplifies the creation pr
 
 **Can I use XML tags in my system prompt?**
 
-Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your system prompt is a best practice, especially when using Claude models. It helps the AI clearly distinguish between different parts of your instructions, leading to more accurate and structured responses.
+Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your system prompt is a best practice. It helps the AI clearly distinguish between different parts of your instructions, leading to more accurate and structured responses.
 
 ## **Actions & Tools**
 
@@ -88,7 +97,7 @@ If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an 
 
 1. Prompt Instructions: Does your system prompt explicitly tell the Agent *when* to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
 2. Tool Description: Ensure the action’s description clearly explains what it does. The AI uses this description to decide if the tool is relevant.
-3. Model Choice: Some models are better at tool use than others. We generally recommend Claude 3.5 Sonnet for complex action-taking workflows.
+3. Model Choice: Some models are better at tool use than others. For complex action-taking workflows, try a more capable model from the model selector.
 
 **I’m getting an “Action Error” or “Forbidden” message. How do I fix it?**
 
@@ -105,7 +114,7 @@ This usually means there’s a permission or configuration issue.
 
 This can happen if the conversation history becomes too long or if a sub-agent returns a massive amount of data.
 
-- Context Window: Try switching to a model with a larger context window (like Claude 3.5 Sonnet or GPT-4o).
+- Context Window: Try switching to a model with a larger context window — model descriptions in the selector note context window size.
 - Summarization: Instruct your Agent (or sub-agents) to be concise. If a sub-agent returns 50 pages of text, the main Agent might struggle to process it all.
 
 **How can I see why my Agent failed?**
@@ -118,7 +127,7 @@ If you encounter a generic error (like \{} or “Workflow execution failed”), 
 
 **Why is my Agent giving incorrect dates or hallucinating info?**
 
-- Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). Some older models (like early versions of Opus) had known issues with date calculation; switching to Sonnet often fixes this.
+- Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). If date calculation seems off, try switching to a newer model.
 - Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: *“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”*
 
 **How do I know if a specific document or data source is working?**
@@ -133,5 +142,5 @@ The best way to verify a data source is to ask a question in the **Preview** tab
 You can test your agent using the following methods:
 
 - **Use the Preview Tab:&#x20;**&#x54;his is the quickest way to test. Open the **Preview** tab in the agent builder and ask questions live. This allows you to see exactly how the agent interprets your prompt and which data sources it uses.
-- **Create Test Cases:** For more robust testing, you can set up **Test Cases**(sometimes referred to as "Golden Answers"). This allows you to upload a list of questions and expected answers (e.g., from a spreadsheet) to verify that the agent answers consistently and accurately against a standard.
+- **Create Test Cases:** For more robust testing, you can set up [**Test Cases**](/user-guide/platform/agent-builder/evaluating-your-agent) (sometimes referred to as "Golden Answers"). This allows you to upload a list of questions and expected answers (e.g., from a spreadsheet) to verify that the agent answers consistently and accurately against a standard.
 - Provide Feedback: During testing, you can give a **thumbs up or thumbs down** to the agent's responses. This provides feedback that helps the agent understand which answers are good or bad, allowing it to improve over time.

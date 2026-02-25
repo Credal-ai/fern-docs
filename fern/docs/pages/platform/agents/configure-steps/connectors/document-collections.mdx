@@ -1,0 +1,82 @@
+# Data Processing Tools
+
+## Summary
+
+Welcome to the feature set for our platform! Below you'll find two key capabilities designed to enhance your workflow with document collections.
+Whether you want to ask every document collection about a list of key topics based on your query, or filter semi-structured documents with Smart Filters, there are tools you can use.
+
+### Deep Summarize on Documents
+
+When enabled, the agent queries every document in each selected collection against key topics derived from your query, then synthesizes cross-document results for higher-quality overviews, lists, and summaries.
+
+### Smart Filters
+
+[Smart Filtering](/user-guide/platform/integrations/metadata-and-smart-filtering/smart-filtering-beta) lets your agent use document metadata and auto-extracted entities to filter out to the most relevant documents, sending only the most relevant content to the LLM, improving precision and reducing noise.
+
+---
+
+## Deep Summarize on Documents
+
+**Deep Summarize** asks each document in your selected collections targeted questions based on your query, then merges the answers into a concise, structured synthesis. This produces summaries that:
+
+- Pull in **only the most relevant points** from each document
+- Organize findings into clear sections or bullet lists
+- Capture **key insights, decisions, action items, and risks** across sources
+- Draw from multiple documents, not just one
+
+### How to Enable:
+
+<Frame>
+  <img src="/docs/assets/agents/search-tools/deep-summarize.png" />
+</Frame>
+
+**Best Practices**
+
+- Include must-answer questions or focus areas to steer extraction
+- For very large documents, ensure they’re split into sections for better coverage and accuracy
+
+### When you shouldn't use it:
+
+- Deep Summarize is very powerful for getting responses for multiple documents
+- However if you know that there are only a few relevant documents you want answers from, this will dilute those results.
+
+## Smart Filters
+
+Smart Filtering narrows searches to documents matching specific metadata or entities, ensuring only the most relevant content is sent to the LLM.
+
+- Smart Filtering only works on document collections
+- Filters items in a document collection by SQL queries to select on relevant documents
+- For smart filtering to work you need to setup metadata schema for your document collection
+- The benefit is that you can draw insights from many more documents in your collection
+
+### Example: Smart Filtering
+
+1. Enable Smart Filtering:
+
+   <Frame>
+     <img src="/docs/assets/agents/search-tools/deep-summarize.png" />
+   </Frame>
+
+2. Setup your document collection with a [metadata schema](/user-guide/platform/integrations/metadata-and-smart-filtering/collection-schemas):
+
+   <Frame>
+     <img src="/docs/assets/agents/smart-filters/metadata-schema.png" />
+   </Frame>
+
+3. Once you have your schema setup, sync/resync your documents to generate metadata
+
+   <Frame>
+     <img src="/docs/assets/agents/smart-filters/extracted-values-example.png" />
+   </Frame>
+
+4. In your agent, make sure to add prompt instructions to filter on metadata.
+
+5. Send a chat, in the Filters section you can see what smart filters were applied
+   <Frame>
+     <img src="/docs/assets/agents/smart-filters/smart-filtering-example.png" />
+   </Frame>
+
+### How does smart filtering work:
+
+Smart Filtering works by checking each document’s metadata, schema fields, or auto-extracted entities against your filter criteria.
+After that it filters down your searchable set of documents, improving the results generated.

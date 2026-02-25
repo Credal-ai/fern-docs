@@ -1,12 +1,19 @@
 # Credal Open Source Actions
 
+<Callout intent="info" icon="fa-brands fa-github" title="Credal Actions SDK is open source">
+  Browse existing actions, open issues, or submit a PR on GitHub:
+  **[github.com/credal-ai/actions-sdk](https://github.com/credal-ai/actions-sdk)**
+</Callout>
+
 ## Overview
 
-Welcome to Credal.ai's Open Source Actions Framework! This framework allows you to easily add custom actions for your Credal Agents, enhancing their functionality through LLM function calling. For more information about Credal's Agent platform, visit [here](https://www.credal.ai/products/ai-agent-platform).
+Credal's Open Source Actions Framework lets you add custom [actions](/user-guide/platform/governed-actions/overview) to Credal Agents via LLM function calling. The full source lives at **[credal-ai/actions-sdk](https://github.com/credal-ai/actions-sdk)** — all contributions, bug reports, and feature requests should go there.
 
-## Adding or Updating Actions
+For more information about Credal's Agent platform, visit [here](https://www.credal.ai/products/agent-platform).
 
-To add or update actions in the Credal Open Source Actions Framework, follow these steps:
+## Contributing a New Action
+
+To add or update an action, clone the [actions-sdk repo](https://github.com/credal-ai/actions-sdk) and follow these steps:
 
 1. **Schema Update**: Add or update the action in `src/actions/schema.yaml`. This is the first step in defining your action.
 
@@ -17,6 +24,8 @@ To add or update actions in the Credal Open Source Actions Framework, follow the
 4. **Provider Function Creation**: Create a new provider function in `src/actions/providers/<provider>/<action>.ts` (e.g., `src/actions/providers/math/add.ts`). This function should export a function using the generated types.
 
 5. **Action Mapping**: If you are adding a new action or provider, update `src/actions/actionMapper.ts` and `src/actions/groups.ts`. This ensures that your action is correctly mapped and grouped within the framework.
+
+Once your changes are ready, open a pull request on [github.com/credal-ai/actions-sdk](https://github.com/credal-ai/actions-sdk).
 
 ## Coming Soon Improvements
 
@@ -37,7 +46,7 @@ const result = await runAction(
   "listConversations",
   "slack",
   { authToken: "xoxb-..." },
-  {}
+  {},
 );
 ```
 
@@ -49,4 +58,4 @@ To run a basic test for `runAction`, execute the following command:
 npx ts-node -r tsconfig-paths/register --project tsconfig.json tests/testRunMathAction.ts
 ```
 
-This documentation aims to provide clear instructions and address potential areas of confusion. If you have any questions or need further clarification, feel free to reach out.
+If you have questions or run into issues, open a GitHub issue at [credal-ai/actions-sdk](https://github.com/credal-ai/actions-sdk/issues).
