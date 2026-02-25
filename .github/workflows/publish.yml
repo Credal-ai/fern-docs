@@ -13,7 +13,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cache npm
+        uses: useblacksmith/stickydisk@v1
+        with:
+          key: ${{ runner.os }}-npm
+          path: ~/.npm
 
       - name: Download Fern
         run: npm install -g fern-api
