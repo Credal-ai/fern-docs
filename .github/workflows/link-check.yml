@@ -4,16 +4,20 @@ on:
   pull_request:
     branches:
       - main
-    # Only run when docs content actually changes
+    # Only run when docs content or this workflow actually changes
     paths:
       - "fern/docs/**"
       - "fern/docs.yml"
+      - ".github/workflows/link-check.yml"
+      - ".lychee.toml"
   push:
     branches:
       - main
     paths:
       - "fern/docs/**"
       - "fern/docs.yml"
+      - ".github/workflows/link-check.yml"
+      - ".lychee.toml"
   schedule:
     # Weekly on Mondays at 09:00 UTC — catches external links that go stale
     # even when no docs have changed
