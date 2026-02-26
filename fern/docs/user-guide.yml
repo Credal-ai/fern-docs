@@ -120,10 +120,10 @@ navigation:
                 path: ./pages/platform/mcp-servers/import-server/third-party-registration.mdx
               - page: Setting up Controls
                 path: ./pages/platform/mcp-servers/import-server/setting-up-controls.mdx
-          - page: Testing your Server
-            path: ./pages/platform/mcp-servers/testing-server.mdx
           - page: Publishing your Server
             path: ./pages/platform/mcp-servers/publishing-server.mdx
+          - page: Testing your Server
+            path: ./pages/platform/mcp-servers/testing-server.mdx
           - page: Monitoring Usage
             path: ./pages/platform/mcp-servers/monitoring-usage.mdx
       - page: Bulk Analysis
