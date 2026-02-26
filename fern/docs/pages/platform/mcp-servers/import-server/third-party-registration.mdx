@@ -1,0 +1,25 @@
+# Third-party Server Registration
+
+Credal isn't limited to servers you build yourself. You can register any third-party MCP server — Granola, Databricks, or any other provider — and instantly get Credal's full governance stack applied to it: access controls, approval workflows, usage monitoring, and allowlists, all out of the box.
+
+This means your organization gets a single, governed entry point for every MCP server your teams rely on, whether built internally or sourced externally. Instead of users connecting to third-party servers directly and bypassing your controls, you register them once in Credal and point users there. Governance comes along for the ride, automatically.
+
+## Registering a third-party server
+
+To get started, make sure you have admin access, then navigate to the **MCP Servers** tab and click **Create New MCP Server**. This time, select **Import a Third-Party MCP Server**.
+
+![import-third-party-server](/docs/assets/mcp-servers/import-server/import-third-party-server.png)
+
+Give it a name and description, then paste in the server's remote URL.
+
+![third-party-server-details](/docs/assets/mcp-servers/import-server/third-party-server-details.png)
+
+Credal will walk you through OAuth authentication with the provider to establish the connection.
+
+![oauth-authentication](/docs/assets/mcp-servers/import-server/oauth-authentication.png)
+
+Once connected, you'll see a full list of the server's tools, which you can configure and control from that point on.
+
+![third-party-tools-list](/docs/assets/mcp-servers/import-server/third-party-tools-list.png)
+
+> Credal currently supports OAuth for third-party authentication, with support for user-level private tokens coming in the future.

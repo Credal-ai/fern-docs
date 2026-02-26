@@ -1,0 +1,39 @@
+# Publishing your Server
+
+Publishing works the same way for both Credal-built MCP servers and third-party imported servers. The same deployment options, admin setup, and access controls apply to all servers.
+
+## One-Time Admin Setup
+
+To make Credal MCP servers available in Claude or ChatGPT, an admin needs to connect the following URLs once at the organization level:
+
+- **Claude**: `https://app.credal.ai/api/user/claude/mcp`
+- **ChatGPT**: `https://app.credal.ai/api/user/chatgpt/mcp`
+
+![credal-in-claude](/docs/assets/mcp-servers/publishing/credal-in-claude.png)
+
+Once connected, all published MCP servers will be available to users in that service without any further configuration.
+
+## Publishing Your Server
+
+Once your MCP server is ready, you have two ways to deploy it. Navigate to the Publish tab where you'll see the following settings:
+
+![fresh-deployment](/docs/assets/mcp-servers/publishing/fresh-deployment.png)
+
+### For Claude and ChatGPT
+
+The one-time admin setup above is all that's needed. Your server becomes available to all users in those services automatically once published.
+
+Here is an example of how you can directly publish to all users in ChatGPT
+![full-org-chatgpt](/docs/assets/mcp-servers/publishing/full-org-chatgpt.png)
+
+### For Other MCP Clients
+
+For all other surfaces, such as Cursor, Windsurf, or any custom MCP client, each server must be connected individually by copying the server's direct URL and adding it to the client manually.
+
+## Access Control
+
+Regardless of how you publish, MCP server builders can configure end-user allowlists to control exactly which users can access the server within their chat service, giving admins fine-grained control over visibility and access.
+
+Here is an example of how I would scope visibility down to just one user group. The user group is fetched from your identity provider.
+
+![credal-support-chatgpt](/docs/assets/mcp-servers/publishing/credal-support-chatgpt.png)
