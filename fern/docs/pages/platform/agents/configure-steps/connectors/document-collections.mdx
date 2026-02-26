@@ -5,6 +5,84 @@
 Welcome to the feature set for our platform! Below you'll find two key capabilities designed to enhance your workflow with document collections.
 Whether you want to ask every document collection about a list of key topics based on your query, or filter semi-structured documents with Smart Filters, there are tools you can use.
 
+### Creating Document collections
+
+Document Collections let you organize your files, documents, and web pages into searchable groups. Once created, you can connect a collection to an AI agent so it can search and reference your content when answering questions.
+
+- Navigate to Document Collections from the left sidebar.
+  <Frame>
+    <img src="/docs/assets/collections/collections-sidebar.png" />
+  </Frame>
+- Click the Create new collection button in the top-right corner.
+- In the dialog that appears, fill in:
+  - Name — Give your collection a clear, descriptive name (e.g., "HR Policies" or "Product Documentation"). A good name helps your teammates understand what the collection contains.
+  - Description — Optionally add a short description of what kind of content the collection holds.
+- Click Create Document Collection.
+
+You'll be taken to your new collection's configuration page automatically.
+
+#### Configuring Your Collection
+
+After creation, your collection has four tabs:
+
+1. Configure
+This is where you set up your collection's content and settings:
+Metadata 
+— Edit the name and description of your collection at any time.
+Smart Filtering Schema 
+— Define custom metadata fields for your documents (e.g., department, document type, date). This enables more precise filtering when your agent searches the collection.
+Data
+ — Add content to your collection (see below).
+Performance 
+— If available, enable dedicated search capacity for faster results on large collections.
+
+2. API
+View your collection's unique ID and manage API keys for programmatic access. This tab also links to API documentation if your developers need to integrate with the collection.
+  <Frame>
+    <img src="/docs/assets/collections/collections-api-tab.png" />
+  </Frame>
+
+3. Preview Semantic Search
+Test your collection by running sample searches. This helps you verify that the right documents are being found before connecting the collection to an agent.
+
+4. Monitor
+View a log of searches that have been run against your collection.
+
+
+#### Adding Content to Your Collection
+
+From the Configure tab, scroll to the Data section. You have three main ways to add content:
+**Search & select existing sources** — Use the search bar to find documents, folders, or data sources already in your organization's catalog and add them to the collection.
+**Upload new files** — Upload documents directly from your computer.
+**Public Webpages** — Click the Public Webpages button to add content from publicly accessible web URLs.
+
+  <Frame>
+    <img src="/docs/assets/collections/collections-data.png" />
+  </Frame>
+
+#### Sharing Your Collection
+Click the Share button at the top of your collection's page to manage who has access:
+Add collaborators by searching for teammates within your organization.
+Remove collaborators by clicking the remove icon next to their name.
+Organization admins automatically have access to all collections.
+
+> Note: Every collection must have at least one collaborator. You cannot remove the last remaining collaborator.
+
+#### Connecting a Collection to an Agent
+To use your collection as a knowledge source for an AI agent:
+- Open the agent you want to configure in the Agent Builder.
+- Go to the Data Sources section (or Connectors, depending on your interface).
+- Select your document collection as a data source.
+
+The agent will now be able to search your collection's content when answering user questions, respecting each user's document-level permissions.
+
+#### Deleting a Collection
+- Open the collection you want to delete.
+- Click the trash icon button at the top of the page.
+- Confirm the deletion in the dialog.
+
+Deleted collections are moved to the Deleted tab on the Document Collections page and are no longer active.
+
 ### Deep Summarize on Documents
 
 When enabled, the agent queries every document in each selected collection against key topics derived from your query, then synthesizes cross-document results for higher-quality overviews, lists, and summaries.
