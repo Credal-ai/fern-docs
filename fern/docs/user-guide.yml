@@ -102,6 +102,32 @@ navigation:
             path: ./pages/platform/actions/action-human-approval.mdx
           - page: Action Parameters
             path: ./pages/platform/actions/action-parameters.mdx
+      - section: MCP Servers
+        contents:
+          - page: Overview
+            path: ./pages/platform/mcp-servers/overview.mdx
+          - section: MCP Server Builder
+            contents:
+              - page: Create a new Server
+                path: ./pages/platform/mcp-servers/mcp-server-builder/create-new-server.mdx
+              - page: Attaching connectors
+                path: ./pages/platform/mcp-servers/mcp-server-builder/attaching-connectors.mdx
+              - page: Connecting Agents
+                path: ./pages/platform/mcp-servers/mcp-server-builder/connecting-agents.mdx
+              - page: Testing your Server
+                path: ./pages/platform/mcp-servers/mcp-server-builder/testing-server.mdx
+              - page: Publishing your Server
+                path: ./pages/platform/mcp-servers/mcp-server-builder/publishing-server.mdx
+          - section: Import a Server
+            contents:
+              - page: Third-party Server Registration
+                path: ./pages/platform/mcp-servers/import-server/third-party-registration.mdx
+              - page: Setting up Controls
+                path: ./pages/platform/mcp-servers/import-server/setting-up-controls.mdx
+              - page: Publishing the Server
+                path: ./pages/platform/mcp-servers/import-server/publishing-server.mdx
+              - page: Monitoring Usage
+                path: ./pages/platform/mcp-servers/import-server/monitoring-usage.mdx
       - page: Bulk Analysis
         # Soon to be turned into workflows, but the credal way :) 
         path: ./pages/platform/bulk-analysis.mdx
