@@ -6,8 +6,8 @@ navigation:
       - page: Quickstart
         slug: quickstart
         path: ./pages/quickstart.mdx
-      - page: Agent Building Webinars
-        path: ./pages/webinars.mdx
+      - page: Agent Building Tutorial Video
+        path: ./pages/agent-building.mdx
       - section: "Tutorials: Common First Agents"
         contents:
           - section: Employee Onboarding Assistant
