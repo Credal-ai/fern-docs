@@ -7,7 +7,7 @@ default-group: python-local
 groups:
   typescript-sdk:
     generators:
-      - name: fernapi/fern-typescript-node-sdk
+      - name: fernapi/fern-typescript-sdk
         version: 3.53.4
         output:
           location: npm
