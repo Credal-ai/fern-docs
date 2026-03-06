@@ -1,15 +1,265 @@
-name: api
-auth: BearerAuthScheme
-auth-schemes:
-  BearerAuthScheme:
-    scheme: bearer
-    token:
-      name: apiKey
-      # Support environment variable scanning, defaulting to CREDAL_API_KEY if
-      # an api key is not explicitly passed into the generated SDK client.
-      env: CREDAL_API_KEY
-environments:
-  Production: https://api.credal.ai/api
-default-environment: Production
-error-discrimination:
-  strategy: status-code
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Credal API",
+    "version": "1.0.0",
+    "description": "DO NOT manually edit this spec. It is auto-generated from the app repo (app/api/v1/openapi). Always use the latest export."
+  },
+  "servers": [
+    {
+      "url": "https://app.credal.ai"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "OAuth"
+      }
+    },
+    "schemas": {},
+    "parameters": {}
+  },
+  "paths": {
+    "/api/v1/agents/sendMessage": {
+      "post": {
+        "summary": "Send a message to an agent",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "agentId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "conversation": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "new"
+                            ]
+                          },
+                          "dataInputVariableSelections": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "additionalProperties": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "type"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "existing"
+                            ]
+                          },
+                          "conversationId": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "conversationId"
+                        ]
+                      }
+                    ]
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "agentId",
+                  "conversation",
+                  "message"
+                ],
+                "additionalProperties": false,
+                "example": {
+                  "agentId": "cc3fd192-ea62-11f0-99fd-03d6b2458fff",
+                  "message": "What documents do we have about Q4 planning?",
+                  "conversation": {
+                    "type": "new",
+                    "dataInputVariableSelections": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jobId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "jobId"
+                  ],
+                  "example": {
+                    "jobId": "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/agents/fetchAgentResponse": {
+      "get": {
+        "summary": "Fetch the status of an agent response",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "jobId",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent response status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "RUNNING"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "COMPLETED"
+                          ]
+                        },
+                        "result": {
+                          "type": "object",
+                          "properties": {
+                            "agentResponseText": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "agentResponseText"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "result"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "FAILED"
+                          ]
+                        },
+                        "errorMessage": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "errorMessage"
+                      ]
+                    }
+                  ],
+                  "example": {
+                    "status": "COMPLETED",
+                    "result": {
+                      "agentResponseText": "Here are the Q4 planning documents I found..."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Job not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {}
+}
