@@ -1,39 +1,141 @@
 # Publishing your Server
 
-Publishing works the same way for both Credal-built MCP servers and third-party imported servers. The same deployment options, admin setup, and access controls apply to all servers.
+Publishing works the same way for both Credal-built MCP servers and third-party imported servers. The same deployment options and access controls apply to all servers.
 
-## One-Time Admin Setup
+## Publishing in Credal
 
-To make Credal MCP servers available in Claude or ChatGPT, an admin needs to connect the following URLs once at the organization level:
+Once your MCP server is ready, navigate to the **Publish** tab.
 
-- **Claude**: `https://app.credal.ai/api/user/claude/mcp`
-- **ChatGPT**: `https://app.credal.ai/api/user/chatgpt/mcp`
+There, you can:
 
-![credal-in-claude](/docs/assets/mcp-servers/publishing/credal-in-claude.png)
-
-Once connected, all published MCP servers will be available to users in that service without any further configuration.
-
-## Publishing Your Server
-
-Once your MCP server is ready, you have two ways to deploy it. Navigate to the Publish tab where you'll see the following settings:
+- **Publish the server**
+- **Copy the direct server URL**
+- **Control who can access the server**
 
 ![fresh-deployment](/docs/assets/mcp-servers/publishing/fresh-deployment.png)
 
-### For Claude and ChatGPT
+## Choose the right setup guide
 
-The one-time admin setup above is all that's needed. Your server becomes available to all users in those services automatically once published.
+After publishing, the next step depends on how your users will connect to Credal.
 
-Here is an example of how you can directly publish to all users in ChatGPT
-![full-org-chatgpt](/docs/assets/mcp-servers/publishing/full-org-chatgpt.png)
+### Organization-wide rollout
 
-### For Other MCP Clients
+If you're an administrator rolling Credal out across a team or company, use:
 
-For all other surfaces, such as Cursor, Windsurf, or any custom MCP client, each server must be connected individually by copying the server's direct URL and adding it to the client manually.
+- [Connect MCP Clients](/user-guide/platform/administration/connect-mcp-clients)
+
+This guide covers org-wide and admin-managed setup patterns for:
+
+- **Cursor**
+- **Claude Cowork**
+- **Lovable**
+- **ChatGPT**
+- **Windsurf**
+
+### Individual setup
+
+If each user will connect Credal in their own client, use the direct server URL shown in Credal's Publish tab unless a client-specific endpoint is required.
+
+## Individual client setup
+
+### ChatGPT
+
+1. Open **Settings → Apps** in ChatGPT.
+2. Browse the app directory.
+3. Find the Credal app or the app your admin has enabled for your workspace.
+4. Click **Connect**.
+5. Complete the login or authorization flow.
+
+If your workspace uses a Credal-backed custom app flow, you should not need to manually paste an MCP server URL.
+
+_Screenshot placeholder: ChatGPT Settings → Apps with Credal visible in the directory_
+
+### Claude Cowork
+
+1. Open the MCP, plugins, or integrations area in Claude Cowork.
+2. Add a new remote MCP server if that option is available in your build.
+3. Enter the Credal endpoint provided by your administrator.
+4. Complete any required login or authorization flow.
+
+In many Credal deployments, the Claude-specific endpoint is:
+
+`https://app.credal.ai/api/user/claude/mcp`
+
+Because Claude surfaces are evolving quickly, the exact UI may differ by plan or release.
+
+_Screenshot placeholder: Claude Cowork user MCP setup with Credal endpoint entered_
+
+### Cursor
+
+1. Open Cursor settings.
+2. Go to the MCP configuration area.
+3. Add a new remote MCP server.
+4. Paste the Credal server URL provided by your admin or copied from Credal.
+5. Save the configuration and reconnect if prompted.
+
+If your organization uses Cursor Enterprise MCP allowlisting, the server must match the approved allowlist before Cursor will let you use it.
+
+_Screenshot placeholder: Cursor MCP settings with a Credal server URL configured_
+
+### Windsurf
+
+1. Open **Settings → Tools → Windsurf Settings → Add Server**.
+2. Add a new MCP server.
+3. If needed, click **View Raw Config** to edit `mcp_config.json` directly.
+4. Enter the Credal server URL.
+5. Refresh MCP servers so the tools appear in Cascade.
+
+For remote MCP servers, Windsurf expects a URL that looks like:
+
+`https://<your-server-url>/mcp`
+
+_Screenshot placeholder: Windsurf Add Server flow with a Credal remote MCP URL_
+
+### Lovable
+
+1. Open **Settings → Connectors → Personal connectors**.
+2. Click **New MCP server**.
+3. Enter a clear server name.
+4. Paste the Credal server URL.
+5. Choose the appropriate authentication method:
+   - OAuth
+   - Bearer token or API key
+   - No authentication
+6. Add the server and complete authorization if required.
+
+Lovable documents personal connectors as per-user connections, so your connection is visible to you rather than the whole workspace.
+
+_Screenshot placeholder: Lovable Personal connectors → New MCP server with Credal configured_
+
+## Troubleshooting
+
+### The server does not appear
+
+- **Check the URL**
+- **Confirm the server is published in Credal**
+- **Refresh the client after adding the server**
+- **Make sure your client supports remote MCP servers**
+
+### I get blocked by policy controls
+
+- **Ask your admin whether the client uses an allowlist or whitelist**
+- **Confirm the Credal URL matches the approved pattern exactly**
+
+### I can connect but cannot use tools
+
+- **Confirm you have been allowlisted in Credal if the server uses user or group restrictions**
+- **Check whether you still need to complete OAuth or another auth step in the client**
 
 ## Access Control
 
-Regardless of how you publish, MCP server builders can configure end-user allowlists to control exactly which users can access the server within their chat service, giving admins fine-grained control over visibility and access.
+Regardless of how you publish, MCP server builders can configure end-user allowlists to control exactly which users can access the server.
 
-Here is an example of how I would scope visibility down to just one user group. The user group is fetched from your [identity provider](/user-guide/platform/administration/single-sign-on-sso).
+This is especially useful when:
+
+- **An admin enables Credal for an entire workspace, but only some users should see a given server**
+- **You want to roll out a server gradually to a specific team or group**
+- **You want server access to mirror your identity provider groups**
+
+Here is an example of how you can scope visibility down to one user group. The user group is fetched from your [identity provider](/user-guide/platform/administration/single-sign-on-sso).
 
 ![credal-support-chatgpt](/docs/assets/mcp-servers/publishing/credal-support-chatgpt.png)

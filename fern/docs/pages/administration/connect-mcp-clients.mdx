@@ -1,0 +1,160 @@
+---
+title: Connect MCP Clients
+subtitle: Organization-wide rollout guidance for connecting external MCP clients to Credal
+---
+
+## Overview
+
+Make your organization's MCP servers easily usable in your chat clients of choice, such as ChatGPT, Claude Cowork, or Cursor. Save your users time and accelerate AI ROI by pre-configuring access so that each user doesn't have to individually add Credal MCP discovery endpoints in their client settings.
+
+## Before you start
+
+Have the following ready:
+
+- **Your Credal workspace**
+- **A published MCP server in Credal**
+- **The correct Credal endpoint for the client you are configuring**
+- **A test user account** for validating the setup before wider rollout
+
+For ChatGPT and Claude-managed endpoints, Credal provides client-specific endpoints:
+
+- **Claude**: `https://app.credal.ai/api/user/claude/mcp`
+- **ChatGPT**: `https://app.credal.ai/api/user/chatgpt/mcp`
+
+For clients that do not support a dedicated org-wide Credal endpoint, use the server URL shown in the server's Publish tab in Credal.
+
+## Client support summary
+
+| Client        | Org-wide setup status         | Notes                                                                                                                                                                             |
+| ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ChatGPT       | Supported                     | Workspace admins can enable apps for the workspace.                                                                                                                               |
+| Claude Cowork | Limited / confirm with vendor | Admin-managed rollout patterns exist in Claude tooling, but public Cowork docs and UI are evolving.                                                                               |
+| Cursor        | Guardrails only               | Enterprise admins can allowlist approved MCP servers, but users still add them individually.                                                                                      |
+| Windsurf      | Guardrails only               | Team admins can whitelist approved MCP servers, but users still add them individually.                                                                                            |
+| Lovable       | Limited / partial             | Lovable clearly documents personal connectors; shared connector behavior exists, but org-wide custom MCP rollout should be validated in your Lovable plan and workspace settings. |
+
+## ChatGPT
+
+### Recommended setup
+
+Use ChatGPT workspace app controls if your workspace supports apps and custom MCP-powered apps.
+
+### Admin flow
+
+1. Open **Workspace Settings → Apps** in ChatGPT.
+2. Confirm that apps are enabled for your workspace.
+3. If you're using a custom Credal app or MCP-powered app flow, enable or publish the Credal app for your workspace.
+4. If your plan supports it, configure access, actions, and domain restrictions.
+5. Validate the connection with a test user before broader rollout.
+
+### Credal endpoint
+
+Use:
+
+`https://app.credal.ai/api/user/chatgpt/mcp`
+
+### What users should expect
+
+Once the app is enabled for the workspace, users can connect it from ChatGPT without needing a separate Credal server URL.
+
+_Screenshot placeholder: ChatGPT workspace Apps settings with the Credal app enabled_
+
+## Claude Cowork
+
+### Recommended setup
+
+If your Claude deployment exposes an admin-managed MCP or plugin configuration surface, use that to register the Credal endpoint centrally.
+
+### Credal endpoint
+
+Use:
+
+`https://app.credal.ai/api/user/claude/mcp`
+
+### Current guidance
+
+Public Anthropic documentation clearly covers centralized MCP controls in Claude developer tooling, but the exact Claude Cowork admin flow is still changing. If you are deploying to Claude Cowork across an organization, coordinate with your Credal team so the current admin UI and rollout path are validated for your plan.
+
+### What users should expect
+
+When Claude Cowork supports a centralized rollout for your plan, users should see Credal tools without needing to add a separate server manually.
+
+_Screenshot placeholder: Claude Cowork admin screen with Credal MCP endpoint configured_
+
+## Cursor
+
+### Recommended setup
+
+Use Cursor Enterprise MCP allowlisting to approve Credal as an allowed server pattern for your team.
+
+### Important limitation
+
+Cursor's documented enterprise controls are approval controls, not a full push-based deployment. Users still need to add the server in their own Cursor settings.
+
+### Admin flow
+
+1. Open the **Cursor team dashboard**.
+2. Go to the **MCP Configuration** area.
+3. Add an allowlist entry for the Credal server URL pattern you want to approve.
+4. Share end-user setup steps internally so users can add the approved server in Cursor.
+
+### What users should expect
+
+Users can only connect servers that match the approved allowlist. The allowlist does not automatically install or expose the server in Cursor for them.
+
+_Screenshot placeholder: Cursor team dashboard MCP allowlist with Credal URL pattern_
+
+## Windsurf
+
+### Recommended setup
+
+Use Windsurf team-level MCP controls to whitelist Credal for your team.
+
+### Important limitation
+
+Windsurf's documented team controls are approval controls, not a full org-wide server deployment. Users still need to add the server in their own Windsurf settings.
+
+### Admin flow
+
+1. Open **Team Settings** in Windsurf.
+2. Locate the **MCP** controls.
+3. Whitelist the Credal server URL or approved pattern.
+4. Share the end-user steps so users can add the allowed server in Windsurf.
+
+### What users should expect
+
+Once a whitelist is active, non-whitelisted servers are blocked. Credal will still need to be added by each user in their own client.
+
+_Screenshot placeholder: Windsurf team MCP settings with Credal whitelisted_
+
+## Lovable
+
+### Recommended setup
+
+Lovable clearly documents personal connectors for individual users. Some shared connector and workspace admin controls exist, but org-wide rollout for custom MCP servers should be confirmed against your current Lovable plan and workspace settings.
+
+### Admin flow
+
+1. Check whether your Lovable workspace exposes **Settings → Connectors → Shared connectors**.
+2. Confirm whether your plan supports the shared rollout pattern you want.
+3. If supported, register Credal there and test with a workspace member.
+4. If not supported, direct users to the individual setup flow instead.
+
+### What users should expect
+
+In many Lovable setups today, users connect custom MCP servers as personal connectors rather than receiving them automatically from workspace administration.
+
+_Screenshot placeholder: Lovable workspace shared connectors view showing a Credal connector_
+
+## Rollout checklist
+
+- **Publish the server in Credal first**
+- **Validate the correct client endpoint or direct server URL**
+- **Test with one admin and one non-admin user**
+- **Document which users or groups should have access**
+- **Coordinate with your identity provider groups if you're using allowlists in Credal**
+
+## Related docs
+
+- [Publishing your Server](/user-guide/platform/mcp-servers/publishing-your-server)
+- [Single Sign-On (SSO)](/user-guide/platform/administration/single-sign-on-sso)
