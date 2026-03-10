@@ -152,5 +152,5 @@ navigation:
           - page: Audit Log / Data Exports
             path: ./pages/administration/audit-log-data-exports.mdx
           - page: Connect MCP Clients
-            path: ./pages/user-guide/platform/administration/connect-mcp-clients.mdx
+            path: ./pages/administration/connect-mcp-clients.mdx
       # coming soon... Enterprise search
