@@ -127,7 +127,7 @@ navigation:
           - page: Monitoring Usage
             path: ./pages/platform/mcp-servers/monitoring-usage.mdx
       - page: Bulk Analysis
-        # Soon to be turned into workflows, but the credal way :) 
+        # Soon to be turned into workflows, but the credal way :)
         path: ./pages/platform/bulk-analysis.mdx
       - section: Integrations
         # Soon to be renamed Document Collections
@@ -151,4 +151,6 @@ navigation:
             path: ./pages/administration/sso.mdx
           - page: Audit Log / Data Exports
             path: ./pages/administration/audit-log-data-exports.mdx
+          - page: Connect MCP Clients
+            path: ./pages/administration/connect-mcp-clients.mdx
       # coming soon... Enterprise search
