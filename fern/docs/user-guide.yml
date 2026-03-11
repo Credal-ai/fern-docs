@@ -151,4 +151,6 @@ navigation:
             path: ./pages/administration/sso.mdx
           - page: Audit Log / Data Exports
             path: ./pages/administration/audit-log-data-exports.mdx
+          - page: Connect MCP Clients
+            path: ./pages/administration/connect-mcp-clients.mdx
       # coming soon... Enterprise search
