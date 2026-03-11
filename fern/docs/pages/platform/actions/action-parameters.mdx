@@ -1,4 +1,4 @@
-When you create an action, you can give it “parameters.” Think of parameters as blanks to fill in, so the action knows exactly what to update. These are inherited from action templates.
+When you create an action, you can give it "parameters." Think of parameters as blanks to fill in, so the action knows exactly what to update. These are inherited from action templates.
 
 The following types of action parameters are currently supported:
 
@@ -6,35 +6,35 @@ The following types of action parameters are currently supported:
 
 Let AI decide the value from context clues or by asking the user for more details.
 
-_Example use case: Let’s say you want AI to help create tasks in Asana based on a product roadmap. The AI will look at the conversation and determine the most reasonable due dates to set for these tasks._
+_Example use case: Let's say you want AI to help create tasks in Asana based on a product roadmap. The AI will look at the conversation and determine the most reasonable due dates to set for these tasks._
 
 #### 2. Predefined
 
 For when you know a parameter value should always be the same value whenever this action is run.
 
-_Example use case: If you always log bugs in the same Jira project (e.g., “Customer Support Issues”), you can set the parameter `ProjectID = “Customer Support Issues”` once and forget about it._
+_Example use case: If you always log bugs in the same Jira project (e.g., "Customer Support Issues"), you can set the parameter `ProjectID = "Customer Support Issues"` once and forget about it._
 
-Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to “Predefined”, then embed the AI-decided parts using the `${PARAM_NAME}` format.
+Advanced tip: if you want part of the parameter to be predefined, and let AI decide the rest, you can set the parameter to "Predefined", then embed the AI-decided parts using the `${PARAM_NAME}` format.
 
 #### 3. Multi-select
 
 For when the parameter can only be one from a list of specific values, and you want AI to pick the right one from that list.
 
-_Example use case: In Salesforce, when creating a new lead, you could define the parameter `Lead Source` as “Website,” “Event,” or “Referral.” AI will then choose one based on context about the lead._
+_Example use case: In Salesforce, when creating a new lead, you could define the parameter `Lead Source` as "Website," "Event," or "Referral." AI will then choose one based on context about the lead._
 
 #### 4. Caller-set
 
 For when the value comes from a property of the person (or system) running the action, often based on their account information. Caller-set parameters are also used in [multi-user approval workflows](/user-guide/platform/governed-actions/human-approval-options) to prevent users from impersonating others.
 
-_Example use case: A user in Slack wants to open a Jira support ticket by triggering the “Create” action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action by selecting `CREDAL_USER_EMAIL`._
+_Example use case: A user in Slack wants to open a Jira support ticket by triggering the "Create" action to update Jira with the ticket's details. The ticket holder field in Jira can be automatically be set to the email of the user that ran the action by selecting `CREDAL_USER_EMAIL`._
 
 #### 5. Schema
 
 A custom schema, in YAML format, for defining a structured output with specific fields (e.g., JSON objects with predefined fields). Helpful for giving AI the layout in advance so it can focus on figuring out field values.
 
-_Example use case: You’re creating a Jira ticket with custom fields that differ across projects. You can specify exactly which fields should appear and the type of data each field should contain._
+_Example use case: You're creating a Jira ticket with custom fields that differ across projects. You can specify exactly which fields should appear and the type of data each field should contain._
 
-```
+```yaml
 required: [name, age]
 parameters:
   name:
@@ -50,3 +50,95 @@ parameters:
 <Frame>
   <img src="/docs/assets/actions/param-types.png" />
 </Frame>
+
+---
+
+## Object-Type Parameters and YAML Specs
+
+When an action parameter is of type **Object**, it requires a **YAML specification** to define the structure of the data the AI should produce. This is the **Schema** parameter setting mode shown above.
+
+Object-type parameters let you describe complex, nested data structures — such as a set of custom fields on a Jira ticket or a structured payload for a webhook — so the AI knows exactly which fields to populate and what types they should be.
+
+### YAML Spec Format
+
+The YAML spec follows a structure similar to [JSON Schema](https://json-schema.org/), written in YAML. At the top level you declare the type as `object`, list the `properties` (fields), and optionally specify which fields are `required`.
+
+Each property has:
+
+- **`type`** — the data type of the field (`string`, `number`, `boolean`, `array`, or `object` for nested structures).
+- **`description`** — a plain-language description that helps the AI understand what value to generate for this field.
+
+#### Basic example
+
+```yaml
+type: object
+properties:
+  summary:
+    type: string
+    description: A short summary of the issue
+  priority:
+    type: string
+    description: "Priority level: Low, Medium, High, or Critical"
+  storyPoints:
+    type: number
+    description: Estimated effort in story points
+required:
+  - summary
+```
+
+#### Example with nested objects and arrays
+
+For more complex structures you can nest objects and use arrays:
+
+```yaml
+type: object
+properties:
+  ticketTitle:
+    type: string
+    description: Title of the support ticket
+  customFields:
+    type: object
+    description: Project-specific custom fields
+    properties:
+      department:
+        type: string
+        description: The department this ticket belongs to
+      severity:
+        type: string
+        description: "Severity rating: S1, S2, S3, or S4"
+  labels:
+    type: array
+    description: Labels to apply to the ticket
+    items:
+      type: string
+required:
+  - ticketTitle
+  - customFields
+```
+
+### Schema vs. Predefined: When to Use Each
+
+| | **Schema** | **Predefined** |
+|---|---|---|
+| **Use when** | The parameter is an Object type whose structure needs to be defined so the AI can populate its fields dynamically. | The parameter has a fixed, known value that should be the same every time the action runs. |
+| **How AI interacts** | AI reads the schema, then generates values for each field based on conversation context. | AI uses the exact value you provide — no generation needed. |
+| **Typical data types** | `Object` (complex/nested structures) | Simple scalars — strings, numbers, or IDs that never change. |
+| **Example** | A "Custom Fields" parameter on a Jira action where different fields (summary, priority, assignee) need to be filled in per invocation. | A "Project ID" parameter that should always be `"SUPPORT"` for every ticket. |
+
+**Rule of thumb:** If you need the AI to fill in multiple fields within a single parameter, use **Schema**. If the value is always the same constant, use **Predefined**.
+
+### Configuring a Schema Parameter in the Credal UI
+
+1. **Open your action** — Navigate to the action you want to configure from the Governed Actions page.
+2. **Find the parameter** — Scroll to the parameters section. Object-type parameters will display a dropdown for the parameter setting mode.
+3. **Select "Schema"** — Choose **Schema** from the parameter setting mode dropdown. A YAML editor will appear.
+4. **Enter your YAML spec** — Paste or type your YAML specification into the editor. Make sure it follows the format described above.
+5. **Save the action** — Click **Save** to persist your changes. The AI will now use your schema when generating values for this parameter.
+
+### Troubleshooting
+
+- **Missing YAML spec on an Object parameter** — If an Object-type parameter does not have a YAML spec configured, the AI will not know what fields to generate. This can cause unexpected behavior, errors during action execution, or empty/malformed outputs. Always provide a schema for Object parameters.
+- **Invalid YAML syntax** — Make sure your YAML is properly indented (use spaces, not tabs) and that colons are followed by a space. You can validate your YAML with an online tool such as [YAML Lint](https://www.yamllint.com/) before pasting it in.
+- **Fields not being populated** — Verify that each property has a clear `description`. The AI relies on descriptions to understand what value to generate. Vague or missing descriptions lead to less accurate results.
+- **Wrong data types** — If the AI generates a string where you expected a number (or vice versa), double-check the `type` field for that property in your YAML spec.
+- **Required fields missing in output** — Ensure the field names listed under `required` exactly match the property names defined under `properties`.
