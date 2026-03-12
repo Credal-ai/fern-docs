@@ -80,6 +80,7 @@
     "Cowork",
     "automagically"
   ],
+  "flagWords": ["localhost", "127.0.0.1"],
   "ignorePaths": ["node_modules", ".git", "dist", "build", "*.log"],
   "ignoreWords": ["blacksmith", "vcpu", "ubuntu"]
 }
