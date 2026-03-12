@@ -1,8 +1,8 @@
-You can ask your agent questions through Credal or via third party applications you have published it to.
+You can test your agent through Credal's UI or in third-party applications like Slack.
 
-### a. **Hosting Agents through Credal's UI**
+## Testing in Credal's UI
 
-To use a agent in Credal, select your agent by clicking _Select Agent_ in the chat menu.
+To test an agent in Credal, select your agent by clicking _Select Agent_ in the chat menu.
 
 ![agent-select.png](/docs/assets/agents/create-steps/agent-select.png)
 
@@ -13,48 +13,35 @@ Then simply type your questions in the search bar. Your agent will return an ans
 
 ![agent-select-query.png](/docs/assets/agents/create-steps/agent-select-query.png)
 
-### b. Using Agents within **third party apps** by API
+## Testing in Slack
 
-If you have published your agent to a third-party application, your queries will be directed to your agent through your unique agent API.
+If you want to test your agent in Slack before rolling it out broadly:
 
-In Slack, simply enter a query into a Slack channel the agent is connected to to get a response. The agent will respond with a , indicating it is thinking of an answer, before sending a response in a reply.
+1. Create a dedicated test channel (e.g., `#agent-testing` or `#hr-bot-beta`)
+2. Publish your agent to this test channel following the [Agents in Slack](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack) guide
+3. Invite a subset of beta testers to the channel
+4. Test various queries and scenarios with your beta group
+5. Iterate on your agent's configuration based on feedback
+6. Once satisfied, publish to your production channels
 
-How and when your agent responds will depend on what queries you have asked it to respond to in the "Publish" tab and your other configuration settings.
+This approach lets you refine your agent's behavior, routing settings, and responses in a controlled environment before exposing it to your entire organization.
 
-### **Example 1: Respond to all messages**
+For details on how agents respond in Slack channels and routing configuration options, see [Agents in Slack](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack).
 
-If you have set your agent to respond to “all messages", it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal’s Information Security Copilot to respond to all messages:
+## Iterating on Your Agent's Instructions
 
-![slack_all_messages_query_example.png](/docs/assets/copilots/slack_all_messages_query_example.png)
+As you test your agent, you'll likely need to refine its instructions (system prompt) to improve response quality. Pay attention to:
 
-![slack_out_of_scope_response.png](/docs/assets/copilots/slack_out_of_scope_response.png)
+- Whether the agent is answering questions accurately
+- If the tone and style match your expectations
+- How well it handles edge cases or out-of-scope questions
+- Whether it's using the right data sources and actions
 
-> _Because this agent is set to be precise, when asked a question outside its expertise it responds that it does not have the context to answer. If this agent was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
+Use the feedback from your testing to iterate on the agent's background prompt, adjusting its role, goals, output format, and specific instructions.
 
-### **Example 2: Respond to relevant messages**
+For a comprehensive guide on writing and optimizing agent instructions, see [Writing Instructions](/user-guide/platform/agent-builder/configuration/writing-instructions).
 
-If you have set your agent to respond to only a selection of messages, such as all relevant messages, or those matching a filter, the agent will only respond to queries that match that criteria.
-
-Here, we set Credal’s Information Security Copilot to only respond to relevant messages:
-
-![*Here, the Agent responded as the question fell within its scope—questions on information security at Credal.*](/docs/assets/copilots/slack_relevant_query_response.png)
-
-_Here, the Agent responded as the question fell within its scope—questions on information security at Credal._
-
-![*This question fell outside of the Agent's scope, and it did not respond.*](/docs/assets/copilots/slack_ignored_query_example.png)
-
-_This question fell outside of the Agent's scope, and it did not respond._
-
-### c. Creating effective prompts
-
-A well-engineered prompt can yield better results from your agent. Some strategies to keep in mind as you write your prompts are:
-
-- Use clear and direct language.
-- Leverage keywords or naming conventions in your data set to point your agent to the right information (particularly if you know what documents you want it to look at).
-- Focus your prompt on the most complex or important part of the query.
-- Use iterative or sequential prompting by structuring your prompts in a logical sequence, especially when trying to explore a topic in depth. Start with a broad prompt and then follow up with more detailed questions. This not only helps in building context but also in creating a framework for the AI to understand the progression of the inquiry.
-
-For a more in-depth look at prompt optimization, see this [blog post](https://www.credal.ai/blog/takeaways-from-using-llms-on-corporate-documents) or the [Writing Instructions](/user-guide/platform/agent-builder/configuration/writing-instructions) guide.
+To evaluate prompt changes at scale and systematically measure their impact on agent performance, use [Evaluations](/user-guide/platform/agent-builder/evaluating-your-agent). This allows you to test different prompt variations against a set of test cases and compare results objectively.
 
 ---
 
