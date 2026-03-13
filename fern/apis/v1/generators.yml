@@ -3,6 +3,9 @@ metadata:
   authors:
     - name: Credal.ai
       email: support@credal.ai
+api:
+  specs:
+    - openapi: ./definition/api.yml
 default-group: python-local
 groups:
   typescript-sdk:
