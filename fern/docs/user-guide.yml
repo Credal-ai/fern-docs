@@ -106,6 +106,8 @@ navigation:
         contents:
           - page: Overview
             path: ./pages/platform/actions/overview.mdx
+          - page: Custom Names and Descriptions
+            path: ./pages/platform/actions/custom-names-descriptions.mdx
           - page: Open Source Actions
             path: ./pages/platform/actions/open-source-actions.mdx
           - page: Credentials and Security

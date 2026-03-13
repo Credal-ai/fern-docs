@@ -43,6 +43,17 @@ For a comprehensive guide on writing and optimizing agent instructions, see [Wri
 
 To evaluate prompt changes at scale and systematically measure their impact on agent performance, use [Evaluations](/user-guide/platform/agent-builder/evaluating-your-agent). This allows you to test different prompt variations against a set of test cases and compare results objectively.
 
+## Testing Actions with Dry Run Mode
+
+When testing agents that use actions, you can use dry run/preview mode to see what an action would do without actually executing it. This is particularly useful for:
+
+- Testing actions that modify data (create, update, delete operations)
+- Validating that the agent is selecting the right actions and parameters
+- Reducing risk when testing new workflows in production environments
+- Training and onboarding scenarios where you want to demonstrate functionality without side effects
+
+Dry run mode allows you to safely test your agent's decision-making and action invocation logic before allowing real execution.
+
 ---
 
 ## Troubleshooting
