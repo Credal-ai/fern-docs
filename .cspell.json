@@ -74,7 +74,9 @@
     "Financials",
     "buildwithfern",
     "Chatbots",
-    "Fivetran's"
+    "Fivetran's",
+    "webkitallowfullscreen",
+    "mozallowfullscreen"
   ],
   "ignorePaths": [
     "node_modules",

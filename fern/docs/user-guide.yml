@@ -78,6 +78,8 @@ navigation:
             path: ./pages/platform/agents/agent-testing.mdx
           - page: Evaluating Your Agent
             path: ./pages/platform/agents/agent-evaluate.mdx
+          - page: Agent Reliability Score
+            path: ./pages/platform/agents/agent-reliability-score.mdx
           - section: Publishing Agents
             contents:
               - page: Overview
