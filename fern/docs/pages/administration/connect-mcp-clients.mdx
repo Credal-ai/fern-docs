@@ -1,0 +1,88 @@
+---
+title: Connect MCP Clients
+slug: user-guide/platform/administration/connect-mcp-clients
+subtitle: Curate which MCP Servers and Agents appear in which of your AI chat surfaces
+---
+
+Apps such as ChatGPT, Claude, Claude Cowork or Cursor, allow administrators to **push out MCP servers** to their users: **add Credal's MCP Discovery URL** to automatically push your organization's MCP servers and agents to these apps. Then, when users enable "Claude" or "Cursor" on their preferred MCP servers those apps can automatically connect.
+
+**Apps connect to Credal via OAuth.** This works out of the box with no per-app configuration required.
+
+## Organization-wide
+
+<AccordionGroup>
+  <Accordion title="ChatGPT">
+    <Callout intent="warning">
+    ChatGPT is quickly evolving its UI. Reach out to your Credal team for help.
+  </Callout>
+
+One-time Administrator Setup
+
+1. Open ChatGPT Workspace Settings (**Profile icon**→ **Settings**)
+2. Navigate to data connector settings (**Connectors** → **Advanced Settings**)
+3. Toggle **Developer Mode** on, add **Custom MCP**
+4. Choose **OAuth** and enter Credal's ChatGPT discovery URL: `https://app.credal.ai/api/user/chatgpt/mcp`
+
+End User
+
+1. Visit **Tools / Connectors / Apps**
+2. Proceed to signin
+
+Servers toggled on for use in ChatGPT should now be available to use.
+
+  </Accordion>
+
+  <Accordion title="Claude">
+    <Callout intent="warning">
+    Claude is quickly evolving its UI. Reach out to your Credal team for help connecting MCPs.
+  </Callout>
+
+One-time Administrator Setup
+
+1. In Claude Desktop or Cowork, go to **Organization Settings → Connectors** (or **Customize → Connectors**)
+2. Click **Add custom connector**
+3. Choose OAuth and enter Credal's Claude discovery URL: `https://app.credal.ai/api/user/claude/mcp`
+4. Set the rollout preference for the connector
+   1. **Auto-install** — pushed to all employees automatically; appears pre-connected in their Claude
+   2. **Available** — visible in the org's connector catalog for self-service opt-in
+   3. **Not available** — hidden; useful for staging before a full rollout
+
+End User
+
+1. Visit **Connectors**
+2. Proceed to signin
+
+Servers toggled on for use in Claude should now be available to use.
+
+  </Accordion>
+
+  <Accordion title="Lovable">
+    Workspace admins (Business / Enterprise plan) can enable MCP connectors globally.
+
+    Admin: Allow MCP servers
+
+    1. **Settings** → **Privacy & Security**
+    2. Toggle **Enable MCP servers**
+
+    Admin: Connect Credal MCP discovery endpoint
+
+    1. Create the Credal MCP Connector (**Settings** → **Connectors** → **Personal Connectors** → **Admin Settings**)
+    2. Select **OAuth** and add the Lovable MCP discovery URL: `https://app.credal.ai/api/user/lovable/mcp`
+
+    End User
+
+    1. Inside a Lovable project, **Prompt box** → **+** → **Connectors**
+    2. Click the Credal connector from above
+    3. Proceed to signin
+
+  </Accordion>
+</AccordionGroup>
+
+## Credal MCP URL Formats
+
+| MCP                    | Route                                   | Description                                                                                                                                                                       |
+| ---------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Auto-Discovery         | `/api/user/[surface]/mcp`               | Aggregated MCP endpoint for a given AI tool (Claude, ChatGPT Enterprise, Lovable). Returns all tools your organization has enabled for that surface, filtered by your permissions |
+| Individual Server      | `/api/[mcpServerId]/mcp`                | Direct endpoint for a specific Credal MCP server by ID                                                                                                                            |
+| 3rd Party MCP Registry | `/api/gateway/[mcpServerId]/mcp`        | Proxies external third-party MCP servers registered in Credal                                                                                                                     |
+| OAuth                  | `/.well-known/oauth-protected-resource` | RFC 6750 OAuth discovery endpoint. Used automatically by MCP clients to detect that authentication is required                                                                    |

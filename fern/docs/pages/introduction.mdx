@@ -1,6 +1,5 @@
 ---
 title: Introduction
-subtitle: Welcome to Credal's documentation! Here you'll find information to get started, including our API Reference.
 ---
 
 <CardGroup cols={2}>
@@ -8,7 +7,7 @@ subtitle: Welcome to Credal's documentation! Here you'll find information to get
 
   </Card>
 
-  <Card title="API Reference" icon="fa-solid fa-code" href="/api-reference">
+  <Card title="FAQs" icon="fa-solid fa-circle-question" href="./faqs">
 
   </Card>
 
@@ -16,56 +15,77 @@ subtitle: Welcome to Credal's documentation! Here you'll find information to get
 
   </Card>
 
-  <Card title="Security" icon="fa-solid fa-shield-halved" href="https://www.credal.ai/security">
+  <Card title="API Reference" icon="fa-solid fa-code" href="/api-reference">
 
-  </Card>
-
-  <Card title="FAQs" icon="leaf" href="./faqs">
-    Check out our most common questions and answers
   </Card>
 </CardGroup>
 
-## What is Credal?
+# What is Credal?
 
-Credal is a platform that empowers enterprises to build secure, intelligent AI agents tailored to any workflow, with native support for enterprise data and access controls.
+Credal gives enterprises a library of hosted agents and tools with built-in controls, accessible wherever your employees want to chat with AI. It's the centralized trust layer for governing and scaling AI agents, MCP servers, and skills—connected to any system, operating within the security and permission boundaries your organization requires.
 
-## What is an Agent?
+## What Can You Build?
 
-An agent is more than just a chatbot. It's a system capable of reasoning and taking actions to achieve goals. It combines two core capabilities:
+Credal supports the full stack of agentic infrastructure:
 
-1. **Reasoning** – Analyzing information, context, or instructions to determine the next steps.
-2. **Action-taking** – Performing tasks such as calling APIs, generating outputs, or interacting with external systems based on its reasoning.
+- **Agents** – Systems that reason and take action to complete goals across your enterprise data and systems.
+- **MCP Servers** – Expose governed, curated collections of tools and data that any agent or AI application can call.
+- **Skills** – Reusable capabilities that agents can invoke—queryable knowledge, API calls, workflows—built once and available everywhere.
 
-Unlike simple chatbots that just respond, agents **reason and act**. For example:
-
-- A chatbot might answer: “It’s 75°F and sunny in New York.”
-- An agent could fulfill: "Book me a flight to New York for tomorrow," by searching for flights, choosing the best option, and completing the booking.
+Everything you build in Credal is governed from day one: permissioned, auditable, and deployable at enterprise scale.
 
 ## Why Credal?
 
-### 1. **Enterprise Data Integrations**
+### A Governed Library of Agents and Tools
 
-Connect to all major [enterprise data sources](/user-guide/platform/integrations/data-sources-action-providers)—Slack, Confluence, Google Drive, Salesforce, databases, and more—for unified search, knowledge retrieval, and advanced analytics. With enterprise-grade security, every API connection and query follows your organization's access controls, ensuring your agents can safely surface insights and documents across your company's knowledge base. Whether answering questions, driving business processes, or enabling complex workflows, your data remains fully protected.
+Credal provides a central library of tools and company data collections that your AI platform team can customize, document, and govern. Tools can be enriched with curated context, scoped to the right audiences, and extended dynamically—Credal can write code to perform complex multi-step workflows and repackage them as first-class tools in your library. Builders and users can browse, activate, and stack vetted tools without starting from scratch.
 
-### 2. **Agentic Capabilities**
+### Agents That Work Where Your Teams Work
 
-Build intelligent agents that collaborate to execute multi-step workflows across your enterprise data. Agents automatically share capabilities—when one agent learns to query Salesforce, every agent in your organization can leverage that skill. Design sophisticated, secure workflows where [specialized agents coordinate](/user-guide/platform/agent-builder/configuration/agent-collaboration) on complex tasks, accelerating decision-making while maintaining strict data governance.
+Credal publishes agents to every surface your teams already use—Slack, the web, APIs, chat interfaces, and more. Users get access to agentic tooling where they work, not in a separate tool. And as those surfaces multiply, you need a single place where tooling is created, maintained, and governed—otherwise you're managing sprawl.
 
-### 3. **Publish Anywhere**
+### An Agent Builder with Built-In Evaluation
 
-Publish your agents wherever your teams work. Use them on the web, in Slack, through APIs, with other agents, or in any chat interface (with more integrations coming soon). Every published agent inherits Credal's enterprise-grade security, ensuring your knowledge remains private while your teams stay productive.
+Build agents through a UI, in natural language, or via API. Credal's agent builder includes native evaluation capability so you can test, iterate, and validate before deploying to your organization—closing the gap between prototype and production.
+
+### Model-Agnostic by Design
+
+Credal works across model providers. Most enterprises already use multiple LLMs because different models excel at different tasks. Credal lets you build agentic systems that use the right model for the right job, without rebuilding for each provider.
+
+### Market-Leading Enterprise Context
+
+Index and curate unstructured data—Slack, Confluence, Google Drive, Salesforce, databases, and more—and make it available to any agent or AI application from a single place. Structured and semi-structured data sources can be centrally configured and fetched securely. Your agents get better context; your admins get full visibility into what's being accessed.
+
+### Administrative Visibility and Control
+
+Credal isn't just secure—it's where you can safely deploy agents that take real actions: sending emails, processing payments, modifying records.
+
+**For admins:**
+- A single control panel for all agents and tools across the organization
+- See every agent using a given system (e.g., "What are all the agents using Google Drive for?")
+- Identify documents with incorrect underlying permissions before AI surfaces them further
+- Set global rules: require approval for external emails, cap payment amounts, block destructive operations
+- Enforce permission boundaries across every agent in the enterprise (authentication, authorization, auditability)
+- Measure and drive adoption across the user base from a single dashboard
+
+**For builders:**
+- Browse and activate vetted connectors, skills, and agents from a central hub
+- Evaluate solutions and scale them to teams and the organization quickly
+- Stack governed, pre-vetted tools to accelerate time-to-production
+- Benefit from better search and response accuracy from curated, well-scoped tooling
 
 ## Security
 
-Credal is built for enterprises—designed to meet the security, compliance, and governance standards required by large organizations.
+Credal is built for enterprises—designed to meet the security, compliance, and governance standards large organizations require.
 
 - SOC 2 Type II certified, HIPAA-ready, and compliant with the EU/UK/Swiss Data Privacy Framework
-- Credal mirrors your existing permissions (Slack, Google, Salesforce, etc.), so agents only access what users are already authorized to see
-- Supports human-in-the-loop approval flows and detailed [audit logs](/user-guide/platform/administration/audit-log-data-exports)
-- Flexible deployment: Cloud or on-prem, with [SSO and SCIM](/user-guide/platform/administration/single-sign-on-sso) integration for identity and access management
+- Mirrors your existing permissions (Slack, Google, Salesforce, etc.)—agents only access what users are already authorized to see
+- Supports human-in-the-loop approval flows and detailed audit logs
+- Flexible deployment: cloud or on-prem, with SSO and SCIM integration for identity and access management
+- Global policy controls for how agents interact with external systems, enforced across every agent in your organization
 
-With Credal, enterprises can confidently deploy AI agents that accelerate knowledge workflows without ever compromising security or compliance.
+With Credal, enterprises can confidently move from AI experimentation to production—without compromising security, compliance, or control.
 
 ## Support
 
-For questions or support? Reach out to our team at **[support@credal.ai](mailto:support@credal.ai)**.
+Questions or need help? Reach out at **support@credal.ai**.

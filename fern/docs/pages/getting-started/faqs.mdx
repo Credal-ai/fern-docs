@@ -1,5 +1,5 @@
 ---
-title: 'FAQs: Common Questions and Answers'
+title: "FAQs: Common Questions and Answers"
 slug: getting-started/faqs
 ---
 
@@ -95,7 +95,7 @@ Yes! Using XML tags (like \<instructions>, \<context>, or \<example>) in your sy
 
 If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an email), check the following:
 
-1. Prompt Instructions: Does your system prompt explicitly tell the Agent *when* to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
+1. Prompt Instructions: Does your system prompt explicitly tell the Agent _when_ to use the tool? (e.g., “When the user asks to file a bug, use the ‘Create Jira Ticket’ tool.”)
 2. Tool Description: Ensure the action’s description clearly explains what it does. The AI uses this description to decide if the tool is relevant.
 3. Model Choice: Some models are better at tool use than others. For complex action-taking workflows, try a more capable model from the model selector.
 
@@ -104,7 +104,7 @@ If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an 
 This usually means there’s a permission or configuration issue.
 
 - Permissions: Check if the user interacting with the Agent has the correct permissions in the source system (e.g., do they have a Salesforce license?).
-- OAuth: If you’re using a custom connector or MCP server, ensure the OAuth credentials are correctly configured and not expired.
+- OAuth: If you’re using a custom connector or [MCP server](/user-guide/platform/mcp-servers/overview), ensure the OAuth credentials are correctly configured and not expired.
 - Parameters: If building a custom action, verify that the API parameter names in your definition match exactly what the external API expects.
 -
 
@@ -128,7 +128,7 @@ If you encounter a generic error (like \{} or “Workflow execution failed”), 
 **Why is my Agent giving incorrect dates or hallucinating info?**
 
 - Date Issues: Ensure the system prompt includes the current date (Credal does this automatically, but you can reinforce it). If date calculation seems off, try switching to a newer model.
-- Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: *“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”*
+- Hallucinations: If the Agent is making things up, add a strict instruction to your prompt: _“Answer ONLY based on the provided context. If you do not know the answer, state that you do not know.”_
 
 **How do I know if a specific document or data source is working?**
 
