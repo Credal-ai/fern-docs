@@ -85,7 +85,7 @@ After creating the app from the manifest:
 }
 ```
 
-## Understanding the Bot Token (`xoxb-`)
+### Understanding the Bot Token (`xoxb-`)
 
 When setting up your custom Slack bot, you'll be asked to provide a **Bot Token** — a long string of characters that starts with `xoxb-`.
 
@@ -97,7 +97,7 @@ Think of it as a **key** that lets your Credal agent log into Slack and act as a
 - **It only has the permissions you choose** — you control exactly what the bot is allowed to do in your Slack settings.
 - Slack may also refer to this as the **"Bot User Token"** or **"Bot User OAuth Token"** — these all mean the same thing.
 
-### How to Find Your Bot Token
+#### How to Find Your Bot Token
 
 Follow these steps to get your `xoxb-` token from Slack:
 
@@ -106,7 +106,7 @@ Follow these steps to get your `xoxb-` token from Slack:
 3. In the left-hand menu, click **"OAuth & Permissions"**.
 4. Scroll down to **"Bot Token Scopes"** and make sure the required permissions are added (these should already be configured if you used the manifest template above).
 5. Click **"Install to Workspace"** (or **"Reinstall to Workspace"** if you've done this before).
-6. On the next screen, you'll see your **Bot User OAuth Token** — copy the value that starts with `xoxb-`.
+6. After authorizing, you'll be taken back to the **OAuth & Permissions** page — your **Bot User OAuth Token** will now appear at the top. Copy the value that starts with `xoxb-`.
 
 <Tip>Keep this token private — treat it like a password. Don't share it publicly or commit it to code.</Tip>
 
