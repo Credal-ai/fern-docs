@@ -2,18 +2,22 @@ The **Agent Reliability Score (ARS)** is a composite metric framework that quant
 
 ARS is designed to be extensible. As Credal supports new agent architectures and capabilities, additional scoring dimensions can be added to the framework. The first version focuses on **document-based and RAG agents** — the most common pattern on the platform today.
 
+<Frame>
+  <img src="/docs/assets/agents/evaluate/ars-evaluate-tab.png" />
+</Frame>
+
 ## ARS for RAG Agents
 
 The initial ARS implementation targets agents that answer questions using retrieved documents (semantic search, pinned sources, collections). It evaluates six dimensions that capture the most important quality signals for RAG workflows:
 
-| Metric | Default Weight | What It Measures |
-|---|---|---|
-| **Accuracy** | 35% | Average rubric score (LLM-as-judge) across all evaluated items. Directly reflects how well the agent answers each question per your rubric criteria. |
-| **Consistency** | 20% | Score variance across repeated trials of the same test case. Measures whether the agent produces reliably similar answers when asked the same question multiple times. Requires 2+ trials. |
-| **Source Fidelity** | 15% | Alignment between the sources the agent cited and the documents RAG actually retrieved. Penalizes hallucinated citations and rewards thorough use of retrieved context. |
-| **Cost Efficiency** | 10% | Average LLM cost per request relative to a configurable ceiling (default: $0.50). Score degrades linearly as cost approaches the ceiling. |
-| **Latency** | 10% | Average end-to-end response time relative to a configurable ceiling (default: 60 seconds). Score degrades linearly as latency approaches the ceiling. |
-| **Trajectory Efficiency** | 10% | For agents that use tools/actions: tool execution success rate and path efficiency (how many reasoning loops the agent needed vs. the optimal count). |
+| Metric | What It Measures |
+|---|---|
+| **Accuracy** | Average rubric score (LLM-as-judge) across all evaluated items. Directly reflects how well the agent answers each question per your rubric criteria. |
+| **Consistency** | Score variation (coefficient of variation) across repeated trials of the same test case. Measures whether the agent produces reliably similar answers when asked the same question multiple times. Requires 2+ trials. |
+| **Source Fidelity** | Alignment between the sources the agent cited and the documents RAG actually retrieved. Penalizes hallucinated citations and rewards thorough use of retrieved context. |
+| **Cost Efficiency** | Average LLM cost per request relative to a configurable ceiling. Score degrades linearly as cost approaches the ceiling. |
+| **Latency** | Average end-to-end response time relative to a configurable ceiling. Score degrades linearly as latency approaches the ceiling. |
+| **Trajectory Efficiency** | For agents that use tools/actions: tool execution success rate and path efficiency (how many reasoning loops the agent needed vs. the optimal count). |
 
 The composite score is a **weighted average** of available components. Weights automatically re-normalize when a metric has no data — for example, consistency is excluded for single-trial runs, and trajectory efficiency is excluded for agents without tool use.
 
@@ -65,4 +69,10 @@ Beyond the aggregate ARS score, Credal provides a per-test-case breakdown for fo
 
 ## Viewing ARS Results
 
-After an evaluation run completes, the ARS composite score appears in the Evaluate tab alongside test case results. Expand a test case row to see the per-test-case ARS breakdown. Historical ARS data lets you track how your agent's reliability changes over time as you modify prompts, data sources, or configuration.
+After an evaluation run completes, the ARS composite score appears in the Evaluate tab alongside test case results. Click on a run to open the Detailed Score Analysis, which shows the composite score, per-metric breakdown, historical rubric scores, and a score performance trend across past runs.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/ars-detailed-score.png" />
+</Frame>
+
+Historical ARS data lets you track how your agent's reliability changes over time as you modify prompts, data sources, or configuration.

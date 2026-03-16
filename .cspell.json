@@ -76,18 +76,11 @@
     "Chatbots",
     "Fivetran's",
     "webkitallowfullscreen",
-    "mozallowfullscreen"
+    "mozallowfullscreen",
+    "Cowork",
+    "blocklists"
   ],
-  "ignorePaths": [
-    "node_modules",
-    ".git",
-    "dist",
-    "build",
-    "*.log"
-  ],
-  "ignoreWords": [
-    "blacksmith",
-    "vcpu",
-    "ubuntu"
-  ]
+  "flagWords": ["localhost", "127.0.0.1"],
+  "ignorePaths": ["node_modules", ".git", "dist", "build", "*.log"],
+  "ignoreWords": ["blacksmith", "vcpu", "ubuntu"]
 }
