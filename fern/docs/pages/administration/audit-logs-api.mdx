@@ -1,0 +1,117 @@
+# Audit Logs API
+
+## Credal Organization-wide Audit Logs API
+
+### AI Audit Logs Export
+
+AI Audit logs are exportable by administrator API.
+
+Create an API key [here](https://app.credal.ai/api-tokens). Any users added to the API key must also be administrators.
+
+#### AI Audit Logs Request parameters
+
+**Base URL**
+```
+https://api.credal.ai/api/v0/audit-logs/organization
+```
+
+**Headers**
+- `Authorization: Bearer $API_TOKEN`
+- `Content-Type: application/json`
+
+**Body**
+- `limit`: number of records to return in request. Maximum 1,000.
+- `startDate`: optional, date of earliest audit log to appear in the response, in any ISO 8601 format. Any audit log appears on or after this date will be included.
+- `endDate`: optional, date of the most recent audit log to appear in the response. Any audit log appears before this date will be included.
+- `includePromptAndResponse`: optional, boolean for whether you want the user's prompt and the LLM response to be included in the output
+
+**Example cURL request**
+```bash
+curl 'https://api.credal.ai/api/audit-logs/organization' \
+  --data '{"limit":1000, "startDate":"2024-05-01", "endDate":"2024-05-10"}' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer CREDAL_TOKEN'
+```
+
+Audit logs are ordered by datetime, with the most recent logs first, and the oldest last.
+
+#### Pagination
+
+To paginate past the first n rows, take the latest or oldest datetime from the results and apply as `startDate` or `endDate`. This effectively uses datetime as a cursor.
+
+For example, to paginate through all logs, you could start with `"startDate": "2020-01-01"` and `"endDate": "2099-01-01"`. Then take the datetime from the last record in a given response, for example `"datetime":"2024-05-08T15:58:07.932857+00:00"`, and substitute that as `endDate`, making your request:
+
+```json
+{
+  "limit": 1000,
+  "startDate": "2020-01-01",
+  "endDate": "2024-05-08T15:58:07.932857+00:00"
+}
+```
+
+### Platform Actions Audit Logs
+
+#### Platform Audit Logs Request parameters
+
+**Base URL**
+```
+https://api.credal.ai/api/platform-audit-logs/export
+```
+
+**Headers**
+- `Authorization: Bearer $API_TOKEN`
+- `Content-Type: application/json`
+
+**Body**
+- `limit`: number of records to return in request. Maximum 1,000.
+- `startDate`: optional, date of earliest audit log to appear in the response, in any ISO 8601 format. Any audit log appears on or after this date will be included.
+- `endDate`: optional, date of the most recent audit log to appear in the response. Any audit log appears before this date will be included.
+- `actionTypes`: optional, a list of action types to include. E.g. `copilot.deploy.slack`
+
+**Example cURL request**
+```bash
+curl 'https://api.credal.ai/api/platform-audit-logs/export' \
+  --data '{"limit":1000}' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer CREDAL_TOKEN'
+```
+
+### AI Usage Analytics Logs
+
+AI Usage Analytics logs can be exported with any key that has the following Scope:
+```
+ai-usage-analytics-log.export
+```
+
+This scope must be approved by an admin, but a Developer must create the token, and then add the admin as a collaborator, and then have the admin approve the scope on the Api Token page, by hitting the "Can access Usage Analytics endpoint" toggle in the metadata section. (This should be disabled for non-admin users).
+
+**Developer makes the token → requests the scope be added → admin adds the scope → developer uses the token**
+
+If an admin creates the token, that token will automatically have access to the AuditLogs endpoints which include the actual text of the messages.
+
+Create an API key [here](https://app.credal.ai/api-tokens).
+
+**Base URL**
+```
+https://api.credal.ai/api/audit-logs/v0/usage-analytics/
+```
+
+**Headers**
+- `Authorization: Bearer $API_TOKEN`
+- `Content-Type: application/json`
+
+**Body**
+- `limit`: number of records to return in request. Maximum 1,000.
+- `offset`: pagination. No maximum.
+- `startDate`: optional, date of earliest audit log to appear in the response, in any ISO 8601 format. Any audit log appears on or after this date will be included.
+- `endDate`: optional, date of the most recent audit log to appear in the response. Any audit log appears before this date will be included.
+
+**Example cURL request**
+```bash
+curl 'https://api.credal.ai/api/v0/audit-logs/usage-analytics' \
+  --data '{"limit":1000,"offset":0, "startDate":"2024-05-01", "endDate":"2024-05-10"}' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer CREDAL_TOKEN'
+```
+
+Usage analytics logs are filtered by datetime, with the most recent logs first, and the oldest last.
