@@ -21,9 +21,6 @@ products:
         availability: beta
 default-language: python
 navbar-links:
-  - type: minimal
-    text: Contact us
-    url: mailto:support@credal.ai
   - type: secondary
     text: System Status
     url: https://status.credal.ai
