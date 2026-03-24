@@ -12,6 +12,10 @@ Use the "Add Test Case(s)" button to create test questions. You can optionally p
 
 In addition to manually adding test cases, you can use AI to automatically generate a diverse set of evaluation questions with scoring rubrics. Click the **"Generate Test Cases"** button (marked with a sparkle icon) to open the generation modal.
 
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-modal.png" />
+</Frame>
+
 The generator examines your agent's full configuration — including its system prompt, available actions, connected document sources, and MCP servers — and uses an ensemble of AI models to produce 8–12 high-quality test cases. Each generated test case includes:
 
 - **A realistic question** that a user of your agent would plausibly ask.
@@ -26,6 +30,12 @@ When generating test cases, you can choose which document sources inform the que
 
 - **Use agent's configured sources** (default): The generator pulls sources from your agent's semantic search and pinned sources configuration, including any collections.
 - **Choose specific sources**: Manually select a subset of sources to focus the generated questions on particular documents or topics.
+
+Once generation starts, an ensemble of AI models analyzes your agent's configuration and produces test cases. This may take up to a minute.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-loading.png" />
+</Frame>
 
 Once generated, the test cases appear in your Evaluate tab alongside any manually created ones. You can edit the questions and rubrics, or delete any that don't fit your needs.
 
