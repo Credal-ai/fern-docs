@@ -147,6 +147,7 @@ navigation:
       - page: Bulk Analysis
         # Soon to be turned into workflows, but the credal way :)
         path: ./pages/platform/bulk-analysis.mdx
+        availability: deprecated
       - section: Administration
         # Soon to be renamed Admin Control Center
         contents:
