@@ -157,5 +157,3 @@ navigation:
             path: ./pages/administration/audit-log-data-exports.mdx
           - page: Connect MCP Clients
             path: ./pages/administration/connect-mcp-clients.mdx
-  - page: Microsoft Teams Setup
-    path: ./pages/user-guide/microsoft-teams.mdx
