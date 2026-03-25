@@ -8,7 +8,7 @@ navigation:
         path: ./pages/quickstart.mdx
       - page: Agent Building Tutorial Video
         path: ./pages/agent-building.mdx
-      - section: "Tutorials: Common First Agents"
+      - section: 'Tutorials: Common First Agents'
         contents:
           - section: Employee Onboarding Assistant
             contents:
@@ -145,11 +145,9 @@ navigation:
           - page: Monitoring Usage
             path: ./pages/platform/mcp-servers/monitoring-usage.mdx
       - page: Bulk Analysis
-        # Soon to be turned into workflows, but the credal way :)
         path: ./pages/platform/bulk-analysis.mdx
         availability: deprecated
       - section: Administration
-        # Soon to be renamed Admin Control Center
         contents:
           - page: Single Sign-On (SSO)
             path: ./pages/administration/sso.mdx
@@ -159,4 +157,5 @@ navigation:
             path: ./pages/administration/audit-log-data-exports.mdx
           - page: Connect MCP Clients
             path: ./pages/administration/connect-mcp-clients.mdx
-      # coming soon... Enterprise search
+  - page: Microsoft Teams Setup
+    path: ./pages/user-guide/microsoft-teams.mdx
