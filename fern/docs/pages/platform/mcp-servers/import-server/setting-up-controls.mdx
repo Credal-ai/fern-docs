@@ -1,3 +1,12 @@
 # Setting up Controls
 
-For every MCP server, admins can enable or disable individual tools and require [human approval](/user-guide/platform/governed-actions/human-approval-options) before specific actions execute. If a third-party server exposes actions that are too sensitive or not relevant for your organization, simply turn them off. For actions you want to allow but monitor closely, approval enforcement ensures nothing runs without a human sign-off first.
+For every MCP server, admins have granular control over which tools are available and how they can be used:
+
+- **Publish/Unpublish Tools:** Enable or disable individual tools from the server. If a third-party server exposes actions that are too sensitive or not relevant for your organization, simply unpublish them to prevent their use.
+- **Enforce Human Approval:** Require [human approval](/user-guide/platform/governed-actions/human-approval-options) before specific tools execute. For tools you want to allow but monitor closely, approval enforcement ensures nothing runs without a human sign-off first.
+
+![Tool Controls](/docs/assets/actions/mcp-tool-controls.png)
+
+<Note>
+**Tool Syncing:** Credal automatically refreshes the list of available tools every time `tools/list` is called through the MCP gateway. You can also manually refresh tools using the refresh button in the UI.
+</Note>

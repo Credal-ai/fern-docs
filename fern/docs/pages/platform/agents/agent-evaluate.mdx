@@ -12,6 +12,10 @@ Use the "Add Test Case(s)" button to create test questions. You can optionally p
 
 In addition to manually adding test cases, you can use AI to automatically generate a diverse set of evaluation questions with scoring rubrics. Click the **"Generate Test Cases"** button (marked with a sparkle icon) to open the generation modal.
 
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-modal.png" />
+</Frame>
+
 The generator examines your agent's full configuration — including its system prompt, available actions, connected document sources, and MCP servers — and uses an ensemble of AI models to produce 8–12 high-quality test cases. Each generated test case includes:
 
 - **A realistic question** that a user of your agent would plausibly ask.
@@ -27,19 +31,30 @@ When generating test cases, you can choose which document sources inform the que
 - **Use agent's configured sources** (default): The generator pulls sources from your agent's semantic search and pinned sources configuration, including any collections.
 - **Choose specific sources**: Manually select a subset of sources to focus the generated questions on particular documents or topics.
 
+Once generation starts, an ensemble of AI models analyzes your agent's configuration and produces test cases. This may take up to a minute.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-loading.png" />
+</Frame>
+
 Once generated, the test cases appear in your Evaluate tab alongside any manually created ones. You can edit the questions and rubrics, or delete any that don't fit your needs.
 
-<div style={{position: "relative", paddingBottom: "53.23%", height: 0}}>
+<div style={{ position: "relative", paddingBottom: "53.23%", height: 0 }}>
   <iframe
     src="https://www.loom.com/embed/05169c6427b646e99c86f5bafdcebafc"
     frameborder="0"
     webkitallowfullscreen
     mozallowfullscreen
     allowfullscreen
-    style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }}
   ></iframe>
 </div>
-
 
 ### **Creating Rubrics**
 
@@ -85,3 +100,9 @@ Watch a video walking you through how to use the Evaluate tab below:
   referrerpolicy="strict-origin-when-cross-origin"
   allowfullscreen
 ></iframe>
+
+## Coming Soon
+
+We're actively developing additional evaluation capabilities. If you'd like early access to any of these features, please contact us at [support@credal.ai](mailto:support@credal.ai):
+
+- **Evaluation gate before publishing**: Require agents to pass evaluation thresholds before they can be published, ensuring quality standards are met before deployment to end users
