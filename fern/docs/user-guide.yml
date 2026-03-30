@@ -90,6 +90,8 @@ navigation:
             contents:
               - page: Overview
                 path: ./pages/platform/agents/agent-evaluate.mdx
+              - page: Agent Benchmark
+                path: ./pages/platform/agents/agent-benchmark.mdx
               - page: Agent Reliability Score
                 path: ./pages/platform/agents/agent-reliability-score.mdx
           - section: Publishing Agents
