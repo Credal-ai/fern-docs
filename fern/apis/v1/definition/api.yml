@@ -6,7 +6,7 @@ info:
     DO NOT manually edit this spec. It is auto-generated from the app repo
     (app/api/v1/openapi). Always use the latest export.
 servers:
-  - url: https://app.credal.ai
+  - url: https://app.credal.ai/api/v1
 components:
   securitySchemes:
     BearerAuth:
