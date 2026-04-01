@@ -18,7 +18,8 @@ components:
 paths:
   /agents/sendMessage:
     post:
-      operationId: agents_sendMessage
+      x-fern-sdk-group-name: agents
+      x-fern-sdk-method-name: sendMessage
       summary: Send a message to an agent
       security:
         - BearerAuth: []
@@ -98,7 +99,8 @@ paths:
           description: Internal server error
   /agents/fetchAgentResponse:
     get:
-      operationId: agents_fetchAgentResponse
+      x-fern-sdk-group-name: agents
+      x-fern-sdk-method-name: fetchResponse
       summary: Fetch the status of an agent response
       security:
         - BearerAuth: []
