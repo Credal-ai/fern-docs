@@ -18,6 +18,7 @@ components:
 paths:
   /agents/sendMessage:
     post:
+      operationId: agents_sendMessage
       summary: Send a message to an agent
       security:
         - BearerAuth: []
@@ -97,6 +98,7 @@ paths:
           description: Internal server error
   /agents/fetchAgentResponse:
     get:
+      operationId: agents_fetchAgentResponse
       summary: Fetch the status of an agent response
       security:
         - BearerAuth: []
