@@ -6,7 +6,7 @@ info:
     DO NOT manually edit this spec. It is auto-generated from the app repo
     (app/api/v1/openapi). Always use the latest export.
 servers:
-  - url: https://app.credal.ai/api/v1
+  - url: https://tintometric-hilario-superpetrosal.ngrok-free.dev/api/v1
 components:
   securitySchemes:
     BearerAuth:
@@ -18,6 +18,7 @@ components:
 paths:
   /agents/sendMessage:
     post:
+      operationId: agents_sendMessage
       summary: Send a message to an agent
       security:
         - BearerAuth: []
@@ -97,6 +98,7 @@ paths:
           description: Internal server error
   /agents/fetchAgentResponse:
     get:
+      operationId: agents_fetchAgentResponse
       summary: Fetch the status of an agent response
       security:
         - BearerAuth: []
