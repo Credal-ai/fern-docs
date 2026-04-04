@@ -10,7 +10,7 @@ API v1 brings fully featured agent messaging to the Credal API. Your application
 
 **Improved reliability** — v1 is built on Credal's new agent messaging system with greater investment in resilience and error handling, providing more robust delivery and clearer failure modes compared to v0.
 
-**OAuth 2.0 authentication** — instead of a static API key scoped to a single agent, v1 uses OAuth. After a user completes the [OAuth flow](./oauth-setup.mdx), your app can message any agent that user has access to.
+**OAuth 2.0 authentication** — instead of a static API key scoped to a single agent, v1 uses OAuth. After a user completes the [OAuth flow](/api-reference/v-1/oauth-setup), your app can message any agent that user has access to.
 
 ### What changed from v0
 
@@ -28,6 +28,6 @@ API v1 is in active development. New endpoints and capabilities will be added on
 
 ### Getting started
 
-1. **Register an OAuth client** — set up your application as an OAuth client in Credal.
-2. **Implement the OAuth flow** — redirect users to Credal's authorization endpoint, then exchange the authorization code for an access token.
+1. **Register an OAuth client** — set up your application as an OAuth client in Credal. See [OAuth Setup](/api-reference/v-1/oauth-setup) for instructions.
+2. **Implement the OAuth flow** — redirect users to Credal's authorization endpoint, then exchange the authorization code for an access token. Refer to the [OAuth Setup](/api-reference/v-1/oauth-setup) guide for details.
 3. **Call the API** — use the access token as a Bearer token in API requests.
