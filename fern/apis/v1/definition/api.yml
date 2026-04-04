@@ -21,6 +21,9 @@ paths:
       x-fern-sdk-group-name: agents
       x-fern-sdk-method-name: sendMessage
       summary: Send a message to an agent
+      description: >-
+        Sends a message to a deployed agent and returns a job ID that can be
+        used to poll for the response. Requires the `api:agent:message:*` scope.
       security:
         - BearerAuth: []
       requestBody:
@@ -102,6 +105,10 @@ paths:
       x-fern-sdk-group-name: agents
       x-fern-sdk-method-name: fetchResponse
       summary: Fetch the status of an agent response
+      description: >-
+        Polls for the status and result of a previously sent agent message using
+        the job ID returned by sendMessage. Requires the `api:agent:message:*`
+        scope.
       security:
         - BearerAuth: []
       parameters:
