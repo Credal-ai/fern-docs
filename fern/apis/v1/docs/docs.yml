@@ -1,3 +1,6 @@
 navigation:
-  - page: Coming Soon
-    path: ./coming-soon.mdx
+  - api: API Reference
+    api-name: v1
+    snippets:
+      python: credal
+      typescript: "@credal/sdk"
