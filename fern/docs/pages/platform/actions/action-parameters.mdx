@@ -1,4 +1,4 @@
-Parameters are the inputs an action needs to do its job. Each parameter has a **type** that controls how its value gets filled in at runtime.
+Parameters are the inputs an [action](/user-guide/platform/governed-actions/overview) needs to do its job. Each parameter has a **type** that controls how its value gets filled in when the action runs.
 
 The following parameter types are supported:
 
@@ -33,25 +33,27 @@ _Example: In Salesforce, when creating a new lead, you define `Lead Source` as "
 
 #### 4. Predefined
 
-The value is hardcoded — always the same whenever the action runs.
+The value is hardcoded — always the same whenever the action runs. Like User Context and Blank, **the LLM never sees this field**; the value is passed directly to the service.
 
 _Example: You always log bugs in the same Jira project. Set `ProjectID = "Customer Support Issues"` once and it never changes._
 
-Advanced tip: to mix a fixed prefix with an AI-generated value, set the type to Predefined and embed dynamic parts using `${PARAM_NAME}` syntax.
+**Advanced tip:** to mix a fixed prefix with an AI-generated value, set the type to Predefined and embed dynamic parts using `${PARAM_NAME}` syntax.
 
 #### 5. User Context
 
-The value is automatically injected at runtime from properties of the user (or system) running the action — such as their email, name, or org. Also used in [multi-user approval workflows](/user-guide/platform/governed-actions/human-approval-options) to prevent impersonation.
+The value comes from properties of the user (or system) running the action — such as their email, name, or org — and is filled in automatically. Like Predefined and Blank, **the LLM never sees this field**; the value is passed directly to the service. Also used in [multi-user approval workflows](/user-guide/platform/governed-actions/human-approval-options) to prevent impersonation. See [Credentials and Security](/user-guide/platform/governed-actions/credentials-and-security) for more on how user identity flows through actions.
 
 _Example: A user in Slack opens a Jira support ticket. The ticket holder field is automatically set to the email of whoever ran the action via `CREDAL_USER_EMAIL`._
 
 #### 6. Blank
 
-The parameter is intentionally left empty. Only available for optional parameters.
+Like the Predefined and User Context options, Blank completely excludes the parameter from the LLM — **it is invisible to the model and will not be interpreted as a field to fill in.** Only available for **optional parameters**.
+
+When the action runs, the underlying service receives its native representation of "blank" for that field (not an empty value of zero characters). To send an empty value instead, use the Predefined option and leave the value unfilled.
 
 ## Coming Soon
 
 We're actively developing advanced parameter capabilities. If you'd like early access, contact us at [support@credal.ai](mailto:support@credal.ai):
 
-- **Conditional HITL rules**: Trigger human approval only when specific parameter conditions are met (e.g., require approval for expenses over $10,000)
+- **Conditional human-in-the-loop (HITL) approval rules**: Trigger [human approval](/user-guide/platform/governed-actions/human-approval-options) only when specific parameter conditions are met (e.g., require approval for expenses over $10,000)
 - **Conditional execution rules**: Parameter-based logic that determines whether an action should execute at all
