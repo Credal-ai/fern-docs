@@ -2,6 +2,8 @@ The **Agent Reliability Score (ARS)** is a composite metric framework that quant
 
 ARS is designed to be extensible. As Credal supports new agent architectures and capabilities, additional scoring dimensions can be added to the framework. The first version focuses on **document-based and RAG agents** — the most common pattern on the platform today.
 
+ARS scores are computed from the test cases and runs you create in the [Evaluate tab](/user-guide/platform/agent-builder/evaluating-your-agent).
+
 <Frame>
   <img src="/docs/assets/agents/evaluate/ars-evaluate-tab.png" />
 </Frame>
@@ -10,14 +12,14 @@ ARS is designed to be extensible. As Credal supports new agent architectures and
 
 The initial ARS implementation targets agents that answer questions using retrieved documents (semantic search, pinned sources, collections). It evaluates six dimensions that capture the most important quality signals for RAG workflows:
 
-| Metric | What It Measures |
-|---|---|
-| **Accuracy** | Average rubric score (LLM-as-judge) across all evaluated items. Directly reflects how well the agent answers each question per your rubric criteria. |
-| **Consistency** | Score variation (coefficient of variation) across repeated trials of the same test case. Measures whether the agent produces reliably similar answers when asked the same question multiple times. Requires 2+ trials. |
-| **Source Fidelity** | Alignment between the sources the agent cited and the documents RAG actually retrieved. Penalizes hallucinated citations and rewards thorough use of retrieved context. |
-| **Cost Efficiency** | Average LLM cost per request relative to a configurable ceiling. Score degrades linearly as cost approaches the ceiling. |
-| **Latency** | Average end-to-end response time relative to a configurable ceiling. Score degrades linearly as latency approaches the ceiling. |
-| **Trajectory Efficiency** | For agents that use tools/actions: tool execution success rate and path efficiency (how many reasoning loops the agent needed vs. the optimal count). |
+| Metric                    | What It Measures                                                                                                                                                                                                       |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Accuracy**              | Average rubric score (LLM-as-judge) across all evaluated items. Directly reflects how well the agent answers each question per your rubric criteria.                                                                   |
+| **Consistency**           | Score variation (coefficient of variation) across repeated trials of the same test case. Measures whether the agent produces reliably similar answers when asked the same question multiple times. Requires 2+ trials. |
+| **Source Fidelity**       | Alignment between the sources the agent cited and the documents RAG actually retrieved. Penalizes hallucinated citations and rewards thorough use of retrieved context.                                                |
+| **Cost Efficiency**       | Average LLM cost per request relative to a configurable ceiling. Score degrades linearly as cost approaches the ceiling.                                                                                               |
+| **Latency**               | Average end-to-end response time relative to a configurable ceiling. Score degrades linearly as latency approaches the ceiling.                                                                                        |
+| **Trajectory Efficiency** | For agents that use tools/actions: tool execution success rate and path efficiency (how many reasoning loops the agent needed vs. the optimal count).                                                                  |
 
 The composite score is a **weighted average** of available components. Weights automatically re-normalize when a metric has no data — for example, consistency is excluded for single-trial runs, and trajectory efficiency is excluded for agents without tool use.
 
@@ -45,6 +47,7 @@ These operational metrics track whether the agent stays within acceptable resour
 ### Trajectory Efficiency
 
 For agents with tool/action capabilities, trajectory efficiency combines:
+
 - **Tool execution success rate** — what fraction of tool calls succeeded
 - **Path efficiency** — how many reasoning loops the agent used vs. the expected optimal count
 
@@ -60,12 +63,12 @@ Beyond the aggregate ARS score, Credal provides a per-test-case breakdown for fo
 
 ## Interpreting Your ARS Score
 
-| Score Range | Interpretation |
-|---|---|
-| **80–100** | Excellent. Agent consistently produces high-quality, well-sourced answers within cost and latency targets. |
-| **60–79** | Good. Agent generally performs well but may have weaknesses in specific areas — check the component breakdown. |
-| **40–59** | Needs improvement. Review component scores to identify whether the issue is accuracy, consistency, citations, or operational efficiency. |
-| **Below 40** | Significant issues. Agent may be hallucinating citations, producing inconsistent answers, or exceeding cost/latency budgets. |
+| Score Range  | Interpretation                                                                                                                           |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **80–100**   | Excellent. Agent consistently produces high-quality, well-sourced answers within cost and latency targets.                               |
+| **60–79**    | Good. Agent generally performs well but may have weaknesses in specific areas — check the component breakdown.                           |
+| **40–59**    | Needs improvement. Review component scores to identify whether the issue is accuracy, consistency, citations, or operational efficiency. |
+| **Below 40** | Significant issues. Agent may be hallucinating citations, producing inconsistent answers, or exceeding cost/latency budgets.             |
 
 ## Viewing ARS Results
 
