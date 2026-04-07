@@ -1,0 +1,47 @@
+## OAuth Setup
+
+API v1 uses OAuth 2.0 with PKCE for authentication. If you're new to OAuth, see [OAuth 2.0 with PKCE](https://oauth.net/2/pkce/) for background on the protocol.
+
+### 1. Register an OAuth client
+
+Creating an OAuth client requires approval from your organization's admin. To request one, ask your admin to contact [support@credal.ai](mailto:support@credal.ai).
+
+### 2. Configure your environment
+
+After registering your client, you'll have a **client ID** and **client secret**. Configure your OAuth client with the following:
+
+| Parameter | Value |
+|---|---|
+| Issuer / Discovery URL | `https://app.credal.ai` |
+| Redirect URI | Your app's callback URL (e.g. `http://localhost:4000/callback`) |
+
+Credal supports [OpenID Connect Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html), so most OAuth libraries can auto-configure endpoints from the issuer URL.
+
+When requesting authorization, include the scopes your application needs. The following scopes are available:
+
+| Scope | Description |
+|---|---|
+| `api:agent:message:*` | Send messages to agents and fetch responses |
+
+### 3. Authenticate and call the API
+
+After completing the OAuth flow, pass the access token to the Credal SDK:
+
+```typescript
+import { CredalClient } from "@credal/sdk";
+
+const credal = new CredalClient({
+  token: accessToken,
+  environment: "https://app.credal.ai/api/v1",
+});
+
+const response = await credal.agents.sendMessage({
+  agentId: "your-agent-id",
+  conversation: { type: "new" },
+  message: "Hello!",
+});
+```
+
+### Token refresh
+
+Access tokens are short-lived. Use the refresh token from the initial authorization to obtain new access tokens when they expire. Refer to your OAuth library's documentation for details on implementing token refresh.

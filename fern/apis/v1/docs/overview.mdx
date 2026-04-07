@@ -1,0 +1,33 @@
+## Overview
+
+API v1 brings fully featured agent messaging to the Credal API. Your application can now interact with agents that use [actions](/user-guide/platform/governed-actions/overview) — the same rich agent experience available in the Credal UI, now accessible programmatically.
+
+### What's new in v1
+
+**Full agent messaging with [actions](/user-guide/platform/governed-actions/overview)** — v0 only supported simple text-in, text-out interactions. v1 supports the complete agent loop, including agents that use actions to search documents, query databases, create tickets, and more.
+
+**Asynchronous messaging** — v0 was synchronous: you sent a message and blocked until the response came back. v1 uses a fire-and-poll pattern — `sendMessage` returns a `jobId`, and you poll `fetchAgentResponse` until the result is ready. This supports longer-running agent interactions involving actions. Note that responses are ephemeral and should be fetched promptly rather than relied on to be available indefinitely.
+
+**Improved reliability** — v1 is built on Credal's new agent messaging system with greater investment in resilience and error handling, providing more robust delivery and clearer failure modes compared to v0.
+
+**OAuth 2.0 authentication** — instead of a static API key scoped to a single agent, v1 uses OAuth. After a user completes the [OAuth flow](/api-reference/v-1/oauth-setup), your app can message any agent that user has access to.
+
+### What changed from v0
+
+| | v0 | v1 |
+|---|---|---|
+| **Agent messaging** | Synchronous, text-only | Async fire-and-poll with [actions](/user-guide/platform/governed-actions/overview) |
+| **Auth method** | Static API key | OAuth 2.0 |
+| **Scope** | Single agent | All agents the user can access |
+| **Token lifetime** | Long-lived | Short-lived (refresh via OAuth) |
+| **User context** | None | Requests run as the authenticated user |
+
+<Note>
+API v1 is in active development. New endpoints and capabilities will be added on an ongoing basis.
+</Note>
+
+### Getting started
+
+1. **Register an OAuth client** — set up your application as an OAuth client in Credal. See [OAuth Setup](/api-reference/v-1/oauth-setup) for instructions.
+2. **Implement the OAuth flow** — redirect users to Credal's authorization endpoint, then exchange the authorization code for an access token. Refer to the [OAuth Setup](/api-reference/v-1/oauth-setup) guide for details.
+3. **Call the API** — use the access token as a Bearer token in API requests.

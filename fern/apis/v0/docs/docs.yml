@@ -1,4 +1,7 @@
 navigation:
+  - page: Overview
+    slug: overview
+    path: ./overview.mdx
   - api: API Reference
     api-name: v0
     snippets:
