@@ -2,6 +2,8 @@ The **Agent Reliability Score (ARS)** is a composite metric framework that quant
 
 ARS is designed to be extensible. As Credal supports new agent architectures and capabilities, additional scoring dimensions can be added to the framework. The first version focuses on **document-based and RAG agents** — the most common pattern on the platform today.
 
+ARS scores are computed from the test cases and runs you create in the [Evaluate tab](/user-guide/platform/agent-builder/evaluating-your-agent).
+
 <Frame>
   <img src="/docs/assets/agents/evaluate/ars-evaluate-tab.png" />
 </Frame>
@@ -45,6 +47,7 @@ These operational metrics track whether the agent stays within acceptable resour
 ### Trajectory Efficiency
 
 For agents with tool/action capabilities, trajectory efficiency combines:
+
 - **Tool execution success rate** — what fraction of tool calls succeeded
 - **Path efficiency** — how many reasoning loops the agent used vs. the expected optimal count
 
