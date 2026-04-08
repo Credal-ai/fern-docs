@@ -150,7 +150,6 @@ navigation:
             path: ./pages/platform/mcp-servers/monitoring-usage.mdx
       - page: Bulk Analysis
         path: ./pages/platform/bulk-analysis.mdx
-        availability: deprecated
       - section: Administration
         contents:
           - page: Single Sign-On (SSO)
