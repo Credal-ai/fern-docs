@@ -8,6 +8,54 @@ Use the "Add Test Case(s)" button to create test questions. You can optionally p
   <img src="/docs/assets/agents/evaluate/agent-eval.png" />
 </Frame>
 
+### Generating Test Cases with AI
+
+In addition to manually adding test cases, you can use AI to automatically generate a diverse set of evaluation questions with scoring rubrics. Click the **"Generate Test Cases"** button (marked with a sparkle icon) to open the generation modal.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-modal.png" />
+</Frame>
+
+The generator examines your agent's full configuration — including its system prompt, available actions, connected document sources, and MCP servers — and uses an ensemble of AI models to produce 8–12 high-quality test cases. Each generated test case includes:
+
+- **A realistic question** that a user of your agent would plausibly ask.
+- **A weighted scoring rubric** with 2–4 criteria that sum to 100 points, defining what a good answer looks like.
+- **Relevant source references**, linking the question to specific documents in your agent's knowledge base when applicable.
+
+The generated questions are designed to cover a range of scenarios: straightforward factual retrieval, complex multi-step reasoning, action-triggering workflows, ambiguous or vaguely worded inputs, and adversarial or out-of-scope requests.
+
+#### Choosing Document Sources
+
+When generating test cases, you can choose which document sources inform the questions:
+
+- **Use agent's configured sources** (default): The generator pulls sources from your agent's semantic search and pinned sources configuration, including any collections.
+- **Choose specific sources**: Manually select a subset of sources to focus the generated questions on particular documents or topics.
+
+Once generation starts, an ensemble of AI models analyzes your agent's configuration and produces test cases. This may take up to a minute.
+
+<Frame>
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-loading.png" />
+</Frame>
+
+Once generated, the test cases appear in your Evaluate tab alongside any manually created ones. You can edit the questions and rubrics, or delete any that don't fit your needs.
+
+<div style={{ position: "relative", paddingBottom: "53.23%", height: 0 }}>
+  <iframe
+    src="https://www.loom.com/embed/05169c6427b646e99c86f5bafdcebafc"
+    frameborder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowfullscreen
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }}
+  ></iframe>
+</div>
+
 ### **Creating Rubrics**
 
 For each test question, you can define a custom rubric that specifies what makes a good answer. Rubrics allow you to:
@@ -38,6 +86,10 @@ Click "Generate AI Answers" to test your agent against all questions. The agent 
 - Monitor how configuration changes impact agent performance across versions.
 - Use version control to test different agent configurations and compare results.
 
+After a run completes, the [Agent Reliability Score (ARS)](/user-guide/platform/agent-builder/evaluating-your-agent/agent-reliability-score) provides a composite 0–100 reliability score across dimensions like accuracy, consistency, source fidelity, and cost/latency efficiency.
+
+To compare how different model configurations perform against the same test cases, use the [Benchmark tab](/user-guide/platform/agent-builder/evaluating-your-agent/agent-benchmark).
+
 **Note:** The Evaluate tab currently runs tests on your Preview version of the agent.
 
 Watch a video walking you through how to use the Evaluate tab below:
@@ -52,3 +104,9 @@ Watch a video walking you through how to use the Evaluate tab below:
   referrerpolicy="strict-origin-when-cross-origin"
   allowfullscreen
 ></iframe>
+
+## Coming Soon
+
+We're actively developing additional evaluation capabilities. If you'd like early access to any of these features, please contact us at [support@credal.ai](mailto:support@credal.ai):
+
+- **Evaluation gate before publishing**: Require agents to pass evaluation thresholds before they can be published, ensuring quality standards are met before deployment to end users

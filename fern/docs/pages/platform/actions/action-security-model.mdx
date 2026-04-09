@@ -51,10 +51,17 @@ One special case of an action-scoped credential provider is our OpenAPI action p
 
 ### Human Approval & Multi-User Action Invocation Flows
 
-Human Approval is a layer on top of Credal's action security model that enables additional action governance and unlocks more complex action use cases.
+Human Approval is a layer on top of Credal's action security model that enables additional action governance and unlocks more complex action use cases. You can also control what information the AI sees and fills in using [Action Parameters](/user-guide/platform/governed-actions/action-parameters) — including locking fields to fixed values or injecting user identity automatically.
 
 Separately from respecting the permissions of a user in an action provider's underlying system, it's often important to be able to double-check an agent's work before performing an operation in that system. For instance, a user may want to validate the phrasing used when invoking an action to modify a Notion document on company expense policies.
 
 In other cases, it may be desirable for users to kick off an action invocation despite not having the permissions in the underlying system to execute that action. Using the human approval flow, it's possible to request for someone with those permissions to approve the action and execute it on the original user's behalf.
 
 Learn more about this flow: [Human Approval Options](/user-guide/platform/governed-actions/human-approval-options)
+
+## Coming Soon
+
+We're actively developing additional security and governance capabilities. If you'd like early access to any of these features, please contact us at [support@credal.ai](mailto:support@credal.ai):
+
+- **Role-based action access**: Grant access to actions based on user roles, allowing fine-grained control over who can invoke specific actions
+- **Action blocklists**: Define organization-wide policies to prevent specific actions from being used in certain contexts or by certain user groups

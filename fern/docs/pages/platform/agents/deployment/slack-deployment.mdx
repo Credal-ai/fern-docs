@@ -98,6 +98,34 @@ Custom bots and the Credal bot behave separately, so if you have both a Custom b
 
 ---
 
+## Examples: How Routing Works in Practice
+
+### Example 1: Respond to All Messages
+
+If you have set your agent to respond to "all messages", it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal's Information Security Copilot to respond to all messages:
+
+![slack_all_messages_query_example.png](/docs/assets/copilots/slack_all_messages_query_example.png)
+
+![slack_out_of_scope_response.png](/docs/assets/copilots/slack_out_of_scope_response.png)
+
+> _Because this agent is set to be precise, when asked a question outside its expertise it responds that it does not have the context to answer. If this agent was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
+
+### Example 2: Respond to Relevant Messages
+
+If you have set your agent to respond to only a selection of messages, such as all relevant messages, or those matching a filter, the agent will only respond to queries that match that criteria.
+
+Here, we set Credal's Information Security Copilot to only respond to relevant messages:
+
+![*Here, the Agent responded as the question fell within its scope—questions on information security at Credal.*](/docs/assets/copilots/slack_relevant_query_response.png)
+
+_Here, the Agent responded as the question fell within its scope—questions on information security at Credal._
+
+![*This question fell outside of the Agent's scope, and it did not respond.*](/docs/assets/copilots/slack_ignored_query_example.png)
+
+_This question fell outside of the Agent's scope, and it did not respond._
+
+---
+
 ## Advanced Settings
 
 By enabling the advanced settings option, the user will see additional options.

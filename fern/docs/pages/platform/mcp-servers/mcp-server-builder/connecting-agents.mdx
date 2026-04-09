@@ -1,7 +1,10 @@
 # Connecting Agents
 
-Take your most important and relied-upon agents, package them in your MCP server, and deliver them to users in seconds.
+Take your most important and relied-upon [agents](/user-guide/platform/agent-builder/configuration/setting-up-an-agent), package them in your MCP server, and deliver them to users in seconds.
+
+Before an agent can be added to an MCP server, it must be published as callable. See [Agents and MCP Servers](/user-guide/platform/agent-builder/publishing-agents/agents-and-mcp-servers) for how to enable the Callable toggle and configure which MCP servers are allowed to invoke it.
 
 ![connecting-agents-to-server](/docs/assets/mcp-servers/create-steps/connecting-agents-to-server.png)
 
 Agent calls run asynchronously, so even complex agents that take minutes to complete won't time out. Results are polled automatically in the background using the "Get Job Status" action, which Credal will automatically add when you connect an agent to your MCP Server. Do not remove this action! If you accidentally do, you can always add it back by searching for it.
+

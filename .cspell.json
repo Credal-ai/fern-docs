@@ -8,6 +8,7 @@
     "Automations",
     "Balli",
     "productionizing",
+    "PKCE",
     "API",
     "APIs",
     "Credal",
@@ -74,18 +75,14 @@
     "Financials",
     "buildwithfern",
     "Chatbots",
-    "Fivetran's"
+    "Fivetran's",
+    "webkitallowfullscreen",
+    "mozallowfullscreen",
+    "Cowork",
+    "blocklists",
+    "toolkits"
   ],
-  "ignorePaths": [
-    "node_modules",
-    ".git",
-    "dist",
-    "build",
-    "*.log"
-  ],
-  "ignoreWords": [
-    "blacksmith",
-    "vcpu",
-    "ubuntu"
-  ]
+  "flagWords": ["localhost", "127.0.0.1"],
+  "ignorePaths": ["node_modules", ".git", "dist", "build", "*.log"],
+  "ignoreWords": ["blacksmith", "vcpu", "ubuntu"]
 }

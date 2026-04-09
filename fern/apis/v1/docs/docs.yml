@@ -1,3 +1,11 @@
 navigation:
-  - page: Coming Soon
-    path: ./coming-soon.mdx
+  - page: Overview
+    slug: overview
+    path: ./overview.mdx
+  - page: OAuth Setup
+    path: ./oauth-setup.mdx
+  - api: API Reference
+    api-name: v1
+    snippets:
+      python: credal
+      typescript: "@credal/sdk"
