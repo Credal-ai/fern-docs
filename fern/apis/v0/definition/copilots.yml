@@ -166,9 +166,6 @@ service:
               name: Customer Agent
               description: This agent is used to answer customer requests based on internal documentation.
               prompt: You are a polite, helpful assistant used to answer customer requests.
-              aiEndpointConfiguration:
-                baseUrl: https://api.openai.com/v1/
-                apiKey: <YOUR_API_KEY_HERE>
 
     deleteCopilot:
       availability: pre-release
@@ -622,15 +619,9 @@ types:
 
   Configuration:
     properties:
-      aiEndpointConfiguration: optional<AIEndpointConfiguration>
       name: optional<string>
       description: optional<string>
       prompt: optional<string>
-
-  AIEndpointConfiguration:
-    properties:
-      baseUrl: string
-      apiKey: string
 
   CreateCopilotResponse:
     properties:
