@@ -261,6 +261,8 @@ service:
 
     sendMessage:
       availability: deprecated
+      docs: |
+        **Deprecated.** Use the [v1 Agents API](/api-reference/v-1/api-reference/agents) instead: send a message with `POST /v1/agents/sendMessage`, then poll for the response with `GET /v1/agents/fetchAgentResponse`.
       path: /sendMessage
       method: POST
       request:
@@ -367,7 +369,9 @@ service:
     streamMessage:
       availability: deprecated
       docs: |
-        This endpoint allows you to send a message to a specific agent and get the response back as a streamed set of Server-Sent Events.
+        **Deprecated.** Use the [v1 Agents API](/api-reference/v-1/api-reference/agents) instead: send a message with `POST /v1/agents/sendMessage`, then poll for the response with `GET /v1/agents/fetchAgentResponse`.
+
+        Previously, this endpoint streamed a response back as Server-Sent Events.
       path: /streamMessage
       method: POST
       request:
