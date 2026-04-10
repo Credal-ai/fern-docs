@@ -12,7 +12,7 @@ Create an API key [here](https://app.credal.ai/api-tokens). Any users added to t
 
 **Base URL**
 ```
-https://api.credal.ai/api/v0/audit-logs/organization
+https://app.credal.ai/api/v0/audit-logs/organization
 ```
 
 **Headers**
@@ -27,7 +27,7 @@ https://api.credal.ai/api/v0/audit-logs/organization
 
 **Example cURL request**
 ```bash
-curl 'https://api.credal.ai/api/audit-logs/organization' \
+curl 'https://app.credal.ai/api/audit-logs/organization' \
   --data '{"limit":1000, "startDate":"2024-05-01", "endDate":"2024-05-10"}' \
   -H 'content-type: application/json' \
   -H 'Authorization: Bearer CREDAL_TOKEN'
@@ -55,7 +55,7 @@ For example, to paginate through all logs, you could start with `"startDate": "2
 
 **Base URL**
 ```
-https://api.credal.ai/api/platform-audit-logs/export
+https://app.credal.ai/api/platform-audit-logs/export
 ```
 
 **Headers**
@@ -70,7 +70,7 @@ https://api.credal.ai/api/platform-audit-logs/export
 
 **Example cURL request**
 ```bash
-curl 'https://api.credal.ai/api/platform-audit-logs/export' \
+curl 'https://app.credal.ai/api/platform-audit-logs/export' \
   --data '{"limit":1000}' \
   -H 'content-type: application/json' \
   -H 'Authorization: Bearer CREDAL_TOKEN'
@@ -93,7 +93,7 @@ Create an API key [here](https://app.credal.ai/api-tokens).
 
 **Base URL**
 ```
-https://api.credal.ai/api/audit-logs/v0/usage-analytics/
+https://app.credal.ai/api/audit-logs/v0/usage-analytics/
 ```
 
 **Headers**
@@ -108,7 +108,7 @@ https://api.credal.ai/api/audit-logs/v0/usage-analytics/
 
 **Example cURL request**
 ```bash
-curl 'https://api.credal.ai/api/v0/audit-logs/usage-analytics' \
+curl 'https://app.credal.ai/api/v0/audit-logs/usage-analytics' \
   --data '{"limit":1000,"offset":0, "startDate":"2024-05-01", "endDate":"2024-05-10"}' \
   -H 'content-type: application/json' \
   -H 'Authorization: Bearer CREDAL_TOKEN'
