@@ -98,6 +98,8 @@ navigation:
             contents:
               - page: Overview
                 path: ./pages/platform/agents/deployment/overview.mdx
+              - page: Versions & Forking
+                path: ./pages/platform/agents/deployment/versions.mdx
               - page: Agents in Slack
                 path: ./pages/platform/agents/deployment/slack-deployment.mdx
               - page: Custom Dedicated Slack Bots
