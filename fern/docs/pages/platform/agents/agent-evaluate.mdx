@@ -56,6 +56,35 @@ Once generated, the test cases appear in your Evaluate tab alongside any manuall
   ></iframe>
 </div>
 
+### Creating Test Cases from Monitor Logs
+
+You can turn real conversations from your agent's Monitor tab into test cases. This is useful when you spot interactions worth tracking — good responses you want to preserve as golden examples, or bad ones you want to catch in future regressions.
+
+1. Go to your agent's **Monitor** tab and select one or more log rows using the checkboxes.
+2. Click **"Add to Eval Set"** to open the test case wizard with those conversations pre-loaded.
+3. Choose which eval folder to organize them into (or create a new one).
+4. Optionally annotate each log with a quality label (good response, bad response, golden example, edge case) and add rubric instructions describing what the agent should have done.
+5. Review your selections and confirm.
+
+The test cases will appear in your Evaluate tab, ready to be scored in your next evaluation run.
+
+<div style={{ position: "relative", paddingBottom: "73.51%", height: 0 }}>
+  <iframe
+    src="https://www.loom.com/embed/36b2e3576d0040949a0270041951b577"
+    frameborder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowfullscreen
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }}
+  ></iframe>
+</div>
+
 ### **Creating Rubrics**
 
 For each test question, you can define a custom rubric that specifies what makes a good answer. Rubrics allow you to:
