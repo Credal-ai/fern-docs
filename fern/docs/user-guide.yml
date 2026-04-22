@@ -116,6 +116,8 @@ navigation:
         contents:
           - page: Overview
             path: ./pages/platform/actions/overview.mdx
+          - page: Action Templates
+            path: ./pages/platform/actions/action-templates.mdx
           - page: Custom Names and Descriptions
             path: ./pages/platform/actions/custom-names-descriptions.mdx
           - page: Open Source Actions
