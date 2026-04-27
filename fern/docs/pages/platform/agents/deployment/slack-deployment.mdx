@@ -73,6 +73,18 @@ Example filter setup: respond only to prompts containing `?`.
 
 ---
 
+## Channel Allowlist
+
+Your Credal admin may have configured a Channel Allowlist that restricts which Slack channels agents can be published to. If you try to publish an agent to a channel that isn't on the allowlist, you won't see that channel as an available option.
+
+If you need to publish an agent to a channel that isn't in the allowlist, ask your Credal admin to add the channel. Admins can manage the allowlist at [https://app.credal.ai/admin/connectors/slack](https://app.credal.ai/admin/connectors/slack). If you are not on the multi-tenant SaaS Credal offering, replace `https://app.credal.ai` with the URL you typically use to log in to Credal.
+
+<Frame>
+  <img src="/docs/assets/agents/channel_allowlist.png" />
+</Frame>
+
+---
+
 ## Slack Private Channels
 
 Publishing into a private channel works like public channels but requires adding the Credal integration first.
