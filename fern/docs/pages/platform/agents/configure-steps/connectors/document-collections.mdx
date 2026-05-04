@@ -59,6 +59,20 @@ From the Configure tab, scroll to the Data section. You have three main ways to 
   <img src="/docs/assets/collections/collections-data.png" />
 </Frame>
 
+#### Web Scraping Options
+
+When adding a public webpage, you can choose how Credal fetches and indexes the content:
+
+**Recursive Crawl**
+
+By default, Credal indexes only the single page you provide. Enabling **Recursive Crawl** tells Credal to follow internal links on that page and index the linked pages as well, making it easy to ingest entire documentation sites or multi-page resources in one step.
+
+> **Page limit:** Recursive crawls are capped at **1,500 pages**. Each URL fetched—including any PDFs (see below)—counts toward this limit. If the site exceeds the limit, Credal indexes the first 1,500 pages encountered and stops.
+
+**Include Linked PDFs**
+
+This option appears when **Recursive Crawl** is enabled. When turned on, Credal will also download and parse any PDF documents linked from the pages being crawled, extracting their text content for indexing. For scanned or image-based PDFs, Credal automatically applies OCR (Optical Character Recognition) to make the content searchable. Each PDF counts as one page toward the 1,500-page recursive crawl limit.
+
 #### Sharing Your Collection
 
 Click the Share button at the top of your collection's page to manage who has access:
