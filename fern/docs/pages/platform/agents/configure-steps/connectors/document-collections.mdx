@@ -92,7 +92,7 @@ When enabled, the agent queries every document in each selected collection again
 
 ### Smart Filters
 
-[Smart Filtering](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/smart-filtering-beta) lets your agent use document metadata and auto-extracted entities to filter out to the most relevant documents, sending only the most relevant content to the LLM, improving precision and reducing noise.
+[Smart Filtering](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/smart-filtering-beta) lets your agent use document metadata and auto-extracted entities from [AI Entity Extraction (beta)](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/ai-entity-extraction-beta) to filter out to the most relevant documents, sending only the most relevant content to the LLM, improving precision and reducing noise.
 
 ---
 
@@ -127,7 +127,7 @@ Smart Filtering narrows searches to documents matching specific metadata or enti
 
 - Smart Filtering only works on document collections
 - Filters items in a document collection by SQL queries to select on relevant documents
-- For smart filtering to work you need to setup metadata schema for your document collection
+- For smart filtering to work you need to set up a [Collection Schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas) for your document collection
 - The benefit is that you can draw insights from many more documents in your collection
 
 ### Example: Smart Filtering
@@ -138,7 +138,7 @@ Smart Filtering narrows searches to documents matching specific metadata or enti
      <img src="/docs/assets/agents/search-tools/deep-summarize.png" />
    </Frame>
 
-2. Setup your document collection with a [metadata schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas):
+2. Set up your document collection with a [Collection Schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas):
 
    <Frame>
      <img src="/docs/assets/agents/smart-filters/metadata-schema.png" />
