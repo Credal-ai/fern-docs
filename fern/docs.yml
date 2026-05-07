@@ -52,7 +52,9 @@ redirects:
   - source: /user-guide/platform/agent-builder/evaluating-your-agent
     destination: /user-guide/platform/agent-builder/evaluating-your-agent/overview
   - source: /user-guide/platform/agent-builder/publishing-agents/microsoft-teams
-    destination: /user-guide/platform/agent-builder/publishing-agents/microsoft-teams-setup
+    destination: /user-guide/microsoft-teams
+  - source: /user-guide/platform/agent-builder/publishing-agents/microsoft-teams-setup
+    destination: /user-guide/microsoft-teams
   - source: /user-guide/platform/agent-builder/publishing-agents/versions
     destination: /user-guide/platform/agent-builder/publishing-agents/versions-forking
   - source: /user-guide/platform/integrations/data-sources-action-providers
