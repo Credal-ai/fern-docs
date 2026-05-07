@@ -7,6 +7,9 @@ instances:
         repo: fern-docs
         branch: main
 title: Credal | Documentation
+check:
+  rules:
+    broken-links: error
 products:
   - display-name: User Guide
     path: ./docs/user-guide.yml
