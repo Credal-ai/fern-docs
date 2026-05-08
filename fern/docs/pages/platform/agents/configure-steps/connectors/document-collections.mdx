@@ -59,6 +59,20 @@ From the Configure tab, scroll to the Data section. You have three main ways to 
   <img src="/docs/assets/collections/collections-data.png" />
 </Frame>
 
+#### Web Scraping Options
+
+When adding a public webpage, you can choose how Credal fetches and indexes the content:
+
+**Recursive Crawl**
+
+By default, Credal indexes only the single page you provide. Enabling **Recursive Crawl** tells Credal to follow internal links on that page and index the linked pages as well, making it easy to ingest entire documentation sites or multi-page resources in one step.
+
+> **Page limit:** Recursive crawls are capped at **1,500 pages**. Each URL fetched—including any PDFs (see below)—counts toward this limit. If the site exceeds the limit, Credal indexes the first 1,500 pages encountered and stops.
+
+**Include Linked Documents**
+
+This option appears when **Recursive Crawl** is enabled. When turned on, Credal will also download and parse any documents linked from the pages being crawled, extracting their text content for indexing. For scanned or image-based documents, Credal automatically applies OCR (Optical Character Recognition) to make the content searchable. Each document counts as one page toward the 1,500-page recursive crawl limit.
+
 #### Sharing Your Collection
 
 Click the Share button at the top of your collection's page to manage who has access:
@@ -92,7 +106,7 @@ When enabled, the agent queries every document in each selected collection again
 
 ### Smart Filters
 
-[Smart Filtering](/user-guide/platform/integrations/metadata-and-smart-filtering/smart-filtering-beta) lets your agent use document metadata and auto-extracted entities to filter out to the most relevant documents, sending only the most relevant content to the LLM, improving precision and reducing noise.
+[Smart Filtering](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/smart-filtering-beta) lets your agent use document metadata and auto-extracted entities from [AI Entity Extraction (beta)](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/ai-entity-extraction-beta) to filter out to the most relevant documents, sending only the most relevant content to the LLM, improving precision and reducing noise.
 
 ---
 
@@ -127,7 +141,7 @@ Smart Filtering narrows searches to documents matching specific metadata or enti
 
 - Smart Filtering only works on document collections
 - Filters items in a document collection by SQL queries to select on relevant documents
-- For smart filtering to work you need to setup metadata schema for your document collection
+- For smart filtering to work you need to set up a [Collection Schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas) for your document collection
 - The benefit is that you can draw insights from many more documents in your collection
 
 ### Example: Smart Filtering
@@ -138,7 +152,7 @@ Smart Filtering narrows searches to documents matching specific metadata or enti
      <img src="/docs/assets/agents/search-tools/deep-summarize.png" />
    </Frame>
 
-2. Setup your document collection with a [metadata schema](/user-guide/platform/integrations/metadata-and-smart-filtering/collection-schemas):
+2. Set up your document collection with a [Collection Schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas):
 
    <Frame>
      <img src="/docs/assets/agents/smart-filters/metadata-schema.png" />
