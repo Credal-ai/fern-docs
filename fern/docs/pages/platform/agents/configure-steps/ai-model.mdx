@@ -4,42 +4,34 @@ title: AI Model
 
 ## 1. Model Selection
 
-A key piece of building an effective agent is choosing the right foundation AI model for your use case.
-By default, Credal gives you access to the latest set of models from major providers: **OpenAI, Anthropic, Google, and Cerebras**.
+Choose the foundation AI model your agent should use.
+Credal supports models from **OpenAI, Anthropic, Google, and Cerebras**.
 
-Here you can choose the foundation AI model you want your agent to use from the drop-down menu.
-More advanced models are both more expensive and more capable than earlier models.
-When selecting a model, you may want to consider:
+Your organization or cloud environment may limit which providers or models are available. Reach out to support@credal.ai with questions.
+Compare available models, including measured speed from real-world use, on Credal's [Models page](https://app.credal.ai/model-metadata).
+Use the Preview tab to compare responses before publishing. For side-by-side tests across model configurations, see [Agent Benchmark](/user-guide/platform/agent-builder/evaluating-your-agent/agent-benchmark).
 
-- **Reasoning capabilities:** Different models vary in their ability to execute multi-step reasoning, decompose complex tasks and follow nuanced instructions.
-- **Domain-specific expertise:** Strengths can vary across domains like code generation, creative writing, analysis & research and image processing.
-- **Context window sizes:** Models with larger context windows can process more input (prompts, data sources, codebases) and sustain longer conversations.
-- **Tool calling limitations:** This includes the ability to select the right tools, extract/format requests, make parallel requests and handle responses (objects, streaming, etc.).
-- **Speed & cost:** More capable models may be slower and more expensive. Response time and budget constraints should guide your choice.
+- **Reasoning:** Multi-step reasoning, task decomposition, and nuanced instructions.
+- **Domain fit:** Strengths vary across coding, writing, analysis, research, and images.
+- **Context window:** Larger windows handle more prompts, files, data, and conversation history.
+- **Tool calling:** Selecting tools, formatting requests, making parallel calls, and handling responses.
+- **Speed & cost:** Balance latency, quality, and budget.
 
-<Callout intent="info" icon="fa-solid fa-bolt" title="Cerebras: Extremely Fast Inference">
-**Cerebras** is a specialized AI infrastructure provider that delivers significantly faster response times than traditional cloud providers. Unlike OpenAI, Anthropic, or Google, Cerebras doesn't develop its own proprietary models — instead, it runs popular open-source models on custom hardware built for speed.
-
-Cerebras is an especially good choice when your agent needs to respond quickly — for example, customer-facing agents, real-time workflows, or any use case where latency matters. It's also a solid starting point for general use.
+<Callout
+  intent="info"
+  icon="/docs/assets/cerebras-icon.svg"
+  title="Tip: Cerebras for fastest possible responses"
+>
+[**Cerebras**](https://www.cerebras.ai/) runs popular open-source models on custom hardware built for speed, making it useful for customer-facing agents, real-time workflows, and other latency-sensitive use cases.
 
 </Callout>
 
-**Tip:** If you're unsure where to start, use the Preview tab to run test queries and compare model responses before publishing your agent. For a more rigorous side-by-side comparison of multiple model configurations against a fixed set of test cases, see [Agent Benchmark](/user-guide/platform/agent-builder/evaluating-your-agent/agent-benchmark).
-
 ![agent-different-models-dropdown.png](/docs/assets/agents/create-steps/agent-different-models-dropdown.png)
 
-Credal can help you make an informed choice with:
-
-- Short descriptions of each model covering the above factors
-- A "Preview" tab to test agent responses before publishing
-- Recommendations from our team — just ask, we're happy to help
-
-If there's a model you'd like to use but don't see in the platform, reach out so we can look into adding it.
-
 <Callout intent="info" icon="fa-solid fa-rotate" title="Automatic Model Fallback">
-If the model you've selected becomes deprecated or unavailable, your agent will automatically fall back to the default model for new agents at that time. To avoid unexpected behavior, review your agent's model selection periodically and update it if the chosen model has been retired.
+If your selected model is deprecated or unavailable, your agent falls back to the current default model for new agents. Review model selections periodically to avoid surprises.
 
-If your chosen model is temporarily experiencing an outage or is overloaded, Credal will automatically fail over to another model to keep your agent running. You can always confirm the exact model — and even the cloud infrastructure — used for any given request in **Audit Logs**.
+If a model is down or overloaded, Credal can fail over to another model. Check **Audit Logs** to confirm the model and cloud infrastructure used for each request.
 
 </Callout>
 
@@ -47,14 +39,10 @@ If your chosen model is temporarily experiencing an outage or is overloaded, Cre
 
 ## 2. Creativity
 
-You can set the level of creativity you want your agent to have by selecting from the panel below.
-For most use cases, "**precise**" or "**balanced**" is recommended.
+Set how creative your agent should be. For most use cases, use "**precise**" or "**balanced**".
 
-- **Higher creativity** → The agent may produce unusual, unexpected responses, great for brainstorming, marketing and creative writing.
-- **Higher precision** → The agent relies more on the context and data you provide, better for analysis, research and tasks requiring accuracy.
-
-Think of the creativity setting like having an "eccentric genius" on the team:
-A lot of what it says may be off, but occasionally it produces something uniquely valuable.
+- **Higher creativity** → Better for brainstorming, marketing, and creative writing; more likely to produce unexpected responses.
+- **Higher precision** → Better for analysis, research, and accuracy-sensitive work; more likely to stick to provided context.
 
 ![agent-model-creativity.png](/docs/assets/agents/create-steps/agent-model-creativity.png)
 
@@ -62,26 +50,26 @@ A lot of what it says may be off, but occasionally it produces something uniquel
 
 ## 3. Code Interpreter
 
-The **Code Interpreter** (Advanced Data Analysis) allows you to run Python inline to:
+**Code Interpreter** (Advanced Data Analysis) runs Python inline to:
 
 - Analyze structured datasets (CSV, JSON, etc.)
 - Create charts and visualizations
 
 **Note:** Code Interpreter is only available when using OpenAI models.
 
-### How to Enable:
+### Enable
 
 <Frame>
   <img src="/docs/assets/agents/search-tools/code-interpreter.png" />
 </Frame>
 
-### Example Workflow:
+### Example Workflow
 
 1. Upload a CSV
 2. Ask for a quick summary (row count, columns, nulls)
 3. Generate a chart and export cleaned data
 
-### Usage:
+### Usage
 
-- You can prompt code interpreter to run on the attached documents on your Agent
-- Or you can use code interpreter to run on the result of certain actions (Run Snowflake Query)
+- Run it on attached documents
+- Run it on supported action results, such as a Snowflake query
