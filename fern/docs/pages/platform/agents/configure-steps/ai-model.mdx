@@ -6,6 +6,7 @@ title: AI Model
 
 A key piece of building an effective agent is choosing the right foundation AI model for your use case.
 By default, Credal gives you access to the latest set of models from major providers: **OpenAI, Anthropic, Google, and Cerebras**.
+Compare available models, including measured speed from real-world use, on Credal's [Models page](https://app.credal.ai/model-metadata).
 
 Here you can choose the foundation AI model you want your agent to use from the drop-down menu.
 More advanced models are both more expensive and more capable than earlier models.
@@ -17,10 +18,12 @@ When selecting a model, you may want to consider:
 - **Tool calling limitations:** This includes the ability to select the right tools, extract/format requests, make parallel requests and handle responses (objects, streaming, etc.).
 - **Speed & cost:** More capable models may be slower and more expensive. Response time and budget constraints should guide your choice.
 
-<Callout intent="info" icon="fa-solid fa-bolt" title="Cerebras: Extremely Fast Inference">
-**Cerebras** is a specialized AI infrastructure provider that delivers significantly faster response times than traditional cloud providers. Unlike OpenAI, Anthropic, or Google, Cerebras doesn't develop its own proprietary models — instead, it runs popular open-source models on custom hardware built for speed.
-
-Cerebras is an especially good choice when your agent needs to respond quickly — for example, customer-facing agents, real-time workflows, or any use case where latency matters. It's also a solid starting point for general use.
+<Callout
+  intent="info"
+  icon={<img src="/docs/assets/cerebras-icon.svg" alt="" style={{ width: "1em", height: "1em" }} />}
+  title="Cerebras: Extremely Fast Inference"
+>
+[**Cerebras**](https://www.cerebras.ai/) runs popular open-source models on custom hardware built for speed, making it a good choice when your agent needs to respond quickly, such as customer-facing agents, real-time workflows, or other latency-sensitive use cases.
 
 </Callout>
 
