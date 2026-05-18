@@ -142,6 +142,8 @@ navigation:
             path: ./pages/platform/mcp-servers/testing-server.mdx
           - page: Publishing your Server
             path: ./pages/platform/mcp-servers/publishing-server.mdx
+          - page: Advanced Usage
+            path: ./pages/platform/mcp-servers/advanced-endpoint.mdx
       - section: Managing MCP Servers
         contents:
           - page: Third-party Server Registration
