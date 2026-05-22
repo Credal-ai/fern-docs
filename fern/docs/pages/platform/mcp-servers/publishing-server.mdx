@@ -4,7 +4,7 @@ Publishing works the same way for both Credal-built MCP servers and third-party 
 
 ## One-Time Admin Setup
 
-To make Credal MCP servers available in Claude or ChatGPT, an admin needs to connect the following URLs once at the organization level:
+To make Credal MCP servers available in Claude or ChatGPT, an admin needs to complete the organization-wide setup in [Connect MCP Clients](/user-guide/platform/administration/connect-mcp-clients) and connect the following URLs once at the organization level:
 
 - **Claude**: `https://app.credal.ai/api/user/claude/mcp`
 - **ChatGPT**: `https://app.credal.ai/api/user/chatgpt/mcp`
@@ -32,6 +32,8 @@ For all other surfaces, such as Lovable, Cursor, Windsurf, or any custom MCP cli
 
 - **Lovable**: `https://app.credal.ai/api/user/lovable/mcp` — this single URL gives Lovable access to all your published MCP servers.
 - **Other clients (e.g., Cursor, Windsurf)**: Copy each server's direct URL from the Publish tab and add it to the client manually.
+
+Each server also exposes an advanced endpoint that unlocks features like human approval for tool calls. See [Advanced Usage](/user-guide/platform/mcp-server-builder/advanced-usage) for details.
 
 ## Access Control
 

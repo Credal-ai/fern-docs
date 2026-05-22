@@ -7,6 +7,9 @@ instances:
         repo: fern-docs
         branch: main
 title: Credal | Documentation
+check:
+  rules:
+    broken-links: error
 products:
   - display-name: User Guide
     path: ./docs/user-guide.yml
@@ -43,3 +46,29 @@ settings:
 redirects:
   - source: /getting-started/data-integrations
     destination: /getting-started/data-sources-action-providers
+  - source: /api-reference/document-catalog/upload-document-contents
+    destination: /api-reference
+  - source: /user-guide/platform/administration/audit-log-data-exports
+    destination: /user-guide/platform/administration/data-warehouse-integration
+  - source: /user-guide/platform/agent-builder/configuration/add-connectors/document-collections
+    destination: /user-guide/platform/agent-builder/configuration/add-connectors/document-collections/overview
+  - source: /user-guide/platform/agent-builder/evaluating-your-agent
+    destination: /user-guide/platform/agent-builder/evaluating-your-agent/overview
+  - source: /user-guide/platform/agent-builder/publishing-agents/microsoft-teams
+    destination: /user-guide/microsoft-teams
+  - source: /user-guide/platform/agent-builder/publishing-agents/microsoft-teams-setup
+    destination: /user-guide/microsoft-teams
+  - source: /user-guide/platform/agent-builder/publishing-agents/versions
+    destination: /user-guide/platform/agent-builder/publishing-agents/versions-forking
+  - source: /user-guide/platform/integrations/data-sources-action-providers
+    destination: /user-guide/platform/agent-builder/configuration/add-connectors/overview
+  - source: /user-guide/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction-beta
+    destination: /user-guide/platform/agent-builder/configuration/add-connectors/document-collections/ai-entity-extraction-beta
+  - source: /user-guide/platform/integrations/metadata-and-smart-filtering/collection-schemas
+    destination: /user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas
+  - source: /user-guide/platform/integrations/metadata-and-smart-filtering/smart-filtering-beta
+    destination: /user-guide/platform/agent-builder/configuration/add-connectors/document-collections/smart-filtering-beta
+  - source: /user-guide/platform/mcp-servers/mcp-server-builder/create-new-server
+    destination: /user-guide/platform/mcp-server-builder/create-a-new-server
+  - source: /user-guide/platform/mcp-servers/overview
+    destination: /user-guide/platform/mcp-server-builder/overview

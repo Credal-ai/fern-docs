@@ -42,7 +42,7 @@ Credal indexes your data to allow for semantic search and retrieval, but this in
 
 **What data sources can I connect to Credal?**
 
-Credal supports [_out-of-the-box integrations_](/user-guide/platform/integrations/data-sources-action-providers) with major enterprise tools, including:
+Credal supports [_out-of-the-box integrations_](/user-guide/platform/agent-builder/configuration/add-connectors/overview) with major enterprise tools, including:
 
 - Knowledge Sources: Google Drive, Confluence, SharePoint, Notion, Box.
 - Communication: Slack (Channels and DMs), Gmail, Microsoft Teams.
@@ -59,7 +59,7 @@ Yes. Beyond our built-in actions (like “Draft Email” or “Search Jira”), 
 
 **Can I deploy Agents to Slack or Microsoft Teams?**
 
-Yes. Once you build an Agent in Credal, you can [deploy it directly to Slack channels](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack) or [Microsoft Teams](/user-guide/platform/agent-builder/publishing-agents/microsoft-teams). You can have a general “Employee Assistant” for the whole company or specialized bots for specific channels (e.g., an IT Support bot in the #help-it channel).
+Yes. Once you build an Agent in Credal, you can [deploy it directly to Slack channels](/user-guide/platform/agent-builder/publishing-agents/agents-in-slack) or [Microsoft Teams](/user-guide/microsoft-teams). You can have a general “Employee Assistant” for the whole company or specialized bots for specific channels (e.g., an IT Support bot in the #help-it channel).
 
 ## **Getting Started**
 
@@ -104,7 +104,7 @@ If an Agent isn’t using an action (e.g., creating a Jira ticket or sending an 
 This usually means there’s a permission or configuration issue.
 
 - Permissions: Check if the user interacting with the Agent has the correct permissions in the source system (e.g., do they have a Salesforce license?).
-- OAuth: If you’re using a custom connector or [MCP server](/user-guide/platform/mcp-servers/overview), ensure the OAuth credentials are correctly configured and not expired.
+- OAuth: If you’re using a custom connector or [MCP server](/user-guide/platform/mcp-server-builder/overview), ensure the OAuth credentials are correctly configured and not expired.
 - Parameters: If building a custom action, verify that the API parameter names in your definition match exactly what the external API expects.
 -
 
@@ -142,5 +142,5 @@ The best way to verify a data source is to ask a question in the **Preview** tab
 You can test your agent using the following methods:
 
 - **Use the Preview Tab:&#x20;**&#x54;his is the quickest way to test. Open the **Preview** tab in the agent builder and ask questions live. This allows you to see exactly how the agent interprets your prompt and which data sources it uses.
-- **Create Test Cases:** For more robust testing, you can set up [**Test Cases**](/user-guide/platform/agent-builder/evaluating-your-agent) (sometimes referred to as "Golden Answers"). This allows you to upload a list of questions and expected answers (e.g., from a spreadsheet) to verify that the agent answers consistently and accurately against a standard.
+- **Create Test Cases:** For more robust testing, you can set up [**Test Cases**](/user-guide/platform/agent-builder/evaluating-your-agent/overview) (sometimes referred to as "Golden Answers"). This allows you to upload a list of questions and expected answers (e.g., from a spreadsheet) to verify that the agent answers consistently and accurately against a standard.
 - Provide Feedback: During testing, you can give a **thumbs up or thumbs down** to the agent's responses. This provides feedback that helps the agent understand which answers are good or bad, allowing it to improve over time.

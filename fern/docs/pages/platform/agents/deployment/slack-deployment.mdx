@@ -73,6 +73,18 @@ Example filter setup: respond only to prompts containing `?`.
 
 ---
 
+## Channel Allowlist
+
+Your Credal admin may have configured a Channel Allowlist that restricts which Slack channels agents can be published to. If you try to publish an agent to a channel that isn't on the allowlist, you won't see that channel as an available option.
+
+If you need to publish an agent to a channel that isn't in the allowlist, ask your Credal admin to add the channel. Admins can manage the allowlist at [https://app.credal.ai/admin/connectors/slack](https://app.credal.ai/admin/connectors/slack). If you are not on the multi-tenant SaaS Credal offering, replace `https://app.credal.ai` with the URL you typically use to log in to Credal.
+
+<Frame>
+  <img src="/docs/assets/agents/channel_allowlist.png" />
+</Frame>
+
+---
+
 ## Slack Private Channels
 
 Publishing into a private channel works like public channels but requires adding the Credal integration first.
@@ -92,7 +104,7 @@ Publishing into a private channel works like public channels but requires adding
 
 You can optionally tie any particular agent to a Custom bot for a specialized function. This is a 1 to 1 relationship, so that bot can only respond as that agent and that agent can only be used in Slack channels if its custom app is triggered.
 
-When creating your custom Slack app, refer to the internal guide: [Slack App Manifest](/user-guide/platform/agent-builder/publishing-agents/custom-dedicated-slack-bots).
+When creating your custom Slack app, refer to [Custom Dedicated Slack Bots](/user-guide/platform/agent-builder/publishing-agents/custom-dedicated-slack-bots).
 
 Custom bots and the Credal bot behave separately, so if you have both a Custom bot and Credal bot in a channel, it's possible to see both respond based on their routing settings.
 

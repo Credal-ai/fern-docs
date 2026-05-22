@@ -1,14 +1,14 @@
 You will often want to do direct filtering along side or instead of semantic search. For example, if a user should be able to ask "show me call id 1234" - you want the Agent to be able to filter down to _exactly_ that call id, rather than any calls that are semantically similar to that.
 Smart Filtering is our currently recommended way to do that (although note that this feature is still in Beta).
 
-We support smart filtering for all of our data sources. This allows you to filter on fields that you may have imported (from semi-structured data sources like Gong) or metadata you have tagged documents with manually using the data catalog [metadata API endpoint](/api-reference), the [document upload API](/api-reference), or even automatically extracted metadata using AI extracted entities [see this section](/user-guide/platform/integrations/metadata-and-smart-filtering/ai-entity-extraction-beta). This allows us to only send relevant information to the LLM.
-When you sync Gong sources to a document collection, we automatically create a metadata schema for you based on structured data we've found to be useful there. For all other data sources, we create a very basic schema that allows you to filter by name, source url, date, etc. When you attach a document collection to your agent and it has a schema, we automatically turn smart filtering on.
+We support smart filtering for all of our data sources. This allows you to filter on fields that you may have imported (from semi-structured data sources like Gong) or metadata you have tagged documents with manually using the data catalog [metadata API endpoint](/api-reference), the [document upload API](/api-reference), or even automatically extracted metadata using [AI Entity Extraction (beta)](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/ai-entity-extraction-beta). This allows us to only send relevant information to the LLM.
+When you sync Gong sources to a document collection, we automatically create a [metadata schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas) for you based on structured data we've found to be useful there. For all other data sources, we create a very basic schema that allows you to filter by name, source url, date, etc. When you attach a document collection to your agent and it has a schema, we automatically turn smart filtering on.
 
 > For example, you could have a series of call transcripts that you want to upload and tag with which sales rep they correspond to, so that a user can analyze calls just relating to that rep. Once you’ve uploaded the data, you can use the API endpoint above to tag the docs with an “rep_email” field, and then search across only the docs where the rep_email has a certain value.
 
-## To use smart filtering, toggle on the Smart Filtering setting on your agent and make sure you have:
+## Smart Filtering Requirements
 
-1. A [schema](/user-guide/platform/integrations/metadata-and-smart-filtering/collection-schemas) specified for your document collection.
+1. A [Collection Schema](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/collection-schemas) specified for your document collection.
 2. The corresponding metadata fields applied to your documents
 
 When an AI agent is given a prompt by a user, the Agent will look at the user prompt and automatically determine which fields should be filtered for based on the user’s prompt. So if the user asks for “calls which ravin@credal.ai was the organizer for”, the agent will check the document collection schema for fields that might allow it to filter down to just those calls.
