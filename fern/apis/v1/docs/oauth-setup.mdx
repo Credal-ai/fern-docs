@@ -1,32 +1,129 @@
 ## OAuth Setup
 
-API v1 uses OAuth 2.0 with PKCE for authentication. If you're new to OAuth, see [OAuth 2.0 with PKCE](https://oauth.net/2/pkce/) for background on the protocol.
+API v1 uses the OAuth 2.0 Authorization Code flow for authentication. This page documents the **confidential-client** variant: your server holds a `client_secret` and presents it at the token endpoint, so PKCE is not required (the secret serves the same binding purpose). PKCE is supported if you want defense-in-depth — include `code_challenge`/`code_challenge_method` in the authorization URL and `code_verifier` in the token exchange.
+
+This page walks through the full flow: registering a client, directing the user to Credal to authorize, exchanging the resulting code for an access token, and calling the API.
 
 ### 1. Register an OAuth client
 
 Creating an OAuth client requires approval from your organization's admin. To request one, ask your admin to contact [support@credal.ai](mailto:support@credal.ai).
 
-### 2. Configure your environment
+After registration you'll receive a **client ID** and **client secret**. Keep the client secret secure — treat it like a password.
 
-After registering your client, you'll have a **client ID** and **client secret**. Configure your OAuth client with the following:
+### 2. Direct the user to Credal to authorize
 
-| Parameter | Value |
+Send the user to the Credal authorization endpoint. They'll be asked to sign in (if not already) and approve the requested scopes.
+
+```
+https://app.credal.ai/api/oauth/authorize
+  ?response_type=code
+  &client_id=<your_client_id>
+  &redirect_uri=<your_redirect_uri>
+  &scope=api:agent:message:*
+  &state=<random_value>
+```
+
+| Parameter | Description |
 |---|---|
-| Issuer / Discovery URL | `https://app.credal.ai` |
-| Redirect URI | Your app's callback URL (e.g. `http://localhost:4000/callback`) |
+| `response_type` | Always `code` |
+| `client_id` | Your client ID from step 1 |
+| `redirect_uri` | The URL Credal redirects back to after authorization (must match your registered redirect URI exactly) |
+| `scope` | Space-separated list of scopes. `api:agent:message:*` lets you send messages to agents. |
+| `state` | A random, unguessable value you generate (e.g. a UUID). Credal echoes it back in the redirect — your callback must verify it matches before exchanging the code, to prevent CSRF attacks. |
 
-Credal supports [OpenID Connect Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html), so most OAuth libraries can auto-configure endpoints from the issuer URL.
+After the user approves, Credal redirects to your `redirect_uri` with a short-lived authorization code:
 
-When requesting authorization, include the scopes your application needs. The following scopes are available:
+```
+https://your-app.com/callback?code=<authorization_code>&state=<random_value>
+```
 
-| Scope | Description |
-|---|---|
-| `api:agent:message:*` | Send messages to agents and fetch responses |
+### 3. Exchange the code for an access token
 
-### 3. Authenticate and call the API
+**The authorization code is not an access token.** You must exchange it by making a server-side POST request to the token endpoint. Do not skip this step.
 
-After completing the OAuth flow, pass the access token to the Credal SDK:
+<CodeBlocks>
+<CodeBlock title="curl">
+```bash
+curl -X POST https://app.credal.ai/api/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code" \
+  -d "code=<authorization_code>" \
+  -d "client_id=<your_client_id>" \
+  -d "client_secret=<your_client_secret>" \
+  -d "redirect_uri=<your_redirect_uri>"
+```
+</CodeBlock>
+<CodeBlock title="Python">
+```python
+import requests
 
+response = requests.post(
+    "https://app.credal.ai/api/oauth/token",
+    data={
+        "grant_type": "authorization_code",
+        "code": authorization_code,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+        "redirect_uri": REDIRECT_URI,
+    },
+)
+tokens = response.json()
+access_token = tokens["access_token"]
+refresh_token = tokens["refresh_token"]
+```
+</CodeBlock>
+<CodeBlock title="TypeScript">
+```typescript
+const response = await fetch("https://app.credal.ai/api/oauth/token", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: new URLSearchParams({
+    grant_type: "authorization_code",
+    code: authorizationCode,
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    redirect_uri: REDIRECT_URI,
+  }),
+});
+const { access_token, refresh_token } = await response.json();
+```
+</CodeBlock>
+</CodeBlocks>
+
+The response contains the tokens you'll use to call the API:
+
+```json
+{
+  "access_token": "eyJ...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "eyJ..."
+}
+```
+
+A few things to note:
+- The authorization code expires in **10 minutes** and is **single-use**. Exchange it immediately after receiving it.
+- The `redirect_uri` must match the one used in step 2 exactly.
+
+### 4. Call the API
+
+Pass the `access_token` to the Credal SDK:
+
+<CodeBlocks>
+<CodeBlock title="Python">
+```python
+import credal
+
+client = credal.CredalClient(token=access_token)
+
+response = client.agents.send_message(
+    agent_id="your-agent-id",
+    conversation=credal.NewConversation(),
+    message="Hello!",
+)
+```
+</CodeBlock>
+<CodeBlock title="TypeScript">
 ```typescript
 import { CredalClient } from "@credal/sdk";
 
@@ -41,7 +138,40 @@ const response = await credal.agents.sendMessage({
   message: "Hello!",
 });
 ```
+</CodeBlock>
+</CodeBlocks>
 
-### Token refresh
+### 5. Refresh the access token
 
-Access tokens are short-lived. Use the refresh token from the initial authorization to obtain new access tokens when they expire. Refer to your OAuth library's documentation for details on implementing token refresh.
+Access tokens expire after 1 hour. Use the `refresh_token` to get a new one without sending the user through the browser flow again:
+
+<CodeBlocks>
+<CodeBlock title="curl">
+```bash
+curl -X POST https://app.credal.ai/api/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=refresh_token" \
+  -d "refresh_token=<your_refresh_token>" \
+  -d "client_id=<your_client_id>" \
+  -d "client_secret=<your_client_secret>"
+```
+</CodeBlock>
+<CodeBlock title="Python">
+```python
+response = requests.post(
+    "https://app.credal.ai/api/oauth/token",
+    data={
+        "grant_type": "refresh_token",
+        "refresh_token": refresh_token,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+    },
+)
+tokens = response.json()
+access_token = tokens["access_token"]
+refresh_token = tokens.get("refresh_token", refresh_token)  # Credal rotates refresh tokens; persist the new value
+```
+</CodeBlock>
+</CodeBlocks>
+
+Refresh tokens are valid for **30 days** and are rotated on every use — each refresh response includes a new `refresh_token` that replaces the old one. Always persist the new value; the previous token is immediately invalidated. If a refresh token expires, the user will need to go through the browser authorization flow again.
