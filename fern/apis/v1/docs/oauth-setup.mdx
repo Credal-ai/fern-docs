@@ -1,6 +1,8 @@
 ## OAuth Setup
 
-API v1 uses OAuth 2.0 for authentication. This page walks through the full flow: registering a client, directing the user to Credal to authorize, exchanging the resulting code for an access token, and calling the API.
+API v1 uses the OAuth 2.0 Authorization Code flow for authentication. This page documents the **confidential-client** variant: your server holds a `client_secret` and presents it at the token endpoint, so PKCE is not required (the secret serves the same binding purpose). PKCE is supported if you want defense-in-depth — include `code_challenge`/`code_challenge_method` in the authorization URL and `code_verifier` in the token exchange.
+
+This page walks through the full flow: registering a client, directing the user to Credal to authorize, exchanging the resulting code for an access token, and calling the API.
 
 ### 1. Register an OAuth client
 
@@ -18,6 +20,7 @@ https://app.credal.ai/api/oauth/authorize
   &client_id=<your_client_id>
   &redirect_uri=<your_redirect_uri>
   &scope=api:agent:message:*
+  &state=<random_value>
 ```
 
 | Parameter | Description |
@@ -26,11 +29,12 @@ https://app.credal.ai/api/oauth/authorize
 | `client_id` | Your client ID from step 1 |
 | `redirect_uri` | The URL Credal redirects back to after authorization (must match your registered redirect URI exactly) |
 | `scope` | Space-separated list of scopes. `api:agent:message:*` lets you send messages to agents. |
+| `state` | A random, unguessable value you generate (e.g. a UUID). Credal echoes it back in the redirect — your callback must verify it matches before exchanging the code, to prevent CSRF attacks. |
 
 After the user approves, Credal redirects to your `redirect_uri` with a short-lived authorization code:
 
 ```
-https://your-app.com/callback?code=<authorization_code>
+https://your-app.com/callback?code=<authorization_code>&state=<random_value>
 ```
 
 ### 3. Exchange the code for an access token
@@ -165,8 +169,9 @@ response = requests.post(
 )
 tokens = response.json()
 access_token = tokens["access_token"]
+refresh_token = tokens.get("refresh_token", refresh_token)  # Credal rotates refresh tokens; persist the new value
 ```
 </CodeBlock>
 </CodeBlocks>
 
-Refresh tokens are valid for **30 days**. If a refresh token expires, the user will need to go through the browser authorization flow again.
+Refresh tokens are valid for **30 days** and are rotated on every use — each refresh response includes a new `refresh_token` that replaces the old one. Always persist the new value; the previous token is immediately invalidated. If a refresh token expires, the user will need to go through the browser authorization flow again.
