@@ -1,14 +1,59 @@
-## Double checking action inputs
+## Overview
 
-In Credal, you can enable human approval for any action to ensure that action inputs are reviewed before execution. When human approval is turned on, you'll always be prompted to double-check an action's inputs to make sure they look correct before submitting. This provides an additional safety layer to prevent unintended operations. For control over what the AI can and can't fill in on its own, see [Action Parameters](/user-guide/platform/governed-actions/action-parameters).
+Human approval gives you a safety layer on top of any action. When enabled, the agent pauses before executing an action and presents the proposed inputs to a human for review — ensuring nothing runs without an explicit sign-off.
 
-Additionally, administrators can enforce human approval at the organization level for specific actions through the System Connectors admin configuration panel. This ensures consistent governance and review processes across your entire organization for sensitive or critical actions.
+There are two ways to enable human approval, and they can be used together:
+
+- **On a specific action in an agent** — enable it yourself when attaching an action to an agent
+- **Organization-wide via admin controls** — admins can require approval for an entire action template or MCP server tool, ensuring consistent governance across your org
+
+## Enabling human approval on an action
+
+When you attach an action to an agent, scroll to the **Governance** section at the bottom of the action's settings. Toggle on **"Double-check: Require human approval before executing this action"** to enable it.
+
+![Governance toggle in action settings](/docs/assets/actions/action-governance.png)
+
+Once enabled, a small orange gavel icon will appear on the action in the agent's connector list, indicating governance is active.
+
+![Action with governance icon](/docs/assets/actions/action-with-gov-icon.png)
+
+## Organization-level enforcement
+
+Admins can enforce human approval for all actions created from a given template, across the entire organization. This is configured in the [System Connectors](https://app.credal.ai/admin/system-connectors) admin panel — each template has an independent **Require Human Approval** toggle.
+
+When enabled at the template level, every action of that type will require approval before executing, regardless of how individual agents have configured it. This is the recommended approach for sensitive categories of action, such as:
+
+- Actions that write to production systems or databases
+- Actions that communicate externally (emails, Slack messages, tickets)
+- Actions that involve financial or compliance-sensitive operations
+
+See [Action Templates](/user-guide/platform/governed-actions/action-templates) for more on managing templates.
+
+## Human approval for MCP server tools
+
+For imported MCP servers, admins can enforce human approval at the individual tool level. Navigate to the MCP server's settings and use the **Enforce Human Approval** control next to any tool you want to gate.
+
+![MCP tool controls](/docs/assets/actions/mcp-tool-controls.png)
+
+This ensures that even tools from third-party servers cannot run without a human review step. See [Setting up Controls](/user-guide/platform/mcp-servers/import-server/setting-up-controls) for full details.
+
+## The approval experience
+
+When an agent triggers an action that requires approval, it pauses and waits. You'll see a **pending approvals** notification in the chat interface — click the hammer icon to open the approvals panel.
+
+The approvals panel shows:
+
+- **Who requested the action** and when
+- **The justification** the agent provided
+- **The exact inputs** the agent plans to send — so you can verify them before anything runs
+
+![Pending action approvals modal](/docs/assets/actions/governance-modal.png)
+
+Review the inputs, and click **Approve** to proceed. If the inputs don't look right, you can reject the action and ask the agent to try again with different instructions.
 
 ## Coming Soon
 
-We're actively developing additional human approval capabilities. If you'd like early access to any of these features, please contact us at [support@credal.ai](mailto:support@credal.ai):
+The following capabilities are in development. Contact [support@credal.ai](mailto:support@credal.ai) for early access:
 
-- **Organization-level HITL enforcement**: Configure human approval requirements at the organization level to ensure consistent governance across all actions
-- **HITL for MCP server actions**: Extend human-in-the-loop approval flows to actions executed through imported MCP servers
-- **Multi-user approval workflows with permissions escalation**: Advanced workflows where multiple approvers can provision temporary or scoped access to resources, enabling complex cross-functional operations with granular permission grants
-- **Version control and review workflows**: GitHub-style review process for changes to agents and actions with branching, change approval from multiple reviewers, and version control before deploying updates
+- **Multi-user approval workflows**: Allow a user without execution permissions to trigger an action, then have a designated approver review and execute it on their behalf — useful for cross-functional workflows where the person requesting an operation isn't the one with credentials to perform it
+- **Conditional HITL rules**: Trigger approval only when specific parameter conditions are met (e.g., require approval for expenses above a threshold)
