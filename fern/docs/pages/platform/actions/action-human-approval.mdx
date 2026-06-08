@@ -2,10 +2,11 @@
 
 Human approval gives you a safety layer on top of any action. When enabled, the agent pauses before executing an action and presents the proposed inputs to a human for review — ensuring nothing runs without an explicit sign-off.
 
-There are two ways to enable human approval, and they can be used together:
+There are three ways to enable human approval, and they can be used together:
 
 - **On a specific action in an agent** — enable it yourself when attaching an action to an agent
-- **Organization-wide via admin controls** — admins can require approval for an entire action template or MCP server tool, ensuring consistent governance across your org
+- **On a specific MCP server tool** — admins can require approval on individual tools from imported third-party servers
+- **Organization-wide for an action template** — admins can require approval for all actions of a given type, ensuring consistent governance across your org
 
 ## Enabling human approval on an action
 
@@ -31,7 +32,7 @@ See [Action Templates](/user-guide/platform/governed-actions/action-templates) f
 
 ## Human approval for MCP server tools
 
-For imported MCP servers, admins can enforce human approval at the individual tool level. Navigate to the MCP server's settings and use the **Enforce Human Approval** control next to any tool you want to gate.
+For imported third-party MCP servers, admins can enforce human approval at the individual tool level. Navigate to the server's settings and use the **Enforce Human Approval** control next to any tool you want to gate.
 
 ![MCP tool controls](/docs/assets/actions/mcp-tool-controls.png)
 
@@ -39,7 +40,7 @@ This ensures that even tools from third-party servers cannot run without a human
 
 ## The approval experience
 
-When an agent triggers an action that requires approval, it pauses and waits. You'll see a **pending approvals** notification in the chat interface — click the hammer icon to open the approvals panel.
+When an agent triggers an action that requires approval, it pauses and waits. You'll see a **pending approvals** notification in the chat interface — click the gavel icon to open the approvals panel.
 
 The approvals panel shows:
 
