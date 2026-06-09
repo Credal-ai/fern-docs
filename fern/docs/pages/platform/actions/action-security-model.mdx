@@ -53,15 +53,15 @@ _¹There are instances where you'd want to have multiple credentials for a provi
 
 One special case of an action-scoped credential provider is our OpenAPI action provider, which contains an action ("Webhook") that can be configured to make an arbitrary API request. Due to the risk posed by arbitrary changes to the specification, only admins can modify and publish these actions.
 
-### Human Approval & Multi-User Action Invocation Flows
+### Human Approval
 
 Human Approval is a layer on top of Credal's action security model that enables additional action governance and unlocks more complex action use cases. You can also control what information the AI sees and fills in using [Action Parameters](/user-guide/platform/governed-actions/action-parameters) — including locking fields to fixed values or injecting user identity automatically.
 
 Separately from respecting the permissions of a user in an action provider's underlying system, it's often important to be able to double-check an agent's work before performing an operation in that system. For instance, a user may want to validate the phrasing used when invoking an action to modify a Notion document on company expense policies.
 
-In other cases, it may be desirable for users to kick off an action invocation despite not having the permissions in the underlying system to execute that action. Using the human approval flow, it's possible to request for someone with those permissions to approve the action and execute it on the original user's behalf.
+In other cases, it may be desirable for users to kick off an action invocation despite not having the permissions in the underlying system to execute that action. Multi-user approval workflows — where a designated approver can execute an action on the requester's behalf — are in development as an early-access capability.
 
-Learn more about this flow: [Human Approval Options](/user-guide/platform/governed-actions/human-approval-options)
+Learn more: [Human Approval Options](/user-guide/platform/governed-actions/human-approval-options)
 
 ## Coming Soon
 
