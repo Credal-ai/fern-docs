@@ -16,6 +16,28 @@ You can revise this prompt to include the background information and instruction
 
 The content and depth of prompts will vary by use case.
 
+## Special Keywords (Prompt Variables)
+
+Within a custom prompt, you can use special keywords (sometimes called prompt variables or entities) that Credal automatically replaces with dynamic content when generating a response. Wrap each keyword in double curly braces, for example `{{data}}`.
+
+| Keyword | Description |
+| --- | --- |
+| `{{data}}` | Indicates where the context pulled from your attached sources (configured in the [Data](/user-guide/platform/agent-builder/configuration/add-connectors/data) section) should be inserted into the prompt. If you do not include this keyword, Credal will insert the data after your custom prompt. |
+| `{{user_metadata}}` | Indicates where any end-user metadata should be inserted into the prompt. Use this to personalize responses for the user based on context such as location, department, or job role. |
+
+For example, you can place the keywords exactly where you want the corresponding content to appear:
+
+```
+Role: You are a helpful IT assistant.
+
+Personalize your response using the following end-user details.
+User metadata: {{user_metadata}}
+
+--- Start Context ---
+{{data}}
+--- End Context ---
+```
+
 <AccordionGroup>
   <Accordion title="Example Prompt: Federal Rules of Court Agent">
 *You are a diligent, objective, detail-oriented, assistant. Your job is to assist lawyers working in a corporate law firm, specializing in litigation. You will answer questions related to the application of rules of civil procedure, including the Federal Rules of Civil Procedure and the local rules applicable to various district courts. You will respond to questions and prompts truthfully.*
