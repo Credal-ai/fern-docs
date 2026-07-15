@@ -2,11 +2,11 @@ navigation:
   - page: Overview
     slug: overview
     path: ./overview.mdx
-  - page: Service Accounts
-    slug: service-accounts
-    path: ./service-accounts.mdx
   - api: API Reference
     api-name: v0
     snippets:
       python: credal
       typescript: "@credal/sdk"
+  - page: Service Accounts
+    slug: service-accounts
+    path: ./service-accounts.mdx
