@@ -5,6 +5,7 @@ Credal now supports triggering agents via Slack Workflows — on a schedule or b
 <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
   <iframe
     src="https://www.loom.com/embed/4515a790e2c84bab995a335b821cfd41"
+    title="Video: Connecting a Credal agent to a Slack Workflow"
     frameBorder="0"
     allowFullScreen
     style={{
@@ -27,7 +28,7 @@ Before setting up a Slack Workflow trigger, your agent must already be published
 
 In your agent's **Publish** settings, go to **Slack Channels**, enable **Talk to your agent in Slack**, and add the agent to the channel where your Slack Workflow will post.
 
-<Callout intent="info">
+<Callout intent="info" title="Message structure matters">
   Make sure the body text of your Slack Workflow message is structured to
   trigger the agent correctly based on your agent's routing settings (e.g.
   matching a filter, or triggering on all messages).
@@ -38,7 +39,7 @@ In your agent's **Publish** settings, go to **Slack Channels**, enable **Talk to
 In Slack, open your workflow and copy the Workflow ID. The agent will respond in the thread of the workflow message rather than posting directly to the channel.
 
 <Frame>
-  <img src="/docs/assets/copilots/inside-slack-copy-workflow-id.png" />
+  <img src="/docs/assets/copilots/inside-slack-copy-workflow-id.png" alt="Slack workflow details showing where to copy the Workflow ID" />
 </Frame>
 
 ### Step 3: Enable "Respond to Slack Workflows"
@@ -46,7 +47,7 @@ In Slack, open your workflow and copy the Workflow ID. The agent will respond in
 In the same Slack publishing settings, toggle on **Respond to Slack Workflows**, then paste in your Workflow ID.
 
 <Frame>
-  <img src="/docs/assets/copilots/link-workflow-id-to-channel-deployment.png" />
+  <img src="/docs/assets/copilots/link-workflow-id-to-channel-deployment.png" alt="Slack publishing settings with the Respond to Slack Workflows toggle enabled and a Workflow ID pasted in" />
 </Frame>
 
 ## Example use cases

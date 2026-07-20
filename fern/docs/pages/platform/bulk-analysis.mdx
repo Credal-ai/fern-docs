@@ -22,7 +22,7 @@ Navigate to the “Document Collection” tab on the left of the Credal UI.
 
 Create a Document Collection and either manually or via API upload data you want to analyze to Credal. This might be sales transcripts as a series of documents, a Jira project, or a folder with meeting notes.
 
-![bulk-analysis-tab.png](/docs/assets/bulk-analysis/in-depth-guide/bulk-analysis-tab.png)
+![Document Collection tab in the Credal sidebar](/docs/assets/bulk-analysis/in-depth-guide/bulk-analysis-tab.png)
 
 ### Using Tabular Data
 
@@ -36,7 +36,7 @@ Create a new Bulk Analysis the same way you would create a new Document Collecti
 
 ### Linking Source Data
 
-![link-source-data.png](/docs/assets/bulk-analysis/in-depth-guide/link-source-data.png)
+![Dialog for linking a Document Collection or spreadsheet as the Bulk Analysis data source](/docs/assets/bulk-analysis/in-depth-guide/link-source-data.png)
 
 Select the Document Collection or Spreadsheet that you want to analyze.
 
@@ -48,25 +48,25 @@ After linking, double check that the rows of the spreadsheet or files in the Doc
 
 This is the heart of Bulk Analysis. Now that you’ve selected a collection/spreadsheet, your Preview table should look something like this:
 
-![preview-table.png](/docs/assets/bulk-analysis/in-depth-guide/preview-table.png)
+![Preview table populated with rows from the linked data source](/docs/assets/bulk-analysis/in-depth-guide/preview-table.png)
 
 If you want to use prompts that already exist as Suggested Questions in an Agent, click "Import Columns" and choose the questions you care about. You can import columns from multiple Agents.
 
-![import-columns.png](/docs/assets/bulk-analysis/in-depth-guide/import-columns.png)
+![Import Columns dialog for choosing Suggested Questions from existing Agents](/docs/assets/bulk-analysis/in-depth-guide/import-columns.png)
 
 Alternatively, you can click on “Add column+” to manually add prompts:
 
-![empty-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/empty-column-config.png)
+![Empty column configuration panel for adding a new prompt column](/docs/assets/bulk-analysis/in-depth-guide/empty-column-config.png)
 
 The column name you assign should concisely describe the content you are extracting from the data. Each column must be configured with an Agent, which will be used to generate the response from the prompt and your document.
 
 Here’s how someone might create a column for generating a cold outbound email based on the attached document. The selected Agent has specific context and a customized background prompt that contains the exact guidelines for how to write a cold email.
 
-![full-column-config.png](/docs/assets/bulk-analysis/in-depth-guide/full-column-config.png)
+![Completed column configuration for generating a cold outbound email with a selected Agent](/docs/assets/bulk-analysis/in-depth-guide/full-column-config.png)
 
 In the end, you'll have a table that looks like this:
 
-![full-preview-table.png](/docs/assets/bulk-analysis/in-depth-guide/full-preview-table.png)
+![Preview table with multiple configured columns each extracting different insights](/docs/assets/bulk-analysis/in-depth-guide/full-preview-table.png)
 
 Notice how each column has a specific detail it’s extracting or content it is generating with a customized assistant!
 
@@ -74,11 +74,11 @@ Notice how each column has a specific detail it’s extracting or content it is 
 
 Writing good prompts is the key to getting meaningful insights from your input data. To write these prompts, it is important to deeply think about what trends and insights you want to uncover from your bulk analysis source data. We highly recommend testing initially with the Suggested Questions feature in the Agent configuration tab.
 
-![suggested-questions.png](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
+![Suggested Questions feature in the Agent configuration tab](/docs/assets/bulk-analysis/in-depth-guide/suggested-questions.png)
 
 When it comes to what questions you are asking, the choice is yours. You might be summarizing content, generating new content, or answering a simple Yes or No question. Let’s say I am analyzing trends for Jira ticket blockers. To accomplish this, I might want to count for each ticket how many blockers stalled progress on it over the course of its completion and analyze what kinds of tickets experienced more blockers than others. The prompts I’d write would then be:
 
-![example-questions.png](/docs/assets/bulk-analysis/in-depth-guide/example-questions.png)
+![Example prompts for counting and analyzing Jira ticket blockers](/docs/assets/bulk-analysis/in-depth-guide/example-questions.png)
 
 Notice that I do not ask for metadata such as “Assignee” or “Date” since this data is structured data on a ticket. Credal will automatically export that information for you. Now once I run my Bulk Analysis, I have the ability to detect any outliers for # of blockers, access what they were, and understand whether the bottleneck is in the frontend or backend team.
 
@@ -94,7 +94,7 @@ It’s time to run your analysis, which is as easy as clicking a button.
 
 Before running the full analysis, it’s wise to do a preview run on a smaller subset of data. This helps you identify any issues early on. The preview will only display the first 5 documents/rows from your source data which allows you to quickly iterate on your Bulk Analysis configuration. This is a good place to further tweak prompts, adjusting for better quality and output structure.
 
-![running-preview.png](/docs/assets/bulk-analysis/in-depth-guide/running-preview.png)
+![Preview run in progress on the first five rows of source data](/docs/assets/bulk-analysis/in-depth-guide/running-preview.png)
 
 ### Conducting a Full Run
 
@@ -106,7 +106,7 @@ Once satisfied with the preview, proceed to the “Run” tab to conduct a full 
 
 Once you've navigated to the Run tab to do a full Bulk Analysis, you can do one of two things.
 
-![run-tab.png](/docs/assets/bulk-analysis/in-depth-guide/run-tab.png)
+![Run tab with options to chat with results or download a CSV](/docs/assets/bulk-analysis/in-depth-guide/run-tab.png)
 
 ### Chat with Results
 

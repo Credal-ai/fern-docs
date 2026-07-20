@@ -36,7 +36,7 @@ When you publish an Agent to a Slack channel, you are adding to a bucket of Agen
 Agent response behaviors:
 
 <Frame>
-  <img src="/docs/assets/agents/routing-options.png" />
+  <img src="/docs/assets/agents/routing-options.png" alt="Routing options for how an agent responds to messages in a Slack channel" />
 </Frame>
 
 1. **Respond to all messages** - The agent tries to help with every message in the channel. If multiple agents have this setting, the agent configured first will respond.
@@ -56,19 +56,19 @@ Agent response behaviors:
 Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" alt="Slack Channels section of the Publish settings with channel selection enabled" />
 </Frame>
 
 If multiple agents are published to a single channel, Credal uses their [Descriptions](/user-guide/platform/agent-builder/configuration/setting-up-an-agent) to determine which should respond.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" alt="Dropdown for choosing which messages trigger the agent in a Slack channel" />
 </Frame>
 
 Example filter setup: respond only to prompts containing `?`.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" />
+  <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" alt="Example filter configuration that makes the agent respond only to prompts containing a question mark" />
 </Frame>
 
 ---
@@ -80,7 +80,7 @@ Your Credal admin may have configured a Channel Allowlist that restricts which S
 If you need to publish an agent to a channel that isn't in the allowlist, ask your Credal admin to add the channel. Admins can manage the allowlist at [https://app.credal.ai/admin/connectors/slack](https://app.credal.ai/admin/connectors/slack). If you are not on the multi-tenant SaaS Credal offering, replace `https://app.credal.ai` with the URL you typically use to log in to Credal.
 
 <Frame>
-  <img src="/docs/assets/agents/channel_allowlist.png" />
+  <img src="/docs/assets/agents/channel_allowlist.png" alt="Slack channel allowlist management page in the Credal admin connector settings" />
 </Frame>
 
 ---
@@ -94,9 +94,9 @@ Publishing into a private channel works like public channels but requires adding
 3. Click **Add apps to `<YOUR CHANNEL NAME>`**.
 4. Search for **Credal.ai** and click **Add**.
 
-![channel_name_in_slack.png](/docs/assets/agents/create-steps/channel_name_in_slack.png)  
-![integrations.png](/docs/assets/agents/create-steps/integrations.png)  
-![add_apps_to_channel.png](/docs/assets/agents/create-steps/add_apps_to_channel.png)
+![Clicking the private channel name in Slack to open its settings](/docs/assets/agents/create-steps/channel_name_in_slack.png)  
+![Integrations tab in the Slack channel settings](/docs/assets/agents/create-steps/integrations.png)  
+![Adding the Credal.ai app to the Slack channel from the Integrations tab](/docs/assets/agents/create-steps/add_apps_to_channel.png)
 
 ---
 
@@ -116,9 +116,9 @@ Custom bots and the Credal bot behave separately, so if you have both a Custom b
 
 If you have set your agent to respond to "all messages", it will respond to all queries, regardless of whether the question falls within its area of expertise. Here we set Credal's Information Security Copilot to respond to all messages:
 
-![slack_all_messages_query_example.png](/docs/assets/copilots/slack_all_messages_query_example.png)
+![Slack message asking the Information Security Copilot a question unrelated to its expertise](/docs/assets/copilots/slack_all_messages_query_example.png)
 
-![slack_out_of_scope_response.png](/docs/assets/copilots/slack_out_of_scope_response.png)
+![Agent responding that it does not have the context to answer the out-of-scope question](/docs/assets/copilots/slack_out_of_scope_response.png)
 
 > _Because this agent is set to be precise, when asked a question outside its expertise it responds that it does not have the context to answer. If this agent was set to creative, it would rely on its general knowledge to set out the rules of pickleball._
 
@@ -128,11 +128,11 @@ If you have set your agent to respond to only a selection of messages, such as a
 
 Here, we set Credal's Information Security Copilot to only respond to relevant messages:
 
-![*Here, the Agent responded as the question fell within its scope—questions on information security at Credal.*](/docs/assets/copilots/slack_relevant_query_response.png)
+![Here, the Agent responded as the question fell within its scope—questions on information security at Credal.](/docs/assets/copilots/slack_relevant_query_response.png)
 
 _Here, the Agent responded as the question fell within its scope—questions on information security at Credal._
 
-![*This question fell outside of the Agent's scope, and it did not respond.*](/docs/assets/copilots/slack_ignored_query_example.png)
+![This question fell outside of the Agent's scope, and it did not respond.](/docs/assets/copilots/slack_ignored_query_example.png)
 
 _This question fell outside of the Agent's scope, and it did not respond._
 
@@ -143,7 +143,7 @@ _This question fell outside of the Agent's scope, and it did not respond._
 By enabling the advanced settings option, the user will see additional options.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-advance-settings.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-advance-settings.png" alt="Advanced settings panel for an agent's Slack publishing options" />
 </Frame>
 
 1. **Thread Response Behavior** – Choose how the agent responds in threads:

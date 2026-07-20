@@ -4,14 +4,14 @@ You can test your agent through Credal's UI or in third-party applications like 
 
 To test an agent in Credal, select your agent by clicking _Select Agent_ in the chat menu.
 
-![agent-select.png](/docs/assets/agents/create-steps/agent-select.png)
+![Select Agent option in the Credal chat menu](/docs/assets/agents/create-steps/agent-select.png)
 
 This will open a popup where you can select your desired agent.
-![agent-select-from-input.png](/docs/assets/agents/create-steps/agent-select-from-input.png)
+![Popup for choosing which agent to chat with](/docs/assets/agents/create-steps/agent-select-from-input.png)
 
 Then simply type your questions in the search bar. Your agent will return an answer, citing the sources relied upon, which you can click to review.
 
-![agent-select-query.png](/docs/assets/agents/create-steps/agent-select-query.png)
+![Agent answering a question in the chat with clickable source citations](/docs/assets/agents/create-steps/agent-select-query.png)
 
 ## Testing in Slack
 
@@ -64,7 +64,7 @@ To systematically measure and track agent quality over time, see the [Evaluating
 
 If you get an error message that the AI is currently unreachable, there may be a few causes.
 
-![agent-troubleshooting.png](/docs/assets/agents/create-steps/agent-troubleshooting.png)
+![Error message stating the AI is currently unreachable](/docs/assets/agents/create-steps/agent-troubleshooting.png)
 
 1. **Too much context data**: This error can also appear if too much context data is being pulled into each prompt through a combination of pinned data, context, Q&A, and searchable sources. This happens because the data the agent reviews each time is running up against the AI's length limits. Reducing the amount of data that the AI reviews every time can resolve the issue.
    1. Sometimes having too many pinned sources, or pinned sources that are too large, can alone cause this issue as those sources will be read by the AI in their entirety each time a user asks a question. Try moving your pinned sources to searchable sources to resolve the issue.

@@ -9,7 +9,7 @@ To make Credal MCP servers available in Claude or ChatGPT, an admin needs to com
 - **Claude**: `https://app.credal.ai/api/user/claude/mcp`
 - **ChatGPT**: `https://app.credal.ai/api/user/chatgpt/mcp`
 
-![credal-in-claude](/docs/assets/mcp-servers/publishing/credal-in-claude.png)
+![Credal MCP servers available as a connector inside Claude](/docs/assets/mcp-servers/publishing/credal-in-claude.png)
 
 Once connected, all published MCP servers will be available to users in that service without any further configuration.
 
@@ -17,14 +17,14 @@ Once connected, all published MCP servers will be available to users in that ser
 
 Once your MCP server is ready, you have two ways to deploy it. Navigate to the Publish tab where you'll see the following settings:
 
-![fresh-deployment](/docs/assets/mcp-servers/publishing/fresh-deployment.png)
+![Publish tab of an MCP server showing the available deployment settings](/docs/assets/mcp-servers/publishing/fresh-deployment.png)
 
 ### For Claude and ChatGPT
 
 The one-time admin setup above is all that's needed. Your server becomes available to all users in those services automatically once published.
 
 Here is an example of how you can directly publish to all users in ChatGPT
-![full-org-chatgpt](/docs/assets/mcp-servers/publishing/full-org-chatgpt.png)
+![Publishing an MCP server to all users in ChatGPT across the organization](/docs/assets/mcp-servers/publishing/full-org-chatgpt.png)
 
 ### For Other MCP Clients
 
@@ -41,6 +41,6 @@ Regardless of how you publish, MCP server builders can configure end-user allowl
 
 Here is an example of how I would scope visibility down to just one user group. The user group is fetched from your [identity provider](/user-guide/platform/administration/single-sign-on-sso).
 
-![credal-support-chatgpt](/docs/assets/mcp-servers/publishing/credal-support-chatgpt.png)
+![End-user allowlist scoping server visibility in ChatGPT to a single user group](/docs/assets/mcp-servers/publishing/credal-support-chatgpt.png)
 
 Once your server is live, see [Monitoring Usage](/user-guide/platform/managing-mcp-servers/monitoring-usage) to track sessions, inspect action invocations, and review the full audit trail for every tool call.
