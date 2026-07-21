@@ -5,7 +5,7 @@ The Evaluate tab helps you systematically test and measure your agent's performa
 Use the "Add Test Case(s)" button to create test questions. You can optionally provide expected answers for reference, though these are not required for evaluation.
 
 <Frame>
-  <img src="/docs/assets/agents/evaluate/agent-eval.png" />
+  <img src="/docs/assets/agents/evaluate/agent-eval.png" alt="Evaluate tab showing the Add Test Case(s) button and a list of test questions" />
 </Frame>
 
 ### Generating Test Cases with AI
@@ -13,7 +13,7 @@ Use the "Add Test Case(s)" button to create test questions. You can optionally p
 In addition to manually adding test cases, you can use AI to automatically generate a diverse set of evaluation questions with scoring rubrics. Click the **"Generate Test Cases"** button (marked with a sparkle icon) to open the generation modal.
 
 <Frame>
-  <img src="/docs/assets/agents/evaluate/generate-test-cases-modal.png" />
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-modal.png" alt="Generate Test Cases modal for AI-generated evaluation questions and rubrics" />
 </Frame>
 
 The generator examines your agent's full configuration — including its system prompt, available actions, connected document sources, and MCP servers — and uses an ensemble of AI models to produce 8–12 high-quality test cases. Each generated test case includes:
@@ -34,7 +34,7 @@ When generating test cases, you can choose which document sources inform the que
 Once generation starts, an ensemble of AI models analyzes your agent's configuration and produces test cases. This may take up to a minute.
 
 <Frame>
-  <img src="/docs/assets/agents/evaluate/generate-test-cases-loading.png" />
+  <img src="/docs/assets/agents/evaluate/generate-test-cases-loading.png" alt="Loading state while AI models analyze the agent configuration and generate test cases" />
 </Frame>
 
 Once generated, the test cases appear in your Evaluate tab alongside any manually created ones. You can edit the questions and rubrics, or delete any that don't fit your needs.
@@ -42,6 +42,7 @@ Once generated, the test cases appear in your Evaluate tab alongside any manuall
 <div style={{ position: "relative", paddingBottom: "53.23%", height: 0 }}>
   <iframe
     src="https://www.loom.com/embed/05169c6427b646e99c86f5bafdcebafc"
+    title="Video: Generating test cases with AI in the Evaluate tab"
     frameborder="0"
     webkitallowfullscreen
     mozallowfullscreen
@@ -71,6 +72,7 @@ The test cases will appear in your Evaluate tab, ready to be scored in your next
 <div style={{ position: "relative", paddingBottom: "73.51%", height: 0 }}>
   <iframe
     src="https://www.loom.com/embed/36b2e3576d0040949a0270041951b577"
+    title="Video: Creating test cases from Monitor logs"
     frameborder="0"
     webkitallowfullscreen
     mozallowfullscreen
@@ -95,8 +97,8 @@ For each test question, you can define a custom rubric that specifies what makes
 
 <img
   src="https://files.buildwithfern.com/visual-editor-images/docs.credal.ai/2026-01-16T18:33:01.065Z/platform/agents/evaluate/image.png"
-  alt="image"
-  title="image"
+  alt="Rubric editor for a test question with criteria, point values, and scoring guidance"
+  title="Rubric editor for a test question with criteria, point values, and scoring guidance"
   noZoom={false}
 />
 
@@ -105,7 +107,7 @@ For each test question, you can define a custom rubric that specifies what makes
 Click "Generate AI Answers" to test your agent against all questions. The agent will generate responses and automatically score them based on your defined rubrics.
 
 <Frame>
-  <img src="/docs/assets/agents/evaluate/generate-test-case.png" />
+  <img src="/docs/assets/agents/evaluate/generate-test-case.png" alt="Generate AI Answers button running the agent against all test questions" />
 </Frame>
 
 ### **Tracking Performance**
@@ -127,7 +129,7 @@ Watch a video walking you through how to use the Evaluate tab below:
   width="560"
   height="315"
   src="https://www.youtube.com/embed/NoH4O8Ztv1o?si=Vr7fhjhMXQhruoCZ"
-  title="YouTube video player"
+  title="Video: Walkthrough of using the Evaluate tab to test and score your agent"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   referrerpolicy="strict-origin-when-cross-origin"

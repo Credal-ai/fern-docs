@@ -15,25 +15,25 @@ For example, a Slack agent can listen for benefit-related queries in a channel a
 From the main screen, click **“Agents”** in the navigation menu:
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-left-nav.png" />
+  <img src="/docs/assets/agents/create-steps/agent-left-nav.png" alt="The Agents option in the left navigation menu" />
 </Frame>
 
 Then click **“Create New Agent”**:
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/after-clicking-agent.png" />
+  <img src="/docs/assets/agents/create-steps/after-clicking-agent.png" alt="The Agents page with the Create New Agent button" />
 </Frame>
 
 Give your agent a **Name** and add a **Description** of its function in the pop-out form. You can always edit these later. Descriptions should be detailed enough to explain what types of queries the agent handles.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-creation-popup.png" />
+  <img src="/docs/assets/agents/create-steps/agent-creation-popup.png" alt="The agent creation form with Name and Description fields" />
 </Frame>
 
 You can access all created and shared agents by clicking **“Published”** in the Agents tab.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-published.png" />
+  <img src="/docs/assets/agents/create-steps/agent-published.png" alt="The Published section of the Agents tab listing created and shared agents" />
 </Frame>
 
 ---
@@ -49,13 +49,13 @@ For a deeper walkthrough, see our [Detailed Agents User Guide](/user-guide/platf
 3. **Creativity** – We recommend starting with “Balanced” or “Precise.” Choose “Creative” for open-ended tasks like brainstorming or marketing.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-different-models-dropdown.png" />
+  <img src="/docs/assets/agents/create-steps/agent-different-models-dropdown.png" alt="The model selection dropdown showing available AI models" />
 </Frame>
 
 4. **[Prompt](/user-guide/platform/agent-builder/configuration/writing-instructions)** – Here you can provide a custom prompt that gives the agent context and instructions on how to handle user queries. By default, Credal instructs agents to be helpful, honest, and direct, and to let users know when they're unsure of the answer.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-prompt.png" />
+  <img src="/docs/assets/agents/create-steps/agent-prompt.png" alt="The custom prompt editor in the agent configuration page" />
 </Frame>
 
 You can revise this prompt to include the background information and instructions relevant to your agent. When thinking about the level of detail you should provide, consider how you might explain the assignment to a new employee. Your explanation might include:
@@ -107,7 +107,7 @@ _--------- End Context ---------_
      For the most important sources, you may want to "Bookmark" these sources by clicking the yellow pin icon as shown below. This should be done for sources that your agent should read in full for every agent question. Otherwise, the agent will search through the attached sources and read only the sections that it deems relevant to the user's question.
 
      <Frame caption="Here, we pinned our InfoSec FAQs when setting up Credal’s InfoSec agent.">
-       <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" />
+       <img src="/docs/assets/agents/create-steps/agent-datasource-configure.png" alt="Attached data sources with a bookmarked source pinned via the yellow pin icon" />
      </Frame>
 
    - **User Inputs / Attachments**
@@ -128,14 +128,14 @@ This guide covers Slack. For other integrations, see the [full documentation](/u
 Go to "Slack Channels" in your agents "Publish" settings and enable the ability to talk to your agent in Slack. Then you can select target channels:
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-channel-deploy.png" alt="The Slack Channels publish settings for selecting target channels" />
 </Frame>
 
 If multiple agents are published to a single channel, Credal uses their descriptions to decide which one should respond.
 You can choose to have your agent answer all messages in a given channel or only those that meet certain criteria:
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-configure.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-configure.png" alt="Slack configuration options for choosing which messages the agent answers" />
 </Frame>
 
 - **All messages**: will answer all queries in the connected Slack channel.
@@ -143,13 +143,13 @@ You can choose to have your agent answer all messages in a given channel or only
 - **All messages matching filter**: will respond to messages that match the filter criteria. In the example in the screenshot, the agent will only respond to prompts containing “?”.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" />
+  <img src="/docs/assets/agents/create-steps/agent-slack-trigger-dropdown.png" alt="The Slack trigger dropdown with a filter matching messages containing a question mark" />
 </Frame>
 
 If more than one agent is published to a given Slack channel, Credal will triage user requests based on the Description of each agent to determine which, if any, should answer the question.
 
 <Frame>
-  <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" />
+  <img src="/docs/assets/agents/create-steps/relevant-slack-filter.png" alt="Multiple agents published to one Slack channel, triaged by their descriptions" />
 </Frame>
 
 </Steps>

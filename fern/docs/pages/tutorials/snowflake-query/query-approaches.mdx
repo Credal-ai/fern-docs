@@ -17,7 +17,7 @@ The way query templates work is by using [embedded parameters](/user-guide/platf
 3.  **Action Example Params:**
 
 <Frame>
-  <img src="/docs/assets/agents/snowflake-query/query-param-template.png" />
+  <img src="/docs/assets/agents/snowflake-query/query-param-template.png" alt="Example action parameters for a query template with embedded parameters the AI fills in" />
 </Frame>
 
 **Note:** An agent will use the action name and description to decide to run an action - make sure these are good descriptions of what the action does. Currently each query template requires its own runSnowflakeQuery action - meaning your agent will have multiple actions attached.
@@ -39,7 +39,7 @@ This relies on the user uploading table metadata to the agents data sources to e
 3.  **Action Example Params:**
 
 <Frame>
-  <img src="/docs/assets/agents/snowflake-query/query-param-views.png" />
+  <img src="/docs/assets/agents/snowflake-query/query-param-views.png" alt="Example action parameters for the Snowflake views approach with a generic query parameter" />
 </Frame>
 
 **Note:** Since you'll only have one runSnowflake action attached to your agent with the views approach - the name and description must be more generic.
@@ -75,7 +75,7 @@ This is just an example of how to give the **Snowflake Query Agent** context on 
 4.  Attach your generated csv of table schema data (ensure file is named appropriately e.g Snowflake Table Schemas)
 
 <Frame>
-  <img src="/docs/assets/agents/snowflake-query/data-sources-setup.png" />
+  <img src="/docs/assets/agents/snowflake-query/data-sources-setup.png" alt="Agent configuration Data Sources section with a Snowflake table schemas CSV attached" />
 </Frame>
 
 **Tip:** Remember Google Drive uploads will only be visible/usable in the Agent users who have access to it in Google Drive (Permissions are mirrored) - to avoid this you can upload a csv file instead of a Google Sheets link

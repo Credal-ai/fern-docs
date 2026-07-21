@@ -44,7 +44,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
 
 - They will need the `Subdomain`, `Account Identifier`, `Username`, `Private Key` and `SHA-256 Fingerprint` to add the snowflake connection.
   <Frame>
-    <img src="/docs/assets/agents/snowflake-query/snowflake-add-credential.png" />
+    <img src="/docs/assets/agents/snowflake-query/snowflake-add-credential.png" alt="Form for adding a Snowflake credential with fields for subdomain, account identifier, username, private key, and SHA-256 fingerprint" />
   </Frame>
 
 ## Implementation Steps
@@ -59,7 +59,7 @@ GRANT ROLE CREDAL_READ TO USER CREDAL_USER;
    > Output from the runSnowflakeQuery Action is passed into Open AI Code Interpreter for image generation and analysis (depending on your parameter setup)
 
 <Frame>
-  <img src="/docs/assets/agents/search-tools/code-interpreter.png" />
+  <img src="/docs/assets/agents/search-tools/code-interpreter.png" alt="Agent configuration panel with the Code Interpreter option enabled" />
 </Frame>
 
 **Tip:** A detailed description helps users understand the purpose of your Agent.
@@ -89,10 +89,10 @@ Access to Snowflake data is controlled at two levels:
 **Important Security Note**: Any user with end-user access to an Action will be able to use the attached Snowflake credentials through that Action. Ensure you carefully manage the End User Access list to maintain proper data security.
 
 <Frame>
-  <img src="/docs/assets/agents/snowflake-query/action-credential.png" />
+  <img src="/docs/assets/agents/snowflake-query/action-credential.png" alt="Action settings showing a Snowflake credential attached to the action" />
 </Frame>
 <Frame>
-  <img src="/docs/assets/agents/snowflake-query/end-user-access.png" />
+  <img src="/docs/assets/agents/snowflake-query/end-user-access.png" alt="End User Access settings specifying which users and groups can use the action" />
 </Frame>
 
 ### Step 4: Model Choice

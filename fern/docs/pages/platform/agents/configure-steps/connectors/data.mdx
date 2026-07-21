@@ -13,10 +13,10 @@ You’re telling the agent that this source is important for this task, and to l
 Once you scroll down to the connectors section you'll be able to see your data sources.
 
 If none have been attached yet it will look like:
-![no-attached-data-sources.png](/docs/assets/agents/create-steps/no-attached-data-sources.png)
+![The connectors section with no data sources attached yet](/docs/assets/agents/create-steps/no-attached-data-sources.png)
 
 If data sources have already been attached you'll see them listed by connector
-![attached-data-sources.png](/docs/assets/agents/create-steps/attached-data-sources.png)
+![Attached data sources listed by connector](/docs/assets/agents/create-steps/attached-data-sources.png)
 
 **2. Attaching Sources**
 
@@ -24,7 +24,7 @@ You can either select a synced source, sync a URL, or upload your own files.
 
 If you want to attach a [document collection](/user-guide/platform/agent-builder/configuration/add-connectors/document-collections/overview), this will be under select a source.
 
-![copilot_data_sources.png](/docs/assets/copilots/copilot_data_sources.png)
+![Options for attaching data by selecting a synced source, syncing a URL, or uploading files](/docs/assets/copilots/copilot_data_sources.png)
 
 **2. Bookmarking Data**
 
@@ -32,7 +32,7 @@ By bookmarking (or pinning) data sources, you can force your agent to refer to c
 
 To use this feature, click the "pin" button on the source after uploading your data.
 
-![copilot_pin_document.png](/docs/assets/copilots/copilot_pin_document.png)
+![The pin button on an attached data source for bookmarking it](/docs/assets/copilots/copilot_pin_document.png)
 
 **3. Add User Input**
 
@@ -42,7 +42,7 @@ When this option is configured, the agent will prompt users to attach their docu
 
 We strongly recommend leaving the defaults of "Allow multiple documents" and AI reads full inputs", except in very specific circumstances where you are certain that this is not what you want to do.
 
-![copilot_add_user_input.png](/docs/assets/copilots/copilot_add_user_input.png)
+![The Add user input settings for letting users upload their own documents](/docs/assets/copilots/copilot_add_user_input.png)
 
 **4. Tailoring Source Retrieval**
 
@@ -50,7 +50,7 @@ Note: These are advanced settings. The agent comes with defaults that work well 
 
 When the agent answers a question, it looks through your documents and pulls out pieces of text (called “chunks”) to help form a response. You can fine-tune how it does this:
 
-![tailoring_source_retrieval.gif](/docs/assets/copilots/tailoring_source_retrieval.gif)
+![Adjusting the number of chunks and similarity threshold in the advanced retrieval settings](/docs/assets/copilots/tailoring_source_retrieval.gif)
 
 - **Number of chunks:** Think of this as how many pieces of text the agent gathers before answering. If you know your document is in the data provided to your agent, but the agent is not finding it, try expanding the number of chunks. Most agents can safely go up to around 100 chunks without problems. If you find that your agent is finding the right data, but that it is getting confused or distracted by less relevant information, trying cutting the number of chunks down.
 
