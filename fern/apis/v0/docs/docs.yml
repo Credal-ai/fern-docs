@@ -7,3 +7,6 @@ navigation:
     snippets:
       python: credal
       typescript: "@credal/sdk"
+  - page: Service Accounts
+    slug: service-accounts
+    path: ./service-accounts.mdx
