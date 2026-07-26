@@ -9,7 +9,7 @@ auth-schemes:
       # an api key is not explicitly passed into the generated SDK client.
       env: CREDAL_API_KEY
 environments:
-  Production: https://api.credal.ai/api
+  Production: https://app.credal.ai/api
 default-environment: Production
 error-discrimination:
   strategy: status-code
