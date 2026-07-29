@@ -115,3 +115,72 @@ curl 'https://api.credal.ai/api/v0/audit-logs/usage-analytics' \
 ```
 
 Usage analytics logs are filtered by datetime, with the most recent logs first, and the oldest last.
+
+### Action Analytics Logs
+
+Action analytics logs can be exported with any key that has the following Scope:
+```
+action-analytics-log.export
+```
+
+This scope must be approved by an admin via the "Can access Action Analytics endpoint" toggle on the API Token page, following the same flow as the usage analytics scope above.
+
+Each record is one action lifecycle event (initiation, approval request, approval decision, or execution) with an id, the event type, timestamp, action name, provider, source, and user email. Message content and action arguments are never included in this export.
+
+**Base URL**
+```
+https://api.credal.ai/api/v0/audit-logs/action-analytics
+```
+
+**Headers**
+- `Authorization: Bearer $API_TOKEN`
+- `Content-Type: application/json`
+
+**Body**
+- `limit`: number of records to return in request. Maximum 1,000. Defaults to 1,000.
+- `startDate`: optional, ISO 8601 datetime with a UTC offset (for example `2026-05-01T00:00:00+00:00`). Any event on or after this datetime will be included.
+- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any event on or before this datetime will be included.
+
+**Example cURL request**
+```bash
+curl 'https://api.credal.ai/api/v0/audit-logs/action-analytics' \
+  --data '{"limit":1000, "startDate":"2026-05-01T00:00:00+00:00", "endDate":"2026-06-01T00:00:00+00:00"}' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer CREDAL_TOKEN'
+```
+
+Action analytics logs are ordered by datetime, with the most recent logs first. To paginate, take the datetime of the last record in a response and pass it as `endDate` in the next request. Because `endDate` is inclusive, records sharing that exact datetime are returned again on the next page rather than skipped — de-duplicate by `id`.
+
+### Organization-wide Action Audit Logs
+
+Action invocation logs are exportable by administrator API keys. Any users added to the API key must be administrators. No scope is required.
+
+Each record is one action invocation with the same fields as the Action Audit dashboard: id, datetime, action id and name, user email, agent id and name, whether human approval was required, and status. The user message, tool response, justification, and action arguments are `null` unless `includeInputAndOutput` is set to `true`.
+
+**Base URL**
+```
+https://api.credal.ai/api/v0/audit-logs/action-organization
+```
+
+**Headers**
+- `Authorization: Bearer $API_TOKEN`
+- `Content-Type: application/json`
+
+**Body**
+
+The body must be valid JSON; send `{}` to use the defaults.
+- `limit`: number of records to return in request. Maximum 1,000. Defaults to 1,000.
+- `startDate`: optional, ISO 8601 datetime with a UTC offset. Any invocation on or after this datetime will be included.
+- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any invocation on or before this datetime will be included.
+- `userEmail`: optional, filter to invocations by a single user.
+- `includeInputAndOutput`: optional boolean, defaults to `false`. When `true`, includes the user message, tool response, justification, and action arguments.
+
+**Example cURL request**
+```bash
+curl 'https://api.credal.ai/api/v0/audit-logs/action-organization' \
+  --data '{"limit":1000, "startDate":"2026-05-01T00:00:00+00:00", "endDate":"2026-06-01T00:00:00+00:00", "includeInputAndOutput":false}' \
+  -H 'content-type: application/json' \
+  -H 'Authorization: Bearer CREDAL_TOKEN'
+```
+
+Action audit logs are ordered by datetime, with the most recent logs first, and paginate the same way as action analytics logs.
