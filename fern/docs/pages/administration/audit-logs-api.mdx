@@ -125,7 +125,7 @@ action-analytics-log.export
 
 This scope must be approved by an admin via the "Can access Action Analytics endpoint" toggle on the API Token page, following the same flow as the usage analytics scope above.
 
-Each record is one action lifecycle event (initiation, approval request, approval decision, or execution) with the event type, timestamp, action name, provider, source, and user email. Message content and action arguments are never included in this export.
+Each record is one action lifecycle event (initiation, approval request, approval decision, or execution) with an id, the event type, timestamp, action name, provider, source, and user email. Message content and action arguments are never included in this export.
 
 **Base URL**
 ```
@@ -139,7 +139,7 @@ https://api.credal.ai/api/v0/audit-logs/action-analytics
 **Body**
 - `limit`: number of records to return in request. Maximum 1,000. Defaults to 1,000.
 - `startDate`: optional, ISO 8601 datetime with a UTC offset (for example `2026-05-01T00:00:00+00:00`). Any event on or after this datetime will be included.
-- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any event strictly before this datetime will be included, so it can be used directly as a pagination cursor.
+- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any event on or before this datetime will be included.
 
 **Example cURL request**
 ```bash
@@ -149,7 +149,7 @@ curl 'https://api.credal.ai/api/v0/audit-logs/action-analytics' \
   -H 'Authorization: Bearer CREDAL_TOKEN'
 ```
 
-Action analytics logs are ordered by datetime, with the most recent logs first. To paginate, take the datetime of the last record in a response and pass it as `endDate` in the next request.
+Action analytics logs are ordered by datetime, with the most recent logs first. To paginate, take the datetime of the last record in a response and pass it as `endDate` in the next request. Because `endDate` is inclusive, records sharing that exact datetime are returned again on the next page rather than skipped — de-duplicate by `id`.
 
 ### Organization-wide Action Audit Logs
 
@@ -171,7 +171,7 @@ https://api.credal.ai/api/v0/audit-logs/action-organization
 The body must be valid JSON; send `{}` to use the defaults.
 - `limit`: number of records to return in request. Maximum 1,000. Defaults to 1,000.
 - `startDate`: optional, ISO 8601 datetime with a UTC offset. Any invocation on or after this datetime will be included.
-- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any invocation strictly before this datetime will be included.
+- `endDate`: optional, ISO 8601 datetime with a UTC offset. Any invocation on or before this datetime will be included.
 - `userEmail`: optional, filter to invocations by a single user.
 - `includeInputAndOutput`: optional boolean, defaults to `false`. When `true`, includes the user message, tool response, justification, and action arguments.
 
