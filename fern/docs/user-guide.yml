@@ -154,8 +154,9 @@ navigation:
             path: ./pages/platform/mcp-servers/publishing-tp-server.mdx
           - page: Monitoring Usage
             path: ./pages/platform/mcp-servers/monitoring-usage.mdx
-      - page: Bulk Analysis
+      - page: Bulk Analysis (FDE Engagements Only)
         path: ./pages/platform/bulk-analysis.mdx
+        slug: bulk-analysis
       - section: Administration
         contents:
           - page: Single Sign-On (SSO)
