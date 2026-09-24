@@ -85,5 +85,8 @@
   ],
   "flagWords": ["localhost", "127.0.0.1"],
   "ignorePaths": ["node_modules", ".git", "dist", "build", "*.log"],
-  "ignoreWords": ["blacksmith", "vcpu", "ubuntu"]
+  "ignoreWords": ["blacksmith", "vcpu", "ubuntu"],
+  // Skip fenced code blocks: match from ``` through the closing ```, spanning newlines,
+  // so code identifiers (hashlib, urlsafe, etc.) are not spellchecked.
+  "ignoreRegExpList": ["/```[\\s\\S]*?```/g"]
 }
