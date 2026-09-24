@@ -12,7 +12,7 @@ After registration you'll receive a **client ID** and **client secret**. Keep th
 
 ### 2. Direct the user to Credal to authorize
 
-First, generate a PKCE pair. The `code_verifier` is a high-entropy random string (43–128 characters from `[A-Za-z0-9-._~]`), and the `code_challenge` is its SHA-256 hash, base64url-encoded without padding. Store the verifier server-side (keyed by `state`) — you'll need it in step 3.
+First, generate a PKCE pair: a high-entropy random `code_verifier` and its `code_challenge`, the SHA-256 hash of the verifier encoded as base64url without padding. See [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636#section-4.1) for the full requirements. Store the verifier server-side, keyed by `state` — you'll need it in step 3.
 
 <CodeBlocks>
 <CodeBlock title="Python">
@@ -71,6 +71,8 @@ https://your-app.com/callback?code=<authorization_code>&state=<random_value>
 **The authorization code is not an access token.** You must exchange it by making a server-side POST request to the token endpoint. Do not skip this step.
 
 The request must include both your `client_secret` and the `code_verifier` from step 2. Credal checks each independently, and the exchange fails if either is missing or invalid.
+
+In your callback handler, use the `state` value from the redirect to retrieve the `code_verifier` you stored in step 2, and abort if none exists for that `state`. Each login attempt has its own verifier, so a server handling concurrent logins must resolve it per request. See [oauth.net's PKCE overview](https://oauth.net/2/pkce/) for background.
 
 <CodeBlocks>
 <CodeBlock title="curl">
