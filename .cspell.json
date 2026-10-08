@@ -88,5 +88,6 @@
   "ignoreWords": ["blacksmith", "vcpu", "ubuntu"],
   // Skip fenced code blocks: match from ``` through the closing ```, spanning newlines,
   // so code identifiers (hashlib, urlsafe, etc.) are not spellchecked.
-  "ignoreRegExpList": ["/```[\\s\\S]*?```/g"]
+  // Also skip agent job IDs (Agentic-Request:conv=...:run=...:agent=...) in API examples.
+  "ignoreRegExpList": ["/```[\\s\\S]*?```/g", "/Agentic-Request:\\S+/g"]
 }
