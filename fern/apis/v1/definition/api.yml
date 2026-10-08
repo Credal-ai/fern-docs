@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Credal API
-  version: 1.0.0
+  version: 1.1.0
   description: >-
     DO NOT manually edit this spec. It is auto-generated from the app repo
     (app/api/v1/openapi). Always use the latest export.
@@ -88,10 +88,16 @@ paths:
                 properties:
                   jobId:
                     type: string
+                  conversationId:
+                    type: string
+                    format: uuid
                 required:
                   - jobId
+                  - conversationId
                 example:
-                  jobId: d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32
+                  jobId: >-
+                    Agentic-Request:conv=6f7c2d54-5838-11f1-9407-7b18ca90ac01:run=f7f2342b-322c-46f9-8507-6e4f17fc4479:agent=cc3fd192-ea62-11f0-99fd-03d6b2458fff
+                  conversationId: 6f7c2d54-5838-11f1-9407-7b18ca90ac01
         '400':
           description: Invalid request
         '401':
