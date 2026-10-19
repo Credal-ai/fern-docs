@@ -90,6 +90,42 @@ Notice that I do not ask for metadata such as “Assignee” or “Date” since
 
 After you’ve done a first pass at writing questions that you believe will extract meaningful data from each source or spreadsheet row, it’s time to refine the prompts. The Preview table will be helpful for testing out the prompts you’ve written. The practice of refining prompts to give you responses you want is called Prompt Engineering.
 
+## Keeping Costs Under Control
+
+Bulk analysis has two built-in guardrails: Credal turns it on only for users who need it, and full runs are limited to one per day. Neither limits how large a run is, so a single full run can cost far more than everyday chat. Plan large runs before you start them.
+
+### How a run is billed
+
+Every cell in the results table is a separate agent response. A full run asks each column's agent about each row, so its cost is roughly:
+
+**rows × columns × the cost of one agent response**
+
+For example, 4,000 documents with 6 columns is 24,000 agent responses. At $0.50 each, which is realistic for a large model reading long documents, that run costs $12,000. The same run with a small model can cost a small fraction of that.
+
+Three things make each response cost more:
+
+- **The agent's model.** Large models cost many times more per response than small ones.
+- **Document length.** Long documents cost more to read, and each column reads the document again.
+- **The agent's tools.** Search, web browsing, code execution and actions each add model calls to every response.
+
+Full runs on large models are paced to stay within model provider rate limits, so a run over thousands of documents can take a day or more. It keeps running, and spending, after you close your browser, including overnight and over weekends.
+
+### Before a full run
+
+- **Preview first, and use it to estimate.** The preview runs every column on 5 rows, so a full run costs about the preview's cost times your number of rows divided by 5. If your organization uses user spend limits, the usage shown next to **Run** before and after the preview tells you what it cost.
+- **Use the smallest model that does the job.** Extracting fields, classifying and answering yes or no questions rarely need the largest model. Compare a smaller model's answers in the preview first.
+- **Give columns a dedicated agent.** Attach only the data the column needs, and turn off web search, code execution and actions it doesn't use. A general-purpose agent can search and call tools in every cell.
+- **Combine related questions.** One column asking for the vendor, contract value and end date reads each document once; three separate columns read it three times.
+- **Analyze only what you need.** A bulk analysis of a Document Collection includes every document in it, including those in subfolders. Build a collection with just the documents you want, and remove spreadsheet rows you don't need.
+- **Scale up in steps.** Run on a sample of 50 to 100 documents first, check the results and the cost, then run the full set.
+- **Don't re-run everything to fix one column.** Every full run re-runs every column on every row. To redo one column, create a separate bulk analysis with only that column.
+
+### Once a run starts
+
+- **A full run can't be stopped from Credal.** If you start one by mistake, or it's running far longer than expected, contact your Credal team or support@credal.ai right away.
+- **Spend limits don't stop runs.** If your organization uses user spend limits, a run keeps going after you pass your limit. Check your usage next to **Run** before you start.
+- **Admins can follow spend** in **Cost Management**.
+
 ## Step 4: Run!
 
 It’s time to run your analysis, which is as easy as clicking a button.
@@ -103,6 +139,10 @@ Before running the full analysis, it’s wise to do a preview run on a smaller s
 ### Conducting a Full Run
 
 Note that you can only do one full run per day, so it's wise to make sure your preview is working as expected first. If you urgently need to run your analysis more than once in a day, contact support@credal.ai.
+
+<Callout intent="warning" title="Estimate the cost before a full run">
+A full run asks every column's agent about every row, and it can't be stopped from Credal once it starts. Read [Keeping Costs Under Control](#keeping-costs-under-control) before running on a large collection.
+</Callout>
 
 Once satisfied with the preview, proceed to the “Run” tab to conduct a full run. This will enable you to analyze every document in your collection comprehensively, unlocking thorough and actionable insights.
 
